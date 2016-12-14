@@ -1,0 +1,28 @@
+10.12.2016. Messenger
+	oformljen tim:
+		Matija Herceg
+		Leonard Volarich Horvat
+		Jan Kelemen
+		Marko Stanić
+		Roko Zubčić
+
+
+14.12.2016. Cassandra - FER
+	prisutni: Herceg, Kelemen, Stanić, Zubčić
+	odlučeno da Horvat zbog neopravdanog izostanka preuzima pismeni dio zadatka
+	napravljen centralni repozitorij projekta na adresi: github.com/mherceg/oobl-seminar dodan pristup svim clanovima tima
+	analiza zahtjeva zadatka
+	Predložena nekolicina tema:
+		Vizualizacija grafova i algoritama na grafovima sa socijalnom komponentom
+		Framework za izvodenje genetskih algoritama nad modelima
+		Sustav za vizualizaciju i izvodenje jednostavnih neuronskih mreza
+		Sustav za planiranje rasporeda treninga u teretani ili raspodjele drugih sredstava
+		Geolokacijski sustav za dijeljenje informacija uz drustvenu validaciju ispravnosti
+	Odluceno trenutno se fokusirati na posljednju navedenu temu
+	Herceg ce raspisati user story, razgovarati sa naruciteljem o isplativosti i detaljima, pokusati izbaciti web ili desktop komponentu
+	Kelemen je odabrao raditi web
+	Stanić dio namjenjen za mobilne uređaje
+	Herceg je izrazio preferencu da ne radi ništa ali je prista raditi backend
+	Zubčić će uz pomoć napraviti servise
+	Horvat će za sad raditi ono što se drugima neće dati
+	Zapisnik napisao: Herceg
