@@ -1,0 +1,25 @@
+Cilj: Napraviti sustav za dijeljenje informacija baziranih na trenutnoj lokaciji
+
+Moguca primjena: Dijeljenje trenutnog stanja u nocnim klubovima, dijeljenje trenutnih lokacija ZET kontrolora, dijeljenje informacija o pisanju bliceva na predavanjima, dijeljenje informacija o prometnim nesrecama i guzvama u prometu, dijeljenje informacija o pozicijama prometnih policajaca, dijeljenje informacija o zauzetosti sprava u teretani...
+
+Zahtjevi: 
+	Geolokacija
+	Prikaz podataka na karti
+	Rangiranje pouzdanosti korisnika (sustav za autentifikaciju)
+	Vise kategorija informacija (varijabilni broj? Automatsko dodavanje kategorija? Administrator dodaje kategorije?)
+	Perzistencija podataka
+	Mobilno sucelje
+	Web sucelje
+	Desktop sucelje?
+
+Use caseovi:
+	Korisnik se moze registrirati. SSO?
+	Korisnik moze dodati informaciju za svoju lokaciju (slika?)
+	Korisnik moze pregledati trenutne informacije po kategorijama ili lokacijama
+	Korisnik moze potvrditi ili opovrgnuti informacije na svojoj ili bliskoj lokaciji
+	Administrator moze uredivati i brisati informacije
+	Premium korisnik moze najaviti dogadaje
+	Integracija sa drustvenim mrezama i shareanje
+
+DODATI SVE STO SMATRATE POTREBNIM
+
