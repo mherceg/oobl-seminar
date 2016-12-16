@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor.Domain\Tracktor.Domain.csproj", "{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Web", "Tracktor.Web\Tracktor.Web.csproj", "{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.DAL", "Tracktor.DAL\Tracktor.DAL.csproj", "{26D652ED-820C-4837-9639-0D683A5C0096}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D652ED-820C-4837-9639-0D683A5C0096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D652ED-820C-4837-9639-0D683A5C0096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D652ED-820C-4837-9639-0D683A5C0096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D652ED-820C-4837-9639-0D683A5C0096}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
