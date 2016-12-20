@@ -26,3 +26,11 @@
 	Zubčić će uz pomoć napraviti servise
 	Horvat će za sad raditi ono što se drugima neće dati
 	Zapisnik napisao: Herceg
+
+20.12.2016. Cassandra - FER
+	prisutni: Herceg, Kelemen, Stanić, Volarić Horvat, Zubčić
+	Nakon odoborenja profesora odlučeno da tema projekta bude platforma za dijeljenje informacija vezanih uz lokaciju
+	Administratorsko sučelje će biti napravljeno kao Desktop program
+	Korisničko sučelje će bit web i mobilna aplikacija
+	Definirani su zahtjevi i API opisani u dokumentima requirements.txt i api.txt
+

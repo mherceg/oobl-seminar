@@ -1,0 +1,106 @@
+gui -> backend
+backend -> gui
+
+< > optional
+
+Admin interface
+
+/add_user
+{"email":"email", 
+"name":"string",
+"surname":"string",
+<"type":"regular"/"premium",
+"enabled":"true"/"false">}
+{"id":"int"/"-1"}
+
+/get_user
+{"id":"int"}
+{"id":"int",
+"email":"email", 
+"name":"string",
+"surname":"string",
+"type":"regular"/"premium",
+"enabled":"true"/"false"}
+
+/change_user
+{"id":"int",
+<"type":"regular"/"premium">,
+<"enabled":"true"/"false">}
+{"id":"int",
+"email":"email", 
+"name":"string",
+"surname":"string",
+"type":"regular"/"premium",
+"enabled":"true"/"false"}
+
+/delete_info
+{"id":"info"}
+{"success":"true"/"false"}
+
+/delete_comment
+{"id":"info"}
+{"success":"true"/"false"}
+
+All interface
+
+/get_categories
+{}
+{"categories":["string",]}
+
+/get_info
+{<"latitude":"float",
+"longitude":"float",
+"range":"float">,
+<"time_start":"long">,
+<"time_end":"long">,
+<"categories":[{"name":"string",
+"id":"int"},]>
+}
+{[{"latitude":"float",
+"longitude":"float",
+"id":"int"}, ]}
+
+/see_info
+{"id":"int"}
+{"latitude":"float",
+"longitude":"float",
+"timestamp":"datetime",
+"user":{"email":"email",
+	"name":"name",
+	"surname":"surname",
+	"id":"int"},
+"content":"string",
+"comments":[{"user":"{"email":"email",
+		"name":"name",
+		"surname":"surname",
+		"id":"int"},
+	"content":"string",
+	"id":"int"}, ]
+}
+
+
+/add_info
+{"latitude":"float",
+"longitude":"float",
+"user_id":"int",
+"category":"int",
+"content":"string"}
+{"id":"int"/"-1"}
+
+/add_comment
+{"info_id":"int",
+"user_id":"int",
+"content":"string"}
+{"id":"int"/"-1"}
+
+User interface
+
+/login
+{"email":"email",
+"password":"md5"}
+{"id":"int"/-1}
+
+/add_reputation
+{"type":"info"/"comment",
+"delta":"+1"/"-1"}
+{"success":"true"/"false"}

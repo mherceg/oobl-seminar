@@ -23,3 +23,22 @@ Use caseovi:
 
 DODATI SVE STO SMATRATE POTREBNIM
 
+--------------------------------------------------------------------------------------------------
+v2. 20.12.2016.
+
+	Korisnik se moze ulogirati sa kombinacijom usernamea i lozinke
+	Korisnik moze na karti vidjeti lokacije svih informacija objavljenih u zadnjih X vremena
+	Korisnik moze odabrati koje kategorije informacija zeli vidjeti
+	Korisnik moze dodati informaciju
+	Korisnik moze pogledati jednu informaciju sa svim komentarima na nju
+	Korisnik moze dodati komentar na postojecu informaciju
+	Korisnik moze obaviti upvote/downvote za informaciju ili komentar
+	Korisnik moze sve gore navedene radnje obaviti putem web ili mobilnog sucelja
+
+	Administrator moze dodati novog korisnika
+	Administrator moze za korisnika promijeniti tip u regular ili premium
+	Administrator moze dodati informaciju
+	Administrator moze dodati komentar
+	Administrator moze obrisati informaciju
+	Administrator moze obrisati komentar
+	Administrator moze sve navedene radnje obaviti putem Desktop sucelja
