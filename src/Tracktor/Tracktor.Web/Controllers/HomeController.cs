@@ -15,7 +15,7 @@ namespace Tracktor.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your tracktor description page.";
 
             return View();
         }
