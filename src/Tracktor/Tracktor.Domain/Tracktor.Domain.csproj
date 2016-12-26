@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
+    <Compile Include="CategoryEntity.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="FavoritePlace.cs" />
     <Compile Include="Info.cs" />
@@ -60,7 +60,7 @@
     <Compile Include="ReputationComment.cs" />
     <Compile Include="ReputationInfo.cs" />
     <Compile Include="Sponsorship.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="UserEntity.cs" />
     <Compile Include="UserType.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Tracktor.Business;
+using Tracktor.Business.Interface;
+using Tracktor.Domain;
 
 namespace Tracktor.WebService.Controllers
 {
@@ -34,6 +37,12 @@ namespace Tracktor.WebService.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+        }
+
+        public int Register(UserEntity user)
+        {
+            IUserServices us = ServiceFactory.getUserServices();
+            return us.Register(user);
         }
     }
 }
