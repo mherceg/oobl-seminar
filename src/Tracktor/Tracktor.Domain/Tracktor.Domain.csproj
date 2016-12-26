@@ -51,14 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="FavoritePlace.cs" />
+    <Compile Include="Info.cs" />
+    <Compile Include="Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReputationComment.cs" />
+    <Compile Include="ReputationInfo.cs" />
+    <Compile Include="Sponsorship.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

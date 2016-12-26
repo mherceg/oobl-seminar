@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor
 		{26D652ED-820C-4837-9639-0D683A5C0096} = {26D652ED-820C-4837-9639-0D683A5C0096}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Business", "Tracktor.Business\Tracktor.Business.csproj", "{07693653-31AC-490D-B382-159C07792DFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,18 @@ Global
 		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|ARM.Build.0 = Release|Any CPU
 		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.ActiveCfg = Release|Any CPU
 		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.Build.0 = Release|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Debug|ARM.Build.0 = Debug|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Debug|x86.Build.0 = Debug|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Release|ARM.ActiveCfg = Release|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Release|ARM.Build.0 = Release|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Release|x86.ActiveCfg = Release|Any CPU
+		{07693653-31AC-490D-B382-159C07792DFD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
