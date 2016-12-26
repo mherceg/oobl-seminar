@@ -42,3 +42,4 @@ v2. 20.12.2016.
 	Administrator moze obrisati informaciju
 	Administrator moze obrisati komentar
 	Administrator moze sve navedene radnje obaviti putem Desktop sucelja
+

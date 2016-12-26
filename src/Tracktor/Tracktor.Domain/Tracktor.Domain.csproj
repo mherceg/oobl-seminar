@@ -52,16 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryEntity.cs" />
-    <Compile Include="Comment.cs" />
-    <Compile Include="FavoritePlace.cs" />
-    <Compile Include="Info.cs" />
-    <Compile Include="Place.cs" />
+    <Compile Include="CommentEntity.cs" />
+    <Compile Include="FavoritePlaceEntity.cs" />
+    <Compile Include="InfoEntity.cs" />
+    <Compile Include="PlaceEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReputationComment.cs" />
-    <Compile Include="ReputationInfo.cs" />
-    <Compile Include="Sponsorship.cs" />
+    <Compile Include="ReputationCommentEntity.cs" />
+    <Compile Include="ReputationInfoEntity.cs" />
+    <Compile Include="SponsorshipEntity.cs" />
     <Compile Include="UserEntity.cs" />
-    <Compile Include="UserType.cs" />
+    <Compile Include="UserTypeEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

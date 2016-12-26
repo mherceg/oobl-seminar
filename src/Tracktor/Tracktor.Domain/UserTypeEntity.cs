@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tracktor.Domain
 {
-    class ReputationInfo
+    class UserTypeEntity
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int ContentCommentId { get; set; }
-        public bool Score { get; set; }
+        public string Type { get; set; }
     }
 }

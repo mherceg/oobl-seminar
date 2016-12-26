@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tracktor.Domain
 {
-    public class Comment
+    public class CommentEntity
     {
         public int Id { get; set; }
         public System.Data.Entity.Spatial.DbGeography Location { get; set; }

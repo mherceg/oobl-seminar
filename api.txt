@@ -5,33 +5,34 @@ backend -> gui
 
 Admin interface
 
-/add_user
-{"email":"email", 
-"name":"string",
-"surname":"string",
-<"type":"regular"/"premium",
-"enabled":"true"/"false">}
+BASE_URI = tracktor.azurewebsites.net/api
+
+
+/user/add
+{"username":"email", 
+"password", "string",
+"fullname":"string",
+"userTypeId":"int",
+"isActive":"bool">}
 {"id":"int"/"-1"}
 
-/get_user
+/user/get
 {"id":"int"}
 {"id":"int",
-"email":"email", 
-"name":"string",
-"surname":"string",
-"type":"regular"/"premium",
-"enabled":"true"/"false"}
+"username":"email", 
+"fullname":"string",
+"userTypeId":"int",
+"isActive":"bool"}
 
-/change_user
+/user/change
 {"id":"int",
 <"type":"regular"/"premium">,
 <"enabled":"true"/"false">}
 {"id":"int",
-"email":"email", 
-"name":"string",
-"surname":"string",
-"type":"regular"/"premium",
-"enabled":"true"/"false"}
+"username":"email", 
+"fullname":"string",
+"userTypeId":"int",
+"isActive":"bool"}
 
 /delete_info
 {"id":"info"}

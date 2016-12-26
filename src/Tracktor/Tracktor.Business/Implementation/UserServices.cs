@@ -26,7 +26,7 @@ namespace Tracktor.Business.Implementation
 
         public int Register(UserEntity user)
         {
-            var new_user = new User() { Username = user.Username, FullName = user.FullName, Password = user.Password};
+            var new_user = new User() { Username = user.Username, FullName = user.FullName, Password = user.Password, UserTypeId = user.UserTypeId };
             _unitOfWork.UserRepository.Insert(new_user);
             _unitOfWork.Save();
             return new_user.Id;

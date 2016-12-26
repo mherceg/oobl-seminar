@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tracktor.Domain
 {
-    public class Place
+    public class PlaceEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
