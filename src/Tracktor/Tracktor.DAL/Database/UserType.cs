@@ -7,25 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tracktor.Domain
+namespace Tracktor.DAL.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Info : Content
+    public partial class UserType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Info()
+        public UserType()
         {
-            this.Comments = new HashSet<Comment>();
+            this.User = new HashSet<User>();
         }
     
-        public System.Data.Entity.Spatial.DbGeography location { get; set; }
-        public double range { get; set; }
-        public System.DateTime endTime { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

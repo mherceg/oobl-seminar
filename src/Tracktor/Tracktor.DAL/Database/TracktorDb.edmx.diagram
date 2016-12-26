@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d30ade7dbf141bc8954af5ed84d3199" Name="Diagram1">
+        <EntityTypeShape EntityType="Tracktor.DAL.Category" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.Comment" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.FavoritePlace" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.Info" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.Place" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.ReputationComment" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.ReputationInfo" Width="1.5" PointX="10.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.Sponsorship" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.User" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tracktor.DAL.UserType" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ContentInfo_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_Comment_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ContentComment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ReputationContentComment_ContentComment" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ReputationContentInfo_ContentComment" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_FavoritePlace_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_FavoritePlace_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ContentInfo_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ContentInfo_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_Sponsorship_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ReputationContentComment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_ReputationContentInfo_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_Sponsorship_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Tracktor.DAL.FK_User_UserType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

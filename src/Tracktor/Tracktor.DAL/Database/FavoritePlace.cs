@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tracktor.Domain
+namespace Tracktor.DAL.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Content
+    public partial class FavoritePlace
     {
         public int Id { get; set; }
-        public string content { get; set; }
-        public System.DateTime startTime { get; set; }
+        public int UserId { get; set; }
+        public int PlaceId { get; set; }
     
+        public virtual Place Place { get; set; }
         public virtual User User { get; set; }
-        public virtual Reputation Reputation { get; set; }
     }
 }

@@ -7,26 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tracktor.Domain
+namespace Tracktor.DAL.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Reputation
+    public partial class Info
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Reputation()
+        public Info()
         {
-            this.VotedPositive = new HashSet<User>();
-            this.VotedNegative = new HashSet<User>();
+            this.Comment = new HashSet<Comment>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
+        public double Range { get; set; }
+        public System.DateTime EndTime { get; set; }
+        public int CategoryId { get; set; }
+        public int UserId { get; set; }
+        public int PlaceId { get; set; }
     
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> VotedPositive { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> VotedNegative { get; set; }
-        public virtual Content Content { get; set; }
+        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual Place Place { get; set; }
+        public virtual User User { get; set; }
     }
 }

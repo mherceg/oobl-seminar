@@ -7,34 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tracktor.Domain
+namespace Tracktor.DAL.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Place
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Place()
         {
-            this.Reputations = new HashSet<Reputation>();
-            this.Reputations1 = new HashSet<Reputation>();
-            this.Contents = new HashSet<Content>();
+            this.FavoritePlace = new HashSet<FavoritePlace>();
+            this.Info = new HashSet<Info>();
+            this.Sponsorship = new HashSet<Sponsorship>();
         }
     
         public int Id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public bool isAdmin { get; set; }
-        public string fullName { get; set; }
-        public bool isPremium { get; set; }
-        public bool enabled { get; set; }
+        public string Name { get; set; }
+        public System.Data.Entity.Spatial.DbGeography Location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reputation> Reputations { get; set; }
+        public virtual ICollection<FavoritePlace> FavoritePlace { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reputation> Reputations1 { get; set; }
+        public virtual ICollection<Info> Info { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Content> Contents { get; set; }
+        public virtual ICollection<Sponsorship> Sponsorship { get; set; }
     }
 }

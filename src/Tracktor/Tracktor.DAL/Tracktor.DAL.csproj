@@ -51,25 +51,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Category.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Comment.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\FavoritePlace.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Info.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Place.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ReputationComment.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ReputationInfo.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Sponsorship.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TracktorDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TracktorDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TracktorDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TracktorDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TracktorDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserType.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Tracktor.Domain\Tracktor.Domain.csproj">
-      <Project>{465ae333-5c01-4b81-951d-2ff2d7e6bdbf}</Project>
-      <Name>Tracktor.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="Database\TracktorDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TracktorDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\TracktorDb.edmx.diagram">
+      <DependentUpon>TracktorDb.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Database\TracktorDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TracktorDb.edmx</DependentUpon>
+      <LastGenOutput>TracktorDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\TracktorDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TracktorDb.edmx</DependentUpon>
+      <LastGenOutput>TracktorDb.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

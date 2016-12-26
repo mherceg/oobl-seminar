@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor.Domain\Tracktor.Domain.csproj", "{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Web", "Tracktor.Web\Tracktor.Web.csproj", "{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A} = {B54BBD40-539D-4599-8A46-03F9E3D8D92A}
@@ -16,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Mobile", "Tracktor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.WebService", "Tracktor.WebService\Tracktor.WebService.csproj", "{B54BBD40-539D-4599-8A46-03F9E3D8D92A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor.Domain\Tracktor.Domain.csproj", "{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,18 +26,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|ARM.Build.0 = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|x86.Build.0 = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|ARM.ActiveCfg = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|ARM.Build.0 = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.ActiveCfg = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.Build.0 = Release|Any CPU
 		{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -92,6 +80,18 @@ Global
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A}.Release|ARM.Build.0 = Release|Any CPU
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A}.Release|x86.ActiveCfg = Release|Any CPU
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A}.Release|x86.Build.0 = Release|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|ARM.Build.0 = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|x86.Build.0 = Debug|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|ARM.Build.0 = Release|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.ActiveCfg = Release|Any CPU
+		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

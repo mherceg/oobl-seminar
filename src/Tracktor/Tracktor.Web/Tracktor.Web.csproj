@@ -190,10 +190,6 @@
       <Project>{26d652ed-820c-4837-9639-0d683a5c0096}</Project>
       <Name>Tracktor.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tracktor.Domain\Tracktor.Domain.csproj">
-      <Project>{465ae333-5c01-4b81-951d-2ff2d7e6bdbf}</Project>
-      <Name>Tracktor.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
