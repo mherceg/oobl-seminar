@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor.Domain\Tracktor.Domain.csproj", "{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Web", "Tracktor.Web\Tracktor.Web.csproj", "{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B54BBD40-539D-4599-8A46-03F9E3D8D92A} = {B54BBD40-539D-4599-8A46-03F9E3D8D92A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.DAL", "Tracktor.DAL\Tracktor.DAL.csproj", "{26D652ED-820C-4837-9639-0D683A5C0096}"
 EndProject
