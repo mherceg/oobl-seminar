@@ -13,7 +13,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 "password", "string",
 "fullname":"string",
 "userTypeId":"int",
-"isActive":"bool">}
+"isActive":"bool"}
 {"id":"int"/"-1"}
 
 /user/get
@@ -24,7 +24,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 "userTypeId":"int",
 "isActive":"bool"}
 
-/user/change
+/user/update
 {"id":"int",
 "username":"email", 
 "fullname":"string",
@@ -38,17 +38,17 @@ BASE_URI = tracktor.azurewebsites.net/api
 
 /info/delete
 {"id":"info"}
-{"success":"true"/"false"}
+{"success":"bool"}
 
-/delete_comment
+/comment/delete
 {"id":"info"}
-{"success":"true"/"false"}
+{"success":"bool"}
 
 All interface
 
-/get_categories
+/category/get
 {}
-{"categories":["string",]}
+[{"name":"string", "id":"int"}, ]
 
 /info/get
 {<"latitude":"float",
@@ -107,3 +107,57 @@ User interface
 {"type":"info"/"comment",
 "delta":"+1"/"-1"}
 {"success":"true"/"false"}
+
+
+NEMA PRESKAKANJA!!
++ - napisan api documentation
+++ - napravljen mock
++++ - napravljen pravi endpoint
+++++ - napravljen test endpointa
++++++ - provjereno da endpoint radi
+
+Place
+	add
+	update
+	delete
+	list
+	list closest
+
+UserType
+	list
+	add
+	delete
+
+User
+	add +++
+	update ++
+	list 
+	get ++
+
+FavoritePlace
+	add
+	delete
+
+Sponsorship
+	add
+	delete
+
+Category
+	list
+	add
+	delete
+
+Info
+	add
+	list
+	list by place
+	rate
+	change
+	delete +++
+
+Comment
+	add
+	list by info
+	rate
+	delete
+

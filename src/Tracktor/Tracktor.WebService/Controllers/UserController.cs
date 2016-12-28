@@ -36,7 +36,7 @@ namespace Tracktor.WebService.Controllers
             };
         }
 
-        public UserEntity Change(UserEntity user)
+        public UserEntity Update(UserEntity user)
         {
             return new UserEntity()
             {
