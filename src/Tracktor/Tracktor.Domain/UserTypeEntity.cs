@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tracktor.Domain
 {
-    class UserTypeEntity
+    public class UserTypeEntity
     {
         public int Id { get; set; }
         public string Type { get; set; }

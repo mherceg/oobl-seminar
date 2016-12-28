@@ -29,9 +29,9 @@ namespace Tracktor.WebService.Controllers
 
         [Route("api/place/delete")]
         [HttpDelete]
-        public int Delete(int id)
+        public bool Delete(int id)
         {
-            return 1;
+            return true;
         }
 
         [Route("api/place/list")]
