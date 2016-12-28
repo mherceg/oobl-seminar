@@ -18,19 +18,23 @@ namespace Tracktor.DAL.Database
         public Info()
         {
             this.Comment = new HashSet<Comment>();
+            this.ReputationInfo = new HashSet<ReputationInfo>();
         }
     
         public int Id { get; set; }
-        public double Range { get; set; }
-        public System.DateTime EndTime { get; set; }
+        public System.DateTime Time { get; set; }
         public int CategoryId { get; set; }
         public int UserId { get; set; }
         public int PlaceId { get; set; }
+        public string Content { get; set; }
+        public Nullable<System.DateTime> EndTime { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment { get; set; }
         public virtual Place Place { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReputationInfo> ReputationInfo { get; set; }
     }
 }

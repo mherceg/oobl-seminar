@@ -16,10 +16,10 @@ namespace Tracktor.DAL.Database
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public int ContentCommentId { get; set; }
+        public int InfoId { get; set; }
         public bool Score { get; set; }
     
-        public virtual Comment Comment { get; set; }
+        public virtual Info Info { get; set; }
         public virtual User User { get; set; }
     }
 }

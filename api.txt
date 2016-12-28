@@ -26,15 +26,17 @@ BASE_URI = tracktor.azurewebsites.net/api
 
 /user/change
 {"id":"int",
-<"type":"regular"/"premium">,
-<"enabled":"true"/"false">}
+"username":"email", 
+"fullname":"string",
+"userTypeId":"int",
+"isActive":"bool"}
 {"id":"int",
 "username":"email", 
 "fullname":"string",
 "userTypeId":"int",
 "isActive":"bool"}
 
-/delete_info
+/info/delete
 {"id":"info"}
 {"success":"true"/"false"}
 
@@ -48,7 +50,7 @@ All interface
 {}
 {"categories":["string",]}
 
-/get_info
+/info/get
 {<"latitude":"float",
 "longitude":"float",
 "range":"float">,
@@ -61,7 +63,7 @@ All interface
 "longitude":"float",
 "id":"int"}, ]}
 
-/see_info
+/info/get/<id>
 {"id":"int"}
 {"latitude":"float",
 "longitude":"float",
