@@ -9,7 +9,6 @@ namespace Tracktor.Domain
     public class CommentEntity
     {
         public int Id { get; set; }
-        public System.Data.Entity.Spatial.DbGeography Location { get; set; }
         public double Range { get; set; }
         public System.DateTime EndTime { get; set; }
         public int UserId { get; set; }

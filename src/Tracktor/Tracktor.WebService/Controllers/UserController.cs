@@ -55,7 +55,7 @@ namespace Tracktor.WebService.Controllers
             {
                 FullName = "Mirko Fodor",
                 Id = 12,
-                IsActive = 0,
+                IsActive = true,
                 Username = "mirko.fodor@gmail.com",
                 UserTypeId = 0
             });
@@ -63,7 +63,7 @@ namespace Tracktor.WebService.Controllers
             {
                 FullName = "Slavko Fodor",
                 Id = 14,
-                IsActive = 0,
+                IsActive = true,
                 Username = "slavko.fodor@gmail.com",
                 UserTypeId = 0
             });

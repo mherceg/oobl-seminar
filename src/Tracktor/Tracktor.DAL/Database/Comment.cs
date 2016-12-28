@@ -21,7 +21,6 @@ namespace Tracktor.DAL.Database
         }
     
         public int Id { get; set; }
-        public System.Data.Entity.Spatial.DbGeography Location { get; set; }
         public System.DateTime Time { get; set; }
         public int UserId { get; set; }
         public int InfoId { get; set; }
