@@ -7,6 +7,24 @@ Admin interface
 
 BASE_URI = tracktor.azurewebsites.net/api
 
+/place/add
+{}
+
+/place/update
+
+/place/delete
+
+/place/delete
+
+/place/list
+
+/place/list --closest
+
+/usertype/list
+
+/usertype/add
+
+/usertype/delete
 
 /user/add
 {"username":"email", 
@@ -15,14 +33,6 @@ BASE_URI = tracktor.azurewebsites.net/api
 "userTypeId":"int",
 "isActive":"bool"}
 {"id":"int"/"-1"}
-
-/user/get
-{"id":"int"}
-{"id":"int",
-"username":"email", 
-"fullname":"string",
-"userTypeId":"int",
-"isActive":"bool"}
 
 /user/update
 {"id":"int",
@@ -36,128 +46,61 @@ BASE_URI = tracktor.azurewebsites.net/api
 "userTypeId":"int",
 "isActive":"bool"}
 
+/user/list
+
+/user/get
+{"id":"int"}
+{"id":"int",
+"username":"email", 
+"fullname":"string",
+"userTypeId":"int",
+"isActive":"bool"}
+
+/favoriteplace/add
+
+/favoriteplace/delete
+
+/sponsorship/add
+
+/sponsorship/delete
+
+/category/list
+{}
+[{"name":"string", "id":"int"}, ]
+
+/category/add
+
+/category/delete
+
+/info/add
+
+/info/list --by place
+
+/info/rate
+
+/info/update
+
 /info/delete
 {"id":"info"}
 {"success":"bool"}
 
+/comment/add
+
+/comment/list --by info
+
+/comment/rate
+
+/comment/update
+
 /comment/delete
 {"id":"info"}
 {"success":"bool"}
-
-All interface
-
-/category/get
-{}
-[{"name":"string", "id":"int"}, ]
-
-/info/get
-{<"latitude":"float",
-"longitude":"float",
-"range":"float">,
-<"time_start":"long">,
-<"time_end":"long">,
-<"categories":[{"name":"string",
-"id":"int"},]>
-}
-{[{"latitude":"float",
-"longitude":"float",
-"id":"int"}, ]}
-
-/info/get/<id>
-{"id":"int"}
-{"latitude":"float",
-"longitude":"float",
-"timestamp":"datetime",
-"user":{"email":"email",
-	"name":"name",
-	"surname":"surname",
-	"id":"int"},
-"content":"string",
-"comments":[{"user":"{"email":"email",
-		"name":"name",
-		"surname":"surname",
-		"id":"int"},
-	"content":"string",
-	"id":"int"}, ]
-}
-
-
-/add_info
-{"latitude":"float",
-"longitude":"float",
-"user_id":"int",
-"category":"int",
-"content":"string"}
-{"id":"int"/"-1"}
-
-/add_comment
-{"info_id":"int",
-"user_id":"int",
-"content":"string"}
-{"id":"int"/"-1"}
-
-User interface
 
 /login
 {"email":"email",
 "password":"md5"}
 {"id":"int"/-1}
 
-/add_reputation
-{"type":"info"/"comment",
-"delta":"+1"/"-1"}
-{"success":"true"/"false"}
 
 
-NEMA PRESKAKANJA!!
-+ - napisan api documentation
-++ - napravljen mock
-+++ - napravljen pravi endpoint
-++++ - napravljen test endpointa
-+++++ - provjereno da endpoint radi
-
-Place
-	add
-	update
-	delete
-	list
-	list closest
-
-UserType
-	list
-	add
-	delete
-
-User
-	add +++
-	update ++
-	list 
-	get ++
-
-FavoritePlace
-	add
-	delete
-
-Sponsorship
-	add
-	delete
-
-Category
-	list
-	add
-	delete
-
-Info
-	add
-	list
-	list by place
-	rate
-	change
-	delete +++
-
-Comment
-	add
-	list by info
-	rate
-	delete
 

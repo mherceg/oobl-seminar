@@ -42,7 +42,7 @@ Info
 	add
 	list by place
 	rate
-	change
+	update
 	delete ++
 
 Comment
@@ -50,3 +50,5 @@ Comment
 	list by info
 	rate
 	delete +
+
+Login +
