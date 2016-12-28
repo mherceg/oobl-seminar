@@ -47,5 +47,28 @@ namespace Tracktor.WebService.Controllers
                 UserTypeId = 0
             };
         }
+
+        public IEnumerable<UserEntity> List()
+        {
+            List<UserEntity> ret = new List<UserEntity>();
+            ret.Add(new UserEntity()
+            {
+                FullName = "Mirko Fodor",
+                Id = 12,
+                IsActive = 0,
+                Username = "mirko.fodor@gmail.com",
+                UserTypeId = 0
+            });
+            ret.Add(new UserEntity()
+            {
+                FullName = "Slavko Fodor",
+                Id = 14,
+                IsActive = 0,
+                Username = "slavko.fodor@gmail.com",
+                UserTypeId = 0
+            });
+
+            return ret;
+        }
     }
 }

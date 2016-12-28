@@ -47,6 +47,12 @@ BASE_URI = tracktor.azurewebsites.net/api
 "isActive":"bool"}
 
 /user/list
+{}
+[{"id":"int",
+"username":"email", 
+"fullname":"string",
+"userTypeId":"int",
+"isActive":"bool"}, ]
 
 /user/get
 {"id":"int"}

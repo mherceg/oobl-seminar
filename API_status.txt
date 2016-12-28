@@ -22,7 +22,7 @@ UserType
 User
 	add +++
 	update ++
-	list 
+	list ++
 	get ++
 
 FavoritePlace
