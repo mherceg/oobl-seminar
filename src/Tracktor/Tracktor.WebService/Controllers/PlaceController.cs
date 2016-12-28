@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -10,66 +11,55 @@ using Tracktor.Domain;
 
 namespace Tracktor.WebService.Controllers
 {
-    public class UserController : ApiController
+    public class PlaceController : ApiController
     {
-        public int Add(UserEntity user)
+        [Route("api/place/add")]
+        [HttpPost]
+        public int Add([FromBody]PlaceEntity place)
         {
-            try
-            {
-                IUserServices us = ServiceFactory.getUserServices();
-                return us.Register(user);
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
+            return place.Id;
         }
 
-        public UserEntity Get(int id)
+        [Route("api/place/update")]
+        [HttpPatch]
+        public PlaceEntity Update([FromBody]PlaceEntity place)
         {
-            return new UserEntity()
-            {
-                FullName = "Mirko Fodor",
-                Id = 12,
-                IsActive = true,
-                Username = "mirko.fodor@gmail.com",
-                UserTypeId = 0
-            };
+            return place;
         }
 
-        public UserEntity Update(UserEntity user)
+        [Route("api/place/delete")]
+        [HttpDelete]
+        public int Delete(int id)
         {
-            return new UserEntity()
-            {
-                FullName = "Mirko Fodor",
-                Id = 12,
-                IsActive = true,
-                Username = "mirko.fodor@gmail.com",
-                UserTypeId = 0
-            };
+            return 1;
         }
 
-        public IEnumerable<UserEntity> List()
+        [Route("api/place/list")]
+        [HttpGet]
+        public IEnumerable<PlaceEntity> List()
         {
-            List<UserEntity> ret = new List<UserEntity>();
-            ret.Add(new UserEntity()
+            List<PlaceEntity> places = new List<PlaceEntity>();
+            places.Add(new PlaceEntity()
             {
-                FullName = "Mirko Fodor",
-                Id = 12,
-                IsActive = false,
-                Username = "mirko.fodor@gmail.com",
-                UserTypeId = 0
+                Id = 101,
+                Location = null,
+                Name = "Trg bana Jelačića"
             });
-            ret.Add(new UserEntity()
+            places.Add(new PlaceEntity()
             {
-                FullName = "Slavko Fodor",
-                Id = 14,
-                IsActive = false,
-                Username = "slavko.fodor@gmail.com",
-                UserTypeId = 0
+                Id = 102,
+                Location = null,
+                Name = "Gajeva 4"
+            });
+            places.Add(new PlaceEntity()
+            {
+                Id = 103,
+                Location = null,
+                Name = "Cvjetni trg"
             });
 
-            return ret;
+            return places;
         }
+
     }
 }
