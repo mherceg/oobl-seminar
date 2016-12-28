@@ -62,6 +62,11 @@ BASE_URI = tracktor.azurewebsites.net/api
 "userTypeId":"int",
 "isActive":"bool"}
 
+/user/login
+{"email":"email",
+"password":"md5"}
+{"id":"int"/-1}
+
 /favoriteplace/add
 
 /favoriteplace/delete
@@ -75,8 +80,12 @@ BASE_URI = tracktor.azurewebsites.net/api
 [{"name":"string", "id":"int"}, ]
 
 /category/add
+{"name":"string"}
+{"id":"int"}
 
 /category/delete
+{"id":"int"}
+{"success":"bool"}
 
 /info/add
 
@@ -101,11 +110,6 @@ BASE_URI = tracktor.azurewebsites.net/api
 /comment/delete
 {"id":"info"}
 {"success":"bool"}
-
-/login
-{"email":"email",
-"password":"md5"}
-{"id":"int"/-1}
 
 
 

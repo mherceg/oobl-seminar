@@ -70,5 +70,10 @@ namespace Tracktor.WebService.Controllers
 
             return ret;
         }
+
+        public int Login(LoginEntity le)
+        {
+            return 7;
+        }
     }
 }

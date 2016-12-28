@@ -24,6 +24,7 @@ User
 	update ++
 	list ++
 	get ++
+	login ++
 
 FavoritePlace
 	add
@@ -34,9 +35,9 @@ Sponsorship
 	delete
 
 Category
-	list +
-	add
-	delete
+	list ++
+	add ++
+	delete ++
 
 Info
 	add
@@ -50,5 +51,3 @@ Comment
 	list by info
 	rate
 	delete +
-
-Login +

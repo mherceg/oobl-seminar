@@ -55,6 +55,7 @@
     <Compile Include="CommentEntity.cs" />
     <Compile Include="FavoritePlaceEntity.cs" />
     <Compile Include="InfoEntity.cs" />
+    <Compile Include="LoginEntity.cs" />
     <Compile Include="PlaceEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReputationCommentEntity.cs" />
