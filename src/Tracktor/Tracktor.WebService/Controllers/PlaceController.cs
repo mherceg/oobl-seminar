@@ -8,6 +8,7 @@ using System.Web.Http;
 using Tracktor.Business;
 using Tracktor.Business.Interface;
 using Tracktor.Domain;
+using System.Data.Entity.Spatial;
 
 namespace Tracktor.WebService.Controllers
 {
@@ -17,14 +18,19 @@ namespace Tracktor.WebService.Controllers
         [HttpPost]
         public int Add([FromBody]PlaceEntity place)
         {
-            return place.Id;
+            return 425;
         }
 
         [Route("api/place/update")]
-        [HttpPatch]
+        [HttpPut]
         public PlaceEntity Update([FromBody]PlaceEntity place)
         {
-            return place;
+            return new PlaceEntity()
+            {
+                Id = 52,
+                Name = "Ozaljska 14",
+                Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8128451, 15.9753062))
+            };
         }
 
         [Route("api/place/delete")]
@@ -42,19 +48,19 @@ namespace Tracktor.WebService.Controllers
             places.Add(new PlaceEntity()
             {
                 Id = 101,
-                Location = null,
+                Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8128451, 15.9753062)),
                 Name = "Trg bana Jelačića"
             });
             places.Add(new PlaceEntity()
             {
                 Id = 102,
-                Location = null,
+                Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8118117, 15.9740687)),
                 Name = "Gajeva 4"
             });
             places.Add(new PlaceEntity()
             {
                 Id = 103,
-                Location = null,
+                Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8123356, 15.9716064)),
                 Name = "Cvjetni trg"
             });
 

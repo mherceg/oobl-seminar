@@ -8,16 +8,16 @@ NEMA PRESKAKANJA!!
 +++++ - provjereno da endpoint radi
 
 Place
-	add
-	update
-	delete
-	list
+	add ++
+	update ++
+	delete ++
+	list ++
 	list closest
 
 UserType
-	list
-	add
-	delete
+	list ++
+	add ++
+	delete ++
 
 User
 	add +++
@@ -27,8 +27,8 @@ User
 	login ++
 
 FavoritePlace
-	add
-	delete
+	add ++
+	delete ++
 
 Sponsorship
 	add
@@ -47,7 +47,8 @@ Info
 	delete ++
 
 Comment
-	add
-	list by info
-	rate
-	delete +
+	add ++
+	list by info ++
+	rate ++
+	delete ++
+	update ++

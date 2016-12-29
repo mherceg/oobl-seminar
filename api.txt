@@ -7,24 +7,94 @@ Admin interface
 
 BASE_URI = tracktor.azurewebsites.net/api
 
-/place/add
+/place/add [POST]
+{
+"Name": "string",
+
+"Name": "string",
+
+"Location": {
+    
+  "Geography": {
+      
+    "CoordinateSystemId": "int",
+      
+    "WellKnownText": "POINT ("double" "double")"
+
+  }
+
+}}
+{"Id" : "int"/"-1"}
+
+/place/update [PUT]
+{"Id" : "int",
+"Name": "string",
+
+"Location": {
+    
+  "Geography": {
+      
+    "CoordinateSystemId": "int",
+      
+    "WellKnownText": "POINT ("double" "double")"
+
+  }
+
+}}
+{"Id" : "int",
+"Name": "string",
+
+"Location": {
+    
+  "Geography": {
+      
+    "CoordinateSystemId": "int",
+      
+    "WellKnownText": "POINT ("double" "double")"
+
+  }
+
+}}
+
+
+/place/delete?id="int" [DELETE]
 {}
+{"success":"bool"}
 
-/place/update
+/place/list [GET]
+{}
+[{"Id" : "int",
+"Name": "string",
 
-/place/delete
+"Location": 
+{
+    
+  "Geography": 
+  {
+      
+    "CoordinateSystemId": "int",
+      
+    "WellKnownText": "POINT ("double" "double")"
 
-/place/delete
+  }
 
-/place/list
+}}]
+
 
 /place/list --closest
 
-/usertype/list
+/usertype/list [GET]
+{}
+[{"Id" : "int",
+"Type" : "string"}]
 
-/usertype/add
+/usertype/add [POST]
+{"Type" : "string"}
+{"Id" : "int"/"-1"}
 
-/usertype/delete
+/usertype/delete?id="int" [DELETE]
+{}
+{"success":"bool"}
 
 /user/add
 {"username":"email", 
@@ -67,9 +137,14 @@ BASE_URI = tracktor.azurewebsites.net/api
 "password":"md5"}
 {"id":"int"/-1}
 
-/favoriteplace/add
+/favoriteplace/add [POST]
+{"UserId" : "int",
+"PlaceId" : "int"}
+{"Id" : "int"/"-1" }
 
-/favoriteplace/delete
+/favoriteplace/delete&Id="int" [DELETE]
+{}
+{"success":"bool"}
 
 /sponsorship/add
 
@@ -99,16 +174,42 @@ BASE_URI = tracktor.azurewebsites.net/api
 {"id":"info"}
 {"success":"bool"}
 
-/comment/add
+/comment/add [POST]
+{"EndTime" : "DateTime",
+"UserId" : "int",
+"ContentInfoId" : "int",
+"Content" : "string"}
+{"Id" : "int"/"-1"}
 
-/comment/list --by info
 
-/comment/rate
+/comment/list?infoId="int" [GET] --by info
+{}
+[{"Id" : "int"
+"EndTime" : "DateTime",
+"UserId" : "int",
+"ContentInfoId" : "int",
+"Content" : "string"}]
 
-/comment/update
+/comment/rate [POST]
+{"UserId" = "int",
+"ContentCommentId" : "int",
+"Score" : "bool"}
+{"success":"bool"}
 
-/comment/delete
-{"id":"info"}
+/comment/update [PUT]
+{"Id" : "int"
+"EndTime" : "DateTime",
+"UserId" : "int",
+"ContentInfoId" : "int",
+"Content" : "string"}
+{"Id" : "int"
+"EndTime" : "DateTime",
+"UserId" : "int",
+"ContentInfoId" : "int",
+"Content" : "string"}
+
+/comment/delete?id="int" [DELETE]
+{}
 {"success":"bool"}
 
 

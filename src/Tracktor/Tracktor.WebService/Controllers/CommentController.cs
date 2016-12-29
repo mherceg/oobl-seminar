@@ -17,14 +17,21 @@ namespace Tracktor.WebService.Controllers
         [HttpPost]
         public int Add([FromBody]CommentEntity comment)
         {
-            return comment.Id;
+            return 576;
         }
 
         [Route("api/comment/update")]
-        [HttpPatch]
+        [HttpPut]
         public CommentEntity Update([FromBody]CommentEntity comment)
         {
-            return comment;
+            return new CommentEntity()
+            {
+                Id = 144,
+                EndTime = Convert.ToDateTime("2016/12/25 20:18:42.35"),
+                UserId = 10,
+                ContentInfoId = 11,
+                Content = "Odlicna atmosfera!!! =))"
+            };
         }
 
         [Route("api/comment/delete")]

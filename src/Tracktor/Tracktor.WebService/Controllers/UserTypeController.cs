@@ -17,7 +17,7 @@ namespace Tracktor.WebService.Controllers
         [HttpPost]
         public int Add([FromBody]UserTypeEntity userType)
         {
-            return userType.Id;
+            return 17;
         }
 
         //[Route("api/usertype/update")]

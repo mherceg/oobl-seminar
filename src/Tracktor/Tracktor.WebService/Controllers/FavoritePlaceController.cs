@@ -17,7 +17,7 @@ namespace Tracktor.WebService.Controllers
         [HttpPost]
         public int Add([FromBody]FavoritePlaceEntity favPlace)
         {
-            return favPlace.Id;
+            return 37;
         }
 
         [Route("api/favoritplace/delete")]
