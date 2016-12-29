@@ -20,8 +20,8 @@ namespace Tracktor.WebService.Controllers
             var ie = new InfoEntity()
             {
                 Id = id,
-                PlaceId = 7,
-                UserId = 7
+                //PlaceId = 7,
+                //UserId = 7
             };
             return ie;
         }

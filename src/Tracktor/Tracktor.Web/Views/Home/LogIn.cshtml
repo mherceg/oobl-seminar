@@ -1,0 +1,63 @@
+﻿@model Tracktor.Web.ViewModels.Home.LogInVM
+
+@{
+    ViewBag.Title = "Log In";
+}
+
+<div class="row">
+    <div class="col-xs-4">
+        <h3 style="text-align: center">Log in</h3>
+        <hr />
+        @using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("Email", htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.Editor("email", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessage("email", "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("Password", htmlAttributes: new { @class = "control-label col-xs-3" })
+                    <div class="col-xs-9">
+                        @Html.Editor("email", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessage("email", "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-3 col-xs-9">
+                        <input type="submit" value="Log in" class="btn btn-primary" style="width: 100%" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-xs-8">
+        <h3 style="text-align: center">Tracktor</h3>
+        <hr />
+        <p>
+            Platforma za dijeljenje informacija u ovisnosti o geografskoj lokaciji. Korisnici mogu dodavati nove
+            informacije, komentare na informacije i lokacije. Mogu oznacavati neke lokacije kao favorite. Mogu oznacavati
+            komentare i informacije kao istinite ili lazne. Mogu pregledavati informacije i komentare.
+        </p>
+
+        <p>Postoje i sponzorirani korisnici koji mogu postaviti informaciju sa vremenskim odmakom ili duljim trajanjem</p>
+
+        <p><b>Clanovi</b></p>
+        <ul>
+            <li>Matija Herceg</li>
+            <li>Leonard Volarich Horvat</li>
+            <li>Jan Kelemen</li>
+            <li>Marko Stanic</li>
+            <li>Roko Zubcic</li>
+        </ul>
+    </div>
+</div>
