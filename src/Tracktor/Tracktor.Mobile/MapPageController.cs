@@ -28,6 +28,9 @@ namespace Tracktor.Mobile
                 Name = "AYY LMAO"
             };
 
+            ServiceRepository serviceRepository = new ServiceRepository();
+            await serviceRepository.getPlaces();
+
             //JsonConvert.SerializeObject();
 
             var center = new Geopoint
