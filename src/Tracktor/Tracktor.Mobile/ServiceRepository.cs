@@ -12,38 +12,35 @@ namespace Tracktor.Mobile
 {
     class ServiceRepository
     {
-        public async Task<Object> fetchObject<T>(string uri, string method)
+        //public const string ServiceBaseURI = @"http://tracktor.azurewebsites.net/api";
+        public const string ServiceBaseURI = @"http://localhost:5071/api";
+
+        public async Task<T> fetchObject<T>(string uri, string method)
         {
-            var request = WebRequest.Create(string.Format(@"http://tracktor.azurewebsites.net/api" + uri));
-            //request.ContentType = "application/json";
+            var request = WebRequest.Create(string.Format(ServiceBaseURI + uri));
             request.Method = method;
-            //request.Headers["Accept-Encoding"] = "application/json";
-            //request.Headers["Accept-Encoding"] = "gzip";
             Object returnObject = null;
 
             using (var response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null)))
             {
-                if (response.StatusCode != HttpStatusCode.OK)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    //something went wrong
-                    //Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", response.StatusCode);
-                }
-
-                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
-                {
-                    var content = reader.ReadToEnd();
-                    if (!string.IsNullOrWhiteSpace(content))
+                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                     {
-                        returnObject = JsonConvert.DeserializeObject<T>(content);
+                        var content = reader.ReadToEnd();
+                        if (!string.IsNullOrWhiteSpace(content))
+                        {
+                            returnObject = JsonConvert.DeserializeObject<T>(content);
+                        }
                     }
                 }
             }
 
-            return returnObject;
+            return (T)returnObject;
         }
         public async Task<List<PlaceEntity>> getPlaces()
         {
-            Object o = await fetchObject<List<Domain.PlaceEntity>>(@"/place/list", "GET");            
+            List<Domain.PlaceEntity> o = await fetchObject<List<Domain.PlaceEntity>>(@"/place/list", "GET");            
 
             return null;
         } 
