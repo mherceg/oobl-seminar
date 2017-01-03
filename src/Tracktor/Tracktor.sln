@@ -5,7 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Web", "Tracktor.Web\Tracktor.Web.csproj", "{D6BF79FB-B15D-4FEB-93C4-C5268AC89496}"
 	ProjectSection(ProjectDependencies) = postProject
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF} = {465AE333-5C01-4B81-951D-2FF2D7E6BDBF}
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A} = {B54BBD40-539D-4599-8A46-03F9E3D8D92A}
 	EndProjectSection
 EndProject
@@ -14,16 +13,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Mobile", "Tracktor.Mobile\Tracktor.Mobile.csproj", "{FDB6FD26-5CBA-44A4-89B5-525E3BB460D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.WebService", "Tracktor.WebService\Tracktor.WebService.csproj", "{B54BBD40-539D-4599-8A46-03F9E3D8D92A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF} = {465AE333-5C01-4B81-951D-2FF2D7E6BDBF}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor.Domain\Tracktor.Domain.csproj", "{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}"
-	ProjectSection(ProjectDependencies) = postProject
-		{26D652ED-820C-4837-9639-0D683A5C0096} = {26D652ED-820C-4837-9639-0D683A5C0096}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Business", "Tracktor.Business\Tracktor.Business.csproj", "{07693653-31AC-490D-B382-159C07792DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor.Domain\Tracktor.Domain.csproj", "{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,18 +82,6 @@ Global
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A}.Release|ARM.Build.0 = Release|Any CPU
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A}.Release|x86.ActiveCfg = Release|Any CPU
 		{B54BBD40-539D-4599-8A46-03F9E3D8D92A}.Release|x86.Build.0 = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|ARM.Build.0 = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Debug|x86.Build.0 = Debug|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|ARM.ActiveCfg = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|ARM.Build.0 = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.ActiveCfg = Release|Any CPU
-		{465AE333-5C01-4B81-951D-2FF2D7E6BDBF}.Release|x86.Build.0 = Release|Any CPU
 		{07693653-31AC-490D-B382-159C07792DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07693653-31AC-490D-B382-159C07792DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07693653-31AC-490D-B382-159C07792DFD}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -113,6 +94,18 @@ Global
 		{07693653-31AC-490D-B382-159C07792DFD}.Release|ARM.Build.0 = Release|Any CPU
 		{07693653-31AC-490D-B382-159C07792DFD}.Release|x86.ActiveCfg = Release|Any CPU
 		{07693653-31AC-490D-B382-159C07792DFD}.Release|x86.Build.0 = Release|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Debug|x86.Build.0 = Debug|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|ARM.Build.0 = Release|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|x86.ActiveCfg = Release|Any CPU
+		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

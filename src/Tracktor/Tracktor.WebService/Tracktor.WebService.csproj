@@ -248,7 +248,7 @@
       <Name>Tracktor.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tracktor.Domain\Tracktor.Domain.csproj">
-      <Project>{465ae333-5c01-4b81-951d-2ff2d7e6bdbf}</Project>
+      <Project>{dd8f8ead-47aa-43a9-8b79-0671dfc5edb7}</Project>
       <Name>Tracktor.Domain</Name>
     </ProjectReference>
   </ItemGroup>
