@@ -38,11 +38,12 @@ namespace Tracktor.Mobile
 
             return (T)returnObject;
         }
+
         public async Task<List<PlaceEntity>> getPlaces()
         {
-            List<Domain.PlaceEntity> o = await fetchObject<List<Domain.PlaceEntity>>(@"/place/list", "GET");            
+            List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/list", "GET");            
 
-            return null;
+            return list;
         } 
     }
 }
