@@ -13,49 +13,18 @@ BASE_URI = tracktor.azurewebsites.net/api
 
 "Name": "string",
 
-"Location": {
-    
-  "Geography": {
-      
-    "CoordinateSystemId": "int",
-      
-    "WellKnownText": "POINT ("double" "double")"
-
-  }
-
-}}
+"Location": "GeoCoordinate"}
 {"Id" : "int"/"-1"}
 
 /place/update [PUT]
 {"Id" : "int",
 "Name": "string",
 
-"Location": {
-    
-  "Geography": {
-      
-    "CoordinateSystemId": "int",
-      
-    "WellKnownText": "POINT ("double" "double")"
-
-  }
-
-}}
+"Location": "GeoCoordinate"}
 {"Id" : "int",
 "Name": "string",
 
-"Location": {
-    
-  "Geography": {
-      
-    "CoordinateSystemId": "int",
-      
-    "WellKnownText": "POINT ("double" "double")"
-
-  }
-
-}}
-
+"Location": "GeoCoordinate"}
 
 /place/delete?id="int" [DELETE]
 {}
@@ -66,20 +35,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 [{"Id" : "int",
 "Name": "string",
 
-"Location": 
-{
-    
-  "Geography": 
-  {
-      
-    "CoordinateSystemId": "int",
-      
-    "WellKnownText": "POINT ("double" "double")"
-
-  }
-
-}}]
-
+"Location": "GeoCoordinate"}]
 
 /place/list --closest
 
@@ -96,7 +52,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 {}
 {"success":"bool"}
 
-/user/add
+/user/add [POST]
 {"username":"email", 
 "password", "string",
 "fullname":"string",
@@ -104,7 +60,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 "isActive":"bool"}
 {"id":"int"/"-1"}
 
-/user/update
+/user/update [PUT]
 {"id":"int",
 "username":"email", 
 "fullname":"string",
@@ -116,7 +72,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 "userTypeId":"int",
 "isActive":"bool"}
 
-/user/list
+/user/list [GET]
 {}
 [{"id":"int",
 "username":"email", 
@@ -124,7 +80,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 "userTypeId":"int",
 "isActive":"bool"}, ]
 
-/user/get
+/user/get [GET]
 {"id":"int"}
 {"id":"int",
 "username":"email", 
@@ -132,7 +88,7 @@ BASE_URI = tracktor.azurewebsites.net/api
 "userTypeId":"int",
 "isActive":"bool"}
 
-/user/login
+/user/login [POST]
 {"email":"email",
 "password":"md5"}
 {"id":"int"/-1}
@@ -156,23 +112,59 @@ BASE_URI = tracktor.azurewebsites.net/api
 
 /category/add
 {"name":"string"}
-{"id":"int"}
+{"id":"int"/"-1"}
 
 /category/delete
 {"id":"int"}
 {"success":"bool"}
 
-/info/add
+/info/add [POST]
+{"time" : "DateTime",
+"categoryId" : "int",
+"userId" : "int",
+"placeId" : "int",
+"contetn" : "string",
+"endTime" : "DateTime"}
+{"Id" : "int"/"-1"}
 
-/info/list --by place
+/info/list [GET]
+{}
+[{
+"Id" : "int",
+"time" : "DateTime",
+"category" : "CategoryEntity",
+"user" : "UserEntity",
+"place" : "PlaceEntity",
+"content" : "string",
+"endTime" : "DateTime",
+"comments" : [{"CommentEntity"}] 
+}]
 
-/info/rate
+/info/rate?id="int" [POST]
+{}
+{"success" : "bool"}
 
-/info/update
+/info/update [PUT]
+{"time" : "DateTime",
+"categoryId" : "int",
+"userId" : "int",
+"placeId" : "int",
+"contetn" : "string",
+"endTime" : "DateTime"}
+[{
+"Id" : "int",
+"time" : "DateTime",
+"category" : "CategoryEntity",
+"user" : "UserEntity",
+"place" : "PlaceEntity",
+"content" : "string",
+"endTime" : "DateTime",
+"comments" : [{"CommentEntity"}] 
+}]
 
-/info/delete
-{"id":"info"}
-{"success":"bool"}
+/info/delete?Id="int" [DELETE]
+{}
+{"success" : "bool"}
 
 /comment/add [POST]
 {"EndTime" : "DateTime",

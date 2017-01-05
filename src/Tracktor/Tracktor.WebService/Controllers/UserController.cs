@@ -12,6 +12,8 @@ namespace Tracktor.WebService.Controllers
 {
     public class UserController : ApiController
     {
+        [Route("api/user/add")]
+        [HttpPost]
         public int Add(UserEntity user)
         {
             try
@@ -24,6 +26,8 @@ namespace Tracktor.WebService.Controllers
             }
         }
 
+        [Route("api/user/get")]
+        [HttpGet]
         public UserEntity Get(int id)
         {
             return new UserEntity()
@@ -36,6 +40,8 @@ namespace Tracktor.WebService.Controllers
             };
         }
 
+        [Route("api/user/update")]
+        [HttpPut]
         public UserEntity Update(UserEntity user)
         {
             return new UserEntity()
@@ -48,6 +54,8 @@ namespace Tracktor.WebService.Controllers
             };
         }
 
+        [Route("api/user/list")]
+        [HttpGet]
         public IEnumerable<UserEntity> List()
         {
             List<UserEntity> ret = new List<UserEntity>();
