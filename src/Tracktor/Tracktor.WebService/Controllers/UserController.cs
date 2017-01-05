@@ -71,9 +71,13 @@ namespace Tracktor.WebService.Controllers
             return ret;
         }
 
+        [Route("api/user/login")]
+        [HttpPost]
         public int Login(LoginEntity le)
         {
-            return 7;
+            if (le.Username == "ayy")
+                return 1;
+            return -1;
         }
     }
 }

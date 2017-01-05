@@ -15,11 +15,24 @@ namespace Tracktor.Mobile
         //public const string ServiceBaseURI = @"http://tracktor.azurewebsites.net/api";
         public const string ServiceBaseURI = @"http://localhost:5071/api";
 
-        public async Task<T> fetchObject<T>(string uri, string method)
+        public async Task<T> fetchObject<T>(string uri, string method, Object argument)
         {
             var request = WebRequest.Create(string.Format(ServiceBaseURI + uri));
             request.Method = method;
             Object returnObject = null;
+
+            if (argument != null)
+            {
+                request.ContentType = "application/json";
+                using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+                {
+                    string json = JsonConvert.SerializeObject(argument);
+
+                    streamWriter.Write(json);
+                    streamWriter.Flush();
+                    //streamWriter.
+                }
+            }            
 
             using (var response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null)))
             {
@@ -41,9 +54,16 @@ namespace Tracktor.Mobile
 
         public async Task<List<PlaceEntity>> getPlaces()
         {
-            List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/list", "GET");            
+            List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/list", "GET", null);            
 
             return list;
-        } 
+        }
+
+        public async Task<int> getSessionId(LoginEntity loginEntity)
+        {
+            int sessionId = await fetchObject<int>(@"/user/login/", "POST", loginEntity);
+
+            return sessionId;
+        }
     }
 }

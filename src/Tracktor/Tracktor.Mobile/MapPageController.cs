@@ -21,9 +21,9 @@ namespace Tracktor.Mobile
     {
         private MapPage page = null;
 
-        public MapPageController(MapPage mainPage)
+        public MapPageController(MapPage page)
         {
-            this.page = mainPage;
+            this.page = page;
         }
         public async Task MapLoaded()
         {
