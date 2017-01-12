@@ -40,10 +40,11 @@ Category
 	delete ++
 
 Info
-	add
+	add ++
 	list by place
-	rate
-	update
+	list ++
+	rate ++
+	update ++
 	delete ++
 
 Comment
