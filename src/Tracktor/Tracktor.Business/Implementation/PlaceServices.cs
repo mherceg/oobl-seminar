@@ -13,7 +13,6 @@ namespace Tracktor.Business.Implementation
 {
     public class PlaceServices : IPlaceServices
     {
-
         private UnitOfWork _unitOfWork;
 
         public PlaceServices()

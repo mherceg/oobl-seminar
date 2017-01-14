@@ -18,9 +18,7 @@ namespace Tracktor.Domain
 
         //kao agregat - treba mapirati
         public IEnumerable<PlaceEntity> FavoritePlaces { get; set; }
-
         public IEnumerable<PlaceEntity> SponsorshipPlaces { get; set; }
-
         public UserTypeEntity Type { get; set; }
     }
 }

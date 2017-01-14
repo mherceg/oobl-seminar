@@ -36,7 +36,12 @@ namespace Tracktor.WebService.Controllers
                     return BadRequest("Neispravni podaci");
                 }
             }
-            return Ok(Id);
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+            var response = new { Id };
+            return Ok(response);
         }
 
 
@@ -84,6 +89,10 @@ namespace Tracktor.WebService.Controllers
                     return BadRequest("Neispravni podaci");
                 }
             }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
 
             return Ok(places);
         }
@@ -130,6 +139,10 @@ namespace Tracktor.WebService.Controllers
                     return BadRequest("Neispravni podaci");
                 }
             }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
 
             return Ok(places);
         }
@@ -175,6 +188,10 @@ namespace Tracktor.WebService.Controllers
                 {
                     return BadRequest("Neispravni podaci");
                 }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
             }
 
             return Ok(places);

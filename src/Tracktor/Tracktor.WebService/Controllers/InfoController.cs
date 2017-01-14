@@ -107,6 +107,10 @@ namespace Tracktor.WebService.Controllers
                     return BadRequest("Neispravni podaci");
                 }
             }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
 
             return Ok(events);
         }
@@ -195,10 +199,13 @@ namespace Tracktor.WebService.Controllers
                     return BadRequest("Neispravni podaci");
                 }
             }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
 
             return Ok(events);
         }
-
 
         //Ocjenjivanje dogadjaja
         [Route("api/info/rate")]
@@ -220,6 +227,11 @@ namespace Tracktor.WebService.Controllers
                     return BadRequest("Neispravni podaci");
                 }
             }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
             return Ok(success);
         }
 

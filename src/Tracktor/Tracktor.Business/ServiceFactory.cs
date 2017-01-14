@@ -25,5 +25,10 @@ namespace Tracktor.Business
             return new InfoServices();
         }
 
+        public static ICommentServices getCommentServices()
+        {
+            return new CommentServices();
+        }
+
     }
 }

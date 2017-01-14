@@ -8,6 +8,7 @@ using System.Web.Http.Description;
 using Tracktor.Business;
 using Tracktor.Business.Interface;
 using Tracktor.Domain;
+using Tracktor.WebService.Models;
 
 namespace Tracktor.WebService.Controllers
 {
@@ -15,31 +16,202 @@ namespace Tracktor.WebService.Controllers
     {
         [Route("api/user/add")]
         [HttpPost]
-        public int Add(UserEntity user)
+        [ResponseType(typeof(int))]
+        public IHttpActionResult Add(UserEntity user)
         {
-            try
+            int id = 0;
+            if(ModelState.IsValid)
             {
-                IUserServices us = ServiceFactory.getUserServices();
-                return us.Register(user);
-            } catch (Exception)
-            {
-                return -1;
+                try
+                {
+                    IUserServices userService = ServiceFactory.getUserServices();
+                    id = userService.Register(user);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
             }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(id);
+        }
+
+        [Route("api/user/login")]
+        [HttpPost]
+        [ResponseType(typeof(int))]
+        public IHttpActionResult Login(LoginEntity le)
+        {
+            //Vraca id korisnika?
+            int id = 0;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IUserServices userService = ServiceFactory.getUserServices();
+                    id = userService.Login(le);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(id);
         }
 
         [Route("api/user/get")]
         [HttpGet]
-        public UserEntity Get(int id)
+        [ResponseType(typeof(UserDTO))]
+        public IHttpActionResult Get([FromUri]int id)
         {
-            return new UserEntity()
+            UserDTO user = new UserDTO();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IUserServices userService = ServiceFactory.getUserServices();
+                    var a = userService.Get(id);
+                    //user = WebMapper(userService.Get(id));
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            //return Ok(user);
+
+            return Ok(new UserDTO()
             {
                 FullName = "Mirko Fodor",
                 Id = 12,
                 IsActive = true,
-                Username = "mirko.fodor@gmail.com",
                 UserTypeId = 0
-            };
+            });
         }
+
+
+
+        //UseCase za usera - Dodavanje i Brisanje Favorite i Sponsorship mjesta
+        [Route("api/user/addFavorite")]
+        [HttpPost]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult AddFavorite(int userId, int placeId)
+        {
+            bool success = true;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IUserServices userService = ServiceFactory.getUserServices();
+                    success = userService.AddFavouritePlace(userId, placeId);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(success);
+        }
+
+        [Route("api/user/addSponsor")]
+        [HttpPost]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult AddSponsor(int userId, int placeId)
+        {
+            bool success = true;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IUserServices userService = ServiceFactory.getUserServices();
+                    success = userService.AddSponsorPlace(userId, placeId);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(success);
+        }
+
+        [Route("api/user/rmFavorite")]
+        [HttpPost]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult RmFavorite(int userId, int placeId)
+        {
+            bool success = true;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IUserServices userService = ServiceFactory.getUserServices();
+                    success = userService.RemoveFavouritePlace(userId, placeId);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(success);
+        }
+
+        [Route("api/user/rmSponsor")]
+        [HttpPost]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult RmSponsorship(int userId, int placeId)
+        {
+            bool success = true;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IUserServices userService = ServiceFactory.getUserServices();
+                    success = userService.RemoveSponsorPlace(userId, placeId);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(success);
+        }
+
+
+
+        #region Ne koristi se u use caseovima za mobilnu
 
         [Route("api/user/update")]
         [HttpPut]
@@ -80,104 +252,8 @@ namespace Tracktor.WebService.Controllers
             return ret;
         }
 
-        [Route("api/user/login")]
-        [HttpPost]
-        public int Login(LoginEntity le)
-        {
-            if (le.Username == "ayy")
-                return 1;
-            return -1;
-        }
+        #endregion
 
 
-
-        //UseCase za usera - Dodavanje i Brisanje Favorite i Sponsorship mjesta
-        [Route("api/user/addfavorite")]
-        [HttpPost]
-        [ResponseType(typeof(bool))]
-        public IHttpActionResult AddFavorite([FromBody]int userId, [FromBody]int placeId)
-        {
-            bool success = true;
-            if (ModelState.IsValid)
-            {
-                //Treba implementirati
-                try
-                {
-                    //IPlaceServices userService = ServiceFactory.getUserServices();
-                    //success = return userService.AddFavouritePlace(userId, placeId);
-                }
-                catch (Exception)
-                {
-                    return BadRequest("Neispravni podaci");
-                }
-            }
-            return Ok(success);
-        }
-
-        [Route("api/user/addsponsorship")]
-        [HttpPost]
-        [ResponseType(typeof(bool))]
-        public IHttpActionResult AddSponsorship([FromBody]int userId, [FromBody]int placeId)
-        {
-            bool success = true;
-            if (ModelState.IsValid)
-            {
-                //Treba implementirati
-                try
-                {
-                    //IPlaceServices userService = ServiceFactory.getUserServices();
-                    //success = return userService.AddSponsorshipPlace(userId, placeId);
-                }
-                catch (Exception)
-                {
-                    return BadRequest("Neispravni podaci");
-                }
-            }
-            return Ok(success);
-        }
-
-        [Route("api/user/rmfavorite")]
-        [HttpPost]
-        [ResponseType(typeof(bool))]
-        public IHttpActionResult RmFavorite([FromBody]int userId, [FromBody]int placeId)
-        {
-            bool success = true;
-            if (ModelState.IsValid)
-            {
-                //Treba implementirati
-                try
-                {
-                    //IPlaceServices userService = ServiceFactory.getUserServices();
-                    //success = return userService.RemoveFavouritePlace(userId, placeId);
-                }
-                catch (Exception)
-                {
-                    return BadRequest("Neispravni podaci");
-                }
-            }
-            return Ok(success);
-        }
-
-        [Route("api/user/rmsponsorship")]
-        [HttpPost]
-        [ResponseType(typeof(bool))]
-        public IHttpActionResult RmSponsorship([FromBody]int userId, [FromBody]int placeId)
-        {
-            bool success = true;
-            if (ModelState.IsValid)
-            {
-                //Treba implementirati
-                try
-                {
-                    //IPlaceServices userService = ServiceFactory.getUserServices();
-                    //success = return userService.RemoveSponsorshipPlace(userId, placeId);
-                }
-                catch (Exception)
-                {
-                    return BadRequest("Neispravni podaci");
-                }
-            }
-            return Ok(success);
-        }
     }
 }

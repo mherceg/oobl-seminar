@@ -171,7 +171,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CommentDTO.cs" />
+    <Compile Include="Models\CommentPostDTO.cs" />
     <Compile Include="Models\InfoDTO.cs" />
+    <Compile Include="Models\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
