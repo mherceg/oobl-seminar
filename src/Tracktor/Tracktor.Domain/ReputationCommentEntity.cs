@@ -12,5 +12,8 @@ namespace Tracktor.Domain
         public int UserId { get; set; }
         public int ContentCommentId { get; set; }
         public bool Score { get; set; }
+
+        //kao agregat
+        public IEnumerable<UserEntity> user { get; set; }
     }
 }

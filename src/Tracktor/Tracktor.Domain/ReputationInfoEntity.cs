@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Tracktor.Domain
 {
-    class ReputationInfoEntity
+    public class ReputationInfoEntity
     {
         public int Id { get; set; }
         public int UserId { get; set; }
         public int ContentCommentId { get; set; }
         public bool Score { get; set; }
+
+        //kao agregat
+        public IEnumerable<UserEntity> user { get; set; }
     }
 }

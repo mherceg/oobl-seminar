@@ -15,5 +15,15 @@ namespace Tracktor.Business
             return new UserServices();
         }
 
+        public static IPlaceServices getPlaceServices()
+        {
+            return new PlaceServices();
+        }
+
+        public static IInfoServices getInfoServices()
+        {
+            return new InfoServices();
+        }
+
     }
 }

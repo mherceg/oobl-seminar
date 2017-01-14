@@ -17,5 +17,9 @@ namespace Tracktor.Domain
         public int UserId { get; set; }
         public int ContentInfoId { get; set; }
         public string Content { get; set; }
+
+        //Agregat
+        public UserEntity user { get; set; }
+        public IEnumerable<ReputationCommentEntity> reputation { get; set; }
     }
 }
