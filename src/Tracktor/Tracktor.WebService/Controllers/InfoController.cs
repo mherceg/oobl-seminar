@@ -96,7 +96,7 @@ namespace Tracktor.WebService.Controllers
                 time = DateTime.Now,
                 category = new CategoryEntity() { Id = 1, Name = "Sportski događaj" },
                 user = new UserEntity() { Id = 2, Username = "KorIme", Password = "123", FullName = "Marko Marić", IsActive = true, UserTypeId = 1 },
-                place = new PlaceEntity() { Id = 102, Location = new GeoCoordinate(45.8123356, 15.9716064),, Name = "Cvjetni trg" },
+                //place = new PlaceEntity() { Id = 102, Location = new GeoCoordinate(45.8123356, 15.9716064),, Name = "Cvjetni trg" },
                 content = "Izvlaćenje startnih brojeva za Snježnu kraljicu",
                 endTime = DateTime.Now.AddDays(4.7),
                 comments = commentsMock2

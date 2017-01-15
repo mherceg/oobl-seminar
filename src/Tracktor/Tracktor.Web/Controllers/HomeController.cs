@@ -19,11 +19,22 @@ namespace Tracktor.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogIn(LogInVM vm)
         {
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Search));
         }
 
         //GET: Index
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        //GET: Search
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        public ActionResult ImpressionDetails()
         {
             return View();
         }
