@@ -36,8 +36,10 @@ v2. 20.12.2016.
 	Korisnik moze sve gore navedene radnje obaviti putem web ili mobilnog sucelja
 
 	Administrator moze dodati novog korisnika
+	Administrator moze obrisati korisnika
 	Administrator moze za korisnika promijeniti tip u regular ili premium
 	Administrator moze dodati informaciju
+	Administrator moze dodati informaciju unaprijed
 	Administrator moze dodati komentar
 	Administrator moze obrisati informaciju
 	Administrator moze obrisati komentar
