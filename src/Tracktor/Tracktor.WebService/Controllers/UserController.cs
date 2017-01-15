@@ -186,7 +186,7 @@ namespace Tracktor.WebService.Controllers
         [Route("api/user/rmSponsor")]
         [HttpPost]
         [ResponseType(typeof(bool))]
-        public IHttpActionResult RmSponsorship(int userId, int placeId)
+        public IHttpActionResult RmSponsor(int userId, int placeId)
         {
             bool success = true;
             if (ModelState.IsValid)
@@ -213,44 +213,44 @@ namespace Tracktor.WebService.Controllers
 
         #region Ne koristi se u use caseovima za mobilnu
 
-        [Route("api/user/update")]
-        [HttpPut]
-        public UserEntity Update(UserEntity user)
-        {
-            return new UserEntity()
-            {
-                FullName = "Mirko Fodor",
-                Id = 12,
-                IsActive = true,
-                Username = "mirko.fodor@gmail.com",
-                UserTypeId = 0
-            };
-        }
+        //[Route("api/user/update")]
+        //[HttpPut]
+        //public UserEntity Update(UserEntity user)
+        //{
+        //    return new UserEntity()
+        //    {
+        //        FullName = "Mirko Fodor",
+        //        Id = 12,
+        //        IsActive = true,
+        //        Username = "mirko.fodor@gmail.com",
+        //        UserTypeId = 0
+        //    };
+        //}
 
-        [Route("api/user/list")]
-        [HttpGet]
-        public IEnumerable<UserEntity> List()
-        {
-            List<UserEntity> ret = new List<UserEntity>();
-            ret.Add(new UserEntity()
-            {
-                FullName = "Mirko Fodor",
-                Id = 12,
-                IsActive = true,
-                Username = "mirko.fodor@gmail.com",
-                UserTypeId = 0
-            });
-            ret.Add(new UserEntity()
-            {
-                FullName = "Slavko Fodor",
-                Id = 14,
-                IsActive = true,
-                Username = "slavko.fodor@gmail.com",
-                UserTypeId = 0
-            });
+        //[Route("api/user/list")]
+        //[HttpGet]
+        //public IEnumerable<UserEntity> List()
+        //{
+        //    List<UserEntity> ret = new List<UserEntity>();
+        //    ret.Add(new UserEntity()
+        //    {
+        //        FullName = "Mirko Fodor",
+        //        Id = 12,
+        //        IsActive = true,
+        //        Username = "mirko.fodor@gmail.com",
+        //        UserTypeId = 0
+        //    });
+        //    ret.Add(new UserEntity()
+        //    {
+        //        FullName = "Slavko Fodor",
+        //        Id = 14,
+        //        IsActive = true,
+        //        Username = "slavko.fodor@gmail.com",
+        //        UserTypeId = 0
+        //    });
 
-            return ret;
-        }
+        //    return ret;
+        //}
 
         #endregion
 

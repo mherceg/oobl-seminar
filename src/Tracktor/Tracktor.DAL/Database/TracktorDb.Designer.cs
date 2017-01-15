@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\herc\Source\Repos\oobl-seminar\src\Tracktor\Tracktor.DAL\Database\TracktorDb.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\rokoz\Documents\Visual Studio 2015\Projects\OO Seminar\oobl-seminar\src\Tracktor\Tracktor.DAL\Database\TracktorDb.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

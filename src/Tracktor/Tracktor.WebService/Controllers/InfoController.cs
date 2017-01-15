@@ -14,11 +14,84 @@ namespace Tracktor.WebService.Controllers
 {
     public class InfoController : ApiController
     {
+        //Dodavanje novog dogadjaja s postojecim mjestom
         [Route("api/info/add")]
         [HttpPost]
-        public int Add([FromBody]InfoEntity info)
+        [ResponseType(typeof(int))]
+        public IHttpActionResult Add([FromBody]InfoPostDTO info)
         {
-            return 2;
+            int id = 0;
+            if (ModelState.IsValid)
+            {
+                //Treba implementirati
+                try
+                {
+                    //Mapper da odradi
+                    var infoDomain = new InfoEntity()
+                    {
+                        time = info.startTime,
+                        endTime = info.endTime,
+                        content = info.content,
+                        categoryId = info.categoryId,
+                        userId = info.userId,
+                        placeId = info.placeId
+                    };
+
+                    IInfoServices infoService = ServiceFactory.getInfoServices();
+                    id = infoService.NewInfo(infoDomain);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(id);
+        }
+
+        [Route("api/info/addWplace")]
+        [HttpPost]
+        [ResponseType(typeof(int))]
+        public IHttpActionResult AddWithPlace([FromBody]InfoPlacePostDTO info)
+        {
+            int id = 0;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //Mapper da odradi
+                    var placeDomain = new PlaceEntity()
+                    {
+                        Name = info.Name,
+                        Location = new GeoCoordinate(info.Latitude, info.Longitude)
+                    };
+                    var infoDomain = new InfoEntity()
+                    {
+                        time = info.startTime,
+                        endTime = info.endTime,
+                        content = info.content,
+                        categoryId = info.categoryId,
+                        userId = info.userId,
+                    };
+
+                    IInfoServices infoService = ServiceFactory.getInfoServices();
+                    id = infoService.NewInfo(infoDomain, placeDomain);
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Neispravni podaci");
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(id);
         }
 
 
@@ -116,7 +189,7 @@ namespace Tracktor.WebService.Controllers
         }
 
         [Route("api/info/ListByPlace")]
-        [HttpPost]
+        [HttpGet]
         [ResponseType(typeof(IEnumerable<InfoDTO>))]
         public IHttpActionResult ListByPlace([FromUri]int PlaceId)
         {
@@ -206,6 +279,7 @@ namespace Tracktor.WebService.Controllers
 
             return Ok(events);
         }
+
 
         //Ocjenjivanje dogadjaja
         [Route("api/info/rate")]

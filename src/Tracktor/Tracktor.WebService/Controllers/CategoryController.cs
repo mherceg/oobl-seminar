@@ -4,42 +4,35 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
+using Tracktor.Business;
+using Tracktor.Business.Interface;
 using Tracktor.Domain;
 
 namespace Tracktor.WebService.Controllers
 {
     public class CategoryController : ApiController
     {
-        public IEnumerable<CategoryEntity> List()
+        //Potrebno pri pokretanju mobilne app da ne bude hardkodirano
+        [Route("api/category/list")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<CategoryEntity>))]
+        public IHttpActionResult List()
         {
-            List<CategoryEntity> ret = new List<CategoryEntity>();
-            ret.Add(new CategoryEntity()
-            {
-                Id = 0,
-                Name = "Nocni zivot"
-            });
-            ret.Add(new CategoryEntity()
-            {
-                Id = 1,
-                Name = "Pokemon"
-            });
-            ret.Add(new CategoryEntity()
-            {
-                Id = 2,
-                Name = "Blic"
-            });
+            List<CategoryEntity> categories = new List<CategoryEntity>();
 
-            return ret;
+            try
+            {
+                ICategoryServices categoryService = ServiceFactory.getCategoryServices();
+                categories = categoryService.ListAll();
+            }
+            catch (Exception)
+            {
+                return BadRequest("Neispravni podaci");
+            }
+
+            return Ok(categories);
         }
 
-        public int Add(string name)
-        {
-            return 7;
-        }
-
-        public bool Delete(int id)
-        {
-            return true;
-        }
     }
 }

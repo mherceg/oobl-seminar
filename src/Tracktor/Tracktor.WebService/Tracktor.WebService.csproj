@@ -173,6 +173,8 @@
     <Compile Include="Models\CommentDTO.cs" />
     <Compile Include="Models\CommentPostDTO.cs" />
     <Compile Include="Models\InfoDTO.cs" />
+    <Compile Include="Models\InfoPlacePostDTO.cs" />
+    <Compile Include="Models\InfoPostDTO.cs" />
     <Compile Include="Models\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

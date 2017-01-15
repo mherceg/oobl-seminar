@@ -75,6 +75,9 @@
     <Compile Include="Database\Sponsorship.cs">
       <DependentUpon>TracktorDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\sysdiagrams.cs">
+      <DependentUpon>TracktorDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\TracktorDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

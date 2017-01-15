@@ -13,6 +13,13 @@ namespace Tracktor.Domain
         public DateTime endTime { get; set; }
         public string content { get; set; }
 
+
+        //Lakse mapiranje u DAL
+        public int categoryId { get; set; }
+        public int userId { get; set; }
+        public int placeId { get; set; }
+
+
         //kao agregat
         public CategoryEntity category { get; set; }
         public UserEntity user { get; set; }

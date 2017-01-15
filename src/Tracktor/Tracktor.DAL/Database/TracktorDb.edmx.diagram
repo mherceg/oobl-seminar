@@ -29,6 +29,7 @@
         <AssociationConnector Association="Tracktor.DAL.FK_ReputationInfo_User" />
         <AssociationConnector Association="Tracktor.DAL.FK_Sponsorship_User" />
         <AssociationConnector Association="Tracktor.DAL.FK_User_UserType" />
+        <EntityTypeShape EntityType="Tracktor.DAL.sysdiagrams" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

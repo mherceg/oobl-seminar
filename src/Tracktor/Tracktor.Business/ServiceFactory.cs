@@ -30,5 +30,10 @@ namespace Tracktor.Business
             return new CommentServices();
         }
 
+        public static ICategoryServices getCategoryServices()
+        {
+            return new CategoryServices();
+        }
+
     }
 }

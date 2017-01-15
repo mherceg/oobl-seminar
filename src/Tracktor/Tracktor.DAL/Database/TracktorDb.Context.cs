@@ -35,5 +35,6 @@ namespace Tracktor.DAL.Database
         public virtual DbSet<Sponsorship> Sponsorship { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
