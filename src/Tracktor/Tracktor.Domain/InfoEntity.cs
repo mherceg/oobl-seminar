@@ -27,5 +27,18 @@ namespace Tracktor.Domain
         public IEnumerable<CommentEntity> comments { get; set; }
         public IEnumerable<ReputationInfoEntity> reputation { get; set; }
 
+
+        public int GetReputation()
+        {
+            int value = 0;
+            foreach (var rep in reputation)
+            {
+                if (rep.Score)
+                    value++;
+                else
+                    value--;
+            }
+            return value;
+        }
     }
 }

@@ -72,9 +72,9 @@ namespace Tracktor.Business.Implementation
 
         public List<InfoEntity> GetByPlace(int placeId)
         {
-            var placesDAL = _unitOfWork.InfoRepository.GetMany(i => i.PlaceId == placeId);
+            var infosDAL = _unitOfWork.InfoRepository.GetMany(i => i.PlaceId == placeId);
             //Treba List<Place> mapirati u List<PlaceEntity>
-
+            return null;
             throw new NotImplementedException();
         }
 

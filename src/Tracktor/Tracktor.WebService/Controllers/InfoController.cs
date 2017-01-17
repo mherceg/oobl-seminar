@@ -14,6 +14,12 @@ namespace Tracktor.WebService.Controllers
 {
     public class InfoController : ApiController
     {
+        private DTOAssembler _DTOAssempler { get; set; }
+        public InfoController()
+        {
+            _DTOAssempler = new DTOAssembler();
+        }
+
         //Dodavanje novog dogadjaja s postojecim mjestom
         [Route("api/info/add")]
         [HttpPost]
@@ -199,72 +205,125 @@ namespace Tracktor.WebService.Controllers
                 //Treba implementirati
                 try
                 {
-                    //IInfoServices infoService = ServiceFactory.getInfoServices();
-                    //var infoDomain = return infoService.GetByPlace(filters, active);
+                    IInfoServices infoService = ServiceFactory.getInfoServices();
+                    var infoDomain = infoService.GetByPlace(PlaceId);
+                    infoDomain = new List<InfoEntity>();
+                    //    //Prvi info
+                    List<CommentEntity> commentsMock1 = new List<CommentEntity>();
+                    commentsMock1.Add(new CommentEntity()
+                    {
+                        Id = 101,
+                        EndTime = Convert.ToDateTime("2016/12/25 20:18:42.35"),
+                        UserId = 10,
+                        ContentInfoId = 52,
+                        Content = "Odlicna atmosfera!!! =))"
+                    });
+                    commentsMock1.Add(new CommentEntity()
+                    {
+                        Id = 102,
+                        EndTime = Convert.ToDateTime("2016/12/25 21:33:15.47"),
+                        UserId = 11,
+                        ContentInfoId = 52,
+                        Content = "Katastrofa..."
+                    });
+                    commentsMock1.Add(new CommentEntity()
+                    {
+                        Id = 103,
+                        EndTime = Convert.ToDateTime("2016/12/25 21:34:32.17"),
+                        UserId = 10,
+                        ContentInfoId = 52,
+                        Content = "Ma sto katastrofa? o.O"
+                    });
+                    commentsMock1.Add(new CommentEntity()
+                    {
+                        Id = 104,
+                        EndTime = Convert.ToDateTime("2016/12/26 14:22:08.07"),
+                        UserId = 12,
+                        ContentInfoId = 52,
+                        Content = "Bilo je ok!"
+                    });
+
+                    infoDomain.Add(new InfoEntity()
+                    {
+                        Id = 52,
+                        time = DateTime.Now,
+                        category = new CategoryEntity() { Id = 1, Name = "Koncert" },
+                        user = new UserEntity() { Id = 2, Username = "KorIme", Password = "123", FullName = "Marko Marić", IsActive = true, UserTypeId = 1 },
+                        place = new PlaceEntity() { Id = 102, Location = new GeoCoordinate(45.8118117, 15.9740687), Name = "Gajeva 4" },
+                        content = "Koncert za humaniratnu akciju 'Želim život'",
+                        endTime = DateTime.Now.AddDays(4.7),
+                        comments = commentsMock1
+                    });
 
                     //events = MapInfo(infoDomain);
 
-                    //Prvi Info
-                    List<CommentDTO> komentari1 = new List<CommentDTO>();
-                    komentari1.Add(new CommentDTO()
-                    {
-                        Id = 47,
-                        time = Convert.ToDateTime("2016/12/25 20:18:42.35"),
-                        user = "Pero Perić",
-                        content = "Stvarno kul!",
-                        reputation = 7
-                    });
-                    komentari1.Add(new CommentDTO()
-                    {
-                        Id = 49,
-                        time = Convert.ToDateTime("2016/12/25 19:25:42.35"),
-                        user = "Marko Marić",
-                        content = "Odlicno",
-                        reputation = 1
-                    });
-                    komentari1.Add(new CommentDTO()
-                    {
-                        Id = 102,
-                        time = Convert.ToDateTime("2016/12/27 01:05:42.35"),
-                        user = "Anonimni Korisnik =)",
-                        content = "Meni je bilo ok, nista posebno",
-                        reputation = -4
-                    });
-                    events.Add(new InfoDTO()
-                    {
-                        Id = 12,
-                        startTime = Convert.ToDateTime("2016/12/24 15:00:42.35"),
-                        endTime = Convert.ToDateTime("2016/12/27 20:00:42.35"),
-                        content = "Humanitarni koncert za oboljele...",
-                        category = "Kulturni Događaj",
-                        user = "Grad Zagreb",
-                        place = "Teatar Exit",
-                        reputation = 104,
-                        comments = komentari1
-                    });
+                    ////Prvi Info
+                    //List<CommentDTO> komentari1 = new List<CommentDTO>();
+                    //komentari1.Add(new CommentDTO()
+                    //{
+                    //    Id = 47,
+                    //    time = Convert.ToDateTime("2016/12/25 20:18:42.35"),
+                    //    user = "Pero Perić",
+                    //    content = "Stvarno kul!",
+                    //    reputation = 7
+                    //});
+                    //komentari1.Add(new CommentDTO()
+                    //{
+                    //    Id = 49,
+                    //    time = Convert.ToDateTime("2016/12/25 19:25:42.35"),
+                    //    user = "Marko Marić",
+                    //    content = "Odlicno",
+                    //    reputation = 1
+                    //});
+                    //komentari1.Add(new CommentDTO()
+                    //{
+                    //    Id = 102,
+                    //    time = Convert.ToDateTime("2016/12/27 01:05:42.35"),
+                    //    user = "Anonimni Korisnik =)",
+                    //    content = "Meni je bilo ok, nista posebno",
+                    //    reputation = -4
+                    //});
+                    //events.Add(new InfoDTO()
+                    //{
+                    //    Id = 12,
+                    //    startTime = Convert.ToDateTime("2016/12/24 15:00:42.35"),
+                    //    endTime = Convert.ToDateTime("2016/12/27 20:00:42.35"),
+                    //    content = "Humanitarni koncert za oboljele...",
+                    //    category = "Kulturni Događaj",
+                    //    user = "Grad Zagreb",
+                    //    place = "Teatar Exit",
+                    //    reputation = 104,
+                    //    comments = komentari1
+                    //});
 
-                    //Drugi Info
-                    List<CommentDTO> komentari2 = new List<CommentDTO>();
-                    komentari2.Add(new CommentDTO()
+                    ////Drugi Info
+                    //List<CommentDTO> komentari2 = new List<CommentDTO>();
+                    //komentari2.Add(new CommentDTO()
+                    //{
+                    //    Id = 47,
+                    //    time = Convert.ToDateTime("2017/01/11 20:18:42.35"),
+                    //    user = "Pero Perić",
+                    //    content = "Što nitko nije išao?",
+                    //    reputation = 0
+                    //});
+                    //events.Add(new InfoDTO()
+                    //{
+                    //    Id = 12,
+                    //    startTime = Convert.ToDateTime("2017/01/11 16:00:00.00"),
+                    //    endTime = Convert.ToDateTime("2017/01/11 18:00:00.00"),
+                    //    content = "KK Cedevita vs. KK Cibona",
+                    //    category = "Sportski Događaj",
+                    //    user = "KK Cedevita",
+                    //    place = "Teatar Exit",
+                    //    reputation = 1,
+                    //    comments = komentari2
+                    //});
+
+
+                    foreach (var info in infoDomain)
                     {
-                        Id = 47,
-                        time = Convert.ToDateTime("2017/01/11 20:18:42.35"),
-                        user = "Pero Perić",
-                        content = "Što nitko nije išao?",
-                        reputation = 0
-                    });
-                    events.Add(new InfoDTO()
-                    {
-                        Id = 12,
-                        startTime = Convert.ToDateTime("2017/01/11 16:00:00.00"),
-                        endTime = Convert.ToDateTime("2017/01/11 18:00:00.00"),
-                        content = "KK Cedevita vs. KK Cibona",
-                        category = "Sportski Događaj",
-                        user = "KK Cedevita",
-                        place = "Teatar Exit",
-                        reputation = 1,
-                        comments = komentari2
-                    });
+                        events.Add(_DTOAssempler.CreateInfoDTO(info));
+                    }
 
                 }
                 catch (Exception)

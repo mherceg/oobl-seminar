@@ -160,7 +160,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\FavoritePlaceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
@@ -172,6 +171,7 @@
     </Compile>
     <Compile Include="Models\CommentDTO.cs" />
     <Compile Include="Models\CommentPostDTO.cs" />
+    <Compile Include="Models\DTOAssembler.cs" />
     <Compile Include="Models\InfoDTO.cs" />
     <Compile Include="Models\InfoPlacePostDTO.cs" />
     <Compile Include="Models\InfoPostDTO.cs" />
