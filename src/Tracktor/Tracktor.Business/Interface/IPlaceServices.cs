@@ -16,6 +16,8 @@ namespace Tracktor.Business.Interface
         List<PlaceEntity> GetFavorite(int userId);
 
         List<PlaceEntity> GetSponsorship(int userId);
+
+        List<PlaceEntity> GetAll();
     }
 }
 

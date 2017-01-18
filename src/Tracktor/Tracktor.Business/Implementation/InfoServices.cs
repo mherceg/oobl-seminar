@@ -20,76 +20,40 @@ namespace Tracktor.Business.Implementation
             _unitOfWork = new UnitOfWork();
         }
 
+        //Unos novog infa s i bez mjesta
         public int NewInfo(InfoEntity info)
         {
-            //Mapper da odradi ili jos bolje da repo prima domain class
-            var new_info = new Info()
-            {
-                Time = info.time,
-                EndTime = info.endTime,
-                Content = info.content,
-                CategoryId = info.categoryId,
-                UserId = info.userId,
-                PlaceId = info.placeId
-            };
-            _unitOfWork.InfoRepository.Insert(new_info);
-            _unitOfWork.Save();
-            return new_info.Id;
+            int new_id = _unitOfWork.InfoRepository.Insert(info, _unitOfWork.Save);
+            //_unitOfWork.Save();
+            return new_id;
         }
 
         public int NewInfo(InfoEntity info, PlaceEntity place)
         {
-            //Mapper da odradi ili jos bolje da repo prima domain class
-            var new_place = new Place()
-            {
-                Name = place.Name,
-                Location = DbGeography.PointFromText(String.Format("POINT({0} {1})", place.Location.Longitude, place.Location.Latitude), 4326)
-            };
-            _unitOfWork.PlaceRepository.Insert(new_place);
-            _unitOfWork.Save();
-            var new_info = new Info()
-            {
-                Time = info.time,
-                EndTime = info.endTime,
-                Content = info.content,
-                CategoryId = info.categoryId,
-                UserId = info.userId,
-                PlaceId = new_place.Id
-            };
-
-            _unitOfWork.InfoRepository.Insert(new_info);
-            _unitOfWork.Save();
-            return new_info.Id;
+            info.placeId = _unitOfWork.PlaceRepository.Insert(place, _unitOfWork.Save);
+            int new_id = _unitOfWork.InfoRepository.Insert(info, _unitOfWork.Save);
+            //_unitOfWork.Save();
+            return new_id;
         }
 
 
+        //Dohvat svih po filteru za neko mjesto ili samo svih po mjestu
         public List<InfoEntity> GetByFilter(IDictionary<string, bool> filters, bool active, bool future, int placeId)
         {
-            //treba od ulaznih parametara formirati funkciju koja filtrira info po kriteriju
-
-            throw new NotImplementedException();
+            return _unitOfWork.InfoRepository.GetMany(filters, active, future, placeId).ToList();
         }
 
         public List<InfoEntity> GetByPlace(int placeId)
         {
-            var infosDAL = _unitOfWork.InfoRepository.GetMany(i => i.PlaceId == placeId);
-            //Treba List<Place> mapirati u List<PlaceEntity>
-            return null;
-            throw new NotImplementedException();
+            return _unitOfWork.InfoRepository.GetByPlace(placeId).ToList();
         }
 
 
-
-        public bool Rate(int infoId, int userId, bool score)
+        //Ocjenjivanje
+        public bool Rate(ReputationInfoEntity repInfo)
         {
-            var repInfo = new ReputationInfo()
-            {
-                UserId = userId,
-                InfoId = infoId,
-                Score = score
-            };
-            _unitOfWork.ReputationInfoRepository.Insert(repInfo);
-            _unitOfWork.Save();
+            int new_id = _unitOfWork.ReputationInfoRepository.Insert(repInfo, _unitOfWork.Save);
+            //_unitOfWork.Save();
             return true;
         }
     }

@@ -26,9 +26,9 @@ namespace Tracktor.WebService.Controllers
                 ICategoryServices categoryService = ServiceFactory.getCategoryServices();
                 categories = categoryService.ListAll();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest("Neispravni podaci");
+                return BadRequest(e.Message);
             }
 
             return Ok(categories);

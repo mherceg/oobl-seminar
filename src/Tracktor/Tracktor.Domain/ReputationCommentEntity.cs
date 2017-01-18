@@ -14,6 +14,6 @@ namespace Tracktor.Domain
         public bool Score { get; set; }
 
         //kao agregat
-        public IEnumerable<UserEntity> user { get; set; }
+        public UserEntity user { get; set; }
     }
 }

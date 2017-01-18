@@ -21,9 +21,7 @@ namespace Tracktor.Business.Implementation
 
         public List<CategoryEntity> ListAll()
         {
-            var categoriesDAL = _unitOfWork.CategoryRepository.GetAll();
-            //Mapirati ih i Domain
-            throw new NotImplementedException();
+            return _unitOfWork.CategoryRepository.GetAll().ToList();
         }
     }
 }

@@ -6,15 +6,13 @@ using System.Web;
 
 namespace Tracktor.WebService.Models
 {
-    public class CommentPostDTO
+    public class RateInfoPostDTO
     {
-        [Required]
-        public System.DateTime time { get; set; }
         [Required]
         public int userId { get; set; }
         [Required]
-        public int contentInfoId { get; set; }
+        public int infoId { get; set; }
         [Required]
-        public string content { get; set; }
+        public bool score { get; set; }
     }
 }

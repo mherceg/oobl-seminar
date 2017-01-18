@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Data.Entity.Validation;
 using Tracktor.DAL.GenericRepository;
 using Tracktor.DAL.Database;
+using Tracktor.DAL.Repositories;
 
 #endregion
 
@@ -21,12 +22,12 @@ namespace Tracktor.DAL.UnitOfWork
         private TracktorDb _context = null;
         private GenericRepository<Category> _categoryRepository;
         private GenericRepository<Comment> _commentRepository;
-        private GenericRepository<FavoritePlace> _favoritePlaceRepository;
+        //private GenericRepository<FavoritePlace> _favoritePlaceRepository;
         private GenericRepository<Info> _infoRepository;
         private GenericRepository<Place> _placeRepository;
         private GenericRepository<ReputationComment> _reputationCommentRepository;
         private GenericRepository<ReputationInfo> _reputationInfoRepository;
-        private GenericRepository<Sponsorship> _sponsorshipRepository;
+        //private GenericRepository<Sponsorship> _sponsorshipRepository;
         private GenericRepository<User> _userRepository;
         private GenericRepository<UserType> _userTypeRepository;
         #endregion
@@ -40,13 +41,13 @@ namespace Tracktor.DAL.UnitOfWork
         /// <summary>
         /// Get/Set Property for category repository.
         /// </summary>
-        public GenericRepository<Category> CategoryRepository
+        public CategoryRepository CategoryRepository
         {
             get
             {
-                if (this._categoryRepository == null)
-                    this._categoryRepository = new GenericRepository<Category>(_context);
-                return _categoryRepository;
+                //if (this._categoryRepository == null)
+                //    this._categoryRepository = new GenericRepository<Category>(_context);
+                return new CategoryRepository(_context); ;
             }
         }
 
@@ -66,39 +67,52 @@ namespace Tracktor.DAL.UnitOfWork
         /// <summary>
         /// Get/Set Property for favoritePlace repository.
         /// </summary>
-        public GenericRepository<FavoritePlace> FavoritePlaceRepository
-        {
-            get
-            {
-                if (this._favoritePlaceRepository == null)
-                    this._favoritePlaceRepository = new GenericRepository<FavoritePlace>(_context);
-                return _favoritePlaceRepository;
-            }
-        }
+        //public GenericRepository<FavoritePlace> FavoritePlaceRepository
+        //{
+        //    get
+        //    {
+        //        if (this._favoritePlaceRepository == null)
+        //            this._favoritePlaceRepository = new GenericRepository<FavoritePlace>(_context);
+        //        return _favoritePlaceRepository;
+        //    }
+        //}
 
         /// <summary>
         /// Get/Set Property for info repository.
         /// </summary>
-        public GenericRepository<Info> InfoRepository
+        public InfoRepository InfoRepository
         {
             get
             {
-                if (this._infoRepository == null)
-                    this._infoRepository = new GenericRepository<Info>(_context);
-                return _infoRepository;
+                //if (this._infoRepository == null)
+                //    this._infoRepository = new GenericRepository<Info>(_context);
+                return new InfoRepository(_context);
             }
         }
+
+        ///// <summary>
+        ///// Get/Set Property for place repository.
+        ///// </summary>
+        //public GenericRepository<Place> PlaceRepository
+        //{
+        //    get
+        //    {
+        //        if (this._placeRepository == null)
+        //            this._placeRepository = new GenericRepository<Place>(_context);
+        //        return _placeRepository;
+        //    }
+        //}
 
         /// <summary>
         /// Get/Set Property for place repository.
         /// </summary>
-        public GenericRepository<Place> PlaceRepository
+        public PlaceRepository PlaceRepository
         {
             get
             {
-                if (this._placeRepository == null)
-                    this._placeRepository = new GenericRepository<Place>(_context);
-                return _placeRepository;
+                //if (this._placeRepository == null)
+                    //this._placeRepository = new GenericRepository<Place>(_context);
+                return new PlaceRepository(_context);
             }
         }
 
@@ -118,39 +132,39 @@ namespace Tracktor.DAL.UnitOfWork
         /// <summary>
         /// Get/Set Property for reputationInfo repository.
         /// </summary>
-        public GenericRepository<ReputationInfo> ReputationInfoRepository
+        public ReputationInfoRepository ReputationInfoRepository
         {
             get
             {
-                if (this._reputationInfoRepository == null)
-                    this._reputationInfoRepository = new GenericRepository<ReputationInfo>(_context);
-                return _reputationInfoRepository;
+                //if (this._reputationInfoRepository == null)
+                //    this._reputationInfoRepository = new GenericRepository<ReputationInfo>(_context);
+                return new ReputationInfoRepository(_context);
             }
         }
 
         /// <summary>
         /// Get/Set Property for sponsorship repository.
         /// </summary>
-        public GenericRepository<Sponsorship> SponsorshipRepository
-        {
-            get
-            {
-                if (this._sponsorshipRepository == null)
-                    this._sponsorshipRepository = new GenericRepository<Sponsorship>(_context);
-                return _sponsorshipRepository;
-            }
-        }
+        //public GenericRepository<Sponsorship> SponsorshipRepository
+        //{
+        //    get
+        //    {
+        //        if (this._sponsorshipRepository == null)
+        //            this._sponsorshipRepository = new GenericRepository<Sponsorship>(_context);
+        //        return _sponsorshipRepository;
+        //    }
+        //}
 
         /// <summary>
         /// Get/Set Property for user repository.
         /// </summary>
-        public GenericRepository<User> UserRepository
+        public UserRepository UserRepository
         {
             get
             {
-                if (this._userRepository == null)
-                    this._userRepository = new GenericRepository<User>(_context);
-                return _userRepository;
+                //if (this._userRepository == null)
+                //    this._userRepository = new GenericRepository<User>(_context);
+                return new UserRepository(_context);
             }
         }
 

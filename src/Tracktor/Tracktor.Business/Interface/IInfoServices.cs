@@ -19,6 +19,6 @@ namespace Tracktor.Business.Interface
 
         List<InfoEntity> GetByPlace(int placeId);
 
-        bool Rate(int infoId, int userId, bool score);
+        bool Rate(ReputationInfoEntity repInfo);
     }
 }

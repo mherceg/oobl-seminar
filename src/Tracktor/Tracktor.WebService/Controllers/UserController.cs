@@ -14,22 +14,33 @@ namespace Tracktor.WebService.Controllers
 {
     public class UserController : ApiController
     {
+        private DTOAssembler _DTOAssempler { get; set; }
+        public UserController()
+        {
+            _DTOAssempler = new DTOAssembler();
+        }
+
+        //Implementirano: Add, Login, Get
+        //Treba provjeriti: AddFavorite, AddSponsor, RmFavorite, RmSponsor
+        //Fali:
+
         [Route("api/user/add")]
         [HttpPost]
         [ResponseType(typeof(int))]
-        public IHttpActionResult Add(UserEntity user)
+        public IHttpActionResult Add(UserPostDTO user)
         {
             int id = 0;
             if(ModelState.IsValid)
             {
                 try
                 {
+                    UserEntity userDomain = _DTOAssempler.CreateUserEntity(user);
                     IUserServices userService = ServiceFactory.getUserServices();
-                    id = userService.Register(user);
+                    id = userService.Register(userDomain);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -54,9 +65,9 @@ namespace Tracktor.WebService.Controllers
                     IUserServices userService = ServiceFactory.getUserServices();
                     id = userService.Login(le);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -72,18 +83,18 @@ namespace Tracktor.WebService.Controllers
         [ResponseType(typeof(UserDTO))]
         public IHttpActionResult Get([FromUri]int id)
         {
-            UserDTO user = new UserDTO();
+            UserDTO userDTO = new UserDTO();
             if (ModelState.IsValid)
             {
                 try
                 {
                     IUserServices userService = ServiceFactory.getUserServices();
-                    var a = userService.Get(id);
-                    //user = WebMapper(userService.Get(id));
+                    var userDomain = userService.Get(id);
+                    userDTO = _DTOAssempler.CreateUserDTO(userDomain);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -91,15 +102,7 @@ namespace Tracktor.WebService.Controllers
                 return BadRequest("Neispravni podaci");
             }
 
-            //return Ok(user);
-
-            return Ok(new UserDTO()
-            {
-                FullName = "Mirko Fodor",
-                Id = 12,
-                IsActive = true,
-                UserTypeId = 0
-            });
+            return Ok(userDTO);
         }
 
 
@@ -118,9 +121,9 @@ namespace Tracktor.WebService.Controllers
                     IUserServices userService = ServiceFactory.getUserServices();
                     success = userService.AddFavouritePlace(userId, placeId);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -144,9 +147,9 @@ namespace Tracktor.WebService.Controllers
                     IUserServices userService = ServiceFactory.getUserServices();
                     success = userService.AddSponsorPlace(userId, placeId);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -170,9 +173,9 @@ namespace Tracktor.WebService.Controllers
                     IUserServices userService = ServiceFactory.getUserServices();
                     success = userService.RemoveFavouritePlace(userId, placeId);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -196,9 +199,9 @@ namespace Tracktor.WebService.Controllers
                     IUserServices userService = ServiceFactory.getUserServices();
                     success = userService.RemoveSponsorPlace(userId, placeId);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else

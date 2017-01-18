@@ -16,6 +16,11 @@ namespace Tracktor.WebService.Controllers
 {
     public class PlaceController : ApiController
     {
+
+        //Implementirano: AddNew, ListFilter, ListFavorite, ListSponsorship
+        //Treba provjeriti:
+        //Fali:
+
         //Add metode - Unos novog mjesta
         [Route("api/place/add")]
         [HttpPost]
@@ -31,17 +36,17 @@ namespace Tracktor.WebService.Controllers
                     IPlaceServices placeService = ServiceFactory.getPlaceServices();
                     Id = placeService.Add(place);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
             {
                 return BadRequest("Neispravni podaci");
             }
-            var response = new { Id };
-            return Ok(response);
+
+            return Ok(Id);
         }
 
 
@@ -54,39 +59,18 @@ namespace Tracktor.WebService.Controllers
             List<PlaceEntity> places = new List<PlaceEntity>();
             if (ModelState.IsValid)
             {
-                //Treba implementirati
                 try
                 {
-                    //IPlaceServices placeService = ServiceFactory.getPlaceServices();
-                    //var mjesta = placeService.GetByFilter(filters, active, future);
-
-                    //Mock
-                    places.Add(new PlaceEntity()
+                    IPlaceServices placeService = ServiceFactory.getPlaceServices();
+                    places = placeService.GetByFilter(filters, active, future);
+                    if (places.Count == 0)
                     {
-                        Id = 101,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8128451, 15.9753062)),
-                        Location = new GeoCoordinate(45.8128451, 15.9753062),
-                        Name = "Trg bana Jelačića"
-                    });
-                    places.Add(new PlaceEntity()
-                    {
-                        Id = 102,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8118117, 15.9740687)),
-                        Location = new GeoCoordinate(45.8118117, 15.9740687),
-                        Name = "Gajeva 4"
-                    });
-                    places.Add(new PlaceEntity()
-                    {
-                        Id = 103,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8123356, 15.9716064)),
-                        Location = new GeoCoordinate(45.8123356, 15.9716064),
-                        Name = "Cvjetni trg"
-                    });
-
+                        return Ok("Za zadane uvjete pretrage nema događaja!");
+                    }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -105,38 +89,18 @@ namespace Tracktor.WebService.Controllers
             List<PlaceEntity> places = new List<PlaceEntity>();
             if (ModelState.IsValid)
             {
-                //Treba implementirati
                 try
                 {
                     IPlaceServices placeService = ServiceFactory.getPlaceServices();
                     places = placeService.GetFavorite(userId);
-
-                    places.Add(new PlaceEntity()
+                    if (places.Count == 0)
                     {
-                        Id = 101,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8128451, 15.9753062)),
-                        Location = new GeoCoordinate(45.8128451, 15.9753062),
-                        Name = "Trg bana Jelačića"
-                    });
-                    places.Add(new PlaceEntity()
-                    {
-                        Id = 102,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8118117, 15.9740687)),
-                        Location = new GeoCoordinate(45.8118117, 15.9740687),
-                        Name = "Gajeva 4"
-                    });
-                    places.Add(new PlaceEntity()
-                    {
-                        Id = 103,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8123356, 15.9716064)),
-                        Location = new GeoCoordinate(45.8123356, 15.9716064),
-                        Name = "Cvjetni trg"
-                    });
-
+                        return Ok("Korisnik nema najdražih mjesta!");
+                    }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -155,34 +119,40 @@ namespace Tracktor.WebService.Controllers
             List<PlaceEntity> places = new List<PlaceEntity>();
             if (ModelState.IsValid)
             {
-                //Treba implementirati
                 try
                 {
-                    //IPlaceServices placeService = ServiceFactory.getPlaceServices();
-                    //places = placeService.GetSponsorship(userId);
+                    IPlaceServices placeService = ServiceFactory.getPlaceServices();
+                    places = placeService.GetSponsorship(userId);
+                    if (places.Count == 0)
+                    {
+                        return Ok("Korisnik nema sponzoriranih mjesta!");
+                    }
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
+            }
+            else
+            {
+                return BadRequest("Neispravni podaci");
+            }
 
-                    places.Add(new PlaceEntity()
-                    {
-                        Id = 101,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8128451, 15.9753062)),
-                        Location = new GeoCoordinate(45.8128451, 15.9753062),
-                        Name = "Trg bana Jelačića"
-                    });
-                    places.Add(new PlaceEntity()
-                    {
-                        Id = 102,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8118117, 15.9740687)),
-                        Location = new GeoCoordinate(45.8118117, 15.9740687),
-                        Name = "Gajeva 4"
-                    });
-                    places.Add(new PlaceEntity()
-                    {
-                        Id = 103,
-                        //Location = DbGeography.FromText(string.Format("POINT({1} {0})", 45.8123356, 15.9716064)),
-                        Location = new GeoCoordinate(45.8123356, 15.9716064),
-                        Name = "Cvjetni trg"
-                    });
+            return Ok(places);
+        }
 
+        [Route("api/place/all")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<PlaceEntity>))]
+        public IHttpActionResult ListAll()
+        {
+            List<PlaceEntity> places = new List<PlaceEntity>();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IPlaceServices placeService = ServiceFactory.getPlaceServices();
+                    places = placeService.GetAll();
                 }
                 catch (Exception)
                 {
