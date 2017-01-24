@@ -36,6 +36,20 @@ namespace Tracktor.DAL.Repositories
             return repInfoDAL.Id;
         }
 
+        /// <summary>
+        /// Delete method for the ReputationInfo entities
+        /// </summary>
+        /// <param name="reputationId"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Delete(int reputationId, Action saveChanges)
+        {
+            ReputationInfo repInfoDAL = DbSet.FirstOrDefault(ri => ri.Id == reputationId);
+            DbSet.Remove(repInfoDAL);
+            saveChanges();
+            return true;
+        }
+
         #endregion
     }
 }

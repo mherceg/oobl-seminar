@@ -9,7 +9,7 @@ using Tracktor.Domain;
 
 namespace Tracktor.DAL.Repositories
 {
-    class UserTypeRepository : EFRepository<UserTypeEntity, UserType>
+    public class UserTypeRepository : EFRepository<UserTypeEntity, UserType>
     {
         #region Public Constructor...
         /// <summary>
@@ -21,6 +21,19 @@ namespace Tracktor.DAL.Repositories
         }
         #endregion
 
-        
+        /// <summary>
+        /// Get All method for UserType entities
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<UserTypeEntity> GetAll()
+        {
+            IEnumerable<UserType> userTypesDAL = DbSet;
+            List<UserTypeEntity> userTypesDomain = new List<UserTypeEntity>();
+            foreach (var userType in userTypesDAL)
+            {
+                userTypesDomain.Add(Mapper.ToDomainModel(userType));
+            }
+            return userTypesDomain.OrderBy(ut => ut.Type);
+        }
     }
 }

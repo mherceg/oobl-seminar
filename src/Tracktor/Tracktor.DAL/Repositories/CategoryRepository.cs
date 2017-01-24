@@ -24,9 +24,9 @@ namespace Tracktor.DAL.Repositories
         #region Public member methods...
 
         /// <summary>
-        /// Insert method for the place entities
+        /// Insert method for the Category entities
         /// </summary>
-        /// <param name="placeDomain"></param>
+        /// <param name="categoryDomain"></param>
         /// <param name="saveChanges"></param>
         public int Insert(CategoryEntity categoryDomain, Action saveChanges)
         {
@@ -37,7 +37,39 @@ namespace Tracktor.DAL.Repositories
         }
 
         /// <summary>
-        /// Get All method for place entities
+        /// Edit method for Category entities
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Update(CategoryEntity category, Action saveChanges)
+        {
+            Category categoryDALnew = Mapper.ToDALModel(category);
+            Category categoryDALold = DbSet.Find(category.Id);
+
+            if(categoryDALold != null)
+            {
+                Context.Entry(categoryDALold).CurrentValues.SetValues(categoryDALnew);
+            }
+            saveChanges();
+            return true;
+        }
+
+        /// <summary>
+        /// Delete method for Category entities
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        public bool Delete(int categoryId, Action saveChanges)
+        {
+            Category categoryDAL = DbSet.FirstOrDefault(c => c.Id == categoryId);
+            DbSet.Remove(categoryDAL);
+            saveChanges();
+            return true;
+        }
+
+        /// <summary>
+        /// Get All method for Category entities
         /// </summary>
         /// <returns></returns>
         public IEnumerable<CategoryEntity> GetAll()
@@ -50,7 +82,6 @@ namespace Tracktor.DAL.Repositories
             }
             return categoriesDomain.OrderBy(c => c.Name);
         }
-
         #endregion
     }
 }

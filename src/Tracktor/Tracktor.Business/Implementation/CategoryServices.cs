@@ -19,9 +19,28 @@ namespace Tracktor.Business.Implementation
             _unitOfWork = new UnitOfWork();
         }
 
+
+        public int Insert(CategoryEntity category)
+        {
+            int new_id = _unitOfWork.CategoryRepository.Insert(category, _unitOfWork.Save);
+            return new_id;
+        }
+
+        public bool Update(CategoryEntity category)
+        {
+            return _unitOfWork.CategoryRepository.Update(category, _unitOfWork.Save);
+        }
+
+        public bool Delete(int categoryId)
+        {
+            return _unitOfWork.CategoryRepository.Delete(categoryId, _unitOfWork.Save);
+        }
+
         public List<CategoryEntity> ListAll()
         {
             return _unitOfWork.CategoryRepository.GetAll().ToList();
         }
+
+
     }
 }

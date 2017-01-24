@@ -35,5 +35,10 @@ namespace Tracktor.Business
             return new CategoryServices();
         }
 
+        public static IUserTypeServices getUserTypeServices()
+        {
+            return new UserTypeServices();
+        }
+
     }
 }

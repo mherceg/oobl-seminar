@@ -11,6 +11,12 @@ namespace Tracktor.Business.Interface
     {
         int Add(CommentEntity comment);
 
+        bool Update(CommentEntity comment);
+
+        bool Delete(int commentId);
+
         bool Rate(ReputationCommentEntity repCom);
+
+        bool DeleteReputation(int repId);
     }
 }

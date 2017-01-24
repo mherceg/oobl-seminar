@@ -56,5 +56,10 @@ namespace Tracktor.Business.Implementation
             //_unitOfWork.Save();
             return true;
         }
+
+        public bool DeleteReputation(int repId)
+        {
+            return _unitOfWork.ReputationInfoRepository.Delete(repId, _unitOfWork.Save);
+        }
     }
 }

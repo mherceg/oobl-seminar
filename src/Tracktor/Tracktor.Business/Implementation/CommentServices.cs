@@ -25,17 +25,27 @@ namespace Tracktor.Business.Implementation
             return new_id;
         }
 
+        public bool Update(CommentEntity comment)
+        {
+            return _unitOfWork.CommentRepository.Update(comment, _unitOfWork.Save);
+        }
+
+        public bool Delete(int commentId)
+        {
+            return _unitOfWork.CommentRepository.Delete(commentId, _unitOfWork.Save);
+        }
+
+
+        //koristi reputationCommentRepository
         public bool Rate(ReputationCommentEntity repCom)
         {
-            var repComment = new ReputationComment()
-            {
-                UserId = repCom.UserId,
-                CommentId = repCom.ContentCommentId,
-                Score = repCom.Score
-            };
-            _unitOfWork.ReputationCommentRepository.Insert(repComment);
-            _unitOfWork.Save();
+            _unitOfWork.ReputationCommentRepository.Insert(repCom, _unitOfWork.Save);
             return true;
+        }
+
+        public bool DeleteReputation(int repId)
+        {
+            return _unitOfWork.ReputationCommentRepository.Delete(repId, _unitOfWork.Save);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Tracktor.DAL.Repositories
         #region Public member methods...
 
         /// <summary>
-        /// Insert method for the place entities
+        /// Insert method for the ReputationComment entities
         /// </summary>
         /// <param name="repComDomain"></param>
         /// <param name="saveChanges"></param>
@@ -34,6 +34,20 @@ namespace Tracktor.DAL.Repositories
             DbSet.Add(repComDAL);
             saveChanges();
             return repComDAL.Id;
+        }
+
+        /// <summary>
+        /// Delete method for the ReputationComment entities
+        /// </summary>
+        /// <param name="reputationId"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Delete(int reputationId, Action saveChanges)
+        {
+            ReputationComment repComDAL = DbSet.FirstOrDefault(rc => rc.Id == reputationId);
+            DbSet.Remove(repComDAL);
+            saveChanges();
+            return true;
         }
 
         #endregion

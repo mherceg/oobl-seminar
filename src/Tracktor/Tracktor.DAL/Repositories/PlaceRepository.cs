@@ -37,6 +37,39 @@ namespace Tracktor.DAL.Repositories
         }
 
         /// <summary>
+        /// Update method for place entities
+        /// </summary>
+        /// <param name="place"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Update(PlaceEntity place, Action saveChanges)
+        {
+            Place placeDALnew = Mapper.ToDALModel(place);
+            Place placeDALold = DbSet.Find(place.Id);
+
+            if (placeDALold != null)
+            {
+                Context.Entry(placeDALold).CurrentValues.SetValues(placeDALnew);
+            }
+            saveChanges();
+            return true;
+        }
+
+        /// <summary>
+        /// Delete method fot the place entities
+        /// </summary>
+        /// <param name="placeId"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Delete(int placeId, Action saveChanges)
+        {
+            Place placeDAL = DbSet.FirstOrDefault(p => p.Id == placeId);
+            DbSet.Remove(placeDAL);
+            saveChanges();
+            return true;
+        }
+
+        /// <summary>
         /// Get All method for place entities
         /// </summary>
         /// <returns></returns>

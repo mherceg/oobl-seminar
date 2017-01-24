@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using Tracktor.Business;
 using Tracktor.Business.Interface;
 using Tracktor.Domain;
@@ -15,26 +15,22 @@ namespace Tracktor.WebService.Controllers
     {
         [Route("api/usertype/list")]
         [HttpGet]
-        public IEnumerable<UserTypeEntity> List()
+        [ResponseType(typeof(IEnumerable<UserTypeEntity>))]
+        public IHttpActionResult List()
         {
             List<UserTypeEntity> userTypes = new List<UserTypeEntity>();
-            userTypes.Add(new UserTypeEntity()
-            {
-                Id = 101,
-                Type = "User"
-            });
-            userTypes.Add(new UserTypeEntity()
-            {
-                Id = 102,
-                Type = "VipUser"
-            });
-            userTypes.Add(new UserTypeEntity()
-            {
-                Id = 103,
-                Type = "Admin"
-            });
 
-            return userTypes;
+            try
+            {
+                IUserTypeServices categoryService = ServiceFactory.getUserTypeServices();
+                userTypes = categoryService.ListAll();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok(userTypes);
         }
 
 

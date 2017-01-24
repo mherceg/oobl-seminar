@@ -49,11 +49,13 @@
     <Compile Include="Implementation\InfoServices.cs" />
     <Compile Include="Implementation\PlaceServices.cs" />
     <Compile Include="Implementation\UserServices.cs" />
+    <Compile Include="Implementation\UserTypeServices.cs" />
     <Compile Include="Interface\ICategoryServices.cs" />
     <Compile Include="Interface\ICommentServices.cs" />
     <Compile Include="Interface\IInfoServices.cs" />
     <Compile Include="Interface\IPlaceServices.cs" />
     <Compile Include="Interface\IUserServices.cs" />
+    <Compile Include="Interface\IUserTypeServices.cs" />
     <Compile Include="ServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

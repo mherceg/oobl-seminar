@@ -24,10 +24,10 @@ namespace Tracktor.DAL.UnitOfWork
         private CommentRepository _commentRepository;
         private InfoRepository _infoRepository;
         private PlaceRepository _placeRepository;
-        private GenericRepository<ReputationComment> _reputationCommentRepository;
+        private ReputationCommentRepository _reputationCommentRepository;
         private ReputationInfoRepository _reputationInfoRepository;
         private UserRepository _userRepository;
-        private GenericRepository<UserType> _userTypeRepository;
+        private UserTypeRepository _userTypeRepository;
         #endregion
 
         public UnitOfWork()
@@ -63,19 +63,6 @@ namespace Tracktor.DAL.UnitOfWork
         }
 
         /// <summary>
-        /// Get/Set Property for favoritePlace repository.
-        /// </summary>
-        //public GenericRepository<FavoritePlace> FavoritePlaceRepository
-        //{
-        //    get
-        //    {
-        //        if (this._favoritePlaceRepository == null)
-        //            this._favoritePlaceRepository = new GenericRepository<FavoritePlace>(_context);
-        //        return _favoritePlaceRepository;
-        //    }
-        //}
-
-        /// <summary>
         /// Get/Set Property for info repository.
         /// </summary>
         public InfoRepository InfoRepository
@@ -104,12 +91,12 @@ namespace Tracktor.DAL.UnitOfWork
         /// <summary>
         /// Get/Set Property for reputationComment repository.
         /// </summary>
-        public GenericRepository<ReputationComment> ReputationCommentRepository
+        public ReputationCommentRepository ReputationCommentRepository
         {
             get
             {
                 if (this._reputationCommentRepository == null)
-                    this._reputationCommentRepository = new GenericRepository<ReputationComment>(_context);
+                    this._reputationCommentRepository = new ReputationCommentRepository(_context);
                 return _reputationCommentRepository;
             }
         }
@@ -128,19 +115,6 @@ namespace Tracktor.DAL.UnitOfWork
         }
 
         /// <summary>
-        /// Get/Set Property for sponsorship repository.
-        /// </summary>
-        //public GenericRepository<Sponsorship> SponsorshipRepository
-        //{
-        //    get
-        //    {
-        //        if (this._sponsorshipRepository == null)
-        //            this._sponsorshipRepository = new GenericRepository<Sponsorship>(_context);
-        //        return _sponsorshipRepository;
-        //    }
-        //}
-
-        /// <summary>
         /// Get/Set Property for user repository.
         /// </summary>
         public UserRepository UserRepository
@@ -156,12 +130,12 @@ namespace Tracktor.DAL.UnitOfWork
         /// <summary>
         /// Get/Set Property for userType repository.
         /// </summary>
-        public GenericRepository<UserType> UserTypeRepository
+        public UserTypeRepository UserTypeRepository
         {
             get
             {
                 if (this._userTypeRepository == null)
-                    this._userTypeRepository = new GenericRepository<UserType>(_context);
+                    this._userTypeRepository = new UserTypeRepository(_context);
                 return _userTypeRepository;
             }
         }

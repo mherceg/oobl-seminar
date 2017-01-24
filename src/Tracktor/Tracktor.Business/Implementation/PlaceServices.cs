@@ -27,6 +27,16 @@ namespace Tracktor.Business.Implementation
             return new_id;
         }
 
+        public bool Update(PlaceEntity place)
+        {
+            return _unitOfWork.PlaceRepository.Update(place, _unitOfWork.Save);
+        }
+
+        public bool Delete(int placeId)
+        {
+            return _unitOfWork.PlaceRepository.Delete(placeId, _unitOfWork.Save);
+        }
+
         public List<PlaceEntity> GetByFilter(IDictionary<string, bool> filters, bool active, bool future)
         {
             return _unitOfWork.PlaceRepository.GetMany(filters, active, future).ToList();
@@ -42,8 +52,6 @@ namespace Tracktor.Business.Implementation
             return _unitOfWork.PlaceRepository.GetSponsorship(userId).ToList();
         }
 
-
-        //Proba, ne koristi se u mobilnim use caseovima
         public List<PlaceEntity> GetAll()
         {
             return (List<PlaceEntity>)_unitOfWork.PlaceRepository.GetAll();

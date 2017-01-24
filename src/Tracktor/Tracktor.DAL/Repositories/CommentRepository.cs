@@ -19,6 +19,7 @@ namespace Tracktor.DAL.Repositories
         public CommentRepository(TracktorDb context) : base(context)
         {
         }
+
         #endregion
 
         #region Public member methods...
@@ -36,7 +37,38 @@ namespace Tracktor.DAL.Repositories
             return commentDAL.Id;
         }
 
+        /// <summary>
+        /// Update method for comment entities
+        /// </summary>
+        /// <param name="comment"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Update(CommentEntity comment, Action saveChanges)
+        {
+            Comment commentDALnew = Mapper.ToDALModel(comment);
+            Comment commentDALold = DbSet.Find(comment.Id);
 
+            if (commentDALold != null)
+            {
+                Context.Entry(commentDALold).CurrentValues.SetValues(commentDALnew);
+            }
+            saveChanges();
+            return true;
+        }
+
+        /// <summary>
+        /// Delete method for comment entities
+        /// </summary>
+        /// <param name="commentId"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Delete(int commentId, Action saveChanges)
+        {
+            Comment commentDAL = DbSet.FirstOrDefault(c => c.Id == commentId);
+            DbSet.Remove(commentDAL);
+            saveChanges();
+            return true;
+        }
 
         #endregion
     }

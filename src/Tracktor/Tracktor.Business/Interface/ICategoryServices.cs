@@ -9,6 +9,12 @@ namespace Tracktor.Business.Interface
 {
     public interface ICategoryServices
     {
+        int Insert(CategoryEntity category);
+
+        bool Update(CategoryEntity category);
+
+        bool Delete(int categoryId);
+
         List<CategoryEntity> ListAll();
     }
 }

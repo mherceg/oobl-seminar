@@ -11,6 +11,10 @@ namespace Tracktor.Business.Interface
     {
         int Add(PlaceEntity place);
 
+        bool Update(PlaceEntity place);
+
+        bool Delete(int placeId);
+
         List<PlaceEntity> GetByFilter(IDictionary<string, bool> filters, bool active, bool future);
 
         List<PlaceEntity> GetFavorite(int userId);
