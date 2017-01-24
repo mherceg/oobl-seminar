@@ -22,8 +22,8 @@ namespace Tracktor.Business.Implementation
 
         public int Add(PlaceEntity place)
         {
-            int new_id = _unitOfWork.PlaceRepository.Insert(place);
-            _unitOfWork.Save();
+            int new_id = _unitOfWork.PlaceRepository.Insert(place, _unitOfWork.Save);
+            //_unitOfWork.Save();
             return new_id;
         }
 

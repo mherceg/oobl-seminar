@@ -21,26 +21,17 @@ namespace Tracktor.Business.Implementation
 
         public int Add(CommentEntity comment)
         {
-            var new_com = new Comment()
-            {
-                Time = comment.EndTime,
-                UserId = comment.UserId,
-                InfoId = comment.ContentInfoId,
-                Content = comment.Content
-            };
-
-            _unitOfWork.CommentRepository.Insert(new_com);
-            _unitOfWork.Save();
-            return new_com.Id;
+            int new_id = _unitOfWork.CommentRepository.Insert(comment, _unitOfWork.Save);
+            return new_id;
         }
 
-        public bool Rate(int commentId, int userId, bool score)
+        public bool Rate(ReputationCommentEntity repCom)
         {
             var repComment = new ReputationComment()
             {
-                UserId = userId,
-                CommentId = commentId,
-                Score = score
+                UserId = repCom.UserId,
+                CommentId = repCom.ContentCommentId,
+                Score = repCom.Score
             };
             _unitOfWork.ReputationCommentRepository.Insert(repComment);
             _unitOfWork.Save();

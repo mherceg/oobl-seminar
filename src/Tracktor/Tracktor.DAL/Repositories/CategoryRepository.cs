@@ -40,7 +40,7 @@ namespace Tracktor.DAL.Repositories
         /// Get All method for place entities
         /// </summary>
         /// <returns></returns>
-        public override IEnumerable<CategoryEntity> GetAll()
+        public IEnumerable<CategoryEntity> GetAll()
         {
             IEnumerable<Category> categoriesDAL = DbSet;
             List<CategoryEntity> categoriesDomain = new List<CategoryEntity>();

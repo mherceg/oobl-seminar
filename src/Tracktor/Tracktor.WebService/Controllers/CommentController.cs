@@ -15,6 +15,12 @@ namespace Tracktor.WebService.Controllers
 {
     public class CommentController : ApiController
     {
+        private DTOAssembler _DTOAssempler { get; set; }
+        public CommentController()
+        {
+            _DTOAssempler = new DTOAssembler();
+        }
+
         //UseCase dodavanje i ocjenjivanje komentara
         [Route("api/comment/add")]
         [HttpPost]
@@ -26,20 +32,13 @@ namespace Tracktor.WebService.Controllers
             {
                 try
                 {
-                    var com = new CommentEntity()
-                    {
-                        EndTime = comment.time,
-                        UserId = comment.userId,
-                        ContentInfoId = comment.contentInfoId,
-                        Content = comment.content
-                    };
-
+                    CommentEntity commentDomain = _DTOAssempler.CreateCommentEntity(comment);
                     ICommentServices commentService = ServiceFactory.getCommentServices();
-                    Id = commentService.Add(com);
+                    Id = commentService.Add(commentDomain);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -53,26 +52,27 @@ namespace Tracktor.WebService.Controllers
         [Route("api/comment/rate")]
         [HttpPost]
         [ResponseType(typeof(bool))]
-        public IHttpActionResult Rate(int commentId, int userId, bool score)
+        public IHttpActionResult Rate(RateCommentPostDTO reputationComment)
         {
             bool success = true;
             if (ModelState.IsValid)
             {
-                //Treba implementirati
                 try
                 {
+                    ReputationCommentEntity repCommentDomain = _DTOAssempler.CreateReputationCommentEntity(reputationComment);
                     ICommentServices commentService = ServiceFactory.getCommentServices();
-                    success = commentService.Rate(commentId, userId, score);
+                    success = commentService.Rate(repCommentDomain);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    return BadRequest("Neispravni podaci");
+                    return BadRequest(e.Message);
                 }
             }
             else
             {
                 return BadRequest("Neispravni podaci");
             }
+
             return Ok(success);
         }
 

@@ -12,10 +12,10 @@ namespace Tracktor.Business.Implementation
 {
     public class UserServices : IUserServices
     {
-
         private UnitOfWork _unitOfWork;
 
-        public UserServices() {
+        public UserServices()
+        {
             _unitOfWork = new UnitOfWork(); 
         }
 

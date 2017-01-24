@@ -18,7 +18,7 @@ namespace Tracktor.WebService.Controllers
     {
 
         //Implementirano: AddNew, ListFilter, ListFavorite, ListSponsorship
-        //Treba provjeriti:
+        //Treba provjeriti: sve
         //Fali:
 
         //Add metode - Unos novog mjesta
@@ -166,6 +166,8 @@ namespace Tracktor.WebService.Controllers
 
             return Ok(places);
         }
+
+
 
 
         #region Ne koristi se u use caseovima

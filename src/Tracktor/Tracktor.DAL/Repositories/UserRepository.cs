@@ -51,25 +51,25 @@ namespace Tracktor.DAL.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public override UserEntity GetByID(object id)
+        public UserEntity GetByID(object id)
         {
             User userDAL = DbSet.Find(id);
-            List<FavoritePlace> favoritePlace = this.Context.Set<FavoritePlace>().Where(fp => fp.UserId == userDAL.Id).ToList();
-            List<Sponsorship> sponsorship = this.Context.Set<Sponsorship>().Where(s => s.UserId == userDAL.Id).ToList();
-            List<Place> places = this.Context.Set<Place>().ToList();
+            //List<FavoritePlace> favoritePlace = this.Context.Set<FavoritePlace>().Where(fp => fp.UserId == userDAL.Id).ToList();
+            //List<Sponsorship> sponsorship = this.Context.Set<Sponsorship>().Where(s => s.UserId == userDAL.Id).ToList();
+            //List<Place> places = this.Context.Set<Place>().ToList();
 
-            var favPlaces = (from Item1 in favoritePlace
-                                join Item2 in places
-                                on Item1.PlaceId equals Item2.Id
-                            select Item2).ToList();
+            //var favPlaces = (from Item1 in favoritePlace
+            //                    join Item2 in places
+            //                    on Item1.PlaceId equals Item2.Id
+            //                select Item2).ToList();
 
-            var spoPlaces = (from Item1 in sponsorship
-                             join Item2 in places
-                             on Item1.PlaceId equals Item2.Id
-                             select Item2).ToList();
+            //var spoPlaces = (from Item1 in sponsorship
+            //                 join Item2 in places
+            //                 on Item1.PlaceId equals Item2.Id
+            //                 select Item2).ToList();
 
 
-            UserEntity userDomain = Mapper.ToDomainModel(userDAL, favPlaces, spoPlaces);
+            UserEntity userDomain = Mapper.ToDomainModel(userDAL);
 
             return userDomain;
         }
@@ -79,25 +79,25 @@ namespace Tracktor.DAL.Repositories
         /// </summary>
         /// <param name="predicate">Criteria to match on</param>
         /// <returns>A single record that matches the specified criteria</returns>
-        public override UserEntity GetSingle(Func<User, bool> predicate)
+        public UserEntity GetSingle(Func<User, bool> predicate)
         {
             User userDAL = DbSet.Single<User>(predicate);
-            List<FavoritePlace> favoritePlace = this.Context.Set<FavoritePlace>().Where(fp => fp.UserId == userDAL.Id).ToList();
-            List<Sponsorship> sponsorship = this.Context.Set<Sponsorship>().Where(s => s.UserId == userDAL.Id).ToList();
-            List<Place> places = this.Context.Set<Place>().ToList();
+            //List<FavoritePlace> favoritePlace = this.Context.Set<FavoritePlace>().Where(fp => fp.UserId == userDAL.Id).ToList();
+            //List<Sponsorship> sponsorship = this.Context.Set<Sponsorship>().Where(s => s.UserId == userDAL.Id).ToList();
+            //List<Place> places = this.Context.Set<Place>().ToList();
 
-            var favPlaces = (from Item1 in favoritePlace
-                             join Item2 in places
-                             on Item1.PlaceId equals Item2.Id
-                             select Item2).ToList();
+            //var favPlaces = (from Item1 in favoritePlace
+            //                 join Item2 in places
+            //                 on Item1.PlaceId equals Item2.Id
+            //                 select Item2).ToList();
 
-            var spoPlaces = (from Item1 in sponsorship
-                             join Item2 in places
-                             on Item1.PlaceId equals Item2.Id
-                             select Item2).ToList();
+            //var spoPlaces = (from Item1 in sponsorship
+            //                 join Item2 in places
+            //                 on Item1.PlaceId equals Item2.Id
+            //                 select Item2).ToList();
 
 
-            UserEntity userDomain = Mapper.ToDomainModel(userDAL, favPlaces, spoPlaces);
+            UserEntity userDomain = Mapper.ToDomainModel(userDAL);
 
             return userDomain;
         }
@@ -114,17 +114,21 @@ namespace Tracktor.DAL.Repositories
         /// <returns></returns>
         public void AddFavoritePlace(int userId, int placeId)
         {
-            if(this.Context.FavoritePlace.Any(fp => fp.UserId == userId && fp.PlaceId == placeId))
-            {
-                throw new Exception("Mjesto je već dodano u listu favorita!");
-            }
-            var new_favoritePlace = new FavoritePlace()
-            {
-                UserId = userId,
-                PlaceId = placeId
-            };
+            User userDAL = DbSet.Find(userId);
+            Place placeDAL = this.Context.Place.Find(placeId);
+            userDAL.Place.Add(placeDAL);
 
-            this.Context.FavoritePlace.Add(new_favoritePlace);
+            //if(this.Context.FavoritePlace.Any(fp => fp.UserId == userId && fp.PlaceId == placeId))
+            //{
+            //    throw new Exception("Mjesto je već dodano u listu favorita!");
+            //}
+            //var new_favoritePlace = new FavoritePlace()
+            //{
+            //    UserId = userId,
+            //    PlaceId = placeId
+            //};
+
+            //this.Context.FavoritePlace.Add(new_favoritePlace);
         }
 
         /// <summary>
@@ -135,17 +139,22 @@ namespace Tracktor.DAL.Repositories
         /// <returns></returns>
         public void AddSponsorPlace(int userId, int placeId)
         {
-            if (this.Context.Sponsorship.Any(sp => sp.UserId == userId && sp.PlaceId == placeId))
-            {
-                throw new Exception("Mjesto je već dodano u listu sponzoriranih!");
-            }
-            var new_sponsorPlace = new Sponsorship()
-            {
-                UserId = userId,
-                PlaceId = placeId
-            };
+            User userDAL = DbSet.Find(userId);
+            Place placeDAL = this.Context.Place.Find(placeId);
+            userDAL.Place1.Add(placeDAL);
 
-            this.Context.Sponsorship.Add(new_sponsorPlace);
+            //if (this.Context.Sponsorship.Any(sp => sp.UserId == userId && sp.PlaceId == placeId))
+            //{
+            //    throw new Exception("Mjesto je već dodano u listu sponzoriranih!");
+            //}
+            //var new_sponsorPlace = new Sponsorship()
+            //{
+            //    UserId = userId,
+            //    PlaceId = placeId
+            //};
+
+            //this.Context.Sponsorship.Add(new_sponsorPlace);
+
         }
 
         /// <summary>
@@ -156,12 +165,18 @@ namespace Tracktor.DAL.Repositories
         /// <returns></returns>
         public void RemoveFavoritePlace(int userId, int placeId)
         {
-            if (!this.Context.FavoritePlace.Any(fp => fp.UserId == userId && fp.PlaceId == placeId))
-            {
-                throw new Exception("Mjesto nije u listi favorita!");
-            }
-            var favoritePlace = this.Context.FavoritePlace.Single(fp => fp.UserId == userId && fp.PlaceId == placeId);
-            this.Context.FavoritePlace.Remove(favoritePlace);
+            User userDAL = DbSet.Find(userId);
+            Place placeDAL = this.Context.Place.Find(placeId);
+            if (placeDAL != null)
+                userDAL.Place.Remove(placeDAL);
+
+            //if (!this.Context.FavoritePlace.Any(fp => fp.UserId == userId && fp.PlaceId == placeId))
+            //{
+            //    throw new Exception("Mjesto nije u listi favorita!");
+            //}
+            //var favoritePlace = this.Context.FavoritePlace.Single(fp => fp.UserId == userId && fp.PlaceId == placeId);
+            //this.Context.FavoritePlace.Remove(favoritePlace);
+
         }
 
         /// <summary>
@@ -172,12 +187,18 @@ namespace Tracktor.DAL.Repositories
         /// <returns></returns>
         public void RemoveSponsorPlace(int userId, int placeId)
         {
-            if (!this.Context.Sponsorship.Any(fp => fp.UserId == userId && fp.PlaceId == placeId))
-            {
-                throw new Exception("Mjesto nije u sponzor listi!");
-            }
-            var sponsorPlace = this.Context.Sponsorship.Single(sp => sp.UserId == userId && sp.PlaceId == placeId);
-            this.Context.Sponsorship.Remove(sponsorPlace);
+            User userDAL = DbSet.Find(userId);
+            Place placeDAL = this.Context.Place.Find(placeId);
+            if (placeDAL != null)
+                userDAL.Place1.Remove(placeDAL);
+
+            //if (!this.Context.Sponsorship.Any(fp => fp.UserId == userId && fp.PlaceId == placeId))
+            //{
+            //    throw new Exception("Mjesto nije u sponzor listi!");
+            //}
+            //var sponsorPlace = this.Context.Sponsorship.Single(sp => sp.UserId == userId && sp.PlaceId == placeId);
+            //this.Context.Sponsorship.Remove(sponsorPlace);
+
         }
 
         #endregion

@@ -9,7 +9,7 @@ using Tracktor.Domain;
 
 namespace Tracktor.DAL
 {
-    public class ORMapper
+    public class ModelMapper
     {
         //To Domain
         public CategoryEntity ToDomainModel(Category category)
@@ -129,16 +129,16 @@ namespace Tracktor.DAL
             return userTypeDomain;
         }
 
-        public UserEntity ToDomainModel(User user, List<Place> favPlaces, List<Place> spoPlaces)
+        public UserEntity ToDomainModel(User user)
         {
             List<PlaceEntity> favoritePlaces = new List<PlaceEntity>();
-            foreach(var place in favPlaces)
+            foreach(var place in user.Place)
             {
                 favoritePlaces.Add(this.ToDomainModel(place));
             }
 
             List<PlaceEntity> sponsorPlaces = new List<PlaceEntity>();
-            foreach (var place in spoPlaces)
+            foreach (var place in user.Place1)
             {
                 sponsorPlaces.Add(this.ToDomainModel(place));
             }
@@ -159,28 +159,23 @@ namespace Tracktor.DAL
             return userDomain;
         }
 
-        public UserEntity ToDomainModel(User user)
+
+
+        //To DAL
+        public Comment ToDALModel(CommentEntity comment)
         {
-            //Kako bez atributa za navigaciju saznati za usera njegova fav i sponsor mjesta?
-            UserEntity userDomain = new UserEntity()
+            Comment commentDAL = new Comment()
             {
-                Id = user.Id,
-                Username = user.Username,
-                Password = user.Password,
-                FullName = user.FullName,
-                IsActive = user.IsActive,
-                UserTypeId = user.UserTypeId,
-                FavoritePlaces = null,
-                SponsorshipPlaces = null,
-                Type = this.ToDomainModel(user.UserType)
+                Id = comment.Id,
+                Time = comment.EndTime,
+                UserId = comment.UserId,
+                InfoId = comment.ContentInfoId,
+                Content = comment.Content
             };
 
-            return userDomain;
+            return commentDAL;
         }
-        
-        
-        
-        //To DAL
+
         public Category ToDALModel(CategoryEntity category)
         {
             Category categoryDAL = new Category()
@@ -217,6 +212,18 @@ namespace Tracktor.DAL
             };
 
             return repInfoDAL;
+        }
+
+        public ReputationComment ToDALModel(ReputationCommentEntity reputation)
+        {
+            ReputationComment repComDAL = new ReputationComment()
+            {
+                UserId = reputation.UserId,
+                CommentId = reputation.ContentCommentId,
+                Score = reputation.Score
+            };
+
+            return repComDAL;
         }
 
         public User ToDALModel(UserEntity user)

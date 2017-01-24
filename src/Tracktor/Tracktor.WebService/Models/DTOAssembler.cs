@@ -60,6 +60,17 @@ namespace Tracktor.WebService.Models
 
 
         //Create Domain entities
+        public CommentEntity CreateCommentEntity(CommentPostDTO comment)
+        {
+            CommentEntity commentDomain = new CommentEntity()
+            {
+                EndTime = comment.time,
+                UserId = comment.userId,
+                ContentInfoId = comment.contentInfoId,
+                Content = comment.content
+            };
+            return commentDomain;
+        }
         public InfoEntity CreateInfoEntity(InfoPostDTO info)
         {
             InfoEntity infoDomain = new InfoEntity()
@@ -85,9 +96,19 @@ namespace Tracktor.WebService.Models
             };
             return infoDomain;
         }
+        public ReputationCommentEntity CreateReputationCommentEntity(RateCommentPostDTO reputation)
+        {
+            ReputationCommentEntity repInfo = new ReputationCommentEntity()
+            {
+                UserId = reputation.userId,
+                ContentCommentId = reputation.commentId,
+                Score = reputation.score
+            };
+            return repInfo;
+        }
         public ReputationInfoEntity CreateReputationInfoEntity (RateInfoPostDTO reputation)
         {
-            ReputationInfoEntity repInfo = new ReputationInfoEntity
+            ReputationInfoEntity repInfo = new ReputationInfoEntity()
             {
                 UserId = reputation.userId,
                 ContentCommentId = reputation.infoId,

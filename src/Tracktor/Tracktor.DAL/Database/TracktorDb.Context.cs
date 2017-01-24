@@ -27,14 +27,12 @@ namespace Tracktor.DAL.Database
     
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
-        public virtual DbSet<FavoritePlace> FavoritePlace { get; set; }
         public virtual DbSet<Info> Info { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<ReputationComment> ReputationComment { get; set; }
         public virtual DbSet<ReputationInfo> ReputationInfo { get; set; }
-        public virtual DbSet<Sponsorship> Sponsorship { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

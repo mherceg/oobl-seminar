@@ -40,7 +40,7 @@ namespace Tracktor.DAL.Repositories
         /// Get All method for place entities
         /// </summary>
         /// <returns></returns>
-        public override IEnumerable<PlaceEntity> GetAll()
+        public IEnumerable<PlaceEntity> GetAll()
         {
             IEnumerable<Place> placesDAL = DbSet;
             List<PlaceEntity> placesDomain = new List<PlaceEntity>();
@@ -102,20 +102,30 @@ namespace Tracktor.DAL.Repositories
         /// <returns></returns>
         public IEnumerable<PlaceEntity> GetFavorite(int userId)
         {
-            IEnumerable<Place> places = DbSet;
-            List<FavoritePlace> favoritePlace = this.Context.Set<FavoritePlace>().Where(fp => fp.UserId == userId).ToList();
+            //IEnumerable<Place> places = DbSet;
+            //List<FavoritePlace> favoritePlace = this.Context.Set<FavoritePlace>().Where(fp => fp.UserId == userId).ToList();
 
-            var favPlaces = (from Item1 in favoritePlace
-                             join Item2 in places
-                             on Item1.PlaceId equals Item2.Id
-                             select Item2).ToList();
+            //var favPlaces = (from Item1 in favoritePlace
+            //                 join Item2 in places
+            //                 on Item1.PlaceId equals Item2.Id
+            //                 select Item2).ToList();
 
+            //List<PlaceEntity> placesDomain = new List<PlaceEntity>();
+            //foreach (var place in favPlaces)
+            //{
+            //    placesDomain.Add(Mapper.ToDomainModel(place));
+            //}
+            //return placesDomain;
+
+            User userDAL = this.Context.User.Find(userId);
             List<PlaceEntity> placesDomain = new List<PlaceEntity>();
-            foreach (var place in favPlaces)
+            foreach (var place in userDAL.Place)
             {
                 placesDomain.Add(Mapper.ToDomainModel(place));
             }
             return placesDomain;
+
+
         }
 
         /// <summary>
@@ -125,20 +135,29 @@ namespace Tracktor.DAL.Repositories
         /// <returns></returns>
         public IEnumerable<PlaceEntity> GetSponsorship(int userId)
         {
-            IEnumerable<Place> places = DbSet;
-            List<Sponsorship> sponsorship = this.Context.Set<Sponsorship>().Where(fp => fp.UserId == userId).ToList();
+            //IEnumerable<Place> places = DbSet;
+            //List<Sponsorship> sponsorship = this.Context.Set<Sponsorship>().Where(fp => fp.UserId == userId).ToList();
 
-            var sponsorPlaces = (from Item1 in sponsorship
-                             join Item2 in places
-                             on Item1.PlaceId equals Item2.Id
-                             select Item2).ToList();
+            //var sponsorPlaces = (from Item1 in sponsorship
+            //                 join Item2 in places
+            //                 on Item1.PlaceId equals Item2.Id
+            //                 select Item2).ToList();
 
+            //List<PlaceEntity> placesDomain = new List<PlaceEntity>();
+            //foreach (var place in sponsorPlaces)
+            //{
+            //    placesDomain.Add(Mapper.ToDomainModel(place));
+            //}
+            //return placesDomain;
+
+            User userDAL = this.Context.User.Find(userId);
             List<PlaceEntity> placesDomain = new List<PlaceEntity>();
-            foreach (var place in sponsorPlaces)
+            foreach (var place in userDAL.Place1)
             {
                 placesDomain.Add(Mapper.ToDomainModel(place));
             }
             return placesDomain;
+
         }
         #endregion
     }

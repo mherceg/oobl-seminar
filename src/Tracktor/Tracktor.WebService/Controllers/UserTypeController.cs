@@ -13,27 +13,6 @@ namespace Tracktor.WebService.Controllers
 {
     public class UserTypeController : ApiController
     {
-        [Route("api/usertype/add")]
-        [HttpPost]
-        public int Add([FromBody]UserTypeEntity userType)
-        {
-            return 17;
-        }
-
-        //[Route("api/usertype/update")]
-        //[HttpPatch]
-        //public UserTypeEntity Update([FromBody]UserTypeEntity userType)
-        //{
-        //    return userType;
-        //}
-
-        [Route("api/usertype/delete")]
-        [HttpDelete]
-        public bool Delete(int id)
-        {
-            return true;
-        }
-
         [Route("api/usertype/list")]
         [HttpGet]
         public IEnumerable<UserTypeEntity> List()
@@ -57,6 +36,31 @@ namespace Tracktor.WebService.Controllers
 
             return userTypes;
         }
+
+
+
+        #region Ne koristi se u use caseovima za mobilnu
+        //[Route("api/usertype/add")]
+        //[HttpPost]
+        //public int Add([FromBody]UserTypeEntity userType)
+        //{
+        //    return 17;
+        //}
+
+        //[Route("api/usertype/update")]
+        //[HttpPatch]
+        //public UserTypeEntity Update([FromBody]UserTypeEntity userType)
+        //{
+        //    return userType;
+        //}
+
+        //[Route("api/usertype/delete")]
+        //[HttpDelete]
+        //public bool Delete(int id)
+        //{
+        //    return true;
+        //}
+        #endregion
 
     }
 }

@@ -178,8 +178,6 @@ namespace Tracktor.WebService.Controllers
 
 
 
-
-
         #region Ne koristi se u use caseovima za mobilnu
 
         //Nikad ne dohvacamo sve dogadjaje bez filtera

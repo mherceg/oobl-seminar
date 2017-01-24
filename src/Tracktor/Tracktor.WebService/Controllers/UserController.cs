@@ -20,8 +20,8 @@ namespace Tracktor.WebService.Controllers
             _DTOAssempler = new DTOAssembler();
         }
 
-        //Implementirano: Add, Login, Get
-        //Treba provjeriti: AddFavorite, AddSponsor, RmFavorite, RmSponsor
+        //Implementirano: Add, Login, Get, AddFavorite, AddSponsor, RmFavorite, RmSponsor
+        //Treba provjeriti: sve
         //Fali:
 
         [Route("api/user/add")]
