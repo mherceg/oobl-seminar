@@ -32,21 +32,28 @@ namespace Tracktor.Mobile
                     streamWriter.Flush();
                     //streamWriter.
                 }
-            }            
+            }
 
-            using (var response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null)))
+            try
             {
-                if (response.StatusCode == HttpStatusCode.OK)
+                using (var response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null)))
                 {
-                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                    if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        var content = reader.ReadToEnd();
-                        if (!string.IsNullOrWhiteSpace(content))
+                        using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                         {
-                            returnObject = JsonConvert.DeserializeObject<T>(content);
+                            var content = reader.ReadToEnd();
+                            if (!string.IsNullOrWhiteSpace(content))
+                            {
+                                returnObject = JsonConvert.DeserializeObject<T>(content);
+                            }
                         }
                     }
                 }
+            }
+            catch (WebException)
+            {
+                return default(T);
             }
 
             return (T)returnObject;
@@ -61,9 +68,12 @@ namespace Tracktor.Mobile
 
         public async Task<int> getSessionId(LoginEntity loginEntity)
         {
-            int sessionId = await fetchObject<int>(@"/user/login/", "POST", loginEntity);
+            int? sessionId = await fetchObject<int?>(@"/user/login/", "POST", loginEntity);
 
-            return sessionId;
+            if (sessionId == null)
+                return -1;
+
+            return (int)sessionId;
         }
     }
 }
