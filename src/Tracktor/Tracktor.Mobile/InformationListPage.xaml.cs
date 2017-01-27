@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Tracktor.Domain;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -29,6 +30,8 @@ namespace Tracktor.Mobile
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         private InformationListPageController controller;
+
+        private PlaceEntity place = null;
 
         public InformationListPage()
         {
@@ -102,14 +105,18 @@ namespace Tracktor.Mobile
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            place = (PlaceEntity)e.Parameter;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            await controller.InitInformations(place);
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Tracktor.Domain;
 using System.IO;
 using Newtonsoft.Json;
+using Tracktor.WebService.Models;
 
 namespace Tracktor.Mobile
 {
@@ -98,6 +99,13 @@ namespace Tracktor.Mobile
                 list = new List<Domain.PlaceEntity>();
 
             return list;
+        }
+
+        public async Task<IEnumerable<InfoDTO>> getInfoDTO(PlaceEntity place)
+        {
+            IEnumerable<InfoDTO> collection = await fetchObject<IEnumerable<InfoDTO>>(@"/info/ListByPlace?PlaceId="+place.Id, "GET", null);
+            
+            return collection;
         }
 
         public async Task<int> getSessionId(LoginEntity loginEntity)

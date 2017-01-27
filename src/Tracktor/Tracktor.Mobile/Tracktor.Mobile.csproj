@@ -165,6 +165,10 @@
       <Project>{dd8f8ead-47aa-43a9-8b79-0671dfc5edb7}</Project>
       <Name>Tracktor.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tracktor.WebServiceModels\Tracktor.WebServiceModels.csproj">
+      <Project>{b6aa52a5-09ea-4f17-a555-ce444e00bfde}</Project>
+      <Name>Tracktor.WebServiceModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

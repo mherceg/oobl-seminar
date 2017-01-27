@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
 
     <Grid x:Name="LayoutRoot">
 
@@ -29,10 +29,8 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="488" Margin="10,10,0,0" VerticalAlignment="Top" Width="342" Background="Black">
-                <ListBoxItem>
-                    <TextBlock Text="ayy" Foreground="White" FontSize="22"/>
-                </ListBoxItem>
+            <ListBox x:Name="InformationListbox" x:FieldModifier="public" HorizontalAlignment="Left" Height="488" Margin="10,10,0,0" VerticalAlignment="Top" Width="342" Background="Black">
+                
             </ListBox>
 
 

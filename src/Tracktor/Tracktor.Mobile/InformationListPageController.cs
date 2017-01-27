@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Controls;
 using Tracktor.Domain;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
+using Tracktor.WebService.Models;
 
 namespace Tracktor.Mobile
 {
@@ -19,8 +20,23 @@ namespace Tracktor.Mobile
         {
             this.page = page;            
         }
-        public async void InitInformations(PlaceEntity a)
+        public async Task InitInformations(PlaceEntity place)
         {
+            ServiceRepository serviceRepository = new ServiceRepository();
+
+            IEnumerable<InfoDTO> informations = await serviceRepository.getInfoDTO(place);
+
+            foreach (var information in informations)
+            {
+                page.InformationListbox.Items.Add(
+                new TextBlock()
+                {
+                    Text = information.content,
+                    Foreground = new SolidColorBrush(Windows.UI.Colors.White),
+                    FontSize = 22
+                }
+            );
+            }           
         }
     }
 }

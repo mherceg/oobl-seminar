@@ -72,7 +72,11 @@ namespace Tracktor.Mobile
                     Foreground = new SolidColorBrush(Color.FromArgb(255,0,0,0))                                   
                 };
                 
-                pin.Tapped += new TappedEventHandler(PinTapped);
+                pin.Tapped += new TappedEventHandler(delegate(object sender, TappedRoutedEventArgs e)
+                {
+                    page.Frame.Navigate(typeof(InformationListPage), place);
+                }
+                );
 
                 pin.Children.Add(pinImage);
                 pin.Children.Add(pinText);
@@ -101,7 +105,7 @@ namespace Tracktor.Mobile
 
         private void PinTapped(object sender, RoutedEventArgs e)
         {            
-            page.Frame.Navigate(typeof(PlaceInfoPage));
+            
         }
     }
 }
