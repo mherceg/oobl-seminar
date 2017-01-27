@@ -51,7 +51,7 @@ namespace Tracktor.Mobile
                     }
                 }
             }
-            catch (WebException)
+            catch (Exception)
             {
                 return default(T);
             }
@@ -59,9 +59,43 @@ namespace Tracktor.Mobile
             return (T)returnObject;
         }
 
-        public async Task<List<PlaceEntity>> getPlaces()
+        public async Task<List<CategoryEntity>> getCategories()
         {
-            List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/list", "GET", null);            
+            List<Domain.CategoryEntity> list = await fetchObject<List<Domain.CategoryEntity>>(@"/category/list", "GET", null);
+
+            return list;
+        }
+
+        private async Task<Dictionary<string, bool>> getCategoriesDict()
+        {
+            Dictionary<string, bool> categories = new Dictionary<string, bool>();
+            List<Domain.CategoryEntity> list = await getCategories();
+            foreach (var category in list)
+            {
+                categories[category.Name] = true;
+            }
+            return categories;
+        }
+
+        public async Task<List<PlaceEntity>> getPlaces(CategoriesContainer categoriesContainer)
+        {
+            string requestString = "active=true&future=true";
+            if (categoriesContainer != null)
+            {
+                requestString = "active=" + categoriesContainer.time["current"].ToString()
+                    + "&future=" + categoriesContainer.time["future"].ToString();
+            }
+            else
+            {
+                categoriesContainer = new CategoriesContainer()
+                {
+                    categories = await getCategoriesDict()
+                };
+            }
+            List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/filter?"+requestString, "POST", categoriesContainer.categories);
+
+            if (list == null)
+                list = new List<Domain.PlaceEntity>();
 
             return list;
         }

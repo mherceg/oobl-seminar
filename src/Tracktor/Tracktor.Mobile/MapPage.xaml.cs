@@ -25,6 +25,8 @@ namespace Tracktor.Mobile
     {
         MapPageController controller = null;
 
+        private CategoriesContainer categoriesContainer = null;
+
         public MapPage()
         {
             this.InitializeComponent();
@@ -50,11 +52,17 @@ namespace Tracktor.Mobile
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+            categoriesContainer = (CategoriesContainer)e.Parameter;
         }
 
         private async void Map_Loaded(object sender, RoutedEventArgs e)
         {     
-            await controller.MapLoaded();                        
+            await controller.MapLoaded(categoriesContainer);                        
+        }
+
+        private void buttonFilters_Click(object sender, RoutedEventArgs e)
+        {
+            controller.ShowFilters();
         }
     }
 }

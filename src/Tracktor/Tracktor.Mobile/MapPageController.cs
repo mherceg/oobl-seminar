@@ -25,12 +25,19 @@ namespace Tracktor.Mobile
         {
             this.page = page;
         }
-        public async Task MapLoaded()
+        public void ShowFilters()
+        {
+            page.Frame.Navigate(typeof(FiltersPage));
+        }
+        public async Task MapLoaded(CategoriesContainer categoriesContainer)
         {
             page.Map.ZoomLevel = 16;            
 
             ServiceRepository serviceRepository = new ServiceRepository();
-            List<PlaceEntity> places = await serviceRepository.getPlaces();
+            List<PlaceEntity> places = await serviceRepository.getPlaces(categoriesContainer);
+
+            if (places.Count == 0)
+                return;
 
             // calculate center of all places
             GeoCoordinate centerCoordinate = new GeoCoordinate(0, 0);
