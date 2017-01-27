@@ -19,7 +19,7 @@ namespace Tracktor.Mobile
         {
             this.page = page;            
         }
-        public async void InitInformations(PlaceEntity)
+        public async void InitInformations(PlaceEntity a)
         {
         }
     }
