@@ -3,3 +3,11 @@
     height: 400px;
     display: block;
 }
+
+.filter-btn {
+    width: 100%;
+}
+
+.filter-div {
+    margin-top: 3px;
+}

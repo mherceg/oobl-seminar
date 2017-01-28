@@ -22,6 +22,16 @@
                 Choose a place on the map to get current impressions about that location.
             </div>
             @Html.ActionLink("Add location", "AddPlace", "Place", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary", style = "width: 100%" })
+            <div class="filter-div">
+                <button class="btn btn-primary filter-btn" onclick="favouritePlaces()">Show favourite places only</button>
+            </div>
+            @if (isPremium)
+            {
+                <div class="filter-div"><button class="btn btn-primary filter-btn" onclick="sponsoredPlaces()">Show sponsored places only</button></div>
+            }
+            <div class="filter-div">
+                <button class="btn btn-primary filter-btn" onclick="allPlaces()">Show all places</button>
+            </div>
         </div>
         <div class="col-xs-6">
             @using (Html.BeginForm())
@@ -90,7 +100,11 @@
 
 <script type="text/javascript">
     document.getElementById("categorySelector").value = @Model.SelectedCategoryId;
-    var locations = @Html.Raw(
+
+    var map = null;
+    var markers = [];
+    function initMap() {
+        var locations = @Html.Raw(
         Json.Encode(
             Model.Places.Select(m=> new
             {
@@ -101,9 +115,7 @@
             })
         )
     );
-
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             zoom: 1,
             center: { lat: locations[0].lat, lng: locations[0].lng }
         });
@@ -115,6 +127,7 @@
                 position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
                 map: map
             });
+            markers.push(marker);
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
