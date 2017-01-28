@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Tracktor.Web.ViewModels.Home
+namespace Tracktor.Web.ViewModels.User
 {
     public class LogInVM
     {

@@ -1,4 +1,4 @@
-﻿@model Tracktor.Web.ViewModels.Home.LogInVM
+﻿@model Tracktor.Web.ViewModels.User.LogInVM
 
 @{
     ViewBag.Title = "Log In";
@@ -8,7 +8,7 @@
     <div class="col-xs-4">
         <h3 style="text-align: center">Log in</h3>
         <hr />
-        @using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
+        @using (Html.BeginForm("LogIn", "User", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
 
