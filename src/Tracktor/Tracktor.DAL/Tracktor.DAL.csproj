@@ -115,6 +115,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TracktorDb.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="TracktorDAL.cd" />
     <None Include="Database\TracktorDb.edmx.diagram">
       <DependentUpon>TracktorDb.edmx</DependentUpon>
     </None>
