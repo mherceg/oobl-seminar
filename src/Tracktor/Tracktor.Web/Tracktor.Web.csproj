@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Event\AddInfoVM.cs" />
+    <Compile Include="ViewModels\Place\AddPlaceToListVM.cs" />
     <Compile Include="ViewModels\Place\AddPlaceVM.cs" />
     <Compile Include="ViewModels\Event\InfoVM.cs" />
     <Compile Include="ViewModels\Event\SearchVM.cs" />
@@ -192,6 +193,7 @@
     <Content Include="Views\Event\InfoDetails.cshtml" />
     <Content Include="Views\Event\AddInfo.cshtml" />
     <Content Include="Views\Place\AddPlace.cshtml" />
+    <Content Include="Views\Place\AddPlaceToList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

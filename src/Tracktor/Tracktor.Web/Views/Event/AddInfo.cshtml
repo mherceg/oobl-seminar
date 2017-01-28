@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Add info";
     var user = Session["user"] as UserEntity;
-    var isPremium = user.UserTypeId == 3;
+    var isPremium = user.UserTypeId == 2;
 }
 @**AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ*@
 
@@ -13,76 +13,78 @@
 
 <h2>Add info</h2> <hr />
 
-<div class="row">
-    <div class="col-xs-6">
-        <h3>Select Location</h3> <hr />
-        <div id="map"></div>
-        <div class="thumbnail" style="text-align: center">
-            Choose a place on the map to get current impressions about that location.
+<div class="thumbnail" style="padding: 0px 20px 20px">
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Select location</h3> <hr />
+            <div id="map"></div>
+            <div class="thumbnail" style="text-align: center">
+                Choose a place on the map to get current impressions about that location.
+            </div>
+            @Html.ActionLink("Add location", "AddPlace", "Place", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary", style = "width: 100%" })
         </div>
-        @Html.ActionLink("Add location", "AddPlace", "Place", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary", style = "width: 100%" })
-    </div>
-    <div class="col-xs-6">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <div class="col-xs-6">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h3>Information details</h3> <hr />
+                <div class="form-horizontal">
+                    <h3>Information details</h3> <hr />
 
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                @if (isPremium)
+                    @if (isPremium)
                 {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
+                                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+
                     <div class="form-group">
-                        @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
-                            @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
+                            @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                }
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
-                        @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SelectedCategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.SelectedCategoryId, Model.Categories, htmlAttributes: new { @class = "form-control", @id = "categorySelector" })
+                            @Html.ValidationMessageFor(model => model.SelectedCategoryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PlaceId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.HiddenFor(m => m.PlaceId, htmlAttributes: new { id = "PlaceId" })
+                        <div class="col-md-10">
+                            <input type="text" id="PlaceName" name="PlaceName" value="@Model.PlaceName" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
+            }
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.SelectedCategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(m => m.SelectedCategoryId, Model.Categories, htmlAttributes: new { @class = "form-control", @id = "categorySelector" })
-                        @Html.ValidationMessageFor(model => model.SelectedCategoryId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PlaceId, htmlAttributes: new { @class = "control-label col-md-2" })
-                    @Html.HiddenFor(m => m.PlaceId, htmlAttributes: new { id = "PlaceId" })
-                    <div class="col-md-10">
-                        <input type="text" id="PlaceName" name="PlaceName" value="@Model.PlaceName" class="form-control" readonly />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div>
-            </div>
-        }
-
+        </div>
     </div>
 </div>
 

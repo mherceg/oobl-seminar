@@ -1,14 +1,14 @@
-﻿@model Tracktor.Web.ViewModels.Event.SearchVM
+﻿@model Tracktor.Web.ViewModels.Place.AddPlaceToListVM
+
+@using Tracktor.Domain
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "AddPlaceToList";
+    var user = Session["user"] as UserEntity;
+    var isPremium = user.UserTypeId == 2;
 }
-@**AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ*@
-
 @Styles.Render("~/Content/Map.css")
-
-<h2>Search events</h2> <hr />
-
+<h2>Add place to list</h2> <hr />
 <div class="thumbnail" style="padding: 0px 20px 20px">
     <div class="row">
         <div class="col-xs-6">
@@ -21,33 +21,31 @@
         <div class="col-xs-6">
             @using (Html.BeginForm())
             {
-                <h3>Categories</h3> <hr />
-                <div class="row">
-                    <div class="col-xs-push-1 col-xs-11">
-                        @for (var i = 0; i < Model.Categories.Count; i++)
-                {
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.Categories[i].Selected)
-                                @Html.HiddenFor(m => m.Categories[i].Text)
-                                @Html.HiddenFor(m => m.Categories[i].Value)
-                                <span>@Model.Categories[i].Text</span>
-                            </div>
-                        }
-                    </div>
-                </div>
-
-
-                <h3>Filters</h3> <hr />
+                @Html.AntiForgeryToken()
+                <h3>Lists</h3> <hr />
                 <div class="row">
                     <div class="col-xs-push-1 col-xs-11">
                         <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.ShowOnlyFavourite.Selected)
-                            @Html.HiddenFor(m => m.ShowOnlyFavourite.Text)
-                            @Html.HiddenFor(m => m.ShowOnlyFavourite.Value)
-                            <span>@Model.ShowOnlyFavourite.Text</span>
+                            @Html.CheckBoxFor(m => m.FavouritePlace.Selected)
+                            @Html.HiddenFor(m => m.FavouritePlace.Text)
+                            @Html.HiddenFor(m => m.FavouritePlace.Value)
+                            <span>@Model.FavouritePlace.Text</span>
                         </div>
                     </div>
                 </div>
+                if (isPremium)
+                {
+                    <div class="row">
+                        <div class="col-xs-push-1 col-xs-11">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.SponsoredPlace.Selected)
+                                @Html.HiddenFor(m => m.SponsoredPlace.Text)
+                                @Html.HiddenFor(m => m.SponsoredPlace.Value)
+                                <span>@Model.SponsoredPlace.Text</span>
+                            </div>
+                        </div>
+                    </div>
+                }
 
                 <h3>Location</h3> <hr />
                 <div class="row">
@@ -57,50 +55,15 @@
                         Selected location: <span id="selectedPlace">@Model.PlaceName</span>
                     </div>
                 </div>
-                <div id="placesDiv" class="hidden">
-                    @for (var i = 0; i < Model.Places.Count; i++)
-                {
-                        @Html.EditorFor(m => m.Places[i].Id)
-                        @Html.EditorFor(m => m.Places[i].Name)
-                        @Html.EditorFor(m => m.Places[i].Location.Latitude)
-                        @Html.EditorFor(m => m.Places[i].Location.Longitude)
-                    }
-                </div>
                 <div class="row" style="margin-top: 10px">
                     <div class="col-xs-12">
-                        <input type="submit" value="Search" class="btn btn-primary" style="width: 100%" />
+                        <input type="submit" value="Add to list" class="btn btn-primary" style="width: 100%" />
                     </div>
                 </div>
             }
 
         </div>
     </div>
-
-    @if (Model.Results.Count > 0)
-    {
-        <h3>Information</h3> <hr />
-        foreach (var info in Model.Results)
-        {
-            <div class="row thumbnail">
-                <div class="col-xs-2">
-                    User: <b>@info.user.FullName</b>
-                </div>
-                <div class="col-xs-9">
-                    Says: <b>@info.content</b>
-                </div>
-                <div class="col-xs-1">
-                    @Html.ActionLink("Details", "InfoDetails", routeValues: new { id = info.Id, placeId = info.placeId }, htmlAttributes: new { @class = "btn btn-primary" })
-                </div>
-            </div>
-        }
-    }
-    else if (IsPost)
-    {
-        <h3>Information</h3> <hr />
-        <div class="thumbnail" style="text-align: center">
-            No active or future information found.
-        </div>
-    }
 </div>
 <script type="text/javascript">
     var locations = @Html.Raw(
@@ -142,4 +105,3 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ&callback=initMap">
 </script>
-
