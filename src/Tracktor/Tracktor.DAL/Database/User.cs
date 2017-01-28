@@ -18,11 +18,11 @@ namespace Tracktor.DAL.Database
         public User()
         {
             this.Comment = new HashSet<Comment>();
-            this.FavoritePlace = new HashSet<FavoritePlace>();
             this.Info = new HashSet<Info>();
             this.ReputationComment = new HashSet<ReputationComment>();
             this.ReputationInfo = new HashSet<ReputationInfo>();
-            this.Sponsorship = new HashSet<Sponsorship>();
+            this.Place = new HashSet<Place>();
+            this.Place1 = new HashSet<Place>();
         }
     
         public int Id { get; set; }
@@ -35,15 +35,15 @@ namespace Tracktor.DAL.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoritePlace> FavoritePlace { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Info> Info { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReputationComment> ReputationComment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReputationInfo> ReputationInfo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sponsorship> Sponsorship { get; set; }
         public virtual UserType UserType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Place> Place { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Place> Place1 { get; set; }
     }
 }

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Tracktor.Domain;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -23,14 +24,20 @@ namespace Tracktor.Mobile
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PlaceInfoPage : Page
+    public sealed partial class InformationListPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public PlaceInfoPage()
+        private InformationListPageController controller;
+
+        private PlaceEntity place = null;
+
+        public InformationListPage()
         {
             this.InitializeComponent();
+
+            controller = new InformationListPageController(this);
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -98,14 +105,18 @@ namespace Tracktor.Mobile
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            place = (PlaceEntity)e.Parameter;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            await controller.InitInformations(place);
+        }
     }
 }

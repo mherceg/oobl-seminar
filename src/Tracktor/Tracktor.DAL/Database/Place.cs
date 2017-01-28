@@ -17,20 +17,20 @@ namespace Tracktor.DAL.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Place()
         {
-            this.FavoritePlace = new HashSet<FavoritePlace>();
             this.Info = new HashSet<Info>();
-            this.Sponsorship = new HashSet<Sponsorship>();
+            this.User = new HashSet<User>();
+            this.User1 = new HashSet<User>();
         }
     
-        public int Id { get; set; }
         public string Name { get; set; }
         public System.Data.Entity.Spatial.DbGeography Location { get; set; }
+        public int Id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoritePlace> FavoritePlace { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Info> Info { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sponsorship> Sponsorship { get; set; }
+        public virtual ICollection<User> User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> User1 { get; set; }
     }
 }

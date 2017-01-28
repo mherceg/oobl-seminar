@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using Tracktor.Business;
 using Tracktor.Business.Interface;
 using Tracktor.Domain;
@@ -13,12 +13,35 @@ namespace Tracktor.WebService.Controllers
 {
     public class UserTypeController : ApiController
     {
-        [Route("api/usertype/add")]
-        [HttpPost]
-        public int Add([FromBody]UserTypeEntity userType)
+        [Route("api/usertype/list")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<UserTypeEntity>))]
+        public IHttpActionResult List()
         {
-            return 17;
+            List<UserTypeEntity> userTypes = new List<UserTypeEntity>();
+
+            try
+            {
+                IUserTypeServices categoryService = ServiceFactory.getUserTypeServices();
+                userTypes = categoryService.ListAll();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok(userTypes);
         }
+
+
+
+        #region Ne koristi se u use caseovima za mobilnu
+        //[Route("api/usertype/add")]
+        //[HttpPost]
+        //public int Add([FromBody]UserTypeEntity userType)
+        //{
+        //    return 17;
+        //}
 
         //[Route("api/usertype/update")]
         //[HttpPatch]
@@ -27,36 +50,13 @@ namespace Tracktor.WebService.Controllers
         //    return userType;
         //}
 
-        [Route("api/usertype/delete")]
-        [HttpDelete]
-        public bool Delete(int id)
-        {
-            return true;
-        }
-
-        [Route("api/usertype/list")]
-        [HttpGet]
-        public IEnumerable<UserTypeEntity> List()
-        {
-            List<UserTypeEntity> userTypes = new List<UserTypeEntity>();
-            userTypes.Add(new UserTypeEntity()
-            {
-                Id = 101,
-                Type = "User"
-            });
-            userTypes.Add(new UserTypeEntity()
-            {
-                Id = 102,
-                Type = "VipUser"
-            });
-            userTypes.Add(new UserTypeEntity()
-            {
-                Id = 103,
-                Type = "Admin"
-            });
-
-            return userTypes;
-        }
+        //[Route("api/usertype/delete")]
+        //[HttpDelete]
+        //public bool Delete(int id)
+        //{
+        //    return true;
+        //}
+        #endregion
 
     }
 }

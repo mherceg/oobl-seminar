@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Business", "Trackt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.Domain", "Tracktor.Domain\Tracktor.Domain.csproj", "{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracktor.WebServiceModels", "Tracktor.WebServiceModels\Tracktor.WebServiceModels.csproj", "{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +108,18 @@ Global
 		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|ARM.Build.0 = Release|Any CPU
 		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|x86.ActiveCfg = Release|Any CPU
 		{DD8F8EAD-47AA-43A9-8B79-0671DFC5EDB7}.Release|x86.Build.0 = Release|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Debug|x86.Build.0 = Debug|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Release|ARM.Build.0 = Release|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Release|x86.ActiveCfg = Release|Any CPU
+		{B6AA52A5-09EA-4F17-A555-CE444E00BFDE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
