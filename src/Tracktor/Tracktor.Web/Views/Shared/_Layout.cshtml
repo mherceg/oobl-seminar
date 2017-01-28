@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Tracktor.Domain
+
+@{
+    var user = (UserEntity)Session["user"];
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,11 +22,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Tracktor", "Search", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (user == null)
+                {
+                    @Html.ActionLink("Tracktor", "LogIn", "User", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("Tracktor", "Search", "Event", new { area = "" }, new { @class = "navbar-brand" })
+                }
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Search", "Home")</li>
+                    @if (user == null)
+                    {
+                        <li>@Html.ActionLink("Log in", "LogIn", "User")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Home", "Search", "Event")</li>
+                    }
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (user != null)
+                    {
+                        <li><p class="navbar-text">@user.FullName</p></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "User")</li>
+                    }
                 </ul>
             </div>
         </div>

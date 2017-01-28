@@ -186,6 +186,7 @@
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\Event\Search.cshtml" />
     <Content Include="Views\Event\ImpressionDetails.cshtml" />
+    <Content Include="Views\Event\InfoDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
