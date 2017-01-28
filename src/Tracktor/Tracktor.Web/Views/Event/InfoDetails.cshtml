@@ -1,66 +1,137 @@
-﻿@model Tracktor.Domain.InfoEntity
+﻿@model Tracktor.Web.ViewModels.Event.InfoVM
 
 @{
-    ViewBag.Title = "Info details";
+    ViewBag.Title = "InfoDetails";
 }
 
-<h2>InfoDetails</h2>
+@Styles.Render("~/Content/Map.css")
 
-<div>
-    <h4>InfoEntity</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.time)
-        </dt>
+<h2>Information details</h2> <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.time)
-        </dd>
+<div class="thumbnail" style="padding: 20px">
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Location</h3> <hr />
+            <div id="map"></div>
+        </div>
+        <div class="col-xs-6">
+            <h3>Details</h3> <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FromUser)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.endTime)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FromUser)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.endTime)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PlaceName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.content)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PlaceName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.content)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.categoryId)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.categoryId)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.userId)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.userId)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EndTime)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.placeId)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EndTime)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.placeId)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Reputation)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.Reputation)
+                </dd>
+            </dl>
+            <h4>Content</h4> <hr />
+            <div>
+                @Model.Content
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-3">
+                    @Html.ActionLink("Rate positively", "Rate", routeValues: new { id = Model.Id, placeId = Model.PlaceId, value = 1 }, htmlAttributes: new { @class = "btn btn-success" })
+                </div>
+                <div class="col-xs-3">
+                    @Html.ActionLink("Rate negatively", "Rate", routeValues: new { id = Model.Id, placeId = Model.PlaceId, value = 0 }, htmlAttributes: new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3>Comments</h3> <hr />
+    <div class="row" style="margin: 10px">
+        <div class="col-xs-12">
+            @foreach (var c in Model.Comments)
+            {
+                <div class="row thumbnail" style="padding: 3px">
+                    <div class="col-xs-2">
+                        <b>From user: </b> @c.Username
+                    </div>
+                    <div class="col-xs-6">
+                        <b>Comment: </b> @c.Content
+                    </div>
+                    <div class="col-xs-2">
+                        <b>Reputation: </b> @c.Reputation
+                    </div>
+                    <div class="col-xs-1">
+                        @Html.ActionLink("+", "RateComment", routeValues: new { infoId = Model.Id, placeId = Model.PlaceId, id = c.Id, value = 1 }, htmlAttributes: new { @class = "btn btn-success" })
+                    </div>
+                    <div class="col-xs-1">
+                        @Html.ActionLink("-", "RateComment", routeValues: new { infoId = Model.Id, placeId = Model.PlaceId, id = c.Id, value = 0 }, htmlAttributes: new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <h4>Add comment</h4> <hr />
+    @using (Html.BeginForm("AddComment", "Event", FormMethod.Post))
+    {
+        <div class="row">
+            <input type="hidden" name="infoId" value="@Model.Id" />
+            <input type="hidden" name="placeId" value="@Model.PlaceId" />
+            <div class="col-xs-11"><input type="text" class="form-control" name="comment" placeholder="Comment" required /></div>
+            <div class="col-xs-1"><input type="submit" value="Send" class="btn btn-primary" /></div>
+        </div>
+    }
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<script type="text/javascript">
+    function initMap() {
+        var place = {lat: @Model.Lat.ToString("0.0000", System.Globalization.CultureInfo.InvariantCulture), lng: @Model.Lng.ToString("0.0000", System.Globalization.CultureInfo.InvariantCulture)};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: place
+        });
+        var marker = new google.maps.Marker({
+            position: place,
+            map: map
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ&callback=initMap">
+</script>
+
