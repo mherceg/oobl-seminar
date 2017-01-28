@@ -116,6 +116,15 @@ namespace Tracktor.Mobile
 
             return (bool)result;
         }
+        public async Task<bool> setVoteComment(RateCommentPostDTO postDTO)
+        {
+            bool? result = await fetchObject<bool?>(@"/comment/rate/", "POST", postDTO);
+
+            if (result == null)
+                return false;
+
+            return (bool)result;
+        }
 
         public async Task<int?> setComment(CommentPostDTO postDTO)
         {

@@ -10,6 +10,7 @@ using Windows.UI;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Tracktor.Mobile.Controllers
 {
@@ -118,7 +119,34 @@ namespace Tracktor.Mobile.Controllers
                     FontSize = 18
                 };
 
+                Image upvote = new Image()
+                {
+                    Width = 50,
+                    Height = 25,
+                    Source = new BitmapImage(new Uri("ms-appx:///Assets/upvote.png")),
+                };
+                Image downvote = new Image()
+                {
+                    Width = 50,
+                    Height = 25,
+                    Source = new BitmapImage(new Uri("ms-appx:///Assets/downvote.png")),
+                };
+
+                upvote.Tapped += new TappedEventHandler(async delegate (object o, TappedRoutedEventArgs e)
+                {
+                    await VoteComment(true, comment, upvote, downvote, scoreText);
+                }
+                );
+
+                downvote.Tapped += new TappedEventHandler(async delegate (object o, TappedRoutedEventArgs e)
+                {
+                    await VoteComment(false, comment, upvote, downvote, scoreText);
+                }
+                );
+
+                votePanel.Children.Add(upvote);
                 votePanel.Children.Add(scoreText);
+                votePanel.Children.Add(downvote);
 
                 TextBlock posterName = new TextBlock()
                 {
@@ -171,6 +199,38 @@ namespace Tracktor.Mobile.Controllers
             page.downvote.IsTapEnabled = true;
             page.upvote.Opacity = 1;
             page.downvote.Opacity = 1;
+        }
+
+        private async Task VoteComment(bool up, CommentDTO comment, Image upvote, Image downvote, TextBlock reputation)
+        {
+            ServiceRepository serviceRepository = new ServiceRepository();
+
+            upvote.IsTapEnabled = false;
+            downvote.IsTapEnabled = false;
+            upvote.Opacity = 0.4;
+            downvote.Opacity = 0.4;
+
+            RateCommentPostDTO rip = new RateCommentPostDTO()
+            {
+                commentId = comment.Id,
+                userId = SessionManager.SessionID,
+                score = up                
+            };
+
+            bool result = await serviceRepository.setVoteComment(rip);
+
+            if (result)
+            {
+                int factor = 1;
+                if (!up)
+                    factor = -1;
+                reputation.Text = (int.Parse(reputation.Text) + factor).ToString();
+            }
+
+            upvote.IsTapEnabled = true;
+            downvote.IsTapEnabled = true;
+            upvote.Opacity = 1;
+            downvote.Opacity = 1;
         }
     }
 }
