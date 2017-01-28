@@ -22,7 +22,7 @@ namespace Tracktor.Mobile.Controllers
 
         public void ShowFavorites()
         {
-            //page.Frame.Navigate(typeof(FavoritesPage));
+            page.Frame.Navigate(typeof(FavoritesPage));
         }
 
         public void ShowSposorship()
