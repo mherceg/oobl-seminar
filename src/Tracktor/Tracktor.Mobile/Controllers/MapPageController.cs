@@ -14,6 +14,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Input;
 using Windows.UI;
+using Tracktor.Mobile.Pages;
 
 namespace Tracktor.Mobile
 {
@@ -28,6 +29,10 @@ namespace Tracktor.Mobile
         public void ShowFilters()
         {
             page.Frame.Navigate(typeof(FiltersPage));
+        }
+        public void ShowMenu()
+        {
+            page.Frame.Navigate(typeof(MenuPage));
         }
         public async Task MapLoaded(CategoriesContainer categoriesContainer)
         {

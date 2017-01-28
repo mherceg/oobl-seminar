@@ -64,5 +64,10 @@ namespace Tracktor.Mobile
         {
             controller.ShowFilters();
         }
+
+        private void buttonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            controller.ShowMenu();
+        }
     }
 }

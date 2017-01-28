@@ -12,6 +12,7 @@
         <my:MapControl x:Name="Map" MapServiceToken="ArDhtZwyb8lT_Ka9GbD__brxd6EhvqGK3C-WGnJUfkFywWLrC7_zJSqFH6T67dQ1" x:FieldModifier="public" Margin="0,64,0,0">
             
         </my:MapControl>
-        <Button x:Name="buttonFilters" Content="Filters" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="56" Click="buttonFilters_Click"/>
+        <Button x:Name="buttonFilters" Content="Kategorije" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="56" Click="buttonFilters_Click"/>
+        <Button x:Name="buttonMenu" Content="Izbornik" HorizontalAlignment="Left" Margin="281,0,0,0" VerticalAlignment="Top" Width="56" FontSize="18.14" Click="buttonMenu_Click"/>
     </Grid>
 </Page>
