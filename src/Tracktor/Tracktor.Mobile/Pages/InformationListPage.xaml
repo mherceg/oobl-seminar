@@ -21,10 +21,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Image x:Name="Favourite" x:FieldModifier="public" Height="75" Source="ms-appx:///Assets/star.png" Margin="157,10,-157,12.5" Opacity="0.4"/>
+
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="TRACKTOR" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="Informations" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Informations" Margin="0,-6.5,90,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->

@@ -1,0 +1,144 @@
+﻿@model Tracktor.Web.ViewModels.Event.SearchVM
+
+@{
+    ViewBag.Title = "Search";
+}
+@**AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ*@
+
+@Styles.Render("~/Content/Map.css")
+
+<h2>Search events</h2> <hr />
+
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Location</h3> <hr />
+        <div id="map"></div>
+        <div class="thumbnail" style="text-align: center">
+            Choose a place on the map to get current impressions about that location.
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @using (Html.BeginForm())
+        {
+            <h3>Categories</h3> <hr />
+            <div class="row">
+                <div class="col-xs-push-1 col-xs-11">
+                    @for (var i = 0; i < Model.Categories.Count; i++)
+                {
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.Categories[i].Selected)
+                            @Html.HiddenFor(m => m.Categories[i].Text)
+                            @Html.HiddenFor(m => m.Categories[i].Value)
+                            <span>@Model.Categories[i].Text</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+            <h3>Filters</h3> <hr />
+            <div class="row">
+                <div class="col-xs-push-1 col-xs-11">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.ShowOnlyFavourite.Selected)
+                        @Html.HiddenFor(m => m.ShowOnlyFavourite.Text)
+                        @Html.HiddenFor(m => m.ShowOnlyFavourite.Value)
+                        <span>@Model.ShowOnlyFavourite.Text</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Location</h3> <hr/>
+            <div class="row">
+                <div class="col-xs-push-1 col-xs-11">
+                    @Html.HiddenFor(m => m.PlaceId, htmlAttributes: new { id = "PlaceId" })
+                    @Html.HiddenFor(m => m.PlaceName, htmlAttributes: new { id = "PlaceName" })
+                    Selected location: <span id="selectedPlace">@Model.PlaceName</span>
+                </div>
+            </div>
+            <div id="placesDiv" class="hidden">
+                @for (var i = 0; i < Model.Places.Count; i++)
+                {
+                    @Html.EditorFor(m => m.Places[i].Id)
+                    @Html.EditorFor(m => m.Places[i].Name)
+                    @Html.EditorFor(m => m.Places[i].Location.Latitude)
+                    @Html.EditorFor(m => m.Places[i].Location.Longitude)
+                }
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <div class="col-xs-12">
+                    <input type="submit" value="Search" class="btn btn-primary" style="width: 100%" />
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@if(Model.Results.Count > 0)
+{
+    <h3>Information</h3> <hr />
+    foreach(var info in Model.Results)
+    {
+        <div class="row thumbnail">
+            <div class="col-xs-2">
+                User: <b>@info.user.FullName</b>
+            </div>
+            <div class="col-xs-9">
+                Says: <b>@info.content</b>
+            </div>
+            <div class="col-xs-1">
+                @Html.ActionLink("Details", "InfoDetails", routeValues: new { id = info.Id, placeId = info.placeId }, htmlAttributes: new { @class = "btn btn-primary"})
+            </div>
+        </div>
+    }
+}
+else if(IsPost)
+{
+    <h3>Information</h3> <hr />
+    <div class="thumbnail" style="text-align: center">
+        No active or future information found.   
+    </div>
+}
+
+<script type="text/javascript">
+    var locations = @Html.Raw(
+        Json.Encode(
+            Model.Places.Select(m=> new
+            {
+                id = m.Id,
+                name = m.Name,
+                lat = m.Location.Latitude,
+                lng = m.Location.Longitude
+            })
+        )
+    );
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 1,
+            center: { lat: locations[0].lat, lng: locations[0].lng }
+        });
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    document.getElementById("PlaceId").setAttribute("value", locations[i].id);
+                    document.getElementById("PlaceName").setAttribute("value", locations[i].name);
+                    document.getElementById("selectedPlace").innerHTML = locations[i].name;
+                }
+            })(marker, i));
+        }
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ&callback=initMap">
+</script>
+

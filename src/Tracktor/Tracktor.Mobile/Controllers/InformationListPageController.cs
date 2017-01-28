@@ -16,11 +16,15 @@ namespace Tracktor.Mobile
 {
     class InformationListPageController
     {
-        private InformationListPage page = null;  
+        private InformationListPage page = null;
+
+        private double defaultFavouriteOpacity = 0.4;
 
         public InformationListPageController(InformationListPage page)
         {
-            this.page = page;            
+            this.page = page;
+
+            page.Favourite.Visibility = Visibility.Collapsed;
         }
         public async Task InitInformations(PlaceEntity place)
         {
@@ -42,7 +46,33 @@ namespace Tracktor.Mobile
                 }
                 );
                 page.InformationListbox.Items.Add(t);
-            }           
+            }
+
+            List<PlaceEntity> favourites = await serviceRepository.getFavourites();
+
+            bool isFavourite = favourites.Any(i => i.Id == place.Id);
+            if (isFavourite)
+                page.Favourite.Opacity = 1.0;
+
+            page.Favourite.Visibility = Visibility.Visible;
+
+            page.Favourite.Tapped += new TappedEventHandler(async delegate (object o, TappedRoutedEventArgs e)
+            {
+                page.Favourite.IsTapEnabled = false;
+
+                if (isFavourite)
+                {
+                    await serviceRepository.removeFavourite(place.Id);
+                    page.Favourite.Opacity = defaultFavouriteOpacity;
+                }
+                else
+                {
+                    await serviceRepository.addFavourite(place.Id);
+                    page.Favourite.Opacity = 1.0;
+                }
+
+                page.Favourite.IsTapEnabled = true;
+            });    
         }
     }
 }
