@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Spatial;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +79,7 @@ namespace Tracktor.DAL
             return infoDomain;
         }
 
-        public PlaceEntity ToDomainModel (Place place)
+        public PlaceEntity ToDomainModel(Place place)
         {
             PlaceEntity placeDomain = new PlaceEntity()
             {
@@ -118,7 +119,7 @@ namespace Tracktor.DAL
             return repInfoDomain;
         }
 
-        public UserTypeEntity ToDomainModel (UserType userType)
+        public UserTypeEntity ToDomainModel(UserType userType)
         {
             UserTypeEntity userTypeDomain = new UserTypeEntity()
             {
@@ -132,7 +133,7 @@ namespace Tracktor.DAL
         public UserEntity ToDomainModel(User user)
         {
             List<PlaceEntity> favoritePlaces = new List<PlaceEntity>();
-            foreach(var place in user.Place)
+            foreach (var place in user.Place)
             {
                 favoritePlaces.Add(this.ToDomainModel(place));
             }
@@ -245,7 +246,7 @@ namespace Tracktor.DAL
             Place placeDAL = new Place()
             {
                 Name = place.Name,
-                Location = DbGeography.PointFromText(String.Format("POINT({0} {1})", place.Location.Longitude, place.Location.Latitude), 4326)
+                Location = DbGeography.PointFromText(String.Format("POINT({0} {1})", place.Location.Longitude.ToString().Replace(',', '.'), place.Location.Latitude.ToString().Replace(',', '.')), 4326)
             };
 
             return placeDAL;

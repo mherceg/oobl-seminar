@@ -128,11 +128,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\PlaceController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Event\AddInfoVM.cs" />
+    <Compile Include="ViewModels\Place\AddPlaceVM.cs" />
     <Compile Include="ViewModels\Event\InfoVM.cs" />
     <Compile Include="ViewModels\Event\SearchVM.cs" />
     <Compile Include="ViewModels\User\LogInVM.cs" />
@@ -186,8 +189,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\Event\Search.cshtml" />
-    <Content Include="Views\Event\ImpressionDetails.cshtml" />
     <Content Include="Views\Event\InfoDetails.cshtml" />
+    <Content Include="Views\Event\AddInfo.cshtml" />
+    <Content Include="Views\Place\AddPlace.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

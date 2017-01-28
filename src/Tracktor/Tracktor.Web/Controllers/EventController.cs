@@ -15,22 +15,15 @@ namespace Tracktor.Web.Controllers
         //GET: Search
         public ActionResult Search()
         {
-            var categoryService = ServiceFactory.getCategoryServices();
-            var categories = categoryService.ListAll();
-
             var placeService = ServiceFactory.getPlaceServices();
             var places = placeService.GetByFilter(getDefaultSearchFilters(), true, true);
 
-            var vm = new SearchVM();
-            foreach (var c in categories)
+            var vm = new SearchVM
             {
-                vm.Categories.Add(new SelectListItem
-                {
-                    Selected = false,
-                    Text = c.Name,
-                    Value = c.Id.ToString(),
-                });
-            }
+                Places = places,
+                Categories = getHtmlCategories(),
+            };
+
             vm.Places = places;
 
             return View(vm);
@@ -48,6 +41,22 @@ namespace Tracktor.Web.Controllers
             return rv;
         }
 
+        private List<SelectListItem> getHtmlCategories()
+        {
+            var categoryService = ServiceFactory.getCategoryServices();
+            var categories = categoryService.ListAll();
+            var rv = new List<SelectListItem>();
+            foreach (var c in categories)
+            {
+                rv.Add(new SelectListItem
+                {
+                    Selected = false,
+                    Text = c.Name,
+                    Value = c.Id.ToString(),
+                });
+            }
+            return rv;
+        }
 
         [HttpPost]
         public ActionResult Search(SearchVM vm)
@@ -83,7 +92,7 @@ namespace Tracktor.Web.Controllers
 
 
         public ActionResult InfoDetails(int id, int placeId)
-        { 
+        {
             var info = getInfoEntity(id, placeId);
             var vm = new InfoVM
             {
@@ -185,6 +194,42 @@ namespace Tracktor.Web.Controllers
             commentServices.Add(ce);
 
             return RedirectToAction(nameof(InfoDetails), new { id = infoId, placeId = placeId });
+        }
+
+        public ActionResult AddInfo()
+        {
+            var vm = new AddInfoVM
+            {
+                SelectedCategoryId = 0,
+                Categories = getHtmlCategories(),
+                Places = getPlacesForAddInfo(),  
+            };
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddInfo(AddInfoVM vm)
+        {
+            var ie = new InfoEntity
+            {
+                categoryId = vm.SelectedCategoryId,
+                content = vm.Content,
+                time = vm.StartTime,
+                endTime = vm.EndTime,
+                userId = (Session["user"] as UserEntity).Id,
+                placeId = vm.PlaceId,
+            };
+            var infoService = ServiceFactory.getInfoServices();
+            var id = infoService.NewInfo(ie);
+
+            return RedirectToAction(nameof(InfoDetails), new { id =  id, placeId =  vm.PlaceId });
+        }
+
+        private List<PlaceEntity> getPlacesForAddInfo()
+        {
+            return ServiceFactory.getPlaceServices().GetAll();
         }
     }
 }
