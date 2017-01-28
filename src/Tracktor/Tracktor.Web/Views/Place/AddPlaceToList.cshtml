@@ -1,0 +1,107 @@
+﻿@model Tracktor.Web.ViewModels.Place.AddPlaceToListVM
+
+@using Tracktor.Domain
+
+@{
+    ViewBag.Title = "AddPlaceToList";
+    var user = Session["user"] as UserEntity;
+    var isPremium = user.UserTypeId == 3;
+}
+@Styles.Render("~/Content/Map.css")
+<h2>Add place to list</h2>
+
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Location</h3> <hr />
+        <div id="map"></div>
+        <div class="thumbnail" style="text-align: center">
+            Choose a place on the map to get current impressions about that location.
+        </div>
+    </div>
+    <div class="col-xs-6">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h3>Lists</h3> <hr />
+            <div class="row">
+                <div class="col-xs-push-1 col-xs-11">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.FavouritePlace.Selected)
+                        @Html.HiddenFor(m => m.FavouritePlace.Text)
+                        @Html.HiddenFor(m => m.FavouritePlace.Value)
+                        <span>@Model.FavouritePlace.Text</span>
+                    </div>
+                </div>
+            </div>
+            if (isPremium)
+            {
+                <div class="row">
+                    <div class="col-xs-push-1 col-xs-11">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.SponsoredPlace.Selected)
+                            @Html.HiddenFor(m => m.SponsoredPlace.Text)
+                            @Html.HiddenFor(m => m.SponsoredPlace.Value)
+                            <span>@Model.SponsoredPlace.Text</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <h3>Location</h3> <hr />
+            <div class="row">
+                <div class="col-xs-push-1 col-xs-11">
+                    @Html.HiddenFor(m => m.PlaceId, htmlAttributes: new { id = "PlaceId" })
+                    @Html.HiddenFor(m => m.PlaceName, htmlAttributes: new { id = "PlaceName" })
+                    Selected location: <span id="selectedPlace">@Model.PlaceName</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <div class="col-xs-12">
+                    <input type="submit" value="Add to list" class="btn btn-primary" style="width: 100%" />
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var locations = @Html.Raw(
+        Json.Encode(
+            Model.Places.Select(m=> new
+            {
+                id = m.Id,
+                name = m.Name,
+                lat = m.Location.Latitude,
+                lng = m.Location.Longitude
+            })
+        )
+    );
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 1,
+            center: { lat: locations[0].lat, lng: locations[0].lng }
+        });
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    document.getElementById("PlaceId").setAttribute("value", locations[i].id);
+                    document.getElementById("PlaceName").setAttribute("value", locations[i].name);
+                    document.getElementById("selectedPlace").innerHTML = locations[i].name;
+                }
+            })(marker, i));
+        }
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ&callback=initMap">
+</script>

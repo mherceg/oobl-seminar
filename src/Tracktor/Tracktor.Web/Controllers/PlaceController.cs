@@ -36,5 +36,26 @@ namespace Tracktor.Web.Controllers
             return RedirectToAction("AddInfo", "Event");
         }
 
+        public ActionResult AddPlaceToList()
+        {
+            var vm = new AddPlaceToListVM { Places = ServiceFactory.getPlaceServices().GetAll(), };
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddPlaceToList(AddPlaceToListVM vm)
+        {
+            var userId = (Session["user"] as UserEntity).Id;
+            if (vm.PlaceId != -1)
+            {
+                var userService = ServiceFactory.getUserServices();
+                if (vm.SponsoredPlace.Selected) { userService.AddSponsorPlace(userId, vm.PlaceId); }
+                if (vm.FavouritePlace.Selected) { userService.AddFavouritePlace(userId, vm.PlaceId); }
+            }
+
+            return RedirectToAction("Search", "Event");
+        }
     }
 }
