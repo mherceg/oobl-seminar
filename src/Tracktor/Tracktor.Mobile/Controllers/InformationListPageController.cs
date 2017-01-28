@@ -9,6 +9,8 @@ using Tracktor.Domain;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 using Tracktor.WebService.Models;
+using Windows.UI.Xaml.Input;
+using Tracktor.Mobile.Pages;
 
 namespace Tracktor.Mobile
 {
@@ -28,14 +30,18 @@ namespace Tracktor.Mobile
 
             foreach (var information in informations)
             {
-                page.InformationListbox.Items.Add(
-                new TextBlock()
+                TextBlock t = new TextBlock()
                 {
                     Text = information.content,
                     Foreground = new SolidColorBrush(Windows.UI.Colors.White),
                     FontSize = 22
+                };
+                t.Tapped += new TappedEventHandler(delegate (object o, TappedRoutedEventArgs e)
+                {
+                    page.Frame.Navigate(typeof(InformationPage), information);
                 }
-            );
+                );
+                page.InformationListbox.Items.Add(t);
             }           
         }
     }
