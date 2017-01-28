@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Tracktor.Mobile.Controllers;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -28,9 +29,13 @@ namespace Tracktor.Mobile.Pages
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        private MenuPageController controller = null;
+
         public MenuPage()
         {
             this.InitializeComponent();
+
+            controller = new MenuPageController(this);
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -98,14 +103,29 @@ namespace Tracktor.Mobile.Pages
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedFrom(e);
+           
         }
 
         #endregion
+
+        private void buttonMap_Click(object sender, RoutedEventArgs e)
+        {
+            controller.ShowMap();   
+        }
+
+        private void buttonFavorites_Click(object sender, RoutedEventArgs e)
+        {
+            controller.ShowFavorites();
+        }
+
+        private void sponsorButton_Click(object sender, RoutedEventArgs e)
+        {
+            controller.ShowSposorship();
+        }
     }
 }

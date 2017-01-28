@@ -36,7 +36,7 @@ namespace Tracktor.Mobile
         }
         public async Task MapLoaded(CategoriesContainer categoriesContainer)
         {
-            page.Map.ZoomLevel = 16;            
+            page.Map.ZoomLevel = 2;            
 
             ServiceRepository serviceRepository = new ServiceRepository();
             List<PlaceEntity> places = await serviceRepository.getPlaces(categoriesContainer);

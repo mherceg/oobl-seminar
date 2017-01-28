@@ -29,7 +29,13 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel>
+                <Button x:Name="buttonMap" Content="Karta" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="buttonMap_Click"/>
+                <Button x:Name="buttonFavorites" Content="Favoriti" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="buttonFavorites_Click"/>
+                <Button x:Name="sponsorButton" Content="Pokroviteljstvo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="sponsorButton_Click" IsEnabled="False"/>
+                
 
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

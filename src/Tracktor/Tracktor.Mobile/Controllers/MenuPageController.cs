@@ -14,5 +14,20 @@ namespace Tracktor.Mobile.Controllers
         {
             this.page = page;
         }
+
+        public void ShowMap()
+        {
+            page.Frame.Navigate(typeof(MapPage));
+        }
+
+        public void ShowFavorites()
+        {
+            //page.Frame.Navigate(typeof(FavoritesPage));
+        }
+
+        public void ShowSposorship()
+        {
+           // page.Frame.Navigate(typeof(SponsorshipPage));
+        }
     }
 }
