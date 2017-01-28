@@ -52,6 +52,12 @@
     <Compile Include="CRUD_Information.Designer.cs">
       <DependentUpon>CRUD_Information.cs</DependentUpon>
     </Compile>
+    <Compile Include="CRUD_Place.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUD_Place.Designer.cs">
+      <DependentUpon>CRUD_Place.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRUD_User.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CRUD_Information.resx">
       <DependentUpon>CRUD_Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUD_Place.resx">
+      <DependentUpon>CRUD_Place.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CRUD_User.resx">
       <DependentUpon>CRUD_User.cs</DependentUpon>

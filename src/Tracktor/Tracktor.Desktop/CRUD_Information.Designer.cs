@@ -28,13 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.btnUserCrudOK = new System.Windows.Forms.Button();
-			this.btnUserCrudCancel = new System.Windows.Forms.Button();
+			this.btnInfoCrudOK = new System.Windows.Forms.Button();
+			this.btnInfoCrudCancel = new System.Windows.Forms.Button();
 			this.tbInfoCrudID = new System.Windows.Forms.TextBox();
 			this.lblInfoCrudID = new System.Windows.Forms.Label();
-			this.tbUserCrudFullName = new System.Windows.Forms.TextBox();
+			this.tbInfoCrudUID = new System.Windows.Forms.TextBox();
 			this.lblInfoCrudUID = new System.Windows.Forms.Label();
-			this.tbUserCrudName = new System.Windows.Forms.TextBox();
+			this.tbInfoCrudTime = new System.Windows.Forms.TextBox();
 			this.lblInfoCrudTime = new System.Windows.Forms.Label();
 			this.tbInfoCrudPID = new System.Windows.Forms.TextBox();
 			this.lblInfoCrudPID = new System.Windows.Forms.Label();
@@ -44,26 +44,28 @@
 			this.lblInfoCrudEndTime = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
-			// btnUserCrudOK
+			// btnInfoCrudOK
 			// 
-			this.btnUserCrudOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.btnUserCrudOK.Location = new System.Drawing.Point(216, 370);
-			this.btnUserCrudOK.Name = "btnUserCrudOK";
-			this.btnUserCrudOK.Size = new System.Drawing.Size(90, 30);
-			this.btnUserCrudOK.TabIndex = 19;
-			this.btnUserCrudOK.Text = "OK";
-			this.btnUserCrudOK.UseVisualStyleBackColor = true;
+			this.btnInfoCrudOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.btnInfoCrudOK.Location = new System.Drawing.Point(237, 358);
+			this.btnInfoCrudOK.Name = "btnInfoCrudOK";
+			this.btnInfoCrudOK.Size = new System.Drawing.Size(95, 30);
+			this.btnInfoCrudOK.TabIndex = 6;
+			this.btnInfoCrudOK.Text = "OK";
+			this.btnInfoCrudOK.UseVisualStyleBackColor = true;
+			this.btnInfoCrudOK.Click += new System.EventHandler(this.btnInfoCrudOK_Click);
 			// 
-			// btnUserCrudCancel
+			// btnInfoCrudCancel
 			// 
-			this.btnUserCrudCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnUserCrudCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.btnUserCrudCancel.Location = new System.Drawing.Point(122, 370);
-			this.btnUserCrudCancel.Name = "btnUserCrudCancel";
-			this.btnUserCrudCancel.Size = new System.Drawing.Size(90, 30);
-			this.btnUserCrudCancel.TabIndex = 18;
-			this.btnUserCrudCancel.Text = "Cancel";
-			this.btnUserCrudCancel.UseVisualStyleBackColor = true;
+			this.btnInfoCrudCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnInfoCrudCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.btnInfoCrudCancel.Location = new System.Drawing.Point(137, 358);
+			this.btnInfoCrudCancel.Name = "btnInfoCrudCancel";
+			this.btnInfoCrudCancel.Size = new System.Drawing.Size(94, 30);
+			this.btnInfoCrudCancel.TabIndex = 7;
+			this.btnInfoCrudCancel.Text = "Cancel";
+			this.btnInfoCrudCancel.UseVisualStyleBackColor = true;
+			this.btnInfoCrudCancel.Click += new System.EventHandler(this.btnInfoCrudCancel_Click);
 			// 
 			// tbInfoCrudID
 			// 
@@ -71,7 +73,7 @@
 			this.tbInfoCrudID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
 			this.tbInfoCrudID.Location = new System.Drawing.Point(137, 38);
 			this.tbInfoCrudID.Name = "tbInfoCrudID";
-			this.tbInfoCrudID.Size = new System.Drawing.Size(169, 26);
+			this.tbInfoCrudID.Size = new System.Drawing.Size(195, 26);
 			this.tbInfoCrudID.TabIndex = 21;
 			this.tbInfoCrudID.Text = "Test tekst";
 			// 
@@ -85,13 +87,13 @@
 			this.lblInfoCrudID.TabIndex = 20;
 			this.lblInfoCrudID.Text = "ID: ";
 			// 
-			// tbUserCrudFullName
+			// tbInfoCrudUID
 			// 
-			this.tbUserCrudFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.tbUserCrudFullName.Location = new System.Drawing.Point(137, 130);
-			this.tbUserCrudFullName.Name = "tbUserCrudFullName";
-			this.tbUserCrudFullName.Size = new System.Drawing.Size(169, 26);
-			this.tbUserCrudFullName.TabIndex = 25;
+			this.tbInfoCrudUID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.tbInfoCrudUID.Location = new System.Drawing.Point(137, 130);
+			this.tbInfoCrudUID.Name = "tbInfoCrudUID";
+			this.tbInfoCrudUID.Size = new System.Drawing.Size(195, 26);
+			this.tbInfoCrudUID.TabIndex = 2;
 			// 
 			// lblInfoCrudUID
 			// 
@@ -103,13 +105,13 @@
 			this.lblInfoCrudUID.TabIndex = 24;
 			this.lblInfoCrudUID.Text = "User ID: ";
 			// 
-			// tbUserCrudName
+			// tbInfoCrudTime
 			// 
-			this.tbUserCrudName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.tbUserCrudName.Location = new System.Drawing.Point(137, 84);
-			this.tbUserCrudName.Name = "tbUserCrudName";
-			this.tbUserCrudName.Size = new System.Drawing.Size(169, 26);
-			this.tbUserCrudName.TabIndex = 23;
+			this.tbInfoCrudTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.tbInfoCrudTime.Location = new System.Drawing.Point(137, 84);
+			this.tbInfoCrudTime.Name = "tbInfoCrudTime";
+			this.tbInfoCrudTime.Size = new System.Drawing.Size(195, 26);
+			this.tbInfoCrudTime.TabIndex = 1;
 			// 
 			// lblInfoCrudTime
 			// 
@@ -126,8 +128,8 @@
 			this.tbInfoCrudPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
 			this.tbInfoCrudPID.Location = new System.Drawing.Point(137, 176);
 			this.tbInfoCrudPID.Name = "tbInfoCrudPID";
-			this.tbInfoCrudPID.Size = new System.Drawing.Size(169, 26);
-			this.tbInfoCrudPID.TabIndex = 27;
+			this.tbInfoCrudPID.Size = new System.Drawing.Size(195, 26);
+			this.tbInfoCrudPID.TabIndex = 3;
 			// 
 			// lblInfoCrudPID
 			// 
@@ -145,7 +147,7 @@
 			this.tbInfoCrudContent.Location = new System.Drawing.Point(137, 222);
 			this.tbInfoCrudContent.Name = "tbInfoCrudContent";
 			this.tbInfoCrudContent.Size = new System.Drawing.Size(277, 26);
-			this.tbInfoCrudContent.TabIndex = 29;
+			this.tbInfoCrudContent.TabIndex = 4;
 			// 
 			// lblInfoCrudContent
 			// 
@@ -162,8 +164,8 @@
 			this.tbInfoCrudEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
 			this.tbInfoCrudEndTime.Location = new System.Drawing.Point(137, 274);
 			this.tbInfoCrudEndTime.Name = "tbInfoCrudEndTime";
-			this.tbInfoCrudEndTime.Size = new System.Drawing.Size(169, 26);
-			this.tbInfoCrudEndTime.TabIndex = 31;
+			this.tbInfoCrudEndTime.Size = new System.Drawing.Size(195, 26);
+			this.tbInfoCrudEndTime.TabIndex = 5;
 			// 
 			// lblInfoCrudEndTime
 			// 
@@ -177,8 +179,10 @@
 			// 
 			// CRUD_Information
 			// 
+			this.AcceptButton = this.btnInfoCrudOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.btnInfoCrudCancel;
 			this.ClientSize = new System.Drawing.Size(496, 438);
 			this.Controls.Add(this.tbInfoCrudEndTime);
 			this.Controls.Add(this.lblInfoCrudEndTime);
@@ -186,14 +190,14 @@
 			this.Controls.Add(this.lblInfoCrudContent);
 			this.Controls.Add(this.tbInfoCrudPID);
 			this.Controls.Add(this.lblInfoCrudPID);
-			this.Controls.Add(this.tbUserCrudFullName);
+			this.Controls.Add(this.tbInfoCrudUID);
 			this.Controls.Add(this.lblInfoCrudUID);
-			this.Controls.Add(this.tbUserCrudName);
+			this.Controls.Add(this.tbInfoCrudTime);
 			this.Controls.Add(this.lblInfoCrudTime);
 			this.Controls.Add(this.tbInfoCrudID);
 			this.Controls.Add(this.lblInfoCrudID);
-			this.Controls.Add(this.btnUserCrudOK);
-			this.Controls.Add(this.btnUserCrudCancel);
+			this.Controls.Add(this.btnInfoCrudOK);
+			this.Controls.Add(this.btnInfoCrudCancel);
 			this.Name = "CRUD_Information";
 			this.Text = "CRUD_Information";
 			this.ResumeLayout(false);
@@ -203,13 +207,13 @@
 
 		#endregion
 
-		private System.Windows.Forms.Button btnUserCrudOK;
-		private System.Windows.Forms.Button btnUserCrudCancel;
+		private System.Windows.Forms.Button btnInfoCrudOK;
+		private System.Windows.Forms.Button btnInfoCrudCancel;
 		private System.Windows.Forms.TextBox tbInfoCrudID;
 		private System.Windows.Forms.Label lblInfoCrudID;
-		private System.Windows.Forms.TextBox tbUserCrudFullName;
+		private System.Windows.Forms.TextBox tbInfoCrudUID;
 		private System.Windows.Forms.Label lblInfoCrudUID;
-		private System.Windows.Forms.TextBox tbUserCrudName;
+		private System.Windows.Forms.TextBox tbInfoCrudTime;
 		private System.Windows.Forms.Label lblInfoCrudTime;
 		private System.Windows.Forms.TextBox tbInfoCrudPID;
 		private System.Windows.Forms.Label lblInfoCrudPID;

@@ -113,6 +113,7 @@
 			this.btnUserEdit.TabIndex = 7;
 			this.btnUserEdit.Text = "Edit User...";
 			this.btnUserEdit.UseVisualStyleBackColor = true;
+			this.btnUserEdit.Click += new System.EventHandler(this.btnUserEdit_Click);
 			// 
 			// btnUserDelete
 			// 
@@ -131,6 +132,7 @@
 			this.btnUserDetails.TabIndex = 5;
 			this.btnUserDetails.Text = "User Details...";
 			this.btnUserDetails.UseVisualStyleBackColor = true;
+			this.btnUserDetails.Click += new System.EventHandler(this.btnUserDetails_Click);
 			// 
 			// tableUsers
 			// 
@@ -173,6 +175,7 @@
 			this.btnInfoAdd.TabIndex = 8;
 			this.btnInfoAdd.Text = "Add Information...";
 			this.btnInfoAdd.UseVisualStyleBackColor = true;
+			this.btnInfoAdd.Click += new System.EventHandler(this.btnInfoAdd_Click);
 			// 
 			// btnInfoEdit
 			// 
@@ -182,6 +185,7 @@
 			this.btnInfoEdit.TabIndex = 7;
 			this.btnInfoEdit.Text = "Edit Information...";
 			this.btnInfoEdit.UseVisualStyleBackColor = true;
+			this.btnInfoEdit.Click += new System.EventHandler(this.btnInfoEdit_Click);
 			// 
 			// btnInfoDelete
 			// 
@@ -200,6 +204,7 @@
 			this.btnInfoDetails.TabIndex = 5;
 			this.btnInfoDetails.Text = "Information Details...";
 			this.btnInfoDetails.UseVisualStyleBackColor = true;
+			this.btnInfoDetails.Click += new System.EventHandler(this.btnInfoDetails_Click);
 			// 
 			// tableInformations
 			// 
@@ -242,6 +247,7 @@
 			this.btnLocationAdd.TabIndex = 12;
 			this.btnLocationAdd.Text = "Add Location...";
 			this.btnLocationAdd.UseVisualStyleBackColor = true;
+			this.btnLocationAdd.Click += new System.EventHandler(this.btnLocationAdd_Click);
 			// 
 			// btnLocationEdit
 			// 
@@ -251,6 +257,7 @@
 			this.btnLocationEdit.TabIndex = 11;
 			this.btnLocationEdit.Text = "Edit Location...";
 			this.btnLocationEdit.UseVisualStyleBackColor = true;
+			this.btnLocationEdit.Click += new System.EventHandler(this.btnLocationEdit_Click);
 			// 
 			// btnLocationDelete
 			// 
@@ -269,6 +276,7 @@
 			this.btnLocationDetails.TabIndex = 9;
 			this.btnLocationDetails.Text = "Location Details...";
 			this.btnLocationDetails.UseVisualStyleBackColor = true;
+			this.btnLocationDetails.Click += new System.EventHandler(this.btnLocationDetails_Click);
 			// 
 			// tablePlaces
 			// 

@@ -16,19 +16,15 @@ namespace Tracktor.Desktop
 		private UserEntity user;
 		private List<RadioButton> userType;
 
-		public CRUDUser()
-		{
-			InitializeComponent();
-			userType = new List<RadioButton>();
-			userType.Add(rbUserCrudTypeReg);
-			userType.Add(rbUserCrudTypePrem);
-			userType.Add(rbUserCrudTypeAdmin);
-		}
-
 		public CRUDUser(UserEntity newUser)
 		{
 			InitializeComponent();
 			user = newUser;
+
+			userType = new List<RadioButton>();
+			userType.Add(rbUserCrudTypeReg);
+			userType.Add(rbUserCrudTypePrem);
+			userType.Add(rbUserCrudTypeAdmin);
 		}
 
 		private void CRUDUser_Load(object sender, EventArgs e)
@@ -36,32 +32,27 @@ namespace Tracktor.Desktop
 
 		}
 
-		//RadioButton GetCheckedRadio(Control container) {
-		void GetCheckedRadio(List<RadioButton> buttons) {
-			foreach (RadioButton radio in buttons)	{
-				if (radio != null && radio.Checked)	{
-					//return radio;
-					Console.WriteLine("Crno vapno s Keftera");
-					Console.WriteLine(radio);
-					Console.WriteLine("sada je DOSTA pisanja.");
-					return;
-				}
-			}
-			Console.WriteLine("Dragi gosti lomimo vam kosti");
-		}
-
 		private void btnUserCrudOK_Click(object sender, EventArgs e)
 		{
-			user.Username = this.tbUserCrudName.Text;
-			user.FullName = this.tbUserCrudFullName.Text;
-			user.UserTypeId = 0;
-			this.GetCheckedRadio(userType);
 			this.Close();
 		}
 
 		private void btnUserCrudCancel_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		public CRUDUser makeReadOnly()
+		{
+			this.tbUserCrudName.Enabled = false;
+			this.tbUserCrudFullName.Enabled = false;
+			foreach (RadioButton radio in userType)
+			{
+				radio.Enabled = false;
+			}
+
+			return this;
+
 		}
 	}
 }
