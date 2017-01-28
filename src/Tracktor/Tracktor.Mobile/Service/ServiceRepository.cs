@@ -14,9 +14,9 @@ namespace Tracktor.Mobile
     class ServiceRepository
     {
         //public const string ServiceBaseURI = @"http://tracktor.azurewebsites.net/api";
-        public const string ServiceBaseURI = @"http://localhost:5071/api";
+        private const string ServiceBaseURI = @"http://localhost:5071/api";
 
-        public async Task<T> fetchObject<T>(string uri, string method, Object argument)
+        private async Task<T> fetchObject<T>(string uri, string method, Object argument)
         {
             var request = WebRequest.Create(string.Format(ServiceBaseURI + uri));
             request.Method = method;
@@ -51,7 +51,7 @@ namespace Tracktor.Mobile
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return default(T);
             }
@@ -105,6 +105,16 @@ namespace Tracktor.Mobile
             IEnumerable<InfoDTO> collection = await fetchObject<IEnumerable<InfoDTO>>(@"/info/ListByPlace?PlaceId="+place.Id, "GET", null);
             
             return collection;
+        }
+
+        public async Task<bool> setVoteInfo(RateInfoPostDTO postDTO)
+        {
+            bool? result = await fetchObject<bool?>(@"/info/rate/", "POST", postDTO);
+
+            if (result == null)
+                return false;
+
+            return (bool)result;
         }
 
         public async Task<int> getSessionId(LoginEntity loginEntity)
