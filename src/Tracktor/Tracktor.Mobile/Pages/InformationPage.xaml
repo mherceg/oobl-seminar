@@ -29,28 +29,37 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0">
-                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="0,3,0,0" TextWrapping="Wrap" Text="Vrijeme:" VerticalAlignment="Top" FontSize="24"/>
-                <TextBlock x:Name="vrijemeOd" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Od:" VerticalAlignment="Top" FontSize="22" Margin="25,0,0,0"/>
-                <TextBlock x:Name="vrijemeDo" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Do:" VerticalAlignment="Top" FontSize="22" Margin="25,0,0,0"/>
+            
+            <ScrollViewer
+                VerticalScrollMode="Enabled"
+                VerticalScrollBarVisibility="Visible"
+                Height="Auto">
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="0,3,0,0" TextWrapping="Wrap" Text="Vrijeme:" VerticalAlignment="Top" FontSize="24"/>
+                        <TextBlock x:Name="vrijemeOd" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Od:" VerticalAlignment="Top" FontSize="22" Margin="25,0,0,0"/>
+                        <TextBlock x:Name="vrijemeDo" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Do:" VerticalAlignment="Top" FontSize="22" Margin="25,0,0,0"/>
 
-                <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Opis:" VerticalAlignment="Top" FontSize="24"/>
-                <TextBlock x:Name="opis" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="22" Margin="10,0,0,0" Height="Auto" Width="342"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1">
-                <Image x:Name="upvote" x:FieldModifier="public" HorizontalAlignment="Left" Height="39" Margin="0,0,0,0" VerticalAlignment="Top" Width="83" Source="ms-appx:///Assets/upvote.png" Stretch="Fill"/>
-                <TextBlock x:Name="likesCount" x:FieldModifier="public" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="24" Width="83" TextAlignment="Center"/>
-                <Image x:Name="downvote" x:FieldModifier="public" HorizontalAlignment="Left" Height="39" Margin="0,0,0,0" VerticalAlignment="Top" Width="83" Source="ms-appx:///Assets/downvote.png" Stretch="Fill"/>
+                        <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Opis:" VerticalAlignment="Top" FontSize="24"/>
+                        <TextBlock x:Name="opis" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="22" Margin="10,0,0,0" Height="Auto" Width="342"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="upvote" x:FieldModifier="public" HorizontalAlignment="Left" Height="39" Margin="0,0,0,0" VerticalAlignment="Top" Width="83" Source="ms-appx:///Assets/upvote.png" Stretch="Fill"/>
+                        <TextBlock x:Name="likesCount" x:FieldModifier="public" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="24" Width="83" TextAlignment="Center"/>
+                        <Image x:Name="downvote" x:FieldModifier="public" HorizontalAlignment="Left" Height="39" Margin="0,0,0,0" VerticalAlignment="Top" Width="83" Source="ms-appx:///Assets/downvote.png" Stretch="Fill"/>
 
-            </StackPanel>
-
-
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBox x:Name="commentTextbox" x:FieldModifier="public" HorizontalAlignment="Stretch" Margin="0,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="352" PlaceholderText="Unesite komentar..."/>
+                        <Button x:Name="commentButton" x:FieldModifier="public" Content="Dodaj" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <ListBox x:Name="CommentListbox" x:FieldModifier="public" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Top" Background="Black">
+                    
+                        </ListBox>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>

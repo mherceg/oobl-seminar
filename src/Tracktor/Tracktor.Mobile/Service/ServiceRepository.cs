@@ -117,6 +117,11 @@ namespace Tracktor.Mobile
             return (bool)result;
         }
 
+        public async Task<int?> setComment(CommentPostDTO postDTO)
+        {
+            return await fetchObject<int?>(@"/comment/add", "POST", postDTO);
+        }
+
         public async Task<int> getSessionId(LoginEntity loginEntity)
         {
             int? sessionId = await fetchObject<int?>(@"/user/login/", "POST", loginEntity);
