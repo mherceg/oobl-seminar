@@ -39,8 +39,24 @@ namespace Tracktor.Business.Implementation
         //koristi reputationCommentRepository
         public bool Rate(ReputationCommentEntity repCom)
         {
-            _unitOfWork.ReputationCommentRepository.Insert(repCom, _unitOfWork.Save);
-            return true;
+            //Ako je ocjena ista obavijesti korisnika
+            //Ako je razlicita - promijeni
+            //Ako nije do sad ocijenjeno - ocijeni
+            if (_unitOfWork.ReputationCommentRepository.Exists(ri => ri.UserId == repCom.UserId && ri.CommentId == repCom.ContentCommentId && ri.Score == repCom.Score))
+            {
+                throw new Exception("Već ste dali takvu ocijenu za ovaj komentar!");
+            }
+            else if (_unitOfWork.ReputationCommentRepository.Exists(ri => ri.UserId == repCom.UserId && ri.CommentId == repCom.ContentCommentId && ri.Score == !repCom.Score))
+            {
+                _unitOfWork.ReputationCommentRepository.Update(repCom, _unitOfWork.Save);
+                return true;
+            }
+            else
+            {
+                _unitOfWork.ReputationCommentRepository.Insert(repCom, _unitOfWork.Save);
+                return true;
+            }
+
         }
 
         public bool DeleteReputation(int repId)

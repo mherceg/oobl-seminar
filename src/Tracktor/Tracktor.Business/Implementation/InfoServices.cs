@@ -52,9 +52,23 @@ namespace Tracktor.Business.Implementation
         //Ocjenjivanje
         public bool Rate(ReputationInfoEntity repInfo)
         {
-            int new_id = _unitOfWork.ReputationInfoRepository.Insert(repInfo, _unitOfWork.Save);
-            //_unitOfWork.Save();
-            return true;
+            //Ako je ocjena ista obavijesti korisnika
+            //Ako je razlicita - promijeni
+            //Ako nije do sad ocijenjeno - ocijeni
+            if (_unitOfWork.ReputationInfoRepository.Exists(ri => ri.UserId == repInfo.UserId && ri.InfoId == repInfo.ContentCommentId && ri.Score == repInfo.Score))
+            {
+                throw new Exception("Već ste dali takvu ocijenu za ovaj događaj!");
+            }
+            else if (_unitOfWork.ReputationInfoRepository.Exists(ri => ri.UserId == repInfo.UserId && ri.InfoId == repInfo.ContentCommentId && ri.Score == !repInfo.Score))
+            {
+                _unitOfWork.ReputationInfoRepository.Update(repInfo, _unitOfWork.Save);
+                return true;
+            }
+            else
+            {
+                int new_id = _unitOfWork.ReputationInfoRepository.Insert(repInfo, _unitOfWork.Save);
+                return true;
+            }
         }
 
         public bool DeleteReputation(int repId)

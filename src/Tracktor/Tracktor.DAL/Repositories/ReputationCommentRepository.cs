@@ -37,6 +37,26 @@ namespace Tracktor.DAL.Repositories
         }
 
         /// <summary>
+        /// Update method for reputation Info entities
+        /// </summary>
+        /// <param name="repComDomain"></param>
+        /// <param name="saveChanges"></param>
+        /// <returns></returns>
+        public bool Update(ReputationCommentEntity repComDomain, Action saveChanges)
+        {
+            ReputationComment repInfoNew = Mapper.ToDALModel(repComDomain);
+            ReputationComment repInfoOld = DbSet.SingleOrDefault(ri => ri.UserId == repComDomain.UserId && ri.CommentId == repComDomain.ContentCommentId && ri.Score == !repComDomain.Score);
+
+            if (repInfoOld != null)
+            {
+                repInfoNew.Id = repInfoOld.Id;
+                Context.Entry(repInfoOld).CurrentValues.SetValues(repInfoNew);
+            }
+            saveChanges();
+            return true;
+        }
+
+        /// <summary>
         /// Delete method for the ReputationComment entities
         /// </summary>
         /// <param name="reputationId"></param>
@@ -48,6 +68,16 @@ namespace Tracktor.DAL.Repositories
             DbSet.Remove(repComDAL);
             saveChanges();
             return true;
+        }
+
+        /// <summary>
+        /// specific method to check if entity exists
+        /// </summary>
+        /// <param name="predicate">Criteria to match on</param>
+        /// <returns></returns>
+        public bool Exists(Func<ReputationComment, bool> predicate)
+        {
+            return this.Context.ReputationComment.Any(predicate);
         }
 
         #endregion
