@@ -133,7 +133,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Event\SearchResultVM.cs" />
     <Compile Include="ViewModels\Event\SearchVM.cs" />
     <Compile Include="ViewModels\User\LogInVM.cs" />
   </ItemGroup>

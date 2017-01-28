@@ -18,5 +18,7 @@ namespace Tracktor.Web.ViewModels.Event
         public int PlaceId { get; set; } = -1;
 
         public string PlaceName { get; set; } = "";
+
+        public List<InfoEntity> Results { get; set; } = new List<InfoEntity>();
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Tracktor.Business;
+using Tracktor.Domain;
 using Tracktor.Web.ViewModels.Event;
 using Tracktor.Web.ViewModels.User;
 
@@ -38,7 +39,33 @@ namespace Tracktor.Web.Controllers
         [HttpPost]
         public ActionResult Search(SearchVM vm)
         {
+            var filters = getSearchFIlters(vm.Categories);
+
+            var infoService = ServiceFactory.getInfoServices();
+            vm.Results = infoService.GetByFilter(filters, true, true, vm.PlaceId);
+
             return View(vm);
+        }
+
+        private IDictionary<string, bool> getSearchFIlters(List<SelectListItem> categories)
+        {
+            var rv = new Dictionary<string, bool>();
+            bool anySelected = false;
+            foreach(var c in categories)
+            {
+                rv[c.Text] = c.Selected;
+                if(c.Selected) { anySelected = true; }
+            }
+            if(!anySelected)
+            {
+                var r = new Dictionary<string, bool>();
+                foreach(var k in rv.Keys)
+                {
+                    r[k] = true;
+                }
+                rv = r;
+            }
+            return rv;
         }
 
         public ActionResult ImpressionDetails()

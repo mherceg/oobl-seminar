@@ -75,31 +75,31 @@
     </div>
 </div>
 
-@*@<h3>Impressions</h3> <hr />
-    <div class="row thumbnail">
-        <div class="col-xs-1">
-            <b>User</b>
+@if(Model.Results.Count > 0)
+{
+    <h3>Information</h3> <hr />
+    foreach(var info in Model.Results)
+    {
+        <div class="row thumbnail">
+            <div class="col-xs-2">
+                User: <b>@info.user.FullName</b>
+            </div>
+            <div class="col-xs-9">
+                Says: <b>@info.content</b>
+            </div>
+            <div class="col-xs-1">
+                @Html.ActionLink("Details", "InfoDetails", routeValues: new { id = info.Id }, htmlAttributes: new { @class = "btn btn-primary"})
+            </div>
         </div>
-        <div class="col-xs-10">
-            Impression
-        </div>
-        <div class="col-xs-1">
-            @Html.ActionLink("Details", "ImpressionDetails", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary" })
-        </div>
+    }
+}
+else if(IsPost)
+{
+    <h3>Information</h3> <hr />
+    <div class="thumbnail" style="text-align: center">
+        No active or future information found.   
     </div>
-
-    <div class="row thumbnail">
-        <div class="col-xs-1">
-            <b>User</b>
-        </div>
-        <div class="col-xs-10">
-            Impression
-        </div>
-        <div class="col-xs-1">
-            @Html.ActionLink("Details", "ImpressionDetails", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary" })
-        </div>
-    </div>*@
-
+}
 
 <script type="text/javascript">
     var locations = @Html.Raw(
