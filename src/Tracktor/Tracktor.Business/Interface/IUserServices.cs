@@ -10,6 +10,13 @@ namespace Tracktor.Business.Interface
     public interface IUserServices
     {
         int Register(UserEntity user);
-        int Login(string username, string password);
+        int Login(LoginEntity le);
+        UserEntity Get(int id);
+
+
+        bool AddFavouritePlace(int userId, int placeId);
+        bool AddSponsorPlace(int userId, int placeId);
+        bool RemoveFavouritePlace(int userId, int placeId);
+        bool RemoveSponsorPlace(int userId, int placeId);
     }
 }

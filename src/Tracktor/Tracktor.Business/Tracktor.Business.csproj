@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tracktor.WebService\bin\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,8 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\CategoryServices.cs" />
+    <Compile Include="Implementation\CommentServices.cs" />
+    <Compile Include="Implementation\InfoServices.cs" />
+    <Compile Include="Implementation\PlaceServices.cs" />
     <Compile Include="Implementation\UserServices.cs" />
+    <Compile Include="Implementation\UserTypeServices.cs" />
+    <Compile Include="Interface\ICategoryServices.cs" />
+    <Compile Include="Interface\ICommentServices.cs" />
+    <Compile Include="Interface\IInfoServices.cs" />
+    <Compile Include="Interface\IPlaceServices.cs" />
     <Compile Include="Interface\IUserServices.cs" />
+    <Compile Include="Interface\IUserTypeServices.cs" />
     <Compile Include="ServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

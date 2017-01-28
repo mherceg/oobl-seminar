@@ -82,25 +82,30 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\CategoriesContainer.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="Pages\FiltersPage.xaml.cs">
+      <DependentUpon>FiltersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\InformationListPageController.cs" />
+    <Compile Include="Controllers\FiltersPageController.cs" />
+    <Compile Include="Pages\InformationListPage.xaml.cs">
+      <DependentUpon>InformationListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPageController.cs" />
-    <Compile Include="MapPage.xaml.cs">
+    <Compile Include="Controllers\LoginPageController.cs" />
+    <Compile Include="Pages\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MapPageController.cs" />
-    <Compile Include="PlaceInfoPage.xaml.cs">
-      <DependentUpon>PlaceInfoPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PlaceInfoPageController.cs" />
+    <Compile Include="Controllers\MapPageController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceRepository.cs" />
-    <Compile Include="SessionManager.cs" />
+    <Compile Include="Service\ServiceRepository.cs" />
+    <Compile Include="Service\SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -121,17 +126,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="LoginPage.xaml">
+    <Page Include="Pages\FiltersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MapPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Pages\InformationListPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PlaceInfoPage.xaml">
+    <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +156,10 @@
     <ProjectReference Include="..\Tracktor.Domain\Tracktor.Domain.csproj">
       <Project>{dd8f8ead-47aa-43a9-8b79-0671dfc5edb7}</Project>
       <Name>Tracktor.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tracktor.WebServiceModels\Tracktor.WebServiceModels.csproj">
+      <Project>{b6aa52a5-09ea-4f17-a555-ce444e00bfde}</Project>
+      <Name>Tracktor.WebServiceModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
