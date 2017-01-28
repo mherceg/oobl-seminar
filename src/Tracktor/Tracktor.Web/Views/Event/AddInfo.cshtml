@@ -1,0 +1,129 @@
+﻿@model Tracktor.Web.ViewModels.Event.AddInfoVM
+
+@using Tracktor.Domain
+
+@{
+    ViewBag.Title = "Add info";
+    var user = Session["user"] as UserEntity;
+    var isPremium = user.UserTypeId == 3;
+}
+@**AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ*@
+
+@Styles.Render("~/Content/Map.css")
+
+<h2>Add info</h2> <hr />
+
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Select Location</h3> <hr />
+        <div id="map"></div>
+        <div class="thumbnail" style="text-align: center">
+            Choose a place on the map to get current impressions about that location.
+        </div>
+        @Html.ActionLink("Add location", "AddPlace", "Place", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary", style = "width: 100%" })
+    </div>
+    <div class="col-xs-6">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h3>Information details</h3> <hr />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @if (isPremium)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
+                            @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
+                        @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SelectedCategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.SelectedCategoryId, Model.Categories, htmlAttributes: new { @class = "form-control", @id = "categorySelector" })
+                        @Html.ValidationMessageFor(model => model.SelectedCategoryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PlaceId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.HiddenFor(m => m.PlaceId, htmlAttributes: new { id = "PlaceId" })
+                    <div class="col-md-10">
+                        <input type="text" id="PlaceName" name="PlaceName" value="@Model.PlaceName" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("categorySelector").value = @Model.SelectedCategoryId;
+    var locations = @Html.Raw(
+        Json.Encode(
+            Model.Places.Select(m=> new
+            {
+                id = m.Id,
+                name = m.Name,
+                lat = m.Location.Latitude,
+                lng = m.Location.Longitude
+            })
+        )
+    );
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 1,
+            center: { lat: locations[0].lat, lng: locations[0].lng }
+        });
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    document.getElementById("PlaceId").setAttribute("value", locations[i].id);
+                    document.getElementById("PlaceName").setAttribute("value", locations[i].name);
+                }
+            })(marker, i));
+        }
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS2vUZXxyTNyg4Kx_UlRimVwz0V_VLMaQ&callback=initMap">
+</script>
+
