@@ -31,23 +31,23 @@
 			this.tabCtrlMainForm = new System.Windows.Forms.TabControl();
 			this.TabMap = new System.Windows.Forms.TabPage();
 			this.TabUsers = new System.Windows.Forms.TabPage();
-			this.TabInformations = new System.Windows.Forms.TabPage();
-			this.TabLocations = new System.Windows.Forms.TabPage();
-			this.tableUsers = new System.Windows.Forms.TableLayoutPanel();
-			this.tableInformations = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLocations = new System.Windows.Forms.TableLayoutPanel();
 			this.btnUserAdd = new System.Windows.Forms.Button();
 			this.btnUserEdit = new System.Windows.Forms.Button();
 			this.btnUserDelete = new System.Windows.Forms.Button();
 			this.btnUserDetails = new System.Windows.Forms.Button();
+			this.tableUsers = new System.Windows.Forms.TableLayoutPanel();
+			this.TabInformations = new System.Windows.Forms.TabPage();
 			this.btnInfoAdd = new System.Windows.Forms.Button();
 			this.btnInfoEdit = new System.Windows.Forms.Button();
 			this.btnInfoDelete = new System.Windows.Forms.Button();
 			this.btnInfoDetails = new System.Windows.Forms.Button();
+			this.tableInformations = new System.Windows.Forms.TableLayoutPanel();
+			this.TabLocations = new System.Windows.Forms.TabPage();
 			this.btnLocationAdd = new System.Windows.Forms.Button();
 			this.btnLocationEdit = new System.Windows.Forms.Button();
 			this.btnLocationDelete = new System.Windows.Forms.Button();
 			this.btnLocationDetails = new System.Windows.Forms.Button();
+			this.tablePlaces = new System.Windows.Forms.TableLayoutPanel();
 			this.lblLoggedIn = new System.Windows.Forms.Label();
 			this.lblUser = new System.Windows.Forms.Label();
 			this.tabCtrlMainForm.SuspendLayout();
@@ -95,89 +95,6 @@
 			this.TabUsers.Text = "Users";
 			this.TabUsers.Click += new System.EventHandler(this.TabUsers_Click);
 			// 
-			// TabInformations
-			// 
-			this.TabInformations.BackColor = System.Drawing.Color.DarkGray;
-			this.TabInformations.Controls.Add(this.btnInfoAdd);
-			this.TabInformations.Controls.Add(this.btnInfoEdit);
-			this.TabInformations.Controls.Add(this.btnInfoDelete);
-			this.TabInformations.Controls.Add(this.btnInfoDetails);
-			this.TabInformations.Controls.Add(this.tableInformations);
-			this.TabInformations.Location = new System.Drawing.Point(4, 25);
-			this.TabInformations.Name = "TabInformations";
-			this.TabInformations.Padding = new System.Windows.Forms.Padding(3);
-			this.TabInformations.Size = new System.Drawing.Size(675, 546);
-			this.TabInformations.TabIndex = 2;
-			this.TabInformations.Text = "Informations";
-			// 
-			// TabLocations
-			// 
-			this.TabLocations.BackColor = System.Drawing.Color.DarkGray;
-			this.TabLocations.Controls.Add(this.btnLocationAdd);
-			this.TabLocations.Controls.Add(this.btnLocationEdit);
-			this.TabLocations.Controls.Add(this.btnLocationDelete);
-			this.TabLocations.Controls.Add(this.btnLocationDetails);
-			this.TabLocations.Controls.Add(this.tableLocations);
-			this.TabLocations.Location = new System.Drawing.Point(4, 25);
-			this.TabLocations.Name = "TabLocations";
-			this.TabLocations.Padding = new System.Windows.Forms.Padding(3);
-			this.TabLocations.Size = new System.Drawing.Size(675, 546);
-			this.TabLocations.TabIndex = 3;
-			this.TabLocations.Text = "Locations";
-			// 
-			// tableUsers
-			// 
-			this.tableUsers.AutoSize = true;
-			this.tableUsers.BackColor = System.Drawing.Color.White;
-			this.tableUsers.ColumnCount = 5;
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.Location = new System.Drawing.Point(6, 6);
-			this.tableUsers.Name = "tableUsers";
-			this.tableUsers.RowCount = 2;
-			this.tableUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
-			this.tableUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
-			this.tableUsers.Size = new System.Drawing.Size(649, 472);
-			this.tableUsers.TabIndex = 0;
-			// 
-			// tableInformations
-			// 
-			this.tableInformations.BackColor = System.Drawing.Color.White;
-			this.tableInformations.ColumnCount = 5;
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.Location = new System.Drawing.Point(5, 6);
-			this.tableInformations.Name = "tableInformations";
-			this.tableInformations.RowCount = 2;
-			this.tableInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
-			this.tableInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
-			this.tableInformations.Size = new System.Drawing.Size(649, 476);
-			this.tableInformations.TabIndex = 1;
-			this.tableInformations.Paint += new System.Windows.Forms.PaintEventHandler(this.tableInformations_Paint);
-			// 
-			// tableLocations
-			// 
-			this.tableLocations.BackColor = System.Drawing.Color.White;
-			this.tableLocations.ColumnCount = 5;
-			this.tableLocations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLocations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLocations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLocations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLocations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableLocations.Location = new System.Drawing.Point(5, 6);
-			this.tableLocations.Name = "tableLocations";
-			this.tableLocations.RowCount = 2;
-			this.tableLocations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
-			this.tableLocations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
-			this.tableLocations.Size = new System.Drawing.Size(649, 476);
-			this.tableLocations.TabIndex = 1;
-			// 
 			// btnUserAdd
 			// 
 			this.btnUserAdd.Location = new System.Drawing.Point(545, 484);
@@ -215,6 +132,39 @@
 			this.btnUserDetails.Text = "User Details...";
 			this.btnUserDetails.UseVisualStyleBackColor = true;
 			// 
+			// tableUsers
+			// 
+			this.tableUsers.AutoSize = true;
+			this.tableUsers.BackColor = System.Drawing.Color.White;
+			this.tableUsers.ColumnCount = 5;
+			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableUsers.Location = new System.Drawing.Point(6, 6);
+			this.tableUsers.Name = "tableUsers";
+			this.tableUsers.RowCount = 2;
+			this.tableUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
+			this.tableUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
+			this.tableUsers.Size = new System.Drawing.Size(649, 472);
+			this.tableUsers.TabIndex = 0;
+			// 
+			// TabInformations
+			// 
+			this.TabInformations.BackColor = System.Drawing.Color.DarkGray;
+			this.TabInformations.Controls.Add(this.btnInfoAdd);
+			this.TabInformations.Controls.Add(this.btnInfoEdit);
+			this.TabInformations.Controls.Add(this.btnInfoDelete);
+			this.TabInformations.Controls.Add(this.btnInfoDetails);
+			this.TabInformations.Controls.Add(this.tableInformations);
+			this.TabInformations.Location = new System.Drawing.Point(4, 25);
+			this.TabInformations.Name = "TabInformations";
+			this.TabInformations.Padding = new System.Windows.Forms.Padding(3);
+			this.TabInformations.Size = new System.Drawing.Size(675, 546);
+			this.TabInformations.TabIndex = 2;
+			this.TabInformations.Text = "Informations";
+			// 
 			// btnInfoAdd
 			// 
 			this.btnInfoAdd.Location = new System.Drawing.Point(544, 488);
@@ -251,6 +201,39 @@
 			this.btnInfoDetails.Text = "Information Details...";
 			this.btnInfoDetails.UseVisualStyleBackColor = true;
 			// 
+			// tableInformations
+			// 
+			this.tableInformations.BackColor = System.Drawing.Color.White;
+			this.tableInformations.ColumnCount = 5;
+			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableInformations.Location = new System.Drawing.Point(5, 6);
+			this.tableInformations.Name = "tableInformations";
+			this.tableInformations.RowCount = 2;
+			this.tableInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
+			this.tableInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
+			this.tableInformations.Size = new System.Drawing.Size(649, 476);
+			this.tableInformations.TabIndex = 1;
+			this.tableInformations.Paint += new System.Windows.Forms.PaintEventHandler(this.tableInformations_Paint);
+			// 
+			// TabLocations
+			// 
+			this.TabLocations.BackColor = System.Drawing.Color.DarkGray;
+			this.TabLocations.Controls.Add(this.btnLocationAdd);
+			this.TabLocations.Controls.Add(this.btnLocationEdit);
+			this.TabLocations.Controls.Add(this.btnLocationDelete);
+			this.TabLocations.Controls.Add(this.btnLocationDetails);
+			this.TabLocations.Controls.Add(this.tablePlaces);
+			this.TabLocations.Location = new System.Drawing.Point(4, 25);
+			this.TabLocations.Name = "TabLocations";
+			this.TabLocations.Padding = new System.Windows.Forms.Padding(3);
+			this.TabLocations.Size = new System.Drawing.Size(675, 546);
+			this.TabLocations.TabIndex = 3;
+			this.TabLocations.Text = "Locations";
+			// 
 			// btnLocationAdd
 			// 
 			this.btnLocationAdd.Location = new System.Drawing.Point(544, 488);
@@ -286,6 +269,23 @@
 			this.btnLocationDetails.TabIndex = 9;
 			this.btnLocationDetails.Text = "Location Details...";
 			this.btnLocationDetails.UseVisualStyleBackColor = true;
+			// 
+			// tablePlaces
+			// 
+			this.tablePlaces.BackColor = System.Drawing.Color.White;
+			this.tablePlaces.ColumnCount = 5;
+			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tablePlaces.Location = new System.Drawing.Point(5, 6);
+			this.tablePlaces.Name = "tablePlaces";
+			this.tablePlaces.RowCount = 2;
+			this.tablePlaces.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
+			this.tablePlaces.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
+			this.tablePlaces.Size = new System.Drawing.Size(649, 476);
+			this.tablePlaces.TabIndex = 1;
 			// 
 			// lblLoggedIn
 			// 
@@ -337,7 +337,7 @@
 		private System.Windows.Forms.TabPage TabLocations;
 		private System.Windows.Forms.TableLayoutPanel tableUsers;
 		private System.Windows.Forms.TableLayoutPanel tableInformations;
-		private System.Windows.Forms.TableLayoutPanel tableLocations;
+		private System.Windows.Forms.TableLayoutPanel tablePlaces;
 		private System.Windows.Forms.Button btnUserAdd;
 		private System.Windows.Forms.Button btnUserEdit;
 		private System.Windows.Forms.Button btnUserDelete;

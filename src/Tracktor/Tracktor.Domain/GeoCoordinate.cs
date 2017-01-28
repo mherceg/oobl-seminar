@@ -16,6 +16,8 @@ namespace Tracktor.Domain
         [DataMemberAttribute]
         public double Latitude { get; set; }
 
+        public GeoCoordinate() { }
+
         public GeoCoordinate(double? Latitude, double? Longitude)
         {
             this.Longitude = Longitude.Value;
