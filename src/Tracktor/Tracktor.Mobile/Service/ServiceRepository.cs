@@ -131,6 +131,34 @@ namespace Tracktor.Mobile
             return await fetchObject<int?>(@"/comment/add", "POST", postDTO);
         }
 
+        public async Task<List<PlaceEntity>> getFavourites()
+        {            
+            List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/favorite?userId="+SessionManager.SessionID, "GET", null);
+
+            if (list == null)
+                list = new List<Domain.PlaceEntity>();
+
+            return list;
+        }
+
+        public async Task<bool> addFavourite(int placeId)
+        {
+            bool? result = await fetchObject<bool?>(@"/user/addFavorite?userId=" + SessionManager.SessionID + "&placeId=" + placeId, "POST", null);
+            if (result == null)
+                return false;
+
+            return (bool)result;
+        }
+
+        public async Task<bool> removeFavourite(int placeId)
+        {
+            bool? result = await fetchObject<bool?> (@"/user/rmFavorite?userId=" + SessionManager.SessionID + "&placeId=" + placeId, "POST", null);
+            if (result == null)
+                return false;
+
+            return (bool)result;
+        }
+
         public async Task<int> getSessionId(LoginEntity loginEntity)
         {
             int? sessionId = await fetchObject<int?>(@"/user/login/", "POST", loginEntity);
