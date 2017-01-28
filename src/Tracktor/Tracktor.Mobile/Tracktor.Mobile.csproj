@@ -82,34 +82,30 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CategoriesContainer.cs" />
+    <Compile Include="Utility\CategoriesContainer.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="FiltersPage.xaml.cs">
+    <Compile Include="Pages\FiltersPage.xaml.cs">
       <DependentUpon>FiltersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InformationListPageController.cs" />
-    <Compile Include="FiltersPageController.cs" />
-    <Compile Include="InformationListPage.xaml.cs">
+    <Compile Include="Controllers\InformationListPageController.cs" />
+    <Compile Include="Controllers\FiltersPageController.cs" />
+    <Compile Include="Pages\InformationListPage.xaml.cs">
       <DependentUpon>InformationListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPageController.cs" />
-    <Compile Include="MapPage.xaml.cs">
+    <Compile Include="Controllers\LoginPageController.cs" />
+    <Compile Include="Pages\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MapPageController.cs" />
-    <Compile Include="PlaceInfoPage.xaml.cs">
-      <DependentUpon>PlaceInfoPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PlaceInfoPageController.cs" />
+    <Compile Include="Controllers\MapPageController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceRepository.cs" />
-    <Compile Include="SessionManager.cs" />
+    <Compile Include="Service\ServiceRepository.cs" />
+    <Compile Include="Service\SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -130,25 +126,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="FiltersPage.xaml">
+    <Page Include="Pages\FiltersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InformationListPage.xaml">
+    <Page Include="Pages\InformationListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginPage.xaml">
+    <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MapPage.xaml">
+    <Page Include="Pages\MapPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="PlaceInfoPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

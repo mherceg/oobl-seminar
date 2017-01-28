@@ -31,7 +31,6 @@ namespace Tracktor.Mobile
 
                     streamWriter.Write(json);
                     streamWriter.Flush();
-                    //streamWriter.
                 }
             }
 
