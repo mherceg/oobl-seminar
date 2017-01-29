@@ -33,6 +33,15 @@ namespace Tracktor.Mobile.Controllers
 
             ServiceRepository serviceRepository = new ServiceRepository();
 
+            List<PlaceEntity> sponsored = await serviceRepository.getSponsored();
+
+            bool isSponsored = sponsored.Any(i => i.Id == place.Id);
+            if (isSponsored)
+            {
+                page.VrijemeOd.IsEnabled = true;
+                page.DatumOd.IsEnabled = true;
+            }
+
             List<CategoryEntity> categories = await serviceRepository.getCategories();
             page.categoryPicker.DisplayMemberPath = "Text";
             page.categoryPicker.SelectedValuePath = "Value";

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tracktor.Domain;
+using Tracktor.WebService.Models;
 using Windows.UI.Xaml;
 
 namespace Tracktor.Mobile
@@ -40,7 +41,9 @@ namespace Tracktor.Mobile
                 return;
             }
 
-            SessionManager.BeginSession(sessionId);
+            UserDTO userDTO = await service.getUser(sessionId);
+
+            SessionManager.BeginSession(userDTO);
 
             page.Frame.Navigate(typeof(MapPage));   
         }

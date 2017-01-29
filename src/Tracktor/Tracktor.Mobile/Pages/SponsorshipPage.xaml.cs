@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Tracktor.Mobile.Controllers;
-using Tracktor.WebService.Models;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,20 +24,18 @@ namespace Tracktor.Mobile.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class InformationPage : Page
+    public sealed partial class SponsorshipPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        private InformationPageController controller;
+        private SponsorshipPageController controller = null;
 
-        private InfoDTO infoDTO = null;
-
-        public InformationPage()
+        public SponsorshipPage()
         {
             this.InitializeComponent();
 
-            controller = new InformationPageController(this);
+            controller = new SponsorshipPageController(this);
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -106,7 +103,7 @@ namespace Tracktor.Mobile.Pages
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            infoDTO = (InfoDTO)e.Parameter;
+            
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -116,9 +113,9 @@ namespace Tracktor.Mobile.Pages
 
         #endregion
 
-        private  void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            controller.InitInformation(infoDTO);
+            await controller.InitSponsored();
         }
     }
 }

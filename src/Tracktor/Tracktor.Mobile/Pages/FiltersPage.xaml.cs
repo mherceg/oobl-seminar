@@ -119,7 +119,7 @@ namespace Tracktor.Mobile
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            controller.InitCategories();
+            await controller.InitCategories();
         }
     }
 }

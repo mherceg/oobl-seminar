@@ -13,6 +13,11 @@ namespace Tracktor.Mobile.Controllers
         public MenuPageController(MenuPage page)
         {
             this.page = page;
+
+            if (SessionManager.IsPremium())
+            {
+                page.sponsorButton.IsEnabled = true;
+            }
         }
 
         public void ShowMap()
@@ -27,7 +32,7 @@ namespace Tracktor.Mobile.Controllers
 
         public void ShowSposorship()
         {
-           // page.Frame.Navigate(typeof(SponsorshipPage));
+            page.Frame.Navigate(typeof(SponsorshipPage));
         }
     }
 }

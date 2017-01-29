@@ -26,7 +26,7 @@ namespace Tracktor.Mobile
 
             
         }
-        public async void InitCategories()
+        public async Task InitCategories()
         {
             ServiceRepository serviceRepository = new ServiceRepository();
 

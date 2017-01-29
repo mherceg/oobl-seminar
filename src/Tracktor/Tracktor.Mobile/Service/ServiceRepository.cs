@@ -13,8 +13,8 @@ namespace Tracktor.Mobile
 {
     class ServiceRepository
     {
-        //public const string ServiceBaseURI = @"http://tracktor.azurewebsites.net/api";
-        private const string ServiceBaseURI = @"http://localhost:5071/api";
+        public const string ServiceBaseURI = @"http://tracktor.azurewebsites.net/api";
+        //private const string ServiceBaseURI = @"http://localhost:5071/api";
 
         private async Task<T> fetchObject<T>(string uri, string method, Object argument)
         {
@@ -51,7 +51,7 @@ namespace Tracktor.Mobile
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return default(T);
             }
@@ -149,7 +149,7 @@ namespace Tracktor.Mobile
                 list = new List<Domain.PlaceEntity>();
 
             return list;
-        }
+        }        
 
         public async Task<bool> addFavourite(int placeId)
         {
@@ -167,6 +167,23 @@ namespace Tracktor.Mobile
                 return false;
 
             return (bool)result;
+        }
+
+        public async Task<List<PlaceEntity>> getSponsored()
+        {
+            List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/sponsorship?userId=" + SessionManager.SessionID, "GET", null);
+
+            if (list == null)
+                list = new List<Domain.PlaceEntity>();
+
+            return list;
+        }
+
+        public async Task<UserDTO> getUser(int sessionId)
+        {
+            UserDTO user = await fetchObject<UserDTO>(@"/user/get?id=" + sessionId, "GET", null);
+
+            return user;
         }
 
         public async Task<int> getSessionId(LoginEntity loginEntity)

@@ -86,6 +86,7 @@
     <Compile Include="Controllers\FavoritesPageController.cs" />
     <Compile Include="Controllers\InformationPageController.cs" />
     <Compile Include="Controllers\MenuPageController.cs" />
+    <Compile Include="Controllers\SponsorshipPageController.cs" />
     <Compile Include="Pages\AddInfoPage.xaml.cs">
       <DependentUpon>AddInfoPage.xaml</DependentUpon>
     </Compile>
@@ -97,6 +98,9 @@
     </Compile>
     <Compile Include="Pages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SponsorshipPage.xaml.cs">
+      <DependentUpon>SponsorshipPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\CategoriesContainer.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
@@ -174,6 +178,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\MenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SponsorshipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

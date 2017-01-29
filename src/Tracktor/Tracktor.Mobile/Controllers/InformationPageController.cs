@@ -22,7 +22,7 @@ namespace Tracktor.Mobile.Controllers
         {
             this.page = page;
         }
-        public async Task InitInformation(InfoDTO info)
+        public void InitInformation(InfoDTO info)
         {
             ServiceRepository serviceRepository = new ServiceRepository();
 
