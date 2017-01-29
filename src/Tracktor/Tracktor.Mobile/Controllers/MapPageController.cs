@@ -110,7 +110,7 @@ namespace Tracktor.Mobile
 
         public void MapTapped(Geopoint location)
         {
-            page.Frame.Navigate(typeof(AddInfoPage), null);
+            page.Frame.Navigate(typeof(AddInfoPage), new AddInfoParameter() { place = null, lat=location.Position.Latitude, lon=location.Position.Longitude});
         }
 
         private void PinTapped(object sender, RoutedEventArgs e)

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
 
     <Grid x:Name="LayoutRoot">
 
@@ -36,8 +36,7 @@
                 <StackPanel x:Name="InfoPanel" x:FieldModifier="public">
                     <TextBlock x:Name="textBlockIme" TextWrapping="Wrap" Text="Ime mjesta:" FontSize="22"/>
                     <TextBox x:FieldModifier="public" x:Name="PlaceName" Margin="0" TextWrapping="Wrap" Text="" PlaceholderText="Unesite ime mjesta..." VerticalAlignment="Stretch" IsEnabled="False"/>
-                    <CheckBox x:FieldModifier="public" x:Name="sponsorCheckbox" Content="Pokroviteljstvo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="False" Checked="sponsorCheckbox_Checked" Unchecked="sponsorCheckbox_Unchecked"/>
-                    
+                                        
                     <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Početak:" FontSize="22"/>
                     <DatePicker x:FieldModifier="public" x:Name="DatumOd" IsEnabled="False"/>
                     <TimePicker x:FieldModifier="public" x:Name="VrijemeOd" IsEnabled="False"/>
@@ -50,7 +49,7 @@
 
                     <TextBlock x:Name="textBlockCategory" TextWrapping="Wrap" Text="Kategorija:" FontSize="22"/>
                     <ComboBox x:FieldModifier="public" x:Name="categoryPicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PlaceholderText="Odaberite kategoriju..."/>
-                    <Button x:Name="buttonSubmit" Content="Dodaj" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Button x:FieldModifier="public" x:Name="buttonSubmit" Content="Dodaj" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
                 </StackPanel>
             </ScrollViewer>

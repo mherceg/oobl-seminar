@@ -57,7 +57,7 @@ namespace Tracktor.Mobile
             };
             addBlock.Tapped += new TappedEventHandler(delegate (object o, TappedRoutedEventArgs e)
             {
-                page.Frame.Navigate(typeof(AddInfoPage), place);
+                page.Frame.Navigate(typeof(AddInfoPage), new AddInfoParameter() { place = place , lat=0, lon=0});
             }
             );
             page.InformationListbox.Items.Add(addBlock);

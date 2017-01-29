@@ -25,12 +25,20 @@ namespace Tracktor.Mobile.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
+    public class AddInfoParameter
+    {
+        public PlaceEntity place { get; set; }
+        public double lon { get; set; }
+        public double lat { get; set; }
+    }
     public sealed partial class AddInfoPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         private AddInfoPageController controller = null;
+        private AddInfoParameter place = null;
 
         public AddInfoPage()
         {
@@ -104,7 +112,7 @@ namespace Tracktor.Mobile.Pages
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            controller.Init((PlaceEntity)e.Parameter);
+            this.place = (AddInfoParameter)e.Parameter;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -112,20 +120,12 @@ namespace Tracktor.Mobile.Pages
             
         }
 
+
         #endregion
 
-        private void sponsorCheckbox_Checked(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            VrijemeOd.IsEnabled = true;
-            DatumOd.IsEnabled = true;
-        }
-
-        private void sponsorCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            VrijemeOd.IsEnabled = false;
-            DatumOd.IsEnabled = false;
-            VrijemeOd.Time = DateTime.Now.TimeOfDay;
-            DatumOd.Date = DateTime.Now.Date;
+            await controller.Init(place);
         }
     }
 }
