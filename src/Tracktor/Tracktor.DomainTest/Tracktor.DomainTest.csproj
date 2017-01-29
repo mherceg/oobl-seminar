@@ -56,6 +56,8 @@
     <Compile Include="CommentTest.cs" />
     <Compile Include="GeoCoordinateTest.cs" />
     <Compile Include="InfoTest.cs" />
+    <Compile Include="LoginTest.cs" />
+    <Compile Include="PlaceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
