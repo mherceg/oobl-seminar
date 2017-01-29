@@ -82,9 +82,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AddInfoPageController.cs" />
     <Compile Include="Controllers\FavoritesPageController.cs" />
     <Compile Include="Controllers\InformationPageController.cs" />
     <Compile Include="Controllers\MenuPageController.cs" />
+    <Compile Include="Pages\AddInfoPage.xaml.cs">
+      <DependentUpon>AddInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FavoritesPage.xaml.cs">
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
     </Compile>
@@ -141,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\AddInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FavoritesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

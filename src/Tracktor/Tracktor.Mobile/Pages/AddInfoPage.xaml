@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Tracktor.Mobile.Pages.AddInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Tracktor.Mobile.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="TRACKTOR" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Dodavanje" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <ScrollViewer
+                VerticalScrollMode="Enabled"
+                VerticalScrollBarVisibility="Visible"
+                Height="Auto">
+                <StackPanel x:Name="InfoPanel" x:FieldModifier="public">
+                    <TextBlock x:Name="textBlockIme" TextWrapping="Wrap" Text="Ime mjesta:" FontSize="22"/>
+                    <TextBox x:FieldModifier="public" x:Name="PlaceName" Margin="0" TextWrapping="Wrap" Text="" PlaceholderText="Unesite ime mjesta..." VerticalAlignment="Stretch" IsEnabled="False"/>
+                    <CheckBox x:FieldModifier="public" x:Name="sponsorCheckbox" Content="Pokroviteljstvo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="False" Checked="sponsorCheckbox_Checked" Unchecked="sponsorCheckbox_Unchecked"/>
+                    
+                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Početak:" FontSize="22"/>
+                    <DatePicker x:FieldModifier="public" x:Name="DatumOd" IsEnabled="False"/>
+                    <TimePicker x:FieldModifier="public" x:Name="VrijemeOd" IsEnabled="False"/>
+                    
+                    <TextBlock x:Name="textBlockKraj" TextWrapping="Wrap" Text="Kraj:" FontSize="22"/>
+                    <DatePicker x:FieldModifier="public" x:Name="DatumDo" IsEnabled="True"/>
+                    <TimePicker x:FieldModifier="public" x:Name="VrijemeDo" IsEnabled="True"/>
+                    <TextBlock x:Name="textBlockOpis" TextWrapping="Wrap" Text="Opis:" FontSize="22"/>
+                    <TextBox x:FieldModifier="public" x:Name="contentTextbox" Margin="0" TextWrapping="Wrap" Text="" PlaceholderText="Unesite opis..." VerticalAlignment="Stretch" IsEnabled="True"/>
+
+                    <TextBlock x:Name="textBlockCategory" TextWrapping="Wrap" Text="Kategorija:" FontSize="22"/>
+                    <ComboBox x:FieldModifier="public" x:Name="categoryPicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PlaceholderText="Odaberite kategoriju..."/>
+                    <Button x:Name="buttonSubmit" Content="Dodaj" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

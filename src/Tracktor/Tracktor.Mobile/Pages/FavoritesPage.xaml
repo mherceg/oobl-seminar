@@ -34,7 +34,7 @@
                 VerticalScrollBarVisibility="Visible"
                 Height="Auto">
                 <StackPanel x:Name="FavoritesPanel" x:FieldModifier="public">
-                    <Button x:Name="button" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    
                 </StackPanel>
             </ScrollViewer>
         </Grid>

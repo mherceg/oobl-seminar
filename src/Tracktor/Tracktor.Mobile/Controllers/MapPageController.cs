@@ -36,7 +36,7 @@ namespace Tracktor.Mobile
         }
         public async Task MapLoaded(CategoriesContainer categoriesContainer)
         {
-            page.Map.ZoomLevel = 2;            
+            page.Map.ZoomLevel = 5;            
 
             ServiceRepository serviceRepository = new ServiceRepository();
             List<PlaceEntity> places = await serviceRepository.getPlaces(categoriesContainer);
@@ -106,6 +106,11 @@ namespace Tracktor.Mobile
 
             // retrieve map
             await page.Map.TrySetViewAsync(center);
+        }
+
+        public void MapTapped(Geopoint location)
+        {
+            page.Frame.Navigate(typeof(AddInfoPage), null);
         }
 
         private void PinTapped(object sender, RoutedEventArgs e)
