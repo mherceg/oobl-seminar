@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tracktor.Web.ViewModels.Event.AddInfoVM">
+    <Position X="9.75" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAgAAAAAAAAAAAAAAIAAgEAAAAEAAAAAABAA=</HashCode>
+      <FileName>ViewModels\Event\AddInfoVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tracktor.Web.ViewModels.Event.SearchVM">
+    <Position X="13.75" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAACAAAkAAAAEAAAAAABAA=</HashCode>
+      <FileName>ViewModels\Event\SearchVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tracktor.Web.ViewModels.Place.AddPlaceToListVM">
+    <Position X="11.75" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAIAAAAAAAAAAAAAAAABAAAAAAAAEAAAAAABAA=</HashCode>
+      <FileName>ViewModels\Place\AddPlaceToListVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tracktor.Web.ViewModels.Place.AddPlaceVM">
+    <Position X="12" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Place\AddPlaceVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tracktor.Web.ViewModels.User.LogInVM">
+    <Position X="14" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\User\LogInVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
