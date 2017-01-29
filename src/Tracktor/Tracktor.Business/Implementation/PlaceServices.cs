@@ -15,9 +15,16 @@ namespace Tracktor.Business.Implementation
     {
         private UnitOfWork _unitOfWork;
 
-        public PlaceServices()
+        public PlaceServices(TracktorDb context = null)
         {
-            _unitOfWork = new UnitOfWork();
+            if (context != null)
+            {
+                _unitOfWork = new UnitOfWork(context);
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWork();
+            }
         }
 
         public int Add(PlaceEntity place)

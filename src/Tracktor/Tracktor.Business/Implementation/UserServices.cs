@@ -14,9 +14,16 @@ namespace Tracktor.Business.Implementation
     {
         private UnitOfWork _unitOfWork;
 
-        public UserServices()
+        public UserServices(TracktorDb context = null)
         {
-            _unitOfWork = new UnitOfWork(); 
+            if (context != null)
+            {
+                _unitOfWork = new UnitOfWork(context);
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWork(); 
+            }
         }
 
         public int Login(LoginEntity le)

@@ -30,9 +30,16 @@ namespace Tracktor.DAL.UnitOfWork
         private UserTypeRepository _userTypeRepository;
         #endregion
 
-        public UnitOfWork()
+        public UnitOfWork(TracktorDb context = null)
         {
-            _context = new TracktorDb();
+            if (context == null)
+            {
+                _context = new TracktorDb();
+            }
+            else
+            {
+                _context = context;
+            }
         }
 
         #region Public Repository Creation properties...

@@ -15,9 +15,16 @@ namespace Tracktor.Business.Implementation
     {
         private UnitOfWork _unitOfWork;
 
-        public InfoServices()
+        public InfoServices(TracktorDb context = null)
         {
-            _unitOfWork = new UnitOfWork();
+            if (context != null)
+            {
+                _unitOfWork = new UnitOfWork(context);
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWork();
+            }
         }
 
         //Unos novog infa s i bez mjesta
@@ -57,7 +64,7 @@ namespace Tracktor.Business.Implementation
             //Ako nije do sad ocijenjeno - ocijeni
             if (_unitOfWork.ReputationInfoRepository.Exists(ri => ri.UserId == repInfo.UserId && ri.InfoId == repInfo.ContentCommentId && ri.Score == repInfo.Score))
             {
-                throw new Exception("Već ste dali takvu ocijenu za ovaj događaj!");
+                throw new Exception("Već ste dali takvu ocjenu za ovaj događaj!");
             }
             else if (_unitOfWork.ReputationInfoRepository.Exists(ri => ri.UserId == repInfo.UserId && ri.InfoId == repInfo.ContentCommentId && ri.Score == !repInfo.Score))
             {

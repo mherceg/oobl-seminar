@@ -14,9 +14,16 @@ namespace Tracktor.Business.Implementation
     {
         private UnitOfWork _unitOfWork;
 
-        public UserTypeServices()
+        public UserTypeServices(TracktorDb context = null)
         {
-            _unitOfWork = new UnitOfWork();
+            if (context != null)
+            {
+                _unitOfWork = new UnitOfWork(context);
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWork();
+            }
         }
 
         public List<UserTypeEntity> ListAll()

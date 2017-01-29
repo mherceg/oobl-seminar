@@ -14,9 +14,16 @@ namespace Tracktor.Business.Implementation
     {
         private UnitOfWork _unitOfWork;
 
-        public CategoryServices()
+        public CategoryServices(TracktorDb context = null)
         {
-            _unitOfWork = new UnitOfWork();
+            if (context != null)
+            {
+                _unitOfWork = new UnitOfWork(context);
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWork();
+            }
         }
 
 

@@ -14,9 +14,16 @@ namespace Tracktor.Business.Implementation
     {
         private UnitOfWork _unitOfWork;
 
-        public CommentServices()
+        public CommentServices(TracktorDb context = null)
         {
-            _unitOfWork = new UnitOfWork();
+            if (context != null)
+            {
+                _unitOfWork = new UnitOfWork(context);
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWork();
+            }
         }
 
         public int Add(CommentEntity comment)
@@ -44,7 +51,7 @@ namespace Tracktor.Business.Implementation
             //Ako nije do sad ocijenjeno - ocijeni
             if (_unitOfWork.ReputationCommentRepository.Exists(ri => ri.UserId == repCom.UserId && ri.CommentId == repCom.ContentCommentId && ri.Score == repCom.Score))
             {
-                throw new Exception("Već ste dali takvu ocijenu za ovaj komentar!");
+                throw new Exception("Već ste dali takvu ocjenu za ovaj komentar!");
             }
             else if (_unitOfWork.ReputationCommentRepository.Exists(ri => ri.UserId == repCom.UserId && ri.CommentId == repCom.ContentCommentId && ri.Score == !repCom.Score))
             {
