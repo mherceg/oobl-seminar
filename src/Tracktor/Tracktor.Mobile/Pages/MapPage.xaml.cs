@@ -69,5 +69,10 @@ namespace Tracktor.Mobile
         {
             controller.ShowMenu();
         }
+
+        private void Map_MapTapped(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapInputEventArgs args)
+        {
+            controller.MapTapped(args.Location);
+        }
     }
 }

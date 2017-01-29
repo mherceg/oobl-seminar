@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <my:MapControl x:Name="Map" MapServiceToken="ArDhtZwyb8lT_Ka9GbD__brxd6EhvqGK3C-WGnJUfkFywWLrC7_zJSqFH6T67dQ1" x:FieldModifier="public" Margin="0,64,0,0">
+        <my:MapControl x:Name="Map" MapServiceToken="ArDhtZwyb8lT_Ka9GbD__brxd6EhvqGK3C-WGnJUfkFywWLrC7_zJSqFH6T67dQ1" x:FieldModifier="public" Margin="0,64,0,0" MapTapped="Map_MapTapped">
             
         </my:MapControl>
         <Button x:Name="buttonFilters" Content="Kategorije" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="56" Click="buttonFilters_Click"/>

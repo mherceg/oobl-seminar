@@ -48,6 +48,20 @@ namespace Tracktor.Mobile
                 page.InformationListbox.Items.Add(t);
             }
 
+            //add button
+            TextBlock addBlock = new TextBlock()
+            {
+                Text = "Dodaj novu...",
+                Foreground = new SolidColorBrush(Windows.UI.Colors.White),
+                FontSize = 22
+            };
+            addBlock.Tapped += new TappedEventHandler(delegate (object o, TappedRoutedEventArgs e)
+            {
+                page.Frame.Navigate(typeof(AddInfoPage), place);
+            }
+            );
+            page.InformationListbox.Items.Add(addBlock);
+
             List<PlaceEntity> favourites = await serviceRepository.getFavourites();
 
             bool isFavourite = favourites.Any(i => i.Id == place.Id);
