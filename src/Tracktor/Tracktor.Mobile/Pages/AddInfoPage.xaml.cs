@@ -112,6 +112,12 @@ namespace Tracktor.Mobile.Pages
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.Parameter == null)
+            {
+                this.place = null;
+                return;
+            }
+
             this.place = (AddInfoParameter)e.Parameter;
         }
 

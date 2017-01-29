@@ -35,11 +35,14 @@ namespace Tracktor.Mobile.Controllers
 
             List<PlaceEntity> sponsored = await serviceRepository.getSponsored();
 
-            bool isSponsored = sponsored.Any(i => i.Id == place.Id);
-            if (isSponsored)
+            if (place != null)
             {
-                page.VrijemeOd.IsEnabled = true;
-                page.DatumOd.IsEnabled = true;
+                bool isSponsored = sponsored.Any(i => i.Id == place.Id);
+                if (isSponsored)
+                {
+                    page.VrijemeOd.IsEnabled = true;
+                    page.DatumOd.IsEnabled = true;
+                }
             }
 
             List<CategoryEntity> categories = await serviceRepository.getCategories();
