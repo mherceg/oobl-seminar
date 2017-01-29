@@ -26,6 +26,8 @@ namespace Tracktor.Mobile.Controllers
         {
             ServiceRepository serviceRepository = new ServiceRepository();
 
+            page.placeName.Text = info.place;
+
             page.vrijemeOd.Text = "Od: " + info.startTime.ToString();
             page.vrijemeDo.Text = "Do: " + info.endTime.ToString();
 

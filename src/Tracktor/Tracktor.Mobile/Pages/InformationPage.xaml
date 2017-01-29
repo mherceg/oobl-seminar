@@ -36,6 +36,9 @@
                 Height="Auto">
                 <StackPanel>
                     <StackPanel>
+                        <TextBlock x:FieldModifier="public" x:Name="placeName" HorizontalAlignment="Left" Margin="0,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="24"/>
+                    </StackPanel>
+                    <StackPanel>
                         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="0,3,0,0" TextWrapping="Wrap" Text="Vrijeme:" VerticalAlignment="Top" FontSize="24"/>
                         <TextBlock x:Name="vrijemeOd" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Od:" VerticalAlignment="Top" FontSize="22" Margin="25,0,0,0"/>
                         <TextBlock x:Name="vrijemeDo" x:FieldModifier="public" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Do:" VerticalAlignment="Top" FontSize="22" Margin="25,0,0,0"/>
