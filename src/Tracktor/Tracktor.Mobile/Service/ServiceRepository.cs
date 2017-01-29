@@ -131,6 +131,16 @@ namespace Tracktor.Mobile
             return await fetchObject<int?>(@"/comment/add", "POST", postDTO);
         }
 
+        public async Task<int?> addInfo(InfoPostDTO postDTO)
+        {
+            return await fetchObject<int?>(@"/info/add", "POST", postDTO);
+        }
+
+        public async Task<int?> addInfoWithPlace(InfoPlacePostDTO postDTO)
+        {
+            return await fetchObject<int?>(@"/info/addWplace", "POST", postDTO);
+        }
+
         public async Task<List<PlaceEntity>> getFavourites()
         {            
             List<Domain.PlaceEntity> list = await fetchObject<List<Domain.PlaceEntity>>(@"/place/favorite?userId="+SessionManager.SessionID, "GET", null);
