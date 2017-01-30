@@ -19,16 +19,44 @@ namespace Tracktor.Desktop
 	{
 		private UserEntity user;
 		private List<RadioButton> userType;
+		private bool readOnly;
 
-		public CRUD_User(UserEntity newUser)
+		public CRUD_User(UserEntity user)
 		{
 			InitializeComponent();
-			user = newUser;
+			readOnly = false;
 
+			this.user = user;
+			{
+				if (user.Id != 0)
+				{
+					tbUserCrudUID.Text = user.Id.ToString();
+				}
+				else
+				{
+					tbUserCrudUID.Text = "";
+				}
+
+				tbUserCrudFullName.Text = user.FullName;
+				tbUserCrudName.Text = user.Username;
+			}
+
+			switch (user.UserTypeId)
+			{
+				case 1: rbUserCrudTypeAdmin.Checked = true;
+					break;
+				case 2: rbUserCrudTypePrem.Checked = true;
+					break;
+				case 3: rbUserCrudTypeReg.Checked = true;
+					break;
+				default: rbUserCrudTypeReg.Checked = true; //select regular by default
+					break;
+			}
 			userType = new List<RadioButton>();
-			userType.Add(rbUserCrudTypeReg);
-			userType.Add(rbUserCrudTypePrem);
 			userType.Add(rbUserCrudTypeAdmin);
+			userType.Add(rbUserCrudTypePrem);
+			userType.Add(rbUserCrudTypeReg);
+
 		}
 
 		private void CRUDUser_Load(object sender, EventArgs e)
@@ -39,6 +67,24 @@ namespace Tracktor.Desktop
 
 		private void btnUserCrudOK_Click(object sender, EventArgs e)
 		{
+			if (!readOnly)
+			{
+				//UserEntity userr = ServiceFactory.getUserServices().Get(5);
+				user.FullName = tbUserCrudFullName.Text;
+				user.Username = tbUserCrudName.Text;
+
+				int i = 1;
+				foreach (RadioButton radio in userType)
+				{
+					if (radio.Checked == true)
+					{
+						user.UserTypeId = i;
+						break;
+					}
+					++i;
+				}
+			}
+
 			this.Close();
 		}
 
@@ -55,7 +101,7 @@ namespace Tracktor.Desktop
 			{
 				radio.Enabled = false;
 			}
-
+			readOnly = true;
 			return this;
 
 		}

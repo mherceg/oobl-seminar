@@ -28,32 +28,51 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.tabCtrlMainForm = new System.Windows.Forms.TabControl();
 			this.TabMap = new System.Windows.Forms.TabPage();
 			this.TabUsers = new System.Windows.Forms.TabPage();
+			this.dgvUserTable = new System.Windows.Forms.DataGridView();
+			this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserType = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnUserAdd = new System.Windows.Forms.Button();
 			this.btnUserEdit = new System.Windows.Forms.Button();
 			this.btnUserDelete = new System.Windows.Forms.Button();
 			this.btnUserDetails = new System.Windows.Forms.Button();
-			this.tableUsers = new System.Windows.Forms.TableLayoutPanel();
 			this.TabInformations = new System.Windows.Forms.TabPage();
+			this.dgvInfoTable = new System.Windows.Forms.DataGridView();
 			this.btnInfoAdd = new System.Windows.Forms.Button();
 			this.btnInfoEdit = new System.Windows.Forms.Button();
 			this.btnInfoDelete = new System.Windows.Forms.Button();
 			this.btnInfoDetails = new System.Windows.Forms.Button();
-			this.tableInformations = new System.Windows.Forms.TableLayoutPanel();
 			this.TabLocations = new System.Windows.Forms.TabPage();
+			this.dgvPlaceTable = new System.Windows.Forms.DataGridView();
+			this.Place_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Place_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Place_Lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Place_Lon = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnLocationAdd = new System.Windows.Forms.Button();
 			this.btnLocationEdit = new System.Windows.Forms.Button();
 			this.btnLocationDelete = new System.Windows.Forms.Button();
 			this.btnLocationDetails = new System.Windows.Forms.Button();
-			this.tablePlaces = new System.Windows.Forms.TableLayoutPanel();
 			this.lblLoggedIn = new System.Windows.Forms.Label();
 			this.lblUser = new System.Windows.Forms.Label();
+			this.cRUDInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.Info_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Info_PlaceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Info_UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabCtrlMainForm.SuspendLayout();
 			this.TabUsers.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvUserTable)).BeginInit();
 			this.TabInformations.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvInfoTable)).BeginInit();
 			this.TabLocations.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvPlaceTable)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabCtrlMainForm
@@ -81,17 +100,49 @@
 			// TabUsers
 			// 
 			this.TabUsers.BackColor = System.Drawing.Color.DarkGray;
+			this.TabUsers.Controls.Add(this.dgvUserTable);
 			this.TabUsers.Controls.Add(this.btnUserAdd);
 			this.TabUsers.Controls.Add(this.btnUserEdit);
 			this.TabUsers.Controls.Add(this.btnUserDelete);
 			this.TabUsers.Controls.Add(this.btnUserDetails);
-			this.TabUsers.Controls.Add(this.tableUsers);
 			this.TabUsers.Location = new System.Drawing.Point(4, 25);
 			this.TabUsers.Name = "TabUsers";
 			this.TabUsers.Padding = new System.Windows.Forms.Padding(3);
 			this.TabUsers.Size = new System.Drawing.Size(675, 546);
 			this.TabUsers.TabIndex = 1;
 			this.TabUsers.Text = "Users";
+			// 
+			// dgvUserTable
+			// 
+			this.dgvUserTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvUserTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Username,
+            this.FullName,
+            this.UserType});
+			this.dgvUserTable.Location = new System.Drawing.Point(6, 6);
+			this.dgvUserTable.Name = "dgvUserTable";
+			this.dgvUserTable.ReadOnly = true;
+			this.dgvUserTable.RowTemplate.Height = 24;
+			this.dgvUserTable.Size = new System.Drawing.Size(663, 472);
+			this.dgvUserTable.TabIndex = 9;
+			// 
+			// Username
+			// 
+			this.Username.HeaderText = "Username";
+			this.Username.Name = "Username";
+			this.Username.ReadOnly = true;
+			// 
+			// FullName
+			// 
+			this.FullName.HeaderText = "Full Name";
+			this.FullName.Name = "FullName";
+			this.FullName.ReadOnly = true;
+			// 
+			// UserType
+			// 
+			this.UserType.HeaderText = "User Type";
+			this.UserType.Name = "UserType";
+			this.UserType.ReadOnly = true;
 			// 
 			// btnUserAdd
 			// 
@@ -132,38 +183,40 @@
 			this.btnUserDetails.UseVisualStyleBackColor = true;
 			this.btnUserDetails.Click += new System.EventHandler(this.btnUserDetails_Click);
 			// 
-			// tableUsers
-			// 
-			this.tableUsers.AutoSize = true;
-			this.tableUsers.BackColor = System.Drawing.Color.White;
-			this.tableUsers.ColumnCount = 5;
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableUsers.Location = new System.Drawing.Point(6, 6);
-			this.tableUsers.Name = "tableUsers";
-			this.tableUsers.RowCount = 2;
-			this.tableUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
-			this.tableUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
-			this.tableUsers.Size = new System.Drawing.Size(649, 472);
-			this.tableUsers.TabIndex = 0;
-			// 
 			// TabInformations
 			// 
 			this.TabInformations.BackColor = System.Drawing.Color.DarkGray;
+			this.TabInformations.Controls.Add(this.dgvInfoTable);
 			this.TabInformations.Controls.Add(this.btnInfoAdd);
 			this.TabInformations.Controls.Add(this.btnInfoEdit);
 			this.TabInformations.Controls.Add(this.btnInfoDelete);
 			this.TabInformations.Controls.Add(this.btnInfoDetails);
-			this.TabInformations.Controls.Add(this.tableInformations);
 			this.TabInformations.Location = new System.Drawing.Point(4, 25);
 			this.TabInformations.Name = "TabInformations";
 			this.TabInformations.Padding = new System.Windows.Forms.Padding(3);
 			this.TabInformations.Size = new System.Drawing.Size(675, 546);
 			this.TabInformations.TabIndex = 2;
 			this.TabInformations.Text = "Informations";
+			// 
+			// dgvInfoTable
+			// 
+			this.dgvInfoTable.AutoGenerateColumns = false;
+			this.dgvInfoTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvInfoTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Info_ID,
+            this.Time,
+            this.EndTime,
+            this.Content,
+            this.Info_PlaceID,
+            this.Info_UserID});
+			this.dgvInfoTable.DataSource = this.cRUDInformationBindingSource;
+			this.dgvInfoTable.Location = new System.Drawing.Point(6, 6);
+			this.dgvInfoTable.Name = "dgvInfoTable";
+			this.dgvInfoTable.ReadOnly = true;
+			this.dgvInfoTable.RowTemplate.Height = 24;
+			this.dgvInfoTable.Size = new System.Drawing.Size(663, 472);
+			this.dgvInfoTable.TabIndex = 10;
+			this.dgvInfoTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInfoTable_CellContentClick);
 			// 
 			// btnInfoAdd
 			// 
@@ -204,37 +257,61 @@
 			this.btnInfoDetails.UseVisualStyleBackColor = true;
 			this.btnInfoDetails.Click += new System.EventHandler(this.btnInfoDetails_Click);
 			// 
-			// tableInformations
-			// 
-			this.tableInformations.BackColor = System.Drawing.Color.White;
-			this.tableInformations.ColumnCount = 5;
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tableInformations.Location = new System.Drawing.Point(5, 6);
-			this.tableInformations.Name = "tableInformations";
-			this.tableInformations.RowCount = 2;
-			this.tableInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
-			this.tableInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
-			this.tableInformations.Size = new System.Drawing.Size(649, 476);
-			this.tableInformations.TabIndex = 1;
-			// 
 			// TabLocations
 			// 
 			this.TabLocations.BackColor = System.Drawing.Color.DarkGray;
+			this.TabLocations.Controls.Add(this.dgvPlaceTable);
 			this.TabLocations.Controls.Add(this.btnLocationAdd);
 			this.TabLocations.Controls.Add(this.btnLocationEdit);
 			this.TabLocations.Controls.Add(this.btnLocationDelete);
 			this.TabLocations.Controls.Add(this.btnLocationDetails);
-			this.TabLocations.Controls.Add(this.tablePlaces);
 			this.TabLocations.Location = new System.Drawing.Point(4, 25);
 			this.TabLocations.Name = "TabLocations";
 			this.TabLocations.Padding = new System.Windows.Forms.Padding(3);
 			this.TabLocations.Size = new System.Drawing.Size(675, 546);
 			this.TabLocations.TabIndex = 3;
-			this.TabLocations.Text = "Locations";
+			this.TabLocations.Text = "Places";
+			// 
+			// dgvPlaceTable
+			// 
+			this.dgvPlaceTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvPlaceTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Place_ID,
+            this.Place_Name,
+            this.Place_Lat,
+            this.Place_Lon});
+			this.dgvPlaceTable.Location = new System.Drawing.Point(6, 10);
+			this.dgvPlaceTable.Name = "dgvPlaceTable";
+			this.dgvPlaceTable.ReadOnly = true;
+			this.dgvPlaceTable.RowTemplate.Height = 24;
+			this.dgvPlaceTable.Size = new System.Drawing.Size(663, 472);
+			this.dgvPlaceTable.TabIndex = 13;
+			// 
+			// Place_ID
+			// 
+			this.Place_ID.HeaderText = "Place ID";
+			this.Place_ID.Name = "Place_ID";
+			this.Place_ID.ReadOnly = true;
+			this.Place_ID.Width = 50;
+			// 
+			// Place_Name
+			// 
+			this.Place_Name.HeaderText = "Place Name";
+			this.Place_Name.Name = "Place_Name";
+			this.Place_Name.ReadOnly = true;
+			this.Place_Name.Width = 200;
+			// 
+			// Place_Lat
+			// 
+			this.Place_Lat.HeaderText = "Latitude";
+			this.Place_Lat.Name = "Place_Lat";
+			this.Place_Lat.ReadOnly = true;
+			// 
+			// Place_Lon
+			// 
+			this.Place_Lon.HeaderText = "Longitude";
+			this.Place_Lon.Name = "Place_Lon";
+			this.Place_Lon.ReadOnly = true;
 			// 
 			// btnLocationAdd
 			// 
@@ -275,23 +352,6 @@
 			this.btnLocationDetails.UseVisualStyleBackColor = true;
 			this.btnLocationDetails.Click += new System.EventHandler(this.btnLocationDetails_Click);
 			// 
-			// tablePlaces
-			// 
-			this.tablePlaces.BackColor = System.Drawing.Color.White;
-			this.tablePlaces.ColumnCount = 5;
-			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tablePlaces.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.tablePlaces.Location = new System.Drawing.Point(5, 6);
-			this.tablePlaces.Name = "tablePlaces";
-			this.tablePlaces.RowCount = 2;
-			this.tablePlaces.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.983193F));
-			this.tablePlaces.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
-			this.tablePlaces.Size = new System.Drawing.Size(649, 476);
-			this.tablePlaces.TabIndex = 1;
-			// 
 			// lblLoggedIn
 			// 
 			this.lblLoggedIn.AutoSize = true;
@@ -312,11 +372,61 @@
 			this.lblUser.TabIndex = 2;
 			this.lblUser.Text = "<user>";
 			// 
+			// cRUDInformationBindingSource
+			// 
+			this.cRUDInformationBindingSource.DataSource = typeof(Tracktor.Desktop.CRUD_Information);
+			// 
+			// Info_ID
+			// 
+			this.Info_ID.DataPropertyName = "Id";
+			this.Info_ID.HeaderText = "Info ID";
+			this.Info_ID.Name = "Info_ID";
+			this.Info_ID.ReadOnly = true;
+			this.Info_ID.Width = 50;
+			// 
+			// Time
+			// 
+			this.Time.DataPropertyName = "time";
+			this.Time.HeaderText = "Time";
+			this.Time.Name = "Time";
+			this.Time.ReadOnly = true;
+			// 
+			// EndTime
+			// 
+			this.EndTime.DataPropertyName = "endTime";
+			this.EndTime.HeaderText = "End Time";
+			this.EndTime.Name = "EndTime";
+			this.EndTime.ReadOnly = true;
+			// 
+			// Content
+			// 
+			this.Content.DataPropertyName = "content";
+			this.Content.HeaderText = "Content";
+			this.Content.Name = "Content";
+			this.Content.ReadOnly = true;
+			this.Content.Width = 200;
+			// 
+			// Info_PlaceID
+			// 
+			this.Info_PlaceID.DataPropertyName = "placeId";
+			this.Info_PlaceID.HeaderText = "Place ID";
+			this.Info_PlaceID.Name = "Info_PlaceID";
+			this.Info_PlaceID.ReadOnly = true;
+			this.Info_PlaceID.Width = 50;
+			// 
+			// Info_UserID
+			// 
+			this.Info_UserID.DataPropertyName = "userId";
+			this.Info_UserID.HeaderText = "User ID";
+			this.Info_UserID.Name = "Info_UserID";
+			this.Info_UserID.ReadOnly = true;
+			this.Info_UserID.Width = 50;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(707, 658);
+			this.ClientSize = new System.Drawing.Size(935, 658);
 			this.Controls.Add(this.lblUser);
 			this.Controls.Add(this.lblLoggedIn);
 			this.Controls.Add(this.tabCtrlMainForm);
@@ -325,9 +435,12 @@
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.tabCtrlMainForm.ResumeLayout(false);
 			this.TabUsers.ResumeLayout(false);
-			this.TabUsers.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvUserTable)).EndInit();
 			this.TabInformations.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvInfoTable)).EndInit();
 			this.TabLocations.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvPlaceTable)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -340,9 +453,6 @@
 		private System.Windows.Forms.TabPage TabUsers;
 		private System.Windows.Forms.TabPage TabInformations;
 		private System.Windows.Forms.TabPage TabLocations;
-		private System.Windows.Forms.TableLayoutPanel tableUsers;
-		private System.Windows.Forms.TableLayoutPanel tableInformations;
-		private System.Windows.Forms.TableLayoutPanel tablePlaces;
 		private System.Windows.Forms.Button btnUserAdd;
 		private System.Windows.Forms.Button btnUserEdit;
 		private System.Windows.Forms.Button btnUserDelete;
@@ -357,5 +467,22 @@
 		private System.Windows.Forms.Button btnLocationDetails;
 		private System.Windows.Forms.Label lblLoggedIn;
 		private System.Windows.Forms.Label lblUser;
+		private System.Windows.Forms.DataGridView dgvUserTable;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+		private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn UserType;
+		private System.Windows.Forms.DataGridView dgvInfoTable;
+		private System.Windows.Forms.DataGridView dgvPlaceTable;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Place_ID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Place_Name;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Place_Lat;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Place_Lon;
+		private System.Windows.Forms.BindingSource cRUDInformationBindingSource;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Info_ID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Time;
+		private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Content;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Info_PlaceID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Info_UserID;
 	}
 }

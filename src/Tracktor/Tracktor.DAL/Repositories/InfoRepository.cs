@@ -100,6 +100,16 @@ namespace Tracktor.DAL.Repositories
             return infosDomain.OrderBy(i => i.time);
         }
 
-        #endregion
-    }
+		public IEnumerable<InfoEntity> GetAll() {
+			List<Info> allInfos = this.Context.Set<Info>().ToList();
+			List<InfoEntity> infosDomain = new List<InfoEntity>();
+			foreach (var info in allInfos)
+			{
+				infosDomain.Add(Mapper.ToDomainModel(info));
+			}
+			return infosDomain.OrderBy(i => i.time);
+
+		}
+		#endregion
+	}
 }

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tracktor.DAL.Database;
+using Tracktor.DAL.GenericRepository;
+using Tracktor.DAL.Repositories;
 using Tracktor.Domain;
 
 namespace Tracktor.Desktop
@@ -14,12 +17,12 @@ namespace Tracktor.Desktop
 	public partial class CRUD_Information : Form
 	{
 		private InfoEntity info;
-
 		public CRUD_Information(InfoEntity newInfo)
 		{
 			InitializeComponent();
 			info = newInfo;
 		}
+
 
 		public CRUD_Information makeReadOnly()
 		{
@@ -42,6 +45,8 @@ namespace Tracktor.Desktop
 		{
 			this.Close();
 		}
+
+
 	}
 
 }
