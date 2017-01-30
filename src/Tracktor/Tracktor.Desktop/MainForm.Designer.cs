@@ -77,7 +77,6 @@
 			this.TabMap.TabIndex = 0;
 			this.TabMap.Text = "Map";
 			this.TabMap.UseVisualStyleBackColor = true;
-			this.TabMap.Click += new System.EventHandler(this.tabMap_Click);
 			// 
 			// TabUsers
 			// 
@@ -93,7 +92,6 @@
 			this.TabUsers.Size = new System.Drawing.Size(675, 546);
 			this.TabUsers.TabIndex = 1;
 			this.TabUsers.Text = "Users";
-			this.TabUsers.Click += new System.EventHandler(this.TabUsers_Click);
 			// 
 			// btnUserAdd
 			// 
@@ -222,7 +220,6 @@
 			this.tableInformations.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.01681F));
 			this.tableInformations.Size = new System.Drawing.Size(649, 476);
 			this.tableInformations.TabIndex = 1;
-			this.tableInformations.Paint += new System.Windows.Forms.PaintEventHandler(this.tableInformations_Paint);
 			// 
 			// TabLocations
 			// 

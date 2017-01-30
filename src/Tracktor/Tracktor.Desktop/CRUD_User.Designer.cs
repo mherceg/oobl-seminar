@@ -1,6 +1,6 @@
 ﻿namespace Tracktor.Desktop
 {
-	partial class CRUDUser
+	partial class CRUD_User
 	{
 		/// <summary>
 		/// Required designer variable.

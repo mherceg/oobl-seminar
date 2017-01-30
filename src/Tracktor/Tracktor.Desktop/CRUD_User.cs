@@ -8,15 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tracktor.Domain;
+using Tracktor.Business;
+using Tracktor.Business.Interface;
+using Tracktor.Business.Implementation;
+using Tracktor.WebService.Models;
 
 namespace Tracktor.Desktop
 {
-	public partial class CRUDUser : Form
+	public partial class CRUD_User : Form
 	{
 		private UserEntity user;
 		private List<RadioButton> userType;
 
-		public CRUDUser(UserEntity newUser)
+		public CRUD_User(UserEntity newUser)
 		{
 			InitializeComponent();
 			user = newUser;
@@ -32,6 +36,7 @@ namespace Tracktor.Desktop
 
 		}
 
+
 		private void btnUserCrudOK_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -42,7 +47,7 @@ namespace Tracktor.Desktop
 			this.Close();
 		}
 
-		public CRUDUser makeReadOnly()
+		public CRUD_User makeReadOnly()
 		{
 			this.tbUserCrudName.Enabled = false;
 			this.tbUserCrudFullName.Enabled = false;

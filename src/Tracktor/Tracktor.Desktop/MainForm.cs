@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web;
 using Tracktor.Domain;
 
 namespace Tracktor.Desktop
@@ -32,39 +33,23 @@ namespace Tracktor.Desktop
 		{
 		}
 
-
-		private void tabMap_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void TabUsers_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void tableInformations_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
 		private void btnUserAdd_Click(object sender, EventArgs e)
 		{
-			CRUDUser crudUser = new CRUDUser(newUser);
+			CRUD_User crudUser = new CRUD_User(newUser);
 			crudUser.Show();
 		}
 
 		private void btnUserEdit_Click(object sender, EventArgs e)
 		{
 			// Dodat da prikaže za trenutno odabranog usera
-			CRUDUser crudUser = new CRUDUser(newUser);
+			CRUD_User crudUser = new CRUD_User(newUser);
 			crudUser.Show();
 		}
 
 		private void btnUserDetails_Click(object sender, EventArgs e)
 		{
 			// Dodat da prikaže za trenutno odabranog usera
-			CRUDUser crudUser = (new CRUDUser(newUser)).makeReadOnly();
+			CRUD_User crudUser = (new CRUD_User(newUser)).makeReadOnly();
 			crudUser.Show();
 		}
 
