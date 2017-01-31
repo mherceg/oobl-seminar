@@ -12,6 +12,9 @@ using Tracktor.Business;
 using Tracktor.Business.Interface;
 using Tracktor.Business.Implementation;
 using Tracktor.WebService.Models;
+using Tracktor.DAL.Repositories;
+using Tracktor.DAL.Database;
+using Tracktor.DAL.UnitOfWork;
 
 namespace Tracktor.Desktop
 {
@@ -20,26 +23,36 @@ namespace Tracktor.Desktop
 		private UserEntity user;
 		private List<RadioButton> userType;
 		private bool readOnly;
+		public bool editing { get; set; }
 
 		public CRUD_User(UserEntity user)
 		{
 			InitializeComponent();
 			readOnly = false;
+			editing = false;
 
 			this.user = user;
-			{
-				if (user.Id != 0)
-				{
-					tbUserCrudUID.Text = user.Id.ToString();
-				}
-				else
-				{
-					tbUserCrudUID.Text = "";
-				}
+			btnUserCrudOK.DialogResult = DialogResult.None;
+			btnUserCrudCancel.DialogResult = DialogResult.Cancel;
 
-				tbUserCrudFullName.Text = user.FullName;
-				tbUserCrudName.Text = user.Username;
+			userType = new List<RadioButton>();
+			userType.Add(rbUserCrudTypeAdmin);
+			userType.Add(rbUserCrudTypePrem);
+			userType.Add(rbUserCrudTypeReg);
+
+			#region Initialization
+			if (user.Id != 0)
+			{
+				tbUserCrudUID.Text = user.Id.ToString();
 			}
+			else
+			{
+				tbUserCrudUID.Text = "";
+			}
+
+			tbUserCrudFullName.Text = user.FullName;
+			tbUserCrudName.Text = user.Username;
+			
 
 			switch (user.UserTypeId)
 			{
@@ -52,11 +65,11 @@ namespace Tracktor.Desktop
 				default: rbUserCrudTypeReg.Checked = true; //select regular by default
 					break;
 			}
-			userType = new List<RadioButton>();
-			userType.Add(rbUserCrudTypeAdmin);
-			userType.Add(rbUserCrudTypePrem);
-			userType.Add(rbUserCrudTypeReg);
 
+			if (user.IsActive) { cbUserCrudActive.Checked = true; }
+			else { cbUserCrudActive.Checked = false; }
+
+			#endregion
 		}
 
 		private void CRUDUser_Load(object sender, EventArgs e)
@@ -67,25 +80,47 @@ namespace Tracktor.Desktop
 
 		private void btnUserCrudOK_Click(object sender, EventArgs e)
 		{
-			if (!readOnly)
+			#region Try to make changes
+			if (readOnly)
 			{
-				//UserEntity userr = ServiceFactory.getUserServices().Get(5);
+				this.Close();
+			}
+
+			if(!isEmpty())
+			{
+				#region Reading data from form
 				user.FullName = tbUserCrudFullName.Text;
 				user.Username = tbUserCrudName.Text;
+				user.IsActive = cbUserCrudActive.Checked;
 
 				int i = 1;
-				foreach (RadioButton radio in userType)
-				{
-					if (radio.Checked == true)
-					{
+				foreach (RadioButton radio in userType) { 
+					if (radio.Checked == true) { 
 						user.UserTypeId = i;
 						break;
 					}
 					++i;
 				}
-			}
+				#endregion
 
-			this.Close();
+				#region Database stuff
+				TracktorDb context = new TracktorDb();
+				UnitOfWork _unitOfWork;
+
+				if (context != null) { _unitOfWork = new UnitOfWork(context); }
+				else { _unitOfWork = new UnitOfWork(); }
+
+				if (editing) { 
+					_unitOfWork.UserRepository.Update(user, _unitOfWork.Save);
+				}
+				else { 
+					user.Password = "pass";
+					user.Id = _unitOfWork.UserRepository.Insert(user, _unitOfWork.Save);
+
+				}
+				#endregion
+			}
+			#endregion
 		}
 
 		private void btnUserCrudCancel_Click(object sender, EventArgs e)
@@ -93,17 +128,38 @@ namespace Tracktor.Desktop
 			this.Close();
 		}
 
-		public CRUD_User makeReadOnly()
+		public void makeReadOnly()
 		{
 			this.tbUserCrudName.Enabled = false;
 			this.tbUserCrudFullName.Enabled = false;
+			this.cbUserCrudActive.Enabled = false;
 			foreach (RadioButton radio in userType)
 			{
 				radio.Enabled = false;
 			}
 			readOnly = true;
-			return this;
 
+		}
+
+		private bool isEmpty()
+		{
+			bool empty = false;
+			if (tbUserCrudFullName.TextLength == 0) // tbUserCrudName.TextLength == 0)
+			{
+				lblUserCrudError.Text = "You must enter a full name!";
+				empty = true;
+			}
+			else if (tbUserCrudName.TextLength == 0)
+			{
+				lblUserCrudError.Text = "You must enter a username!";
+				empty = true;
+			}
+
+			if (!empty)
+			{
+				this.DialogResult = DialogResult.OK;
+			}
+			return empty;
 		}
 	}
 }

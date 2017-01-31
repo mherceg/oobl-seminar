@@ -40,6 +40,8 @@
 			this.btnUserCrudOK = new System.Windows.Forms.Button();
 			this.tbUserCrudUID = new System.Windows.Forms.TextBox();
 			this.lblUserCrudUID = new System.Windows.Forms.Label();
+			this.lblUserCrudError = new System.Windows.Forms.Label();
+			this.cbUserCrudActive = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// lblUserCrudName
@@ -128,7 +130,7 @@
 			// 
 			this.btnUserCrudCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnUserCrudCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.btnUserCrudCancel.Location = new System.Drawing.Point(147, 263);
+			this.btnUserCrudCancel.Location = new System.Drawing.Point(147, 300);
 			this.btnUserCrudCancel.Name = "btnUserCrudCancel";
 			this.btnUserCrudCancel.Size = new System.Drawing.Size(97, 30);
 			this.btnUserCrudCancel.TabIndex = 8;
@@ -139,7 +141,7 @@
 			// btnUserCrudOK
 			// 
 			this.btnUserCrudOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.btnUserCrudOK.Location = new System.Drawing.Point(244, 263);
+			this.btnUserCrudOK.Location = new System.Drawing.Point(244, 300);
 			this.btnUserCrudOK.Name = "btnUserCrudOK";
 			this.btnUserCrudOK.Size = new System.Drawing.Size(97, 30);
 			this.btnUserCrudOK.TabIndex = 9;
@@ -167,13 +169,36 @@
 			this.lblUserCrudUID.TabIndex = 10;
 			this.lblUserCrudUID.Text = "ID: ";
 			// 
-			// CRUDUser
+			// lblUserCrudError
+			// 
+			this.lblUserCrudError.AutoSize = true;
+			this.lblUserCrudError.BackColor = System.Drawing.SystemColors.Info;
+			this.lblUserCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.lblUserCrudError.Location = new System.Drawing.Point(12, 310);
+			this.lblUserCrudError.Name = "lblUserCrudError";
+			this.lblUserCrudError.Size = new System.Drawing.Size(0, 20);
+			this.lblUserCrudError.TabIndex = 12;
+			// 
+			// cbUserCrudActive
+			// 
+			this.cbUserCrudActive.AutoSize = true;
+			this.cbUserCrudActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.cbUserCrudActive.Location = new System.Drawing.Point(147, 245);
+			this.cbUserCrudActive.Name = "cbUserCrudActive";
+			this.cbUserCrudActive.Size = new System.Drawing.Size(77, 24);
+			this.cbUserCrudActive.TabIndex = 13;
+			this.cbUserCrudActive.Text = "Active";
+			this.cbUserCrudActive.UseVisualStyleBackColor = true;
+			// 
+			// CRUD_User
 			// 
 			this.AcceptButton = this.btnUserCrudOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnUserCrudCancel;
-			this.ClientSize = new System.Drawing.Size(402, 339);
+			this.ClientSize = new System.Drawing.Size(402, 376);
+			this.Controls.Add(this.cbUserCrudActive);
+			this.Controls.Add(this.lblUserCrudError);
 			this.Controls.Add(this.tbUserCrudUID);
 			this.Controls.Add(this.lblUserCrudUID);
 			this.Controls.Add(this.btnUserCrudOK);
@@ -186,7 +211,7 @@
 			this.Controls.Add(this.lblUserCrudFullName);
 			this.Controls.Add(this.tbUserCrudName);
 			this.Controls.Add(this.lblUserCrudName);
-			this.Name = "CRUDUser";
+			this.Name = "CRUD_User";
 			this.Text = "User Details";
 			this.Load += new System.EventHandler(this.CRUDUser_Load);
 			this.ResumeLayout(false);
@@ -208,5 +233,7 @@
 		private System.Windows.Forms.Button btnUserCrudOK;
 		private System.Windows.Forms.TextBox tbUserCrudUID;
 		private System.Windows.Forms.Label lblUserCrudUID;
+		private System.Windows.Forms.Label lblUserCrudError;
+		private System.Windows.Forms.CheckBox cbUserCrudActive;
 	}
 }

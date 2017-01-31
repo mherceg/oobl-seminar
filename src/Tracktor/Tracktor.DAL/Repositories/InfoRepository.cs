@@ -24,9 +24,9 @@ namespace Tracktor.DAL.Repositories
         #region Public member methods...
 
         /// <summary>
-        /// Insert method for the place entities
+        /// Insert method for the info entities
         /// </summary>
-        /// <param name="placeDomain"></param>
+        /// <param name="infoDomain"></param>
         /// <param name="saveChanges"></param>
         public int Insert(InfoEntity infoDomain, Action saveChanges)
         {
@@ -109,6 +109,19 @@ namespace Tracktor.DAL.Repositories
 			}
 			return infosDomain.OrderBy(i => i.time);
 
+		}
+
+		/// <summary>
+		/// Update method for the info entities
+		/// </summary>
+		/// <param name="infoDomain"></param>
+		/// <param name="saveChanges"></param>
+		public int Update(InfoEntity infoDomain, Action saveChanges)
+		{
+			Info infoDAL = Mapper.ToDALModel(infoDomain);
+			this.Context.Entry(infoDomain).State = System.Data.Entity.EntityState.Modified;
+			saveChanges();
+			return infoDAL.Id;
 		}
 		#endregion
 	}

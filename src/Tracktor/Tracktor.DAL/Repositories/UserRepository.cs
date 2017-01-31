@@ -36,12 +36,31 @@ namespace Tracktor.DAL.Repositories
             return userDAL.Id;
         }
 
-        /// <summary>
-        /// specific method to check if entity exists
-        /// </summary>
-        /// <param name="predicate">Criteria to match on</param>
-        /// <returns></returns>
-        public bool Exists(Func<User, bool> predicate)
+		public int Update(UserEntity userDomain, Action saveChanges)
+		{
+			User userDAL = Mapper.ToDALModel(userDomain);
+			userDAL.Id = userDomain.Id;
+			this.Context.Entry(userDAL).State = System.Data.Entity.EntityState.Modified;
+			saveChanges();
+			return userDAL.Id;
+		}
+
+		public int Remove(UserEntity userDomain, Action saveChanges)
+		{
+			User userDAL = Mapper.ToDALModel(userDomain);
+			userDAL.Id = userDomain.Id;
+			this.Context.Entry(userDAL).State = System.Data.Entity.EntityState.Deleted;
+			saveChanges();
+			return userDAL.Id;
+		}
+
+
+		/// <summary>
+		/// specific method to check if entity exists
+		/// </summary>
+		/// <param name="predicate">Criteria to match on</param>
+		/// <returns></returns>
+		public bool Exists(Func<User, bool> predicate)
         {
             return this.Context.User.Any(predicate);
         }
@@ -201,6 +220,18 @@ namespace Tracktor.DAL.Repositories
 
         }
 
-        #endregion
-    }
+		public IEnumerable<UserEntity> GetAll()
+		{
+			List<User> allUsers = this.Context.Set<User>().ToList();
+			List<UserEntity> usersDomain = new List<UserEntity>();
+			foreach (var user in allUsers)
+			{
+				usersDomain.Add(Mapper.ToDomainModel(user));
+			}
+			return usersDomain.OrderBy(i => i.Id);
+		}
+
+		
+		#endregion
+	}
 }
