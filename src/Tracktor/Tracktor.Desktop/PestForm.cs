@@ -162,7 +162,6 @@ namespace Tracktor.Desktop
 
 			if (comment != null)
 			{
-				// Treba prvo nekak RepComove izbrisat
 				//var comServices = ServiceFactory.getCommentServices();
 				//comServices.Delete(comment.Id);
 				return;

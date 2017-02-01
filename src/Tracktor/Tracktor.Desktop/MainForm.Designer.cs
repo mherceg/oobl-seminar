@@ -59,16 +59,16 @@
 			this.btnCommentCrudEdit = new System.Windows.Forms.Button();
 			this.btnCommentCrudDelete = new System.Windows.Forms.Button();
 			this.btnCommentCrudDetails = new System.Windows.Forms.Button();
-			this.lblLoggedIn = new System.Windows.Forms.Label();
-			this.lblUser = new System.Windows.Forms.Label();
-			this.cRUDInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.btnLogOut = new System.Windows.Forms.Button();
 			this.TabUserTypes = new System.Windows.Forms.TabPage();
-			this.dgvUTTable = new System.Windows.Forms.DataGridView();
 			this.btnUTCrudAdd = new System.Windows.Forms.Button();
 			this.btnUTCrudEdit = new System.Windows.Forms.Button();
 			this.btnUTCrudDelete = new System.Windows.Forms.Button();
 			this.btnUTCrudDetails = new System.Windows.Forms.Button();
+			this.dgvUTTable = new System.Windows.Forms.DataGridView();
+			this.lblLoggedIn = new System.Windows.Forms.Label();
+			this.lblUser = new System.Windows.Forms.Label();
+			this.btnLogOut = new System.Windows.Forms.Button();
+			this.cRUDInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tabCtrlMainForm.SuspendLayout();
 			this.TabUsers.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvUserTable)).BeginInit();
@@ -80,13 +80,15 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgvCategoryTable)).BeginInit();
 			this.TabComments.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCommentTable)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).BeginInit();
 			this.TabUserTypes.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvUTTable)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabCtrlMainForm
 			// 
+			this.tabCtrlMainForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabCtrlMainForm.Controls.Add(this.TabUsers);
 			this.tabCtrlMainForm.Controls.Add(this.TabInformations);
 			this.tabCtrlMainForm.Controls.Add(this.TabLocations);
@@ -126,6 +128,9 @@
 			// 
 			// btnUserAdd
 			// 
+			this.btnUserAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUserAdd.Location = new System.Drawing.Point(793, 484);
 			this.btnUserAdd.Name = "btnUserAdd";
 			this.btnUserAdd.Size = new System.Drawing.Size(110, 56);
@@ -136,6 +141,9 @@
 			// 
 			// btnUserEdit
 			// 
+			this.btnUserEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUserEdit.Location = new System.Drawing.Point(648, 484);
 			this.btnUserEdit.Name = "btnUserEdit";
 			this.btnUserEdit.Size = new System.Drawing.Size(110, 56);
@@ -146,6 +154,9 @@
 			// 
 			// btnUserDelete
 			// 
+			this.btnUserDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUserDelete.Location = new System.Drawing.Point(503, 484);
 			this.btnUserDelete.Name = "btnUserDelete";
 			this.btnUserDelete.Size = new System.Drawing.Size(110, 56);
@@ -156,6 +167,9 @@
 			// 
 			// btnUserDetails
 			// 
+			this.btnUserDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUserDetails.Location = new System.Drawing.Point(358, 484);
 			this.btnUserDetails.Name = "btnUserDetails";
 			this.btnUserDetails.Size = new System.Drawing.Size(110, 56);
@@ -413,41 +427,6 @@
 			this.btnCommentCrudDetails.UseVisualStyleBackColor = true;
 			this.btnCommentCrudDetails.Click += new System.EventHandler(this.btnCommentCrudDetails_Click);
 			// 
-			// lblLoggedIn
-			// 
-			this.lblLoggedIn.AutoSize = true;
-			this.lblLoggedIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.lblLoggedIn.Location = new System.Drawing.Point(8, 9);
-			this.lblLoggedIn.Name = "lblLoggedIn";
-			this.lblLoggedIn.Size = new System.Drawing.Size(115, 20);
-			this.lblLoggedIn.TabIndex = 1;
-			this.lblLoggedIn.Text = "Logged in as: ";
-			// 
-			// lblUser
-			// 
-			this.lblUser.AutoSize = true;
-			this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.lblUser.Location = new System.Drawing.Point(129, 9);
-			this.lblUser.Name = "lblUser";
-			this.lblUser.Size = new System.Drawing.Size(62, 20);
-			this.lblUser.TabIndex = 2;
-			this.lblUser.Text = "<user>";
-			// 
-			// cRUDInformationBindingSource
-			// 
-			this.cRUDInformationBindingSource.DataSource = typeof(Tracktor.Desktop.CRUD_Information);
-			// 
-			// btnLogOut
-			// 
-			this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.btnLogOut.Location = new System.Drawing.Point(809, 12);
-			this.btnLogOut.Name = "btnLogOut";
-			this.btnLogOut.Size = new System.Drawing.Size(110, 53);
-			this.btnLogOut.TabIndex = 3;
-			this.btnLogOut.Text = "Log out";
-			this.btnLogOut.UseVisualStyleBackColor = true;
-			this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-			// 
 			// TabUserTypes
 			// 
 			this.TabUserTypes.Controls.Add(this.btnUTCrudAdd);
@@ -462,16 +441,6 @@
 			this.TabUserTypes.TabIndex = 6;
 			this.TabUserTypes.Text = "User Types";
 			this.TabUserTypes.UseVisualStyleBackColor = true;
-			// 
-			// dgvUTTable
-			// 
-			this.dgvUTTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvUTTable.Location = new System.Drawing.Point(6, 7);
-			this.dgvUTTable.Name = "dgvUTTable";
-			this.dgvUTTable.ReadOnly = true;
-			this.dgvUTTable.RowTemplate.Height = 24;
-			this.dgvUTTable.Size = new System.Drawing.Size(897, 472);
-			this.dgvUTTable.TabIndex = 27;
 			// 
 			// btnUTCrudAdd
 			// 
@@ -513,6 +482,52 @@
 			this.btnUTCrudDetails.UseVisualStyleBackColor = true;
 			this.btnUTCrudDetails.Click += new System.EventHandler(this.btnUTCrudDetails_Click);
 			// 
+			// dgvUTTable
+			// 
+			this.dgvUTTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvUTTable.Location = new System.Drawing.Point(6, 7);
+			this.dgvUTTable.Name = "dgvUTTable";
+			this.dgvUTTable.ReadOnly = true;
+			this.dgvUTTable.RowTemplate.Height = 24;
+			this.dgvUTTable.Size = new System.Drawing.Size(897, 472);
+			this.dgvUTTable.TabIndex = 27;
+			// 
+			// lblLoggedIn
+			// 
+			this.lblLoggedIn.AutoSize = true;
+			this.lblLoggedIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.lblLoggedIn.Location = new System.Drawing.Point(8, 9);
+			this.lblLoggedIn.Name = "lblLoggedIn";
+			this.lblLoggedIn.Size = new System.Drawing.Size(115, 20);
+			this.lblLoggedIn.TabIndex = 1;
+			this.lblLoggedIn.Text = "Logged in as: ";
+			// 
+			// lblUser
+			// 
+			this.lblUser.AutoSize = true;
+			this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.lblUser.Location = new System.Drawing.Point(129, 9);
+			this.lblUser.Name = "lblUser";
+			this.lblUser.Size = new System.Drawing.Size(62, 20);
+			this.lblUser.TabIndex = 2;
+			this.lblUser.Text = "<user>";
+			// 
+			// btnLogOut
+			// 
+			this.btnLogOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.btnLogOut.Location = new System.Drawing.Point(809, 12);
+			this.btnLogOut.Name = "btnLogOut";
+			this.btnLogOut.Size = new System.Drawing.Size(110, 53);
+			this.btnLogOut.TabIndex = 3;
+			this.btnLogOut.Text = "Log out";
+			this.btnLogOut.UseVisualStyleBackColor = true;
+			this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+			// 
+			// cRUDInformationBindingSource
+			// 
+			this.cRUDInformationBindingSource.DataSource = typeof(Tracktor.Desktop.CRUD_Information);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -536,9 +551,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgvCategoryTable)).EndInit();
 			this.TabComments.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvCommentTable)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).EndInit();
 			this.TabUserTypes.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvUTTable)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
