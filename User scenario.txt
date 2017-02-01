@@ -1,8 +1,0 @@
-User scenario
-
-Otvaranje karte /info/get
-Otvaranje filtera kategorija /category/get
-Otvaranje karte sa filtriranim kategorijama /info/get
-Otvaranje popisa informacija za lokaciju /info/place
-Otvaranje jedne informacije /info/get/<id>
-Rate nekog komentara /comment/rate
