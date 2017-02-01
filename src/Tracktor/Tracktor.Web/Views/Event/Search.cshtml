@@ -18,10 +18,10 @@
                 Choose a place on the map to get current impressions about that location.
             </div>
             <div class="filter-div">
-                <button class="btn btn-primary filter-btn" onclick="favouritePlaces()">Show favourite places only</button>
+                @Html.ActionLink("Show favourite places only", "Search", new { meh = 1 }, new { @class = "btn btn-primary", style = "width: 100%" })
             </div>
             <div class="filter-div">
-                <button class="btn btn-primary filter-btn" onclick="allPlaces()">Show all places</button>
+                @Html.ActionLink("Show all places", "Search", new { meh = 0 }, new { @class = "btn btn-primary", style = "width: 100%" })
             </div>
         </div>
         <div class="col-xs-6">
@@ -109,9 +109,13 @@
     );
 
     function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var center = { lat: 0, lng: 0 };
+        if(locations.length > 0) {
+            center = { lat: locations[0].lat, lng: locations[0].lng };
+        }
+        map = new google.maps.Map(document.getElementById('map'), {
             zoom: 1,
-            center: { lat: locations[0].lat, lng: locations[0].lng }
+            center: center,
         });
 
         var marker, i;
