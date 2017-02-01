@@ -46,7 +46,7 @@ namespace Tracktor.Desktop
 
 			tbUserCrudFullName.Text = user.FullName;
 			tbUserCrudName.Text = user.Username;
-			
+			tbUserCrudPass.Text = user.Password;
 
 			switch (user.UserTypeId)
 			{
@@ -86,6 +86,7 @@ namespace Tracktor.Desktop
 				user.FullName = tbUserCrudFullName.Text;
 				user.Username = tbUserCrudName.Text;
 				user.IsActive = cbUserCrudActive.Checked;
+				user.Password = tbUserCrudPass.Text;
 
 				int i = 1;
 				foreach (RadioButton radio in userType) { 
@@ -108,7 +109,6 @@ namespace Tracktor.Desktop
 					_unitOfWork.UserRepository.Update(user, _unitOfWork.Save);
 				}
 				else { 
-					user.Password = "pass";
 					user.Id = _unitOfWork.UserRepository.Insert(user, _unitOfWork.Save);
 
 				}
@@ -143,12 +143,19 @@ namespace Tracktor.Desktop
 				lblUserCrudError.Text = "You must enter a full name!";
 				return true;
 			}
-			else if (tbUserCrudName.TextLength == 0)
+			if (tbUserCrudName.TextLength == 0)
 			{
 				lblUserCrudError.Visible = true;
 				lblUserCrudError.Text = "You must enter a username!";
 				return true;
 			}
+			if (tbUserCrudPass.TextLength == 0)
+			{
+				lblUserCrudError.Visible = true;
+				lblUserCrudError.Text = "You must enter a password!";
+				return true;
+			}
+
 
 			this.DialogResult = DialogResult.OK;
 			return false;

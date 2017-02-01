@@ -37,8 +37,8 @@
 			this.tbPlaceCrudLon = new System.Windows.Forms.TextBox();
 			this.btnPlaceCrudOK = new System.Windows.Forms.Button();
 			this.btnPlaceCrudCancel = new System.Windows.Forms.Button();
-			this.lblPlaceCrudError = new System.Windows.Forms.Label();
 			this.lblPlaceCrudLon = new System.Windows.Forms.Label();
+			this.lblPlaceCrudError = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// tbPlaceCrudID
@@ -128,18 +128,6 @@
 			this.btnPlaceCrudCancel.UseVisualStyleBackColor = true;
 			this.btnPlaceCrudCancel.Click += new System.EventHandler(this.btnPlaceCrudCancel_Click);
 			// 
-			// lblPlaceCrudError
-			// 
-			this.lblPlaceCrudError.AutoSize = true;
-			this.lblPlaceCrudError.BackColor = System.Drawing.SystemColors.Info;
-			this.lblPlaceCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.lblPlaceCrudError.Location = new System.Drawing.Point(21, 296);
-			this.lblPlaceCrudError.Name = "lblPlaceCrudError";
-			this.lblPlaceCrudError.Size = new System.Drawing.Size(47, 20);
-			this.lblPlaceCrudError.TabIndex = 32;
-			this.lblPlaceCrudError.Text = "Error";
-			this.lblPlaceCrudError.Visible = false;
-			// 
 			// lblPlaceCrudLon
 			// 
 			this.lblPlaceCrudLon.AutoSize = true;
@@ -150,13 +138,25 @@
 			this.lblPlaceCrudLon.TabIndex = 33;
 			this.lblPlaceCrudLon.Text = "Longitude: ";
 			// 
+			// lblPlaceCrudError
+			// 
+			this.lblPlaceCrudError.BackColor = System.Drawing.SystemColors.Info;
+			this.lblPlaceCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.lblPlaceCrudError.Location = new System.Drawing.Point(12, 248);
+			this.lblPlaceCrudError.Name = "lblPlaceCrudError";
+			this.lblPlaceCrudError.Size = new System.Drawing.Size(416, 99);
+			this.lblPlaceCrudError.TabIndex = 54;
+			this.lblPlaceCrudError.Text = "Error";
+			this.lblPlaceCrudError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lblPlaceCrudError.Visible = false;
+			// 
 			// CRUD_Place
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(440, 325);
-			this.Controls.Add(this.lblPlaceCrudLon);
+			this.ClientSize = new System.Drawing.Size(440, 356);
 			this.Controls.Add(this.lblPlaceCrudError);
+			this.Controls.Add(this.lblPlaceCrudLon);
 			this.Controls.Add(this.btnPlaceCrudOK);
 			this.Controls.Add(this.btnPlaceCrudCancel);
 			this.Controls.Add(this.tbPlaceCrudLon);
@@ -184,7 +184,7 @@
 		private System.Windows.Forms.TextBox tbPlaceCrudLon;
 		private System.Windows.Forms.Button btnPlaceCrudOK;
 		private System.Windows.Forms.Button btnPlaceCrudCancel;
-		private System.Windows.Forms.Label lblPlaceCrudError;
 		private System.Windows.Forms.Label lblPlaceCrudLon;
+		private System.Windows.Forms.Label lblPlaceCrudError;
 	}
 }
