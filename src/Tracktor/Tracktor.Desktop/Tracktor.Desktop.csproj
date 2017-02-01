@@ -71,6 +71,12 @@
     <Compile Include="CRUD Forms\CRUD_Comment.Designer.cs">
       <DependentUpon>CRUD_Comment.cs</DependentUpon>
     </Compile>
+    <Compile Include="CRUD Forms\CRUD_UserType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUD Forms\CRUD_UserType.Designer.cs">
+      <DependentUpon>CRUD_UserType.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomPlace.cs" />
     <Compile Include="CRUD Forms\CRUD_Information.cs">
       <SubType>Form</SubType>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CRUD Forms\CRUD_User.resx">
       <DependentUpon>CRUD_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUD Forms\CRUD_UserType.resx">
+      <DependentUpon>CRUD_UserType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

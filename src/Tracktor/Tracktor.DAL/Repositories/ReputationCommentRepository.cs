@@ -80,6 +80,44 @@ namespace Tracktor.DAL.Repositories
             return this.Context.ReputationComment.Any(predicate);
         }
 
-        #endregion
-    }
+		public IEnumerable<ReputationCommentEntity> GetAll()
+		{
+			IEnumerable<ReputationComment> repComsDAL = DbSet;
+			List<ReputationCommentEntity> repComsDomain = new List<ReputationCommentEntity>();
+			foreach (var repCom in repComsDAL)
+			{
+				repComsDomain.Add(Mapper.ToDomainModel(repCom));
+			}
+			return repComsDomain.OrderBy(c => c.ContentCommentId);
+		}
+
+		//to be continued...
+		/*public IEnumerable<ReputationCommentEntity> GetAllByCommentId(int commentId)
+		{
+			IEnumerable<ReputationComment> repComsDAL = DbSet;
+			List<ReputationCommentEntity> repComsDomain = new List<ReputationCommentEntity>();
+			foreach (var repCom in repComsDAL)
+			{
+				if (repCom.CommentId == commentId)
+				{
+					repComsDomain.Add(Mapper.ToDomainModel(repCom));
+				}
+			}
+			return repComsDomain.OrderBy(c => c.Id);
+		}
+
+		public void DeleteByCommentId(int commentId, Action saveChanges)
+		{
+			IEnumerable<ReputationComment> repComsDAL = DbSet;
+			foreach (var repCom in repComsDAL)
+			{
+				if (repCom.CommentId == commentId)
+				{
+					Delete(repCom.Id, saveChanges);
+				}
+			}
+		}*/
+
+		#endregion
+	}
 }

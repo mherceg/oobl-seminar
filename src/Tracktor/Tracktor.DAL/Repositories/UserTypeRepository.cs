@@ -35,5 +35,47 @@ namespace Tracktor.DAL.Repositories
             }
             return userTypesDomain.OrderBy(ut => ut.Type);
         }
-    }
+
+		/// <summary>
+		/// Insert method for the usertype entities
+		/// </summary>
+		/// <param name="usertypeDomain"></param>
+		/// <param name="saveChanges"></param>
+		public int Insert(UserTypeEntity usertypeDomain, Action saveChanges)
+		{
+			UserType usertypeDAL = Mapper.ToDALModel(usertypeDomain);
+			DbSet.Add(usertypeDAL);
+			saveChanges();
+			return usertypeDAL.Id;
+		}
+
+		/// <summary>
+		/// Update method for usertype entities
+		/// </summary>
+		/// <param name="usertype"></param>
+		/// <param name="saveChanges"></param>
+		/// <returns></returns>
+		public bool Update(UserTypeEntity utDomain, Action saveChanges)
+		{
+			UserType utDAL = Mapper.ToDALModel(utDomain);
+			utDAL.Id = utDomain.Id;
+			this.Context.Entry(utDAL).State = System.Data.Entity.EntityState.Modified;
+			saveChanges();
+			return true;
+		}
+
+		/// <summary>
+		/// Delete method for usertype entities
+		/// </summary>
+		/// <param name="usertypeId"></param>
+		/// <param name="saveChanges"></param>
+		/// <returns></returns>
+		public bool Delete(int usertypeId, Action saveChanges)
+		{
+			UserType usertypeDAL = DbSet.FirstOrDefault(c => c.Id == usertypeId);
+			DbSet.Remove(usertypeDAL);
+			saveChanges();
+			return true;
+		}
+	}
 }

@@ -63,6 +63,12 @@
 			this.lblUser = new System.Windows.Forms.Label();
 			this.cRUDInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.btnLogOut = new System.Windows.Forms.Button();
+			this.TabUserTypes = new System.Windows.Forms.TabPage();
+			this.dgvUTTable = new System.Windows.Forms.DataGridView();
+			this.btnUTCrudAdd = new System.Windows.Forms.Button();
+			this.btnUTCrudEdit = new System.Windows.Forms.Button();
+			this.btnUTCrudDelete = new System.Windows.Forms.Button();
+			this.btnUTCrudDetails = new System.Windows.Forms.Button();
 			this.tabCtrlMainForm.SuspendLayout();
 			this.TabUsers.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvUserTable)).BeginInit();
@@ -75,6 +81,8 @@
 			this.TabComments.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCommentTable)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).BeginInit();
+			this.TabUserTypes.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvUTTable)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabCtrlMainForm
@@ -84,6 +92,7 @@
 			this.tabCtrlMainForm.Controls.Add(this.TabLocations);
 			this.tabCtrlMainForm.Controls.Add(this.TabCategories);
 			this.tabCtrlMainForm.Controls.Add(this.TabComments);
+			this.tabCtrlMainForm.Controls.Add(this.TabUserTypes);
 			this.tabCtrlMainForm.Location = new System.Drawing.Point(12, 71);
 			this.tabCtrlMainForm.Name = "tabCtrlMainForm";
 			this.tabCtrlMainForm.SelectedIndex = 0;
@@ -439,6 +448,71 @@
 			this.btnLogOut.UseVisualStyleBackColor = true;
 			this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
 			// 
+			// TabUserTypes
+			// 
+			this.TabUserTypes.Controls.Add(this.btnUTCrudAdd);
+			this.TabUserTypes.Controls.Add(this.btnUTCrudEdit);
+			this.TabUserTypes.Controls.Add(this.btnUTCrudDelete);
+			this.TabUserTypes.Controls.Add(this.btnUTCrudDetails);
+			this.TabUserTypes.Controls.Add(this.dgvUTTable);
+			this.TabUserTypes.Location = new System.Drawing.Point(4, 25);
+			this.TabUserTypes.Name = "TabUserTypes";
+			this.TabUserTypes.Padding = new System.Windows.Forms.Padding(3);
+			this.TabUserTypes.Size = new System.Drawing.Size(909, 546);
+			this.TabUserTypes.TabIndex = 6;
+			this.TabUserTypes.Text = "User Types";
+			this.TabUserTypes.UseVisualStyleBackColor = true;
+			// 
+			// dgvUTTable
+			// 
+			this.dgvUTTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvUTTable.Location = new System.Drawing.Point(6, 7);
+			this.dgvUTTable.Name = "dgvUTTable";
+			this.dgvUTTable.ReadOnly = true;
+			this.dgvUTTable.RowTemplate.Height = 24;
+			this.dgvUTTable.Size = new System.Drawing.Size(897, 472);
+			this.dgvUTTable.TabIndex = 27;
+			// 
+			// btnUTCrudAdd
+			// 
+			this.btnUTCrudAdd.Location = new System.Drawing.Point(793, 488);
+			this.btnUTCrudAdd.Name = "btnUTCrudAdd";
+			this.btnUTCrudAdd.Size = new System.Drawing.Size(110, 52);
+			this.btnUTCrudAdd.TabIndex = 31;
+			this.btnUTCrudAdd.Text = "Add User Type...";
+			this.btnUTCrudAdd.UseVisualStyleBackColor = true;
+			this.btnUTCrudAdd.Click += new System.EventHandler(this.btnUTCrudAdd_Click);
+			// 
+			// btnUTCrudEdit
+			// 
+			this.btnUTCrudEdit.Location = new System.Drawing.Point(648, 488);
+			this.btnUTCrudEdit.Name = "btnUTCrudEdit";
+			this.btnUTCrudEdit.Size = new System.Drawing.Size(110, 52);
+			this.btnUTCrudEdit.TabIndex = 30;
+			this.btnUTCrudEdit.Text = "Edit User Type...";
+			this.btnUTCrudEdit.UseVisualStyleBackColor = true;
+			this.btnUTCrudEdit.Click += new System.EventHandler(this.btnUTCrudEdit_Click);
+			// 
+			// btnUTCrudDelete
+			// 
+			this.btnUTCrudDelete.Location = new System.Drawing.Point(503, 488);
+			this.btnUTCrudDelete.Name = "btnUTCrudDelete";
+			this.btnUTCrudDelete.Size = new System.Drawing.Size(110, 52);
+			this.btnUTCrudDelete.TabIndex = 29;
+			this.btnUTCrudDelete.Text = "Delete User Type";
+			this.btnUTCrudDelete.UseVisualStyleBackColor = true;
+			this.btnUTCrudDelete.Click += new System.EventHandler(this.btnUTCrudDelete_Click);
+			// 
+			// btnUTCrudDetails
+			// 
+			this.btnUTCrudDetails.Location = new System.Drawing.Point(358, 488);
+			this.btnUTCrudDetails.Name = "btnUTCrudDetails";
+			this.btnUTCrudDetails.Size = new System.Drawing.Size(110, 52);
+			this.btnUTCrudDetails.TabIndex = 28;
+			this.btnUTCrudDetails.Text = "User Type Details...";
+			this.btnUTCrudDetails.UseVisualStyleBackColor = true;
+			this.btnUTCrudDetails.Click += new System.EventHandler(this.btnUTCrudDetails_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -463,6 +537,8 @@
 			this.TabComments.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvCommentTable)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.cRUDInformationBindingSource)).EndInit();
+			this.TabUserTypes.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvUTTable)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -504,5 +580,11 @@
 		private System.Windows.Forms.Button btnCommentCrudDelete;
 		private System.Windows.Forms.Button btnCommentCrudDetails;
 		private System.Windows.Forms.Button btnLogOut;
+		private System.Windows.Forms.TabPage TabUserTypes;
+		private System.Windows.Forms.Button btnUTCrudAdd;
+		private System.Windows.Forms.Button btnUTCrudEdit;
+		private System.Windows.Forms.Button btnUTCrudDelete;
+		private System.Windows.Forms.Button btnUTCrudDetails;
+		private System.Windows.Forms.DataGridView dgvUTTable;
 	}
 }

@@ -39,7 +39,8 @@ namespace Tracktor.Business.Implementation
 
         public bool Delete(int commentId)
         {
-            return _unitOfWork.CommentRepository.Delete(commentId, _unitOfWork.Save);
+			//_unitOfWork.ReputationCommentRepository.DeleteByCommentId(commentId, _unitOfWork.Save);
+			return _unitOfWork.CommentRepository.Delete(commentId, _unitOfWork.Save);
         }
 
 
@@ -70,5 +71,6 @@ namespace Tracktor.Business.Implementation
         {
             return _unitOfWork.ReputationCommentRepository.Delete(repId, _unitOfWork.Save);
         }
+
     }
 }

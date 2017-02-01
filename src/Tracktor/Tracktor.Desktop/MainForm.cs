@@ -26,6 +26,7 @@ namespace Tracktor.Desktop
 		private BindingList<PlaceEntity> AllPlaces;
 		private BindingList<CategoryEntity> AllCategories;
 		private BindingList<CommentEntity> AllComments;
+		private BindingList<UserTypeEntity> AllUserTypes;
 
 		BindingList<CustomPlace> viewPlaces;
 
@@ -48,12 +49,14 @@ namespace Tracktor.Desktop
 			LoadPlaceData();
 			LoadCategoryData();
 			LoadCommentData();
+			LoadUserTypeData();
 
 			CreateUserGrid();
 			CreateInfoGrid();
 			CreatePlaceGrid();
 			CreateCategoryGrid();
 			CreateCommentGrid();
+			CreateUserTypeGrid();
 		}
 
 		#region Loading data and filling datagridview
@@ -210,7 +213,7 @@ namespace Tracktor.Desktop
 			dgvCommentTable.Columns.Add(CommentIdCol);
 
 			DataGridViewTextBoxColumn CommentTimeCol = new DataGridViewTextBoxColumn();
-			CommentTimeCol.DataPropertyName = "Time";
+			CommentTimeCol.DataPropertyName = "EndTime";
 			CommentTimeCol.HeaderText = "Time";
 			CommentTimeCol.Name = "CommentTime";
 			dgvCommentTable.Columns.Add(CommentTimeCol);
@@ -229,12 +232,31 @@ namespace Tracktor.Desktop
 			dgvCommentTable.Columns.Add(CommentUserIdCol);
 
 			DataGridViewTextBoxColumn CommentInfoIdCol = new DataGridViewTextBoxColumn();
-			CommentInfoIdCol.DataPropertyName = "InfoId";
+			CommentInfoIdCol.DataPropertyName = "ContentInfoId";
 			CommentInfoIdCol.HeaderText = "Info ID";
 			CommentInfoIdCol.Name = "CommentInfoId";
 			dgvCommentTable.Columns.Add(CommentInfoIdCol);
 
 			dgvCommentTable.DataSource = AllComments;
+		}
+
+		private void CreateUserTypeGrid()
+		{
+			dgvUTTable.AutoGenerateColumns = false;
+
+			DataGridViewTextBoxColumn UserTypeIdCol = new DataGridViewTextBoxColumn();
+			UserTypeIdCol.DataPropertyName = "Id";
+			UserTypeIdCol.HeaderText = "UserType ID";
+			UserTypeIdCol.Name = "UserTypeId";
+			dgvUTTable.Columns.Add(UserTypeIdCol);
+
+			DataGridViewTextBoxColumn UserTypeTypeCol = new DataGridViewTextBoxColumn();
+			UserTypeTypeCol.DataPropertyName = "Type";
+			UserTypeTypeCol.HeaderText = "User Type";
+			UserTypeTypeCol.Name = "UserTypeType";
+			dgvUTTable.Columns.Add(UserTypeTypeCol);
+
+			dgvUTTable.DataSource = AllUserTypes;
 		}
 
 		private void LoadUserData()
@@ -278,6 +300,13 @@ namespace Tracktor.Desktop
 			AllComments = new BindingList<CommentEntity>(comments);
 		}
 
+		private void LoadUserTypeData()
+		{
+			TracktorDb context = new TracktorDb();
+			UserTypeRepository UserTypeRepo = new UserTypeRepository(context);
+			List<UserTypeEntity> UserTypes = UserTypeRepo.GetAll().ToList();
+			AllUserTypes = new BindingList<UserTypeEntity>(UserTypes);
+		}
 		#endregion
 
 		#region User-related buttons
@@ -536,6 +565,59 @@ namespace Tracktor.Desktop
 		}
 		#endregion
 
+
+
+
+		private void btnUTCrudAdd_Click(object sender, EventArgs e)
+		{
+			UserTypeEntity ut = new UserTypeEntity();
+			CRUD_UserType crudUT = new CRUD_UserType(ut);
+			crudUT.ShowDialog();
+			if (crudUT.DialogResult == DialogResult.OK)
+			{
+				AllUserTypes.Add(ut);
+				dgvUTTable.Invalidate();
+			}
+		}
+
+		private void btnUTCrudEdit_Click(object sender, EventArgs e)
+		{
+			int userTypeIndex = dgvUTTable.CurrentCell.RowIndex;
+			UserTypeEntity userType = AllUserTypes.ElementAt(userTypeIndex);
+
+			CRUD_UserType crudUserType = new CRUD_UserType(userType);
+			crudUserType.editing = true;
+			crudUserType.ShowDialog();
+
+			if (crudUserType.DialogResult == DialogResult.OK)
+			{
+				dgvUTTable.InvalidateRow(userTypeIndex);
+			}
+		}
+
+		private void btnUTCrudDetails_Click(object sender, EventArgs e)
+		{
+			int userTypeIndex = dgvUTTable.CurrentCell.RowIndex;
+			UserTypeEntity userType = AllUserTypes.ElementAt(userTypeIndex);
+			CRUD_UserType crudUserType = new CRUD_UserType(userType);
+			crudUserType.makeReadOnly();
+			crudUserType.Show();
+		}
+
+		private void btnUTCrudDelete_Click(object sender, EventArgs e)
+		{
+			int userTypeIndex = dgvUTTable.CurrentCell.RowIndex;
+			UserTypeEntity userType = AllUserTypes.ElementAt(userTypeIndex);
+			PestForm areYouSure = new PestForm(userType);
+
+			areYouSure.ShowDialog();
+
+			if (areYouSure.DialogResult == DialogResult.Yes)
+			{
+				dgvUTTable.Rows.RemoveAt(userTypeIndex);
+				dgvUTTable.Invalidate();
+			}
+		}
 
 
 		private void btnLogOut_Click(object sender, EventArgs e)

@@ -241,7 +241,17 @@ namespace Tracktor.DAL
             return userDAL;
         }
 
-        public Place ToDALModel(PlaceEntity place)
+		public UserType ToDALModel(UserTypeEntity userType)
+		{
+			UserType userTypeDAL = new UserType()
+			{
+				Type = userType.Type,
+			};
+
+			return userTypeDAL;
+		}
+
+		public Place ToDALModel(PlaceEntity place)
         {
             Place placeDAL = new Place()
             {
