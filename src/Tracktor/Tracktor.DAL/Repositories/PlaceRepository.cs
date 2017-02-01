@@ -39,12 +39,19 @@ namespace Tracktor.DAL.Repositories
         /// <summary>
         /// Update method for place entities
         /// </summary>
-        /// <param name="place"></param>
+        /// <param name="placeDomain"></param>
         /// <param name="saveChanges"></param>
         /// <returns></returns>
-        public bool Update(PlaceEntity place, Action saveChanges)
+        public bool Update(PlaceEntity placeDomain, Action saveChanges)
         {
-            Place placeDALnew = Mapper.ToDALModel(place);
+			Place placeDAL = Mapper.ToDALModel(placeDomain);
+			placeDAL.Id = placeDomain.Id;
+			this.Context.Entry(placeDAL).State = System.Data.Entity.EntityState.Modified;
+			saveChanges();
+			return true;
+
+			//Ovo mi ne štima - valjda nikom niš neću ubit
+			/*Place placeDALnew = Mapper.ToDALModel(place);
             Place placeDALold = DbSet.Find(place.Id);
 
             if (placeDALold != null)
@@ -52,8 +59,8 @@ namespace Tracktor.DAL.Repositories
                 Context.Entry(placeDALold).CurrentValues.SetValues(placeDALnew);
             }
             saveChanges();
-            return true;
-        }
+            return true;*/
+		}
 
         /// <summary>
         /// Delete method fot the place entities

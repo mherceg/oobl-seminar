@@ -174,10 +174,12 @@
 			this.lblUserCrudError.AutoSize = true;
 			this.lblUserCrudError.BackColor = System.Drawing.SystemColors.Info;
 			this.lblUserCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.lblUserCrudError.Location = new System.Drawing.Point(12, 310);
+			this.lblUserCrudError.Location = new System.Drawing.Point(29, 335);
 			this.lblUserCrudError.Name = "lblUserCrudError";
-			this.lblUserCrudError.Size = new System.Drawing.Size(0, 20);
+			this.lblUserCrudError.Size = new System.Drawing.Size(47, 20);
 			this.lblUserCrudError.TabIndex = 12;
+			this.lblUserCrudError.Text = "Error";
+			this.lblUserCrudError.Visible = false;
 			// 
 			// cbUserCrudActive
 			// 

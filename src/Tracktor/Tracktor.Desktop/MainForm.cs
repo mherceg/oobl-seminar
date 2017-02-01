@@ -15,6 +15,7 @@ using Tracktor.Business.Implementation;
 using Tracktor.WebService.Models;
 using Tracktor.DAL.Database;
 using Tracktor.DAL.Repositories;
+using Tracktor.Desktop.CRUD_Forms;
 
 namespace Tracktor.Desktop
 {
@@ -23,12 +24,20 @@ namespace Tracktor.Desktop
 		private BindingList<UserEntity> AllUsers;
 		private BindingList<InfoEntity> AllInfos;
 		private BindingList<PlaceEntity> AllPlaces;
+		private BindingList<CategoryEntity> AllCategories;
+		private BindingList<CommentEntity> AllComments;
+
 		BindingList<CustomPlace> viewPlaces;
 
 		public MainForm()
 		{
 			InitializeComponent();
+		}
 
+		public MainForm(UserEntity login)
+		{
+			InitializeComponent();
+			lblUser.Text = login.Username;
 		}
 
 
@@ -37,9 +46,14 @@ namespace Tracktor.Desktop
 			LoadUserData();
 			LoadInfoData();
 			LoadPlaceData();
+			LoadCategoryData();
+			LoadCommentData();
+
 			CreateUserGrid();
 			CreateInfoGrid();
 			CreatePlaceGrid();
+			CreateCategoryGrid();
+			CreateCommentGrid();
 		}
 
 		#region Loading data and filling datagridview
@@ -166,6 +180,63 @@ namespace Tracktor.Desktop
 			dgvPlaceTable.DataSource = viewPlaces;
 		}
 
+		private void CreateCategoryGrid()
+		{
+			dgvCategoryTable.AutoGenerateColumns = false;
+
+			DataGridViewTextBoxColumn CatIdCol = new DataGridViewTextBoxColumn();
+			CatIdCol.DataPropertyName = "Id";
+			CatIdCol.HeaderText = "Category ID";
+			CatIdCol.Name = "CatId";
+			dgvCategoryTable.Columns.Add(CatIdCol);
+
+			DataGridViewTextBoxColumn CatNameCol = new DataGridViewTextBoxColumn();
+			CatNameCol.DataPropertyName = "Name";
+			CatNameCol.HeaderText = "Category Name";
+			CatNameCol.Name = "CatName";
+			dgvCategoryTable.Columns.Add(CatNameCol);
+
+			dgvCategoryTable.DataSource = AllCategories;
+		}
+
+		private void CreateCommentGrid()
+		{
+			dgvCommentTable.AutoGenerateColumns = false;
+
+			DataGridViewTextBoxColumn CommentIdCol = new DataGridViewTextBoxColumn();
+			CommentIdCol.DataPropertyName = "Id";
+			CommentIdCol.HeaderText = "Comment ID";
+			CommentIdCol.Name = "CommentId";
+			dgvCommentTable.Columns.Add(CommentIdCol);
+
+			DataGridViewTextBoxColumn CommentTimeCol = new DataGridViewTextBoxColumn();
+			CommentTimeCol.DataPropertyName = "Time";
+			CommentTimeCol.HeaderText = "Time";
+			CommentTimeCol.Name = "CommentTime";
+			dgvCommentTable.Columns.Add(CommentTimeCol);
+
+			DataGridViewTextBoxColumn CommentContentCol = new DataGridViewTextBoxColumn();
+			CommentContentCol.DataPropertyName = "Content";
+			CommentContentCol.HeaderText = "Content";
+			CommentContentCol.Name = "CommentContent";
+			CommentContentCol.Width = 200;
+			dgvCommentTable.Columns.Add(CommentContentCol);
+
+			DataGridViewTextBoxColumn CommentUserIdCol = new DataGridViewTextBoxColumn();
+			CommentUserIdCol.DataPropertyName = "UserId";
+			CommentUserIdCol.HeaderText = "User ID";
+			CommentUserIdCol.Name = "CommentUserId";
+			dgvCommentTable.Columns.Add(CommentUserIdCol);
+
+			DataGridViewTextBoxColumn CommentInfoIdCol = new DataGridViewTextBoxColumn();
+			CommentInfoIdCol.DataPropertyName = "InfoId";
+			CommentInfoIdCol.HeaderText = "Info ID";
+			CommentInfoIdCol.Name = "CommentInfoId";
+			dgvCommentTable.Columns.Add(CommentInfoIdCol);
+
+			dgvCommentTable.DataSource = AllComments;
+		}
+
 		private void LoadUserData()
 		{
 			TracktorDb context = new TracktorDb();
@@ -191,13 +262,28 @@ namespace Tracktor.Desktop
 			AllPlaces = new BindingList<PlaceEntity>(places);
 		}
 
+		private void LoadCategoryData()
+		{
+			TracktorDb context = new TracktorDb();
+			CategoryRepository catRepo = new CategoryRepository(context);
+			List<CategoryEntity> cats = catRepo.GetAll().ToList();
+			AllCategories = new BindingList<CategoryEntity>(cats);
+		}
+
+		private void LoadCommentData()
+		{
+			TracktorDb context = new TracktorDb();
+			CommentRepository commentRepo = new CommentRepository(context);
+			List<CommentEntity> comments = commentRepo.GetAll().ToList();
+			AllComments = new BindingList<CommentEntity>(comments);
+		}
+
 		#endregion
 
 		#region User-related buttons
 
 		private void btnUserAdd_Click(object sender, EventArgs e)
 		{
-			//rowindex?
 			UserEntity user = new UserEntity();
 			CRUD_User crudUser = new CRUD_User(user);
 			crudUser.ShowDialog();
@@ -211,9 +297,9 @@ namespace Tracktor.Desktop
 		private void btnUserEdit_Click(object sender, EventArgs e)
 		{
 			int userIndex = dgvUserTable.CurrentCell.RowIndex;
-			UserEntity tmpUser = AllUsers.ElementAt(userIndex);
+			UserEntity user = AllUsers.ElementAt(userIndex);
 
-			CRUD_User crudUser = new CRUD_User(tmpUser);
+			CRUD_User crudUser = new CRUD_User(user);
 			crudUser.editing = true;
 			crudUser.ShowDialog();
 
@@ -255,55 +341,211 @@ namespace Tracktor.Desktop
 		{
 			InfoEntity info = new InfoEntity();
 			CRUD_Information crudInfo = new CRUD_Information(info);
-			crudInfo.Show();
+			crudInfo.ShowDialog();
+			if (crudInfo.DialogResult == DialogResult.OK)
+			{
+				AllInfos.Add(info);
+				dgvInfoTable.Invalidate();
+			}
 		}
 
 		private void btnInfoEdit_Click(object sender, EventArgs e)
 		{
-			// Dodat da prikaže za trenutno odabranu informaciju
-			//CRUD_Information crudInfo = new CRUD_Information(infos);
-			//crudInfo.Show();
+			int infoIndex = dgvInfoTable.CurrentCell.RowIndex;
+			InfoEntity info = AllInfos.ElementAt(infoIndex);
+
+			CRUD_Information crudInfo = new CRUD_Information(info);
+			crudInfo.editing = true;
+			crudInfo.ShowDialog();
+
+			if (crudInfo.DialogResult == DialogResult.OK)
+			{
+				dgvInfoTable.InvalidateRow(infoIndex);
+			}
 		}
 
 		private void btnInfoDetails_Click(object sender, EventArgs e)
 		{
+			int infoIndex = dgvInfoTable.CurrentCell.RowIndex;
+			InfoEntity info = AllInfos.ElementAt(infoIndex);
+			CRUD_Information crudInfo = new CRUD_Information(info);
+			crudInfo.makeReadOnly();
+			crudInfo.Show();
+		}
 
-			// Dodat da prikaže za trenutno odabranu informaciju
-			//CRUD_Information crudInfo = (new CRUD_Information(infos)).makeReadOnly();
-			//crudInfo.Show();
+		private void btnInfoDelete_Click(object sender, EventArgs e)
+		{
+			int infoIndex = dgvInfoTable.CurrentCell.RowIndex;
+			InfoEntity info = AllInfos.ElementAt(infoIndex);
+			PestForm areYouSure = new PestForm(info);
+
+			areYouSure.ShowDialog();
+
+			if (areYouSure.DialogResult == DialogResult.Yes)
+			{
+				dgvInfoTable.Rows.RemoveAt(infoIndex);
+				dgvInfoTable.Invalidate();
+			}
 		}
 
 		#endregion
 		#region Place-related buttons
 
-		private void btnLocationAdd_Click(object sender, EventArgs e)
+		private void btnPlaceAdd_Click(object sender, EventArgs e)
 		{
 			PlaceEntity place = new PlaceEntity();
 			CRUD_Place crudPlace = new CRUD_Place(place);
+			crudPlace.ShowDialog();
+
+			if (crudPlace.DialogResult == DialogResult.OK)
+			{
+				AllPlaces.Add(place);
+				dgvPlaceTable.Invalidate();
+			}
+		}
+
+		private void btnPlaceEdit_Click(object sender, EventArgs e)
+		{
+			int placeIndex = dgvPlaceTable.CurrentCell.RowIndex;
+			PlaceEntity place = AllPlaces.ElementAt(placeIndex);
+			CRUD_Place crudPlace = new CRUD_Place(place);
+
+			crudPlace.editing = true;
+			crudPlace.ShowDialog();
+
+			if (crudPlace.DialogResult == DialogResult.OK)
+			{
+				dgvPlaceTable.InvalidateRow(placeIndex);
+			}
+		}
+
+		private void btnPlaceDetails_Click(object sender, EventArgs e)
+		{
+			int placeIndex = dgvPlaceTable.CurrentCell.RowIndex;
+			PlaceEntity place = AllPlaces.ElementAt(placeIndex);
+			CRUD_Place crudPlace = new CRUD_Place(place);
+			crudPlace.makeReadOnly();
 			crudPlace.Show();
 		}
 
-		private void btnLocationEdit_Click(object sender, EventArgs e)
+		private void btnPlaceDelete_Click(object sender, EventArgs e)
 		{
-			// Dodat da prikaže za trenutno odabrano mjesto
-			//CRUD_Place crudPlace = new CRUD_Place(places);
-			//crudPlace.Show();
+			int placeIndex = dgvPlaceTable.CurrentCell.RowIndex;
+			PlaceEntity place = AllPlaces.ElementAt(placeIndex);
+			PestForm areYouSure = new PestForm(place);
+
+			areYouSure.ShowDialog();
+
+			if (areYouSure.DialogResult == DialogResult.Yes)
+			{
+				dgvPlaceTable.Rows.RemoveAt(placeIndex);
+				dgvPlaceTable.Invalidate();
+			}
+		}
+		#endregion
+		#region Category-related buttons
+		private void btnCategoryAdd_Click(object sender, EventArgs e)
+		{
+			CategoryEntity cat = new CategoryEntity();
+			CRUD_Category crudCat = new CRUD_Category(cat);
+			crudCat.ShowDialog();
+			if (crudCat.DialogResult == DialogResult.OK)
+			{
+				AllCategories.Add(cat);
+				dgvCategoryTable.Invalidate();
+			}
 		}
 
-		private void btnLocationDetails_Click(object sender, EventArgs e)
+		private void btnCategoryEdit_Click(object sender, EventArgs e)
 		{
-			//CRUD_Place crudPlace = (new CRUD_Place(places)).makeReadOnly();
-			//crudPlace.Show();
+			int catIndex = dgvCategoryTable.CurrentCell.RowIndex;
+			CategoryEntity cat = AllCategories.ElementAt(catIndex);
+
+			CRUD_Category crudCat = new CRUD_Category(cat);
+			crudCat.editing = true;
+			crudCat.ShowDialog();
+
+			if (crudCat.DialogResult == DialogResult.OK)
+			{
+				dgvCategoryTable.InvalidateRow(catIndex);
+			}
 		}
 
+		private void btnCategoryDetails_Click(object sender, EventArgs e)
+		{
+			int catIndex = dgvCategoryTable.CurrentCell.RowIndex;
+			CategoryEntity cat = AllCategories.ElementAt(catIndex);
+			CRUD_Category crudCat = new CRUD_Category(cat);
+			crudCat.makeReadOnly();
+			crudCat.Show();
+		}
+
+		private void btnCategoryDelete_Click(object sender, EventArgs e)
+		{
+			int catIndex = dgvCategoryTable.CurrentCell.RowIndex;
+			CategoryEntity cat = AllCategories.ElementAt(catIndex);
+			PestForm areYouSure = new PestForm(cat);
+
+			areYouSure.ShowDialog();
+
+			if (areYouSure.DialogResult == DialogResult.Yes)
+			{
+				dgvCategoryTable.Rows.RemoveAt(catIndex);
+				dgvCategoryTable.Invalidate();
+			}
+		}
+		#endregion
+		#region Comment-related buttons
+		
+		private void btnCommentCrudEdit_Click(object sender, EventArgs e)
+		{
+			int commentIndex = dgvCommentTable.CurrentCell.RowIndex;
+			CommentEntity comment = AllComments.ElementAt(commentIndex);
+			CRUD_Comment crudComment = new CRUD_Comment(comment);
+
+			crudComment.ShowDialog();
+
+			if (crudComment.DialogResult == DialogResult.OK)
+			{
+				dgvCommentTable.InvalidateRow(commentIndex);
+			}
+		}
+
+		private void btnCommentCrudDetails_Click(object sender, EventArgs e)
+		{
+			int commentIndex = dgvCommentTable.CurrentCell.RowIndex;
+			CommentEntity comment = AllComments.ElementAt(commentIndex);
+			CRUD_Comment crudComment = new CRUD_Comment(comment);
+			crudComment.makeReadOnly();
+			crudComment.Show();
+		}
+
+		private void btnCommentCrudDelete_Click(object sender, EventArgs e)
+		{
+			int commentIndex = dgvCommentTable.CurrentCell.RowIndex;
+			CommentEntity comment = AllComments.ElementAt(commentIndex);
+			PestForm areYouSure = new PestForm(comment);
+
+			areYouSure.ShowDialog();
+
+			if (areYouSure.DialogResult == DialogResult.Yes)
+			{
+				dgvCommentTable.Rows.RemoveAt(commentIndex);
+				dgvCommentTable.Invalidate();
+			}
+		}
 		#endregion
 
-		private void dgvInfoTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-			//BindingSource
-			//Kakav je ovo relikt
-		}
 
-		
+
+		private void btnLogOut_Click(object sender, EventArgs e)
+		{
+			PestForm areYouSure = new PestForm();
+			areYouSure.ShowDialog();
+			if(areYouSure.DialogResult == DialogResult.Yes)
+			{
+				this.Close();
+			}
+		}
 	}
 }

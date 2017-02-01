@@ -36,15 +36,43 @@ namespace Tracktor.DAL.Repositories
             return infoDAL.Id;
         }
 
-        /// <summary>
-        /// Get filtered place entities
-        /// </summary>
-        /// <param name="filters"></param>
-        /// <param name="active"></param>
-        /// <param name="future"></param>
-        /// <param name="placeId"></param>
-        /// <returns></returns>
-        public IEnumerable<InfoEntity> GetMany(IDictionary<string, bool> filters, bool active, bool future, int placeId)
+		/// <summary>
+		/// Update method for the info entities
+		/// </summary>
+		/// <param name="infoDomain"></param>
+		/// <param name="saveChanges"></param>
+		public int Update(InfoEntity infoDomain, Action saveChanges)
+		{
+			Info infoDAL = Mapper.ToDALModel(infoDomain);
+			infoDAL.Id = infoDomain.Id;
+			this.Context.Entry(infoDAL).State = System.Data.Entity.EntityState.Modified;
+			saveChanges();
+			return infoDAL.Id;
+		}
+
+		/// <summary>
+		/// Remove method for the info entities
+		/// </summary>
+		/// <param name="infoDomain"></param>
+		/// <param name="saveChanges"></param>
+		public int Remove(InfoEntity infoDomain, Action saveChanges)
+		{
+			Info infoDAL = Mapper.ToDALModel(infoDomain);
+			infoDAL.Id = infoDomain.Id;
+			this.Context.Entry(infoDAL).State = System.Data.Entity.EntityState.Deleted;
+			saveChanges();
+			return infoDAL.Id;
+		}
+
+		/// <summary>
+		/// Get filtered place entities
+		/// </summary>
+		/// <param name="filters"></param>
+		/// <param name="active"></param>
+		/// <param name="future"></param>
+		/// <param name="placeId"></param>
+		/// <returns></returns>
+		public IEnumerable<InfoEntity> GetMany(IDictionary<string, bool> filters, bool active, bool future, int placeId)
         {
             //Dohvat svih aktivnih i buducih dogadjaja
             List<Info> activeInfos = this.Context.Set<Info>().Where(i => i.Time < DateTime.Now && i.EndTime > DateTime.Now && i.PlaceId == placeId).ToList();
@@ -107,22 +135,10 @@ namespace Tracktor.DAL.Repositories
 			{
 				infosDomain.Add(Mapper.ToDomainModel(info));
 			}
-			return infosDomain.OrderBy(i => i.time);
+			return infosDomain.OrderBy(i => i.Id);
 
 		}
 
-		/// <summary>
-		/// Update method for the info entities
-		/// </summary>
-		/// <param name="infoDomain"></param>
-		/// <param name="saveChanges"></param>
-		public int Update(InfoEntity infoDomain, Action saveChanges)
-		{
-			Info infoDAL = Mapper.ToDALModel(infoDomain);
-			this.Context.Entry(infoDomain).State = System.Data.Entity.EntityState.Modified;
-			saveChanges();
-			return infoDAL.Id;
-		}
 		#endregion
 	}
 }

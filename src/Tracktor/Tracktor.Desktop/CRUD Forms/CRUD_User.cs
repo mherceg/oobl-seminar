@@ -41,14 +41,8 @@ namespace Tracktor.Desktop
 			userType.Add(rbUserCrudTypeReg);
 
 			#region Initialization
-			if (user.Id != 0)
-			{
-				tbUserCrudUID.Text = user.Id.ToString();
-			}
-			else
-			{
-				tbUserCrudUID.Text = "";
-			}
+			if (user.Id != 0) {	tbUserCrudUID.Text = user.Id.ToString(); }
+			else { tbUserCrudUID.Text = "";	}
 
 			tbUserCrudFullName.Text = user.FullName;
 			tbUserCrudName.Text = user.Username;
@@ -143,23 +137,21 @@ namespace Tracktor.Desktop
 
 		private bool isEmpty()
 		{
-			bool empty = false;
 			if (tbUserCrudFullName.TextLength == 0) // tbUserCrudName.TextLength == 0)
 			{
+				lblUserCrudError.Visible = true;
 				lblUserCrudError.Text = "You must enter a full name!";
-				empty = true;
+				return true;
 			}
 			else if (tbUserCrudName.TextLength == 0)
 			{
+				lblUserCrudError.Visible = true;
 				lblUserCrudError.Text = "You must enter a username!";
-				empty = true;
+				return true;
 			}
 
-			if (!empty)
-			{
-				this.DialogResult = DialogResult.OK;
-			}
-			return empty;
+			this.DialogResult = DialogResult.OK;
+			return false;
 		}
 	}
 }

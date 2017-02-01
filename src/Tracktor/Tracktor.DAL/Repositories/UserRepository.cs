@@ -45,13 +45,18 @@ namespace Tracktor.DAL.Repositories
 			return userDAL.Id;
 		}
 
-		public int Remove(UserEntity userDomain, Action saveChanges)
+		public void Remove(int userId, Action saveChanges)
 		{
+			User userDAL = DbSet.FirstOrDefault(c => c.Id == userId);
+			DbSet.Remove(userDAL);
+			saveChanges();
+			/*return true;
+
 			User userDAL = Mapper.ToDALModel(userDomain);
 			userDAL.Id = userDomain.Id;
 			this.Context.Entry(userDAL).State = System.Data.Entity.EntityState.Deleted;
 			saveChanges();
-			return userDAL.Id;
+			//return userDAL.Id;*/
 		}
 
 

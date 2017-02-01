@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tracktor.Business;
+using Tracktor.Business.Implementation;
+using Tracktor.DAL.Database;
+using Tracktor.DAL.UnitOfWork;
+using Tracktor.Domain;
 
 namespace Tracktor.Desktop
 {
@@ -22,16 +27,6 @@ namespace Tracktor.Desktop
 
 		}
 
-		private void textBox1_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label2_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void button1_Click(object sender, EventArgs e)
 		{
 			if (tbUsername.Text == "")
@@ -41,9 +36,26 @@ namespace Tracktor.Desktop
 				return;
 			}
 
-			if (tbUsername.Text != "admin" || tbPassword.Text != "pass")
+			LoginEntity le = new LoginEntity();
+			le.Username = tbUsername.Text;
+			le.Password = tbPassword.Text;
+
+			var userService = ServiceFactory.getUserServices();
+			int userId;
+			try
 			{
-				lblError.Text = "Wrong username/password combination!";
+				userId = userService.Login(le);
+			}
+			catch (Exception exc)
+			{
+				lblError.Text = exc.Message;
+				lblError.Visible = true;
+				return;
+			}
+			var user = userService.Get(userId);
+			if (user.UserTypeId != 1)
+			{
+				lblError.Text = "You are not an admin!";
 				lblError.Visible = true;
 				return;
 			}
@@ -53,9 +65,20 @@ namespace Tracktor.Desktop
 				lblError.Text = "Login successful! Loading main screen...";
 				lblError.Visible = true;
 				this.Hide();
-				MainForm mainForm = new MainForm();
-				mainForm.Show();
+				MainForm mainForm = new MainForm(user);
+				mainForm.ShowDialog();
+				lblError.Text = "Logged out!";
+				this.Show();
 			}
+
+			//if (tbUsername.Text != "admin" || tbPassword.Text != "pass")
+			//{
+			//	lblError.Text = "Wrong username/password combination!";
+			//	lblError.Visible = true;
+			//	return;
+			//}
+
+			//else
 		}
 	}
 }

@@ -70,6 +70,21 @@ namespace Tracktor.DAL.Repositories
             return true;
         }
 
-        #endregion
-    }
+		/// <summary>
+		/// Get All method for Comment entities
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<CommentEntity> GetAll()
+		{
+			IEnumerable<Comment> commentsDAL = DbSet;
+			List<CommentEntity> commentsDomain = new List<CommentEntity>();
+			foreach (var comment in commentsDAL)
+			{
+				commentsDomain.Add(Mapper.ToDomainModel(comment));
+			}
+			return commentsDomain.OrderBy(c => c.UserId);
+		}
+
+		#endregion
+	}
 }
