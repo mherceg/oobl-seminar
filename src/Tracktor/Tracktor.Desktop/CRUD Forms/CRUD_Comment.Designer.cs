@@ -64,7 +64,6 @@
 			// 
 			// tbCommentCrudIID
 			// 
-			this.tbCommentCrudIID.Enabled = false;
 			this.tbCommentCrudIID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
 			this.tbCommentCrudIID.Location = new System.Drawing.Point(99, 110);
 			this.tbCommentCrudIID.Name = "tbCommentCrudIID";

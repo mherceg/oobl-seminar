@@ -98,18 +98,21 @@ namespace Tracktor.Desktop
 			{
 				lblPlaceCrudError.Visible = true;
 				lblPlaceCrudError.Text = "You must enter a place name!";
+				tbPlaceCrudName.Focus();
 				return true;
 			}
 			if (tbPlaceCrudLat.TextLength == 0) 
 			{
 				lblPlaceCrudError.Visible = true;
 				lblPlaceCrudError.Text = "You must enter a place latitude!";
+				tbPlaceCrudLat.Focus();
 				return true;
 			}
 			if (tbPlaceCrudLon.TextLength == 0) 
 			{
 				lblPlaceCrudError.Visible = true;
 				lblPlaceCrudError.Text = "You must enter a place longitude!";
+				tbPlaceCrudLon.Focus();
 				return true;
 			}
 

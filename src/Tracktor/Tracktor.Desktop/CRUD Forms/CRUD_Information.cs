@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,13 +22,23 @@ namespace Tracktor.Desktop
 		private bool readOnly;
 		public bool editing { get; set; }
 
-		public CRUD_Information(InfoEntity newInfo)
+		public CRUD_Information(InfoEntity newInfo, int userId = 0)
 		{
 			InitializeComponent();
 			readOnly = false;
 			editing = false;
 
 			this.info = newInfo;
+
+			TracktorDb context = new TracktorDb();
+			CategoryRepository catRepo = new CategoryRepository(context);
+			List<CategoryEntity> cats = catRepo.GetAll().ToList();
+			Dictionary<int, CategoryEntity> allCats = new Dictionary<int, CategoryEntity>();
+			foreach (CategoryEntity categ in cats)
+			{
+				allCats.Add(categ.Id, categ);
+				cbInfoCrudCategory.Items.Add(categ);
+			}
 
 			#region DateTimePicker formatting
 			dtpInfoCrudStartDate.CustomFormat = "DD.MM.YYYY.";
@@ -42,21 +53,25 @@ namespace Tracktor.Desktop
 
 			#region Initialization
 
-			if (info.Id != 0) {	tbInfoCrudID.Text = info.Id.ToString();	}
-			else {
-				tbInfoCrudID.Text = "";
-			}
+			if (info.Id != 0) { tbInfoCrudID.Text = info.Id.ToString(); }
+			else { tbInfoCrudID.Text = ""; }
+
+			if (info.userId != 0) { tbInfoCrudID.Text = info.Id.ToString(); }
+			else { tbInfoCrudUID.Text = userId.ToString(); }
 
 			SetTimeWithinRange();
 
 			tbInfoCrudContent.Text = info.content;
 			dtpInfoCrudStartDate.Value = info.time.Date;
-			dtpInfoCrudStartTime.Value = info.time; // ha mozda bu dobro
+			dtpInfoCrudStartTime.Value = info.time; 
 			dtpInfoCrudEndDate.Value = info.endTime.Date;
 			dtpInfoCrudEndTime.Value = info.endTime;
 			tbInfoCrudUID.Text = info.userId.ToString();
 			tbInfoCrudPID.Text = info.placeId.ToString();
-			tbInfoCrudCatID.Text = info.categoryId.ToString();
+
+			CategoryEntity cat;
+			allCats.TryGetValue(info.categoryId, out cat);
+			cbInfoCrudCategory.SelectedItem = cat;
 
 			#endregion
 		}
@@ -80,7 +95,7 @@ namespace Tracktor.Desktop
 				info.endTime = dtpInfoCrudEndDate.Value.Date + dtpInfoCrudEndTime.Value.TimeOfDay;
 				info.userId = Convert.ToInt32(tbInfoCrudUID.Text);
 				info.placeId = Convert.ToInt32(tbInfoCrudPID.Text);
-				info.categoryId = Convert.ToInt32(tbInfoCrudCatID.Text);
+				info.categoryId = ((CategoryEntity)cbInfoCrudCategory.SelectedItem).Id;
 
 				#endregion
 
@@ -91,18 +106,25 @@ namespace Tracktor.Desktop
 				if (context != null) { _unitOfWork = new UnitOfWork(context); }
 				else { _unitOfWork = new UnitOfWork(); }
 
-				if (editing)
+				try
 				{
-					_unitOfWork.InfoRepository.Update(info, _unitOfWork.Save);
-				}
-				else
-				{
-					info.Id = _unitOfWork.InfoRepository.Insert(info, _unitOfWork.Save);
+					if (editing) {
+						_unitOfWork.InfoRepository.Update(info, _unitOfWork.Save);
+					}
+					else {
+						info.Id = _unitOfWork.InfoRepository.Insert(info, _unitOfWork.Save);
+					}
 
+				} catch (Exception xce)
+				{
+					this.lblInfoCrudError.Text = "No such category!";
+					this.lblInfoCrudError.Visible = true;
+					return;
 				}
+				this.DialogResult = DialogResult.OK;
 				#endregion
 			}
-			#endregion
+				#endregion
 		}
 
 		private void btnInfoCrudCancel_Click(object sender, EventArgs e)
@@ -118,56 +140,65 @@ namespace Tracktor.Desktop
 			this.tbInfoCrudUID.Enabled = false;
 			this.dtpInfoCrudEndDate.Enabled = false;
 			this.tbInfoCrudPID.Enabled = false;
-			this.tbInfoCrudCatID.Enabled = false;
+			this.cbInfoCrudCategory.Enabled = false;
 	
 			return this;
 		}
 
 		private bool isEmpty()
 		{
-			if (tbInfoCrudContent.TextLength == 0)	{
-				lblInfoCrudError.Visible = true;
-				lblInfoCrudError.Text = "You must enter information content!";
-				return true;
-			}
-
-			if (tbInfoCrudCatID.TextLength == 0)
-			{
-				lblInfoCrudError.Visible = true;
-				lblInfoCrudError.Text = "You must enter the category ID!";
-				return true;
-			}
-
-			if (tbInfoCrudUID.TextLength == 0)
-			{
-				lblInfoCrudError.Visible = true;
-				lblInfoCrudError.Text = "You must enter the user ID!";
-				return true;
-			}
 
 			if (tbInfoCrudPID.TextLength == 0)
 			{
 				lblInfoCrudError.Visible = true;
 				lblInfoCrudError.Text = "You must enter the place ID!";
+				tbInfoCrudPID.Focus();
+				return true;
+			}
+			if (cbInfoCrudCategory.SelectedItem == null)
+			{
+				lblInfoCrudError.Visible = true;
+				lblInfoCrudError.Text = "You must enter the category!";
+				cbInfoCrudCategory.Focus();
 				return true;
 			}
 
+
+			if (tbInfoCrudContent.TextLength == 0)	{
+				lblInfoCrudError.Visible = true;
+				lblInfoCrudError.Text = "You must enter information content!";
+				tbInfoCrudContent.Focus();
+				return true;
+			}
+			if ( !timeMakesSense() )
+			{	 
+				lblInfoCrudError.Visible = true;
+				lblInfoCrudError.Text = "Start time must be before end time!";
+				dtpInfoCrudStartDate.Focus();
+				return true;
+			}
 			this.DialogResult = DialogResult.OK;
 			return false;
+		}
+
+		private bool timeMakesSense()
+		{
+			DateTime startTime = dtpInfoCrudStartDate.Value.Date + dtpInfoCrudStartTime.Value.TimeOfDay;
+			DateTime endTime = dtpInfoCrudEndDate.Value.Date + dtpInfoCrudEndTime.Value.TimeOfDay;
+			return startTime < endTime;
 		}
 
 		private void SetTimeWithinRange()
 		{
 			if(info.time < dtpInfoCrudStartDate.MinDate || info.time > dtpInfoCrudStartDate.MaxDate)
 			{
-				info.time = Convert.ToDateTime("01.02.2017."); // set dates within MinMax range
+				info.time = Convert.ToDateTime("01.02.2017. 08:00:00"); // set dates within MinMax range
 			}
 			if (info.endTime < dtpInfoCrudEndDate.MinDate || info.endTime > dtpInfoCrudEndDate.MaxDate)
 			{
-				info.endTime = Convert.ToDateTime("01.02.2017."); // set dates within MinMax range
+				info.endTime = Convert.ToDateTime("01.02.2017. 08:00:00"); // set dates within MinMax range
 			}
 		}
-
 	}
 
 }

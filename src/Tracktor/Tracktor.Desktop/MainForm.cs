@@ -28,16 +28,23 @@ namespace Tracktor.Desktop
 		private BindingList<CommentEntity> AllComments;
 		private BindingList<UserTypeEntity> AllUserTypes;
 
+		private UserEntity login;
+
 		BindingList<CustomPlace> viewPlaces;
 
 		public MainForm()
 		{
 			InitializeComponent();
+			login = new UserEntity();
+			login.Id = 1;
+			login.Username = "testing";
+			lblUser.Text = login.Username;
 		}
 
 		public MainForm(UserEntity login)
 		{
 			InitializeComponent();
+			this.login = login;
 			lblUser.Text = login.Username;
 		}
 
@@ -142,6 +149,13 @@ namespace Tracktor.Desktop
 			InfoPlaceIdCol.Name = "InfoPlaceId";
 			InfoPlaceIdCol.Width = 50;
 			dgvInfoTable.Columns.Add(InfoPlaceIdCol);
+
+			DataGridViewTextBoxColumn InfoCategoryIdCol = new DataGridViewTextBoxColumn();
+			InfoCategoryIdCol.DataPropertyName = "categoryId";
+			InfoCategoryIdCol.HeaderText = "Category ID";
+			InfoCategoryIdCol.Name = "InfoCategoryId";
+			InfoCategoryIdCol.Width = 50;
+			dgvInfoTable.Columns.Add(InfoCategoryIdCol);
 
 			dgvInfoTable.DataSource = AllInfos;
 		}
@@ -369,7 +383,7 @@ namespace Tracktor.Desktop
 		private void btnInfoAdd_Click(object sender, EventArgs e)
 		{
 			InfoEntity info = new InfoEntity();
-			CRUD_Information crudInfo = new CRUD_Information(info);
+			CRUD_Information crudInfo = new CRUD_Information(info, login.Id);
 			crudInfo.ShowDialog();
 			if (crudInfo.DialogResult == DialogResult.OK)
 			{
@@ -383,7 +397,7 @@ namespace Tracktor.Desktop
 			int infoIndex = dgvInfoTable.CurrentCell.RowIndex;
 			InfoEntity info = AllInfos.ElementAt(infoIndex);
 
-			CRUD_Information crudInfo = new CRUD_Information(info);
+			CRUD_Information crudInfo = new CRUD_Information(info, login.Id);
 			crudInfo.editing = true;
 			crudInfo.ShowDialog();
 
@@ -397,7 +411,7 @@ namespace Tracktor.Desktop
 		{
 			int infoIndex = dgvInfoTable.CurrentCell.RowIndex;
 			InfoEntity info = AllInfos.ElementAt(infoIndex);
-			CRUD_Information crudInfo = new CRUD_Information(info);
+			CRUD_Information crudInfo = new CRUD_Information(info, login.Id);
 			crudInfo.makeReadOnly();
 			crudInfo.Show();
 		}
@@ -525,7 +539,20 @@ namespace Tracktor.Desktop
 		}
 		#endregion
 		#region Comment-related buttons
-		
+
+		private void btnCommentCrudAdd_Click(object sender, EventArgs e)
+		{
+			CommentEntity comment = new CommentEntity();
+			CRUD_Comment crudComment = new CRUD_Comment(comment, login.Id);
+			crudComment.ShowDialog();
+			if (crudComment.DialogResult == DialogResult.OK)
+			{
+				AllComments.Add(comment);
+				dgvCommentTable.Invalidate();
+			}
+
+		}
+
 		private void btnCommentCrudEdit_Click(object sender, EventArgs e)
 		{
 			int commentIndex = dgvCommentTable.CurrentCell.RowIndex;
@@ -629,5 +656,6 @@ namespace Tracktor.Desktop
 				this.Close();
 			}
 		}
+
 	}
 }

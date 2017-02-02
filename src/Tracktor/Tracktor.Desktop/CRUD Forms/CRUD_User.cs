@@ -137,22 +137,25 @@ namespace Tracktor.Desktop
 
 		private bool isEmpty()
 		{
-			if (tbUserCrudFullName.TextLength == 0) // tbUserCrudName.TextLength == 0)
-			{
-				lblUserCrudError.Visible = true;
-				lblUserCrudError.Text = "You must enter a full name!";
-				return true;
-			}
 			if (tbUserCrudName.TextLength == 0)
 			{
 				lblUserCrudError.Visible = true;
 				lblUserCrudError.Text = "You must enter a username!";
+				tbUserCrudName.Focus();
+				return true;
+			}
+			if (tbUserCrudFullName.TextLength == 0) 
+			{
+				lblUserCrudError.Visible = true;
+				lblUserCrudError.Text = "You must enter a full name!";
+				tbUserCrudFullName.Focus();
 				return true;
 			}
 			if (tbUserCrudPass.TextLength == 0)
 			{
 				lblUserCrudError.Visible = true;
 				lblUserCrudError.Text = "You must enter a password!";
+				tbUserCrudPass.Focus();
 				return true;
 			}
 

@@ -82,6 +82,7 @@ namespace Tracktor.Desktop.CRUD_Forms
 			{
 				lblCategoryCrudError.Visible = true;
 				lblCategoryCrudError.Text = "You must enter a category name!";
+				tbCategoryCrudName.Focus();
 				return true;
 			}
 

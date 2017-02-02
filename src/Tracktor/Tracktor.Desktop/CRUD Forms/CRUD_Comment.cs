@@ -17,9 +17,9 @@ namespace Tracktor.Desktop.CRUD_Forms
 	{
 		private CommentEntity comment;
 		private bool readOnly;
-		//public bool editing { get; set; }
+		public bool editing { get; set; }
 
-		public CRUD_Comment(CommentEntity newComment)
+		public CRUD_Comment(CommentEntity newComment, int userId = 1)
 		{
 			InitializeComponent();
 			this.comment = newComment;
@@ -28,11 +28,15 @@ namespace Tracktor.Desktop.CRUD_Forms
 			btnCommentCrudCancel.DialogResult = DialogResult.Cancel;
 
 			#region Initialization
-			//if (comment.Id != 0) { tbCommentCrudID.Text = comment.Id.ToString(); }
-			//else { tbCommentCrudID.Text = ""; }
-			tbCommentCrudID.Text = comment.Id.ToString();
-			tbCommentCrudUID.Text = comment.UserId.ToString();
-			tbCommentCrudIID.Text = comment.ContentInfoId.ToString();
+			if (comment.Id != 0) { tbCommentCrudID.Text = comment.Id.ToString(); }
+			else { tbCommentCrudID.Text = ""; }
+
+			if (comment.UserId!= 0) { tbCommentCrudUID.Text = comment.UserId.ToString(); }
+			else { tbCommentCrudUID.Text = userId.ToString(); }
+
+			if (comment.ContentInfoId != 0) { tbCommentCrudIID.Text = comment.ContentInfoId.ToString(); }
+			else { tbCommentCrudIID.Text = ""; }
+			
 			tbCommentCrudTime.Text = comment.EndTime.ToString();
 			tbCommentCrudContent.Text = comment.Content;
 			#endregion
@@ -58,7 +62,21 @@ namespace Tracktor.Desktop.CRUD_Forms
 				if (context != null) { _unitOfWork = new UnitOfWork(context); }
 				else { _unitOfWork = new UnitOfWork(); }
 
-				_unitOfWork.CommentRepository.Update(comment, _unitOfWork.Save);
+				try { 
+					if (editing) {
+						_unitOfWork.CommentRepository.Update(comment, _unitOfWork.Save);
+					}
+					else {
+						comment.Id = _unitOfWork.CommentRepository.Insert(comment, _unitOfWork.Save);
+					}
+				} catch (Exception xce)
+				{
+					this.lblCommentCrudError.Text = "No such info!";
+					this.lblCommentCrudError.Visible = true;
+					return;
+				}
+
+			this.DialogResult = DialogResult.OK;
 				#endregion
 			}
 			#endregion
@@ -73,6 +91,7 @@ namespace Tracktor.Desktop.CRUD_Forms
 		public void makeReadOnly()
 		{
 			tbCommentCrudContent.Enabled = false;
+			tbCommentCrudIID.Enabled = false;
 			readOnly = true;
 		}
 
@@ -82,8 +101,17 @@ namespace Tracktor.Desktop.CRUD_Forms
 			{
 				lblCommentCrudError.Visible = true;
 				lblCommentCrudError.Text = "You must enter comment content!";
+				tbCommentCrudContent.Focus();
 				return true;
 			}
+			if (tbCommentCrudIID.TextLength == 0)
+			{
+				lblCommentCrudError.Visible = true;
+				lblCommentCrudError.Text = "You must enter info ID!";
+				tbCommentCrudIID.Focus();
+				return true;
+			}
+
 
 			this.DialogResult = DialogResult.OK;
 			return false;

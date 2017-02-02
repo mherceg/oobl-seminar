@@ -55,6 +55,7 @@
 			this.btnCategoryDelete = new System.Windows.Forms.Button();
 			this.btnCategoryDetails = new System.Windows.Forms.Button();
 			this.TabComments = new System.Windows.Forms.TabPage();
+			this.btnCommentCrudAdd = new System.Windows.Forms.Button();
 			this.dgvCommentTable = new System.Windows.Forms.DataGridView();
 			this.btnCommentCrudEdit = new System.Windows.Forms.Button();
 			this.btnCommentCrudDelete = new System.Windows.Forms.Button();
@@ -375,6 +376,7 @@
 			// 
 			// TabComments
 			// 
+			this.TabComments.Controls.Add(this.btnCommentCrudAdd);
 			this.TabComments.Controls.Add(this.dgvCommentTable);
 			this.TabComments.Controls.Add(this.btnCommentCrudEdit);
 			this.TabComments.Controls.Add(this.btnCommentCrudDelete);
@@ -386,6 +388,16 @@
 			this.TabComments.TabIndex = 5;
 			this.TabComments.Text = "Comments";
 			this.TabComments.UseVisualStyleBackColor = true;
+			// 
+			// btnCommentCrudAdd
+			// 
+			this.btnCommentCrudAdd.Location = new System.Drawing.Point(793, 488);
+			this.btnCommentCrudAdd.Name = "btnCommentCrudAdd";
+			this.btnCommentCrudAdd.Size = new System.Drawing.Size(110, 52);
+			this.btnCommentCrudAdd.TabIndex = 24;
+			this.btnCommentCrudAdd.Text = "Add Comment...";
+			this.btnCommentCrudAdd.UseVisualStyleBackColor = true;
+			this.btnCommentCrudAdd.Click += new System.EventHandler(this.btnCommentCrudAdd_Click);
 			// 
 			// dgvCommentTable
 			// 
@@ -399,7 +411,7 @@
 			// 
 			// btnCommentCrudEdit
 			// 
-			this.btnCommentCrudEdit.Location = new System.Drawing.Point(793, 488);
+			this.btnCommentCrudEdit.Location = new System.Drawing.Point(654, 488);
 			this.btnCommentCrudEdit.Name = "btnCommentCrudEdit";
 			this.btnCommentCrudEdit.Size = new System.Drawing.Size(110, 52);
 			this.btnCommentCrudEdit.TabIndex = 21;
@@ -409,7 +421,7 @@
 			// 
 			// btnCommentCrudDelete
 			// 
-			this.btnCommentCrudDelete.Location = new System.Drawing.Point(648, 488);
+			this.btnCommentCrudDelete.Location = new System.Drawing.Point(515, 488);
 			this.btnCommentCrudDelete.Name = "btnCommentCrudDelete";
 			this.btnCommentCrudDelete.Size = new System.Drawing.Size(110, 52);
 			this.btnCommentCrudDelete.TabIndex = 20;
@@ -419,7 +431,7 @@
 			// 
 			// btnCommentCrudDetails
 			// 
-			this.btnCommentCrudDetails.Location = new System.Drawing.Point(503, 488);
+			this.btnCommentCrudDetails.Location = new System.Drawing.Point(376, 488);
 			this.btnCommentCrudDetails.Name = "btnCommentCrudDetails";
 			this.btnCommentCrudDetails.Size = new System.Drawing.Size(110, 52);
 			this.btnCommentCrudDetails.TabIndex = 19;
@@ -601,5 +613,6 @@
 		private System.Windows.Forms.Button btnUTCrudDelete;
 		private System.Windows.Forms.Button btnUTCrudDetails;
 		private System.Windows.Forms.DataGridView dgvUTTable;
+		private System.Windows.Forms.Button btnCommentCrudAdd;
 	}
 }

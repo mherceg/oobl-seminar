@@ -85,6 +85,7 @@ namespace Tracktor.Desktop.CRUD_Forms
 			{
 				lblUTCrudError.Visible = true;
 				lblUTCrudError.Text = "You must enter user type name!";
+				tbUTCrudType.Focus();
 				return true;
 			}
 
