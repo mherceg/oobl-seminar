@@ -1,74 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Tracktor.Domain.CategoryEntity">
-    <Position X="4.25" Y="2.5" Width="1.5" />
+    <Position X="2.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CategoryEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.Domain.CommentEntity">
-    <Position X="0.75" Y="1" Width="1.5" />
+    <Position X="11.25" Y="7.25" Width="1.5" />
+    <AssociationLine Name="user" Type="Tracktor.Domain.UserEntity" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.562" Y="7.25" />
+        <Point X="11.562" Y="5.812" />
+        <Point X="9.25" Y="5.812" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAACAAAAAgAAAgAAAAAAAAgAAAAgAAAAAAACAAAAgQA=</HashCode>
       <FileName>CommentEntity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="user" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="reputation" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Tracktor.Domain.GeoCoordinate">
-    <Position X="6.25" Y="3.25" Width="2.25" />
+    <Position X="9" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GeoCoordinate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.Domain.InfoEntity">
-    <Position X="2.5" Y="2.75" Width="1.5" />
+    <Position X="4.75" Y="6.25" Width="1.5" />
+    <AssociationLine Name="comments" Type="Tracktor.Domain.CommentEntity">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.124" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="user" Type="Tracktor.Domain.UserEntity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="6.25" />
+        <Point X="6" Y="5.75" />
+        <Point X="7.5" Y="5.75" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAnAAACAAAAAgAACAAAACAAAAAAQAAAAAAIAAAAgQA=</HashCode>
       <FileName>InfoEntity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="category" />
+      <Property Name="place" />
+      <Property Name="user" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="comments" />
+      <Property Name="reputation" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Tracktor.Domain.LoginEntity">
-    <Position X="0.75" Y="4" Width="1.5" />
+    <Position X="10.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>LoginEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.Domain.PlaceEntity">
-    <Position X="2.5" Y="1" Width="1.5" />
+    <Position X="6.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PlaceEntity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Location" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Tracktor.Domain.ReputationCommentEntity">
-    <Position X="8.25" Y="1" Width="2" />
+    <Position X="10" Y="3.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAEAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>ReputationCommentEntity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="user" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Tracktor.Domain.UserEntity">
-    <Position X="4.25" Y="4" Width="1.75" />
+    <Position X="7.5" Y="4" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAEAAIAAIAgEQAAAAAAAAAAAAACAQAAAAAAAAA=</HashCode>
       <FileName>UserEntity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="FavoritePlaces" />
+      <Property Name="SponsorshipPlaces" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Tracktor.Domain.UserTypeEntity">
-    <Position X="4.25" Y="1" Width="1.5" />
+    <Position X="7.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>UserTypeEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.Domain.ReputationInfoEntity">
-    <Position X="6.25" Y="1" Width="1.75" />
+    <Position X="4.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAEAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>ReputationInfoEntity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="user" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

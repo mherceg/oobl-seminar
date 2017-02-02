@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tracktor.DAL.Database.Category">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Database\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tracktor.DAL.Database.Comment">
+    <Position X="6.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAgAAAAhAAAAAAAgAAAAAAAAAAAAAAEAAAQA=</HashCode>
+      <FileName>Database\Comment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Info" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ReputationComment" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Tracktor.DAL.Database.Info">
+    <Position X="6.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAEAgAAAgAAAAAAAAgAAAAgAAAIAEAAAAAADQA=</HashCode>
+      <FileName>Database\Info.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Category" />
+      <Property Name="Place" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Comment" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Tracktor.DAL.Database.Place">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAIAIAAAQAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Database\Place.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Info" />
+      <Property Name="User" />
+      <Property Name="User1" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Tracktor.DAL.Database.ReputationComment">
+    <Position X="3.5" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAEAAAAAAgAAAAAAAgAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Database\ReputationComment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Comment" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tracktor.DAL.Database.ReputationInfo">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Database\ReputationInfo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Info" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tracktor.DAL.Database.User">
+    <Position X="3.75" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAIAAIBAEQAAAAAAAAAACAAKAEAAAEAAAAA=</HashCode>
+      <FileName>Database\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserType" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Comment" />
+      <Property Name="Info" />
+      <Property Name="Place" />
+      <Property Name="Place1" />
+      <Property Name="ReputationComment" />
+      <Property Name="ReputationInfo" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Tracktor.DAL.Database.UserType">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Database\UserType.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="User" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

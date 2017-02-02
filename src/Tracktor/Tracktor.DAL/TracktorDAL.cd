@@ -1,58 +1,101 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Tracktor.DAL.Repositories.CategoryRepository">
-    <Position X="4.5" Y="3.5" Width="2.5" />
+    <Position X="6.25" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Repositories\CategoryRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.Repositories.CommentRepository">
-    <Position X="3" Y="5.75" Width="2.5" />
+    <Position X="4.25" Y="6.25" Width="2.5" />
+    <InheritanceLine Type="Tracktor.DAL.EFRepository.EFRepository&lt;DEntity, TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.062" Y="2.44" />
+        <Point X="4.062" Y="6.01" />
+        <Point X="4.625" Y="6.01" />
+        <Point X="4.625" Y="6.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Repositories\CommentRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.Repositories.InfoRepository">
-    <Position X="6.25" Y="6" Width="2" />
+    <Position X="0.5" Y="6" Width="2" />
+    <InheritanceLine Type="Tracktor.DAL.EFRepository.EFRepository&lt;DEntity, TEntity&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="3.438" Y="2.44" />
+        <Point X="3.438" Y="5.76" />
+        <Point X="1.5" Y="5.76" />
+        <Point X="1.5" Y="6" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAgAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAgAAAAAAAAhAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Repositories\InfoRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.Repositories.PlaceRepository">
-    <Position X="0.5" Y="3" Width="2" />
+    <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAQAAEAgABAgAAAAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Repositories\PlaceRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.Repositories.ReputationCommentRepository">
-    <Position X="6.75" Y="8.25" Width="3.75" />
+    <Position X="1.75" Y="8.5" Width="3.75" />
+    <InheritanceLine Type="Tracktor.DAL.EFRepository.EFRepository&lt;DEntity, TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="2.44" />
+        <Point X="3.75" Y="8.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAEAAAA=</HashCode>
       <FileName>Repositories\ReputationCommentRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.Repositories.ReputationInfoRepository">
-    <Position X="1.25" Y="9.5" Width="3" />
+    <Position X="4.25" Y="3.75" Width="3" />
+    <InheritanceLine Type="Tracktor.DAL.EFRepository.EFRepository&lt;DEntity, TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.438" Y="2.44" />
+        <Point X="4.438" Y="3.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Repositories\ReputationInfoRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.Repositories.UserRepository">
-    <Position X="0.5" Y="5.75" Width="2" />
+    <Position X="7.5" Y="3.5" Width="2" />
+    <InheritanceLine Type="Tracktor.DAL.EFRepository.EFRepository&lt;DEntity, TEntity&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="4.688" Y="2.44" />
+        <Point X="4.688" Y="3.125" />
+        <Point X="8.5" Y="3.125" />
+        <Point X="8.5" Y="3.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAIAAAAAAAAAAAAAAAAAAAAAABAAAgAGQAgA=</HashCode>
+      <HashCode>AAQAAEAAAIAAAAAAAAAABAAAAAAAAAAABgAAgAGQAgA=</HashCode>
       <FileName>Repositories\UserRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.Repositories.UserTypeRepository">
-    <Position X="3" Y="7.75" Width="2.5" />
+    <Position X="0.5" Y="3.5" Width="2.5" />
+    <InheritanceLine Type="Tracktor.DAL.EFRepository.EFRepository&lt;DEntity, TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3" Y="2.125" />
+        <Point X="2.75" Y="2.125" />
+        <Point X="2.75" Y="3.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Repositories\UserTypeRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -64,7 +107,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Tracktor.DAL.UnitOfWork.UnitOfWork" BaseTypeListCollapsed="true">
-    <Position X="9" Y="0.5" Width="2.5" />
+    <Position X="10" Y="0.5" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
