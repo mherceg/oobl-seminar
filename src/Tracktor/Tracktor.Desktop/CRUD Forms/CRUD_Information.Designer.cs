@@ -40,13 +40,13 @@
 			this.tbInfoCrudContent = new System.Windows.Forms.TextBox();
 			this.lblInfoCrudContent = new System.Windows.Forms.Label();
 			this.lblInfoCrudEndTime = new System.Windows.Forms.Label();
-			this.lblInfoCrudError = new System.Windows.Forms.Label();
 			this.tbInfoCrudCatID = new System.Windows.Forms.TextBox();
 			this.lblInfoCrudCatID = new System.Windows.Forms.Label();
 			this.dtpInfoCrudStartDate = new System.Windows.Forms.DateTimePicker();
 			this.dtpInfoCrudEndDate = new System.Windows.Forms.DateTimePicker();
 			this.dtpInfoCrudStartTime = new System.Windows.Forms.DateTimePicker();
 			this.dtpInfoCrudEndTime = new System.Windows.Forms.DateTimePicker();
+			this.lblInfoCrudError = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnInfoCrudOK
@@ -166,18 +166,6 @@
 			this.lblInfoCrudEndTime.TabIndex = 30;
 			this.lblInfoCrudEndTime.Text = "End time: ";
 			// 
-			// lblInfoCrudError
-			// 
-			this.lblInfoCrudError.AutoSize = true;
-			this.lblInfoCrudError.BackColor = System.Drawing.SystemColors.Info;
-			this.lblInfoCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.lblInfoCrudError.Location = new System.Drawing.Point(19, 402);
-			this.lblInfoCrudError.Name = "lblInfoCrudError";
-			this.lblInfoCrudError.Size = new System.Drawing.Size(47, 20);
-			this.lblInfoCrudError.TabIndex = 31;
-			this.lblInfoCrudError.Text = "Error";
-			this.lblInfoCrudError.Visible = false;
-			// 
 			// tbInfoCrudCatID
 			// 
 			this.tbInfoCrudCatID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -228,20 +216,32 @@
 			this.dtpInfoCrudEndTime.Size = new System.Drawing.Size(113, 22);
 			this.dtpInfoCrudEndTime.TabIndex = 37;
 			// 
+			// lblInfoCrudError
+			// 
+			this.lblInfoCrudError.BackColor = System.Drawing.SystemColors.Info;
+			this.lblInfoCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.lblInfoCrudError.Location = new System.Drawing.Point(12, 387);
+			this.lblInfoCrudError.Name = "lblInfoCrudError";
+			this.lblInfoCrudError.Size = new System.Drawing.Size(781, 99);
+			this.lblInfoCrudError.TabIndex = 54;
+			this.lblInfoCrudError.Text = "Error";
+			this.lblInfoCrudError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lblInfoCrudError.Visible = false;
+			// 
 			// CRUD_Information
 			// 
 			this.AcceptButton = this.btnInfoCrudOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnInfoCrudCancel;
-			this.ClientSize = new System.Drawing.Size(805, 467);
+			this.ClientSize = new System.Drawing.Size(805, 495);
+			this.Controls.Add(this.lblInfoCrudError);
 			this.Controls.Add(this.dtpInfoCrudEndTime);
 			this.Controls.Add(this.dtpInfoCrudStartTime);
 			this.Controls.Add(this.dtpInfoCrudEndDate);
 			this.Controls.Add(this.dtpInfoCrudStartDate);
 			this.Controls.Add(this.tbInfoCrudCatID);
 			this.Controls.Add(this.lblInfoCrudCatID);
-			this.Controls.Add(this.lblInfoCrudError);
 			this.Controls.Add(this.lblInfoCrudEndTime);
 			this.Controls.Add(this.tbInfoCrudContent);
 			this.Controls.Add(this.lblInfoCrudContent);
@@ -275,12 +275,12 @@
 		private System.Windows.Forms.TextBox tbInfoCrudContent;
 		private System.Windows.Forms.Label lblInfoCrudContent;
 		private System.Windows.Forms.Label lblInfoCrudEndTime;
-		private System.Windows.Forms.Label lblInfoCrudError;
 		private System.Windows.Forms.TextBox tbInfoCrudCatID;
 		private System.Windows.Forms.Label lblInfoCrudCatID;
 		private System.Windows.Forms.DateTimePicker dtpInfoCrudStartDate;
 		private System.Windows.Forms.DateTimePicker dtpInfoCrudEndDate;
 		private System.Windows.Forms.DateTimePicker dtpInfoCrudStartTime;
 		private System.Windows.Forms.DateTimePicker dtpInfoCrudEndTime;
+		private System.Windows.Forms.Label lblInfoCrudError;
 	}
 }

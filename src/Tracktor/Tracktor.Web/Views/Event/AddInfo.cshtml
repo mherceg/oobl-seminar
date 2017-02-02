@@ -23,14 +23,16 @@
             </div>
             @Html.ActionLink("Add location", "AddPlace", "Place", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary", style = "width: 100%" })
             <div class="filter-div">
-                <button class="btn btn-primary filter-btn" onclick="favouritePlaces()">Show favourite places only</button>
+                @Html.ActionLink("Show favourite places only", "AddInfo", new { meh = 1 }, new { @class = "btn btn-primary", style = "width: 100%" })
             </div>
             @if (isPremium)
             {
-                <div class="filter-div"><button class="btn btn-primary filter-btn" onclick="sponsoredPlaces()">Show sponsored places only</button></div>
+                <div class="filter-div">
+                    @Html.ActionLink("Show sponsored places only", "AddInfo", new { meh = 2 }, new { @class = "btn btn-primary", style = "width: 100%" })
+                </div>
             }
             <div class="filter-div">
-                <button class="btn btn-primary filter-btn" onclick="allPlaces()">Show all places</button>
+                @Html.ActionLink("Show all places", "AddInfo", new { meh = 0 }, new { @class = "btn btn-primary", style = "width: 100%" })
             </div>
         </div>
         <div class="col-xs-6">
@@ -115,9 +117,13 @@
             })
         )
     );
+        var center = { lat: 0, lng: 0 };
+        if(locations.length > 0) {
+            center = { lat: locations[0].lat, lng: locations[0].lng };
+        }
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 1,
-            center: { lat: locations[0].lat, lng: locations[0].lng }
+            center: center,
         });
 
         var marker, i;

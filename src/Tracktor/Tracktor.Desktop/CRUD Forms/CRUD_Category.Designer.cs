@@ -32,9 +32,9 @@
 			this.lblPlaceCrudID = new System.Windows.Forms.Label();
 			this.tbCategoryCrudName = new System.Windows.Forms.TextBox();
 			this.lblCatCrudName = new System.Windows.Forms.Label();
-			this.lblCategoryCrudError = new System.Windows.Forms.Label();
 			this.btnCategoryCrudOK = new System.Windows.Forms.Button();
 			this.btnCategoryCrudCancel = new System.Windows.Forms.Button();
+			this.lblCategoryCrudError = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// tbCategoryCrudID
@@ -74,18 +74,6 @@
 			this.lblCatCrudName.TabIndex = 22;
 			this.lblCatCrudName.Text = "Category name:";
 			// 
-			// lblCategoryCrudError
-			// 
-			this.lblCategoryCrudError.AutoSize = true;
-			this.lblCategoryCrudError.BackColor = System.Drawing.SystemColors.Info;
-			this.lblCategoryCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.lblCategoryCrudError.Location = new System.Drawing.Point(12, 158);
-			this.lblCategoryCrudError.Name = "lblCategoryCrudError";
-			this.lblCategoryCrudError.Size = new System.Drawing.Size(47, 20);
-			this.lblCategoryCrudError.TabIndex = 30;
-			this.lblCategoryCrudError.Text = "Error";
-			this.lblCategoryCrudError.Visible = false;
-			// 
 			// btnCategoryCrudOK
 			// 
 			this.btnCategoryCrudOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -109,13 +97,25 @@
 			this.btnCategoryCrudCancel.UseVisualStyleBackColor = true;
 			this.btnCategoryCrudCancel.Click += new System.EventHandler(this.btnCategoryCrudCancel_Click);
 			// 
+			// lblCategoryCrudError
+			// 
+			this.lblCategoryCrudError.BackColor = System.Drawing.SystemColors.Info;
+			this.lblCategoryCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.lblCategoryCrudError.Location = new System.Drawing.Point(12, 165);
+			this.lblCategoryCrudError.Name = "lblCategoryCrudError";
+			this.lblCategoryCrudError.Size = new System.Drawing.Size(344, 99);
+			this.lblCategoryCrudError.TabIndex = 54;
+			this.lblCategoryCrudError.Text = "Error";
+			this.lblCategoryCrudError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lblCategoryCrudError.Visible = false;
+			// 
 			// CRUD_Category
 			// 
 			this.AcceptButton = this.btnCategoryCrudOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCategoryCrudCancel;
-			this.ClientSize = new System.Drawing.Size(368, 197);
+			this.ClientSize = new System.Drawing.Size(368, 273);
 			this.Controls.Add(this.lblCategoryCrudError);
 			this.Controls.Add(this.btnCategoryCrudOK);
 			this.Controls.Add(this.btnCategoryCrudCancel);
@@ -135,8 +135,8 @@
 		private System.Windows.Forms.Label lblPlaceCrudID;
 		private System.Windows.Forms.TextBox tbCategoryCrudName;
 		private System.Windows.Forms.Label lblCatCrudName;
-		private System.Windows.Forms.Label lblCategoryCrudError;
 		private System.Windows.Forms.Button btnCategoryCrudOK;
 		private System.Windows.Forms.Button btnCategoryCrudCancel;
+		private System.Windows.Forms.Label lblCategoryCrudError;
 	}
 }

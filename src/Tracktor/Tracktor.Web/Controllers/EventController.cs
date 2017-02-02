@@ -13,20 +13,29 @@ namespace Tracktor.Web.Controllers
     public class EventController : Controller
     {
         //GET: Search
-        public ActionResult Search()
+        public ActionResult Search(int meh = 0)
         {
-            var placeService = ServiceFactory.getPlaceServices();
-            var places = placeService.GetByFilter(getDefaultSearchFilters(), true, true);
-
             var vm = new SearchVM
             {
-                Places = places,
+                Places = getSearchPlaces(meh),
                 Categories = getHtmlCategories(),
             };
 
-            vm.Places = places;
-
             return View(vm);
+        }
+
+        private List<PlaceEntity> getSearchPlaces(int meh)
+        {
+            var placeService = ServiceFactory.getPlaceServices();
+            if (meh == 0)
+            {
+                return placeService.GetByFilter(getDefaultSearchFilters(), true, true);
+            }
+            else if (meh == 1)
+            {
+                return placeService.GetFavorite((Session["user"] as UserEntity).Id);
+            }
+            return placeService.GetSponsorship((Session["user"] as UserEntity).Id);
         }
 
         private IDictionary<string, bool> getDefaultSearchFilters()
@@ -196,13 +205,13 @@ namespace Tracktor.Web.Controllers
             return RedirectToAction(nameof(InfoDetails), new { id = infoId, placeId = placeId });
         }
 
-        public ActionResult AddInfo()
+        public ActionResult AddInfo(int meh = 0)
         {
             var vm = new AddInfoVM
             {
                 SelectedCategoryId = 0,
                 Categories = getHtmlCategories(),
-                Places = getPlacesForAddInfo(),  
+                Places = getPlacesForAddInfo(meh),
             };
 
             return View(vm);
@@ -224,11 +233,15 @@ namespace Tracktor.Web.Controllers
             var infoService = ServiceFactory.getInfoServices();
             var id = infoService.NewInfo(ie);
 
-            return RedirectToAction(nameof(InfoDetails), new { id =  id, placeId =  vm.PlaceId });
+            return RedirectToAction(nameof(InfoDetails), new { id = id, placeId = vm.PlaceId });
         }
 
-        private List<PlaceEntity> getPlacesForAddInfo()
+        private List<PlaceEntity> getPlacesForAddInfo(int meh)
         {
+            if(meh == 1 || meh == 2)
+            {
+                return getSearchPlaces(meh);
+            }
             return ServiceFactory.getPlaceServices().GetAll();
         }
     }

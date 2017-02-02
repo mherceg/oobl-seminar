@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.lblCommentCrudError = new System.Windows.Forms.Label();
 			this.tbCommentCrudContent = new System.Windows.Forms.TextBox();
 			this.lblCommentCrudContent = new System.Windows.Forms.Label();
 			this.tbCommentCrudIID = new System.Windows.Forms.TextBox();
@@ -41,19 +40,8 @@
 			this.btnCommentCrudOK = new System.Windows.Forms.Button();
 			this.btnCommentCrudCancel = new System.Windows.Forms.Button();
 			this.tbCommentCrudTime = new System.Windows.Forms.TextBox();
+			this.lblCommentCrudError = new System.Windows.Forms.Label();
 			this.SuspendLayout();
-			// 
-			// lblCommentCrudError
-			// 
-			this.lblCommentCrudError.AutoSize = true;
-			this.lblCommentCrudError.BackColor = System.Drawing.SystemColors.Info;
-			this.lblCommentCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.lblCommentCrudError.Location = new System.Drawing.Point(132, 269);
-			this.lblCommentCrudError.Name = "lblCommentCrudError";
-			this.lblCommentCrudError.Size = new System.Drawing.Size(47, 20);
-			this.lblCommentCrudError.TabIndex = 50;
-			this.lblCommentCrudError.Text = "Error";
-			this.lblCommentCrudError.Visible = false;
 			// 
 			// tbCommentCrudContent
 			// 
@@ -173,6 +161,18 @@
 			this.tbCommentCrudTime.Size = new System.Drawing.Size(195, 26);
 			this.tbCommentCrudTime.TabIndex = 51;
 			// 
+			// lblCommentCrudError
+			// 
+			this.lblCommentCrudError.BackColor = System.Drawing.SystemColors.Info;
+			this.lblCommentCrudError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.lblCommentCrudError.Location = new System.Drawing.Point(237, 254);
+			this.lblCommentCrudError.Name = "lblCommentCrudError";
+			this.lblCommentCrudError.Size = new System.Drawing.Size(325, 99);
+			this.lblCommentCrudError.TabIndex = 52;
+			this.lblCommentCrudError.Text = "Error";
+			this.lblCommentCrudError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lblCommentCrudError.Visible = false;
+			// 
 			// CRUD_Comment
 			// 
 			this.AcceptButton = this.btnCommentCrudOK;
@@ -180,8 +180,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCommentCrudCancel;
 			this.ClientSize = new System.Drawing.Size(843, 350);
-			this.Controls.Add(this.tbCommentCrudTime);
 			this.Controls.Add(this.lblCommentCrudError);
+			this.Controls.Add(this.tbCommentCrudTime);
 			this.Controls.Add(this.tbCommentCrudContent);
 			this.Controls.Add(this.lblCommentCrudContent);
 			this.Controls.Add(this.tbCommentCrudIID);
@@ -201,8 +201,6 @@
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Label lblCommentCrudError;
 		private System.Windows.Forms.TextBox tbCommentCrudContent;
 		private System.Windows.Forms.Label lblCommentCrudContent;
 		private System.Windows.Forms.TextBox tbCommentCrudIID;
@@ -215,5 +213,6 @@
 		private System.Windows.Forms.Button btnCommentCrudOK;
 		private System.Windows.Forms.Button btnCommentCrudCancel;
 		private System.Windows.Forms.TextBox tbCommentCrudTime;
+		private System.Windows.Forms.Label lblCommentCrudError;
 	}
 }
